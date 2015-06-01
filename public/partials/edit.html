@@ -1,0 +1,18 @@
+<div class="container-fluid" ng-include="'partials/nav.html'"></div> 
+
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1>Szerkesztő  <small> - RMVA {{vers.rmva}} </small> </h1>
+
+        <h1>Cím: {{vers.title}} <small> ({{vers.date}}) </small> </h1>
+     
+        <h2>Incipit: {{vers.inc}}   </h2>
+
+        <h3>Létrehozva: {{vers.created_at | date:"y-MM-d H:mm:ss"}} </h3>
+    </div>
+
+
+    <form class="form-horizontal" role="form" ng-submit="editVers()">
+       <div ng-cloack ng-include="'partials/_form.html'"></div>
+    </form>
+</div>

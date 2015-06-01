@@ -1,0 +1,16 @@
+<div class="container-fluid" ng-include="'partials/nav.html'"></div>
+
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1>Feltöltés</h1>
+        <h1>Cím: {{vers.title}}</h1>
+        <h1><small>Incipit: {{vers.inc}}</small></h1>
+    </div>
+
+
+
+
+    <form class="form-horizontal" role="form" ng-submit="postVers()">
+        <div ng-cloack ng-include="'partials/_form.html'"></div>
+    </form>
+</div>
