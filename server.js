@@ -51,9 +51,9 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 });
 */
 
-// !!!! WITH DIRECT LINK FOR TESTING PURPOSES ONLY !!!!
+// WITH LOCAL ENVIROMENT VAR
 
-mongoose.connect('mongodb://rep0:yLdVhThr@dbh04.mongolab.com:27047/vers', function(err) {
+mongoose.connect(MONGOLAB_URI, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
