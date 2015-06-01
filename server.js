@@ -13,10 +13,10 @@ var bodyParser = require('body-parser');
 // ====================SERVER INIT====================
 
 // for openshift
-// var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
+var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT || 3000);
+// var port = (process.env.OPENSHIFT_NODEJS_PORT || 3000);
 var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 
