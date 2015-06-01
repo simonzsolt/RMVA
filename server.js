@@ -9,6 +9,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('config');
+
+// ====================LOADING CONFIG VARS====================
+
+if (config.has('MONGOLAB_URI')) {
+
+    var MONGOLAB_URI = config.get('MONGOLAB_URI');
+    console.log('env var test: ' + MONGOLAB_URI);
+}
+else {
+    console.log('env var test: no local config vars');
+}; 
+
 //  mongoose
 var mongoose = require('mongoose');
 var models = require('./public/models/models.js'); 
