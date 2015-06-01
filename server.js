@@ -9,8 +9,26 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('config');
+
+// ====================LOADING CONFIG VARS====================
+
+if (config.has('MONGOLAB_URI')) {
+
+    var MONGOLAB_URI = config.get('MONGOLAB_URI');
+    console.log('env var test: ' + MONGOLAB_URI);
+}
+else {
+    console.log('env var test: no local config vars');
+}; 
+
+//  mongoose
+var mongoose = require('mongoose');
+var models = require('./public/models/models.js'); 
 
 // ====================SERVER INIT====================
+
+// -------------------PORT AND IP-------------------
 
 // for openshift
 var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
@@ -19,6 +37,41 @@ var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
 // var port = (process.env.OPENSHIFT_NODEJS_PORT || 3000);
 var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
+// -------------------DB CONNECTION-------------------
+
+// MONGOLAB
+
+// WITH ENVIROMENT VAR SET FOR: HEROKU, OPENSHIFT
+/*
+mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+*/
+
+// WITH LOCAL ENVIROMENT VAR
+
+mongoose.connect(MONGOLAB_URI, function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+
+//LOCAL MONGODB
+/*
+mongoose.connect('mongodb://localhost/vers', function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+*/
+
+
+// -------------------SERVER LISTENING-------------------
 
 var server = app.listen(port, ip, function () {
 
@@ -26,9 +79,7 @@ var server = app.listen(port, ip, function () {
   var port = server.address().port;
 
   console.log('Example app listening at http://%s:%s', host, port);
-
-});
-
+}); // debug for port and ip binding
 
 var routes = require('./routes/index');
 
