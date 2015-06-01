@@ -11,44 +11,44 @@ var Vers = mongoose.model('Vers');
 router.route('/data')
 
     .post(function(req, res){
-        var newVers = new Vers(); // cahnged vers to newVers
+        var newVers  = new Vers(); // cahnged vers to newVers
         newVers.rmva = req.body.rmva;
-        newVers.inc = req.body.inc;
+        newVers.inc  = req.body.inc;
 
         newVers.auth_role_name = req.body.auth_role_name;
         newVers.auth_surname   = req.body.auth_surname;
         newVers.auth_add_name  = req.body.auth_add_name;
         newVers.auth_forename  = req.body.auth_forename;
 
-        newVers.title = req.body.title;
-        newVers.arg = req.body.arg;
-        newVers.adnotam = req.body.adnotam;
-        newVers.acro = req.body.acro;
+        newVers.title    = req.body.title;
+        newVers.arg      = req.body.arg;
+        newVers.adnotam  = req.body.adnotam;
+        newVers.acro     = req.body.acro;
         newVers.acro_int = req.body.acro_int;
-        newVers.krono = req.body.krono;
-        newVers.head = req.body.head;
+        newVers.krono    = req.body.krono;
+        newVers.head     = req.body.head;
 
-        newVers.signo_type = req.body.signo_type;
+        newVers.signo_type      = req.body.signo_type;
         newVers.signo_role_name = req.body.signo_role_name; 
         newVers.signo_surname   = req.body.signo_surname;    
         newVers.signo_add_name  = req.body.signo_add_name;   
         newVers.signo_forename  = req.body.signo_forename;  
 
-        newVers.lenght = req.body.lenght;
+        newVers.lenght      = req.body.lenght;
         newVers.lenght_unit = req.body.lenght_unit;
-        newVers.col = req.body.col;
-        newVers.date = req.body.date;
-        newVers.date_info = req.body.date_info;
-        newVers.place = req.body.place;
-        newVers.place_info = req.body.place_info;
-        newVers.conf = req.body.conf;
-        newVers.text = req.body.text;
-        newVers.imgs = req.body.imgs;
-        newVers.link_coll = req.body.link_coll;
-        newVers.created_at = Date.now(); // changed to Date.now()
-        newVers.created_by = req.body.created_by;
-        newVers.last_mod = Date.now(); // changed to Date.now()
-        newVers.mod_by = req.body.mod_by;
+        newVers.col         = req.body.col;
+        newVers.date        = req.body.date;
+        newVers.date_info   = req.body.date_info;
+        newVers.place       = req.body.place;
+        newVers.place_info  = req.body.place_info;
+        newVers.conf        = req.body.conf;
+        newVers.text        = req.body.text;
+        newVers.imgs        = req.body.imgs;
+        newVers.link_coll   = req.body.link_coll;
+        newVers.created_at  = Date.now(); // changed to Date.now()
+        newVers.created_by  = req.body.created_by;
+        newVers.last_mod    = Date.now(); // changed to Date.now()
+        newVers.mod_by      = req.body.mod_by;
      
 
         newVers.save(function(err){
@@ -153,11 +153,8 @@ router.route('/data/:vers_id')
     }); 
 });
 
-
-
 router.get('/', function (req, res, next) {
-  res.render('index', {title: "My own express app"});
+  res.render('index', {title: "Tesztüzem"});
 });
-
 
 module.exports = router;
