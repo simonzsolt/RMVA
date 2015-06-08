@@ -200,7 +200,9 @@
             <option value="" disabled selected>Lokalizálás</option>
             <option>akrosztichon</option>
             <option>kolofón</option>
-            <option>odaírta valaki mellé direkt</option>
+            <option>címben</option>
+            <option>a kötet előszavában</option>
+            <option>a szöveg mellé odaírva</option>
         </select>  
     </div>
 </div>
@@ -209,6 +211,13 @@
     <label class="control-label col-md-2" for="conf">Felekezet:</label>
     <div id="conf" class="col-md-10">
         <input type="text" class="form-control" placeholder="Felekezet" ng-model="vers.conf" > </input>  
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2" for="source">Forrás:</label>
+    <div id="source" class="col-md-10">
+        <input type="text" class="form-control" placeholder="Forrás" ng-model="vers.source" > </input>  
     </div>
 </div>
 
