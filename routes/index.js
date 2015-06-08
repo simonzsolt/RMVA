@@ -42,6 +42,7 @@ router.route('/data')
         newVers.place       = req.body.place;
         newVers.place_info  = req.body.place_info;
         newVers.conf        = req.body.conf;
+        newVers.source      = req.body.source;
         newVers.text        = req.body.text;
         newVers.imgs        = req.body.imgs;
         newVers.link_coll   = req.body.link_coll;
@@ -119,6 +120,7 @@ router.route('/data/:vers_id')
             vers.place = req.body.place;
             vers.place_info = req.body.place_info;
             vers.conf = req.body.conf;
+            vers.source = req.body.source;
             vers.text = req.body.text;
             vers.imgs = req.body.imgs;
             vers.link_coll = req.body.link_coll;
