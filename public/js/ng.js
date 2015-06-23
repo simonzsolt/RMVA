@@ -6,22 +6,22 @@ var app = angular.module('versApp', ['ngRoute', 'ngResource'])
     $routeProvider
 
         .when('/list', {
-            templateUrl: 'partials/list.html',
+            templateUrl: 'ng/components/listing/listView.html',
             controller: 'mainCtrl'
         })
 
         .when('/view/id/:versId', {
-            templateUrl: 'partials/view.html',
+            templateUrl: 'ng/components/viewer/readView.html',
             controller: 'viewCtrl'
         })
         
         .when('/upload', {
-            templateUrl: 'partials/upload.html',
+            templateUrl: 'ng/components/uploader/uploadView.html',
             controller: 'uploadCtrl'
         })   
 
         .when('/edit/id/:versId', {
-            templateUrl: 'partials/edit.html',
+            templateUrl: 'ng/components/editor/editorView.html',
             controller: 'editCtrl'
         })
 
