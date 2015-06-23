@@ -34,7 +34,7 @@ var models = require('./public/models/models.js');
 // var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT || 3000);
+var port = (process.env.OPENSHIFT_NODEJS_PORT || 3001);
 var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
@@ -53,22 +53,22 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 
 // WITH LOCAL ENVIROMENT VAR
 
-mongoose.connect(MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
+// mongoose.connect(MONGOLAB_URI, function(err) {
+//     if (err) {
+//         console.log('DB connection error:' + err);
+//     }
+//     else {return}
+// });
 
 //LOCAL MONGODB
-/*
+
 mongoose.connect('mongodb://localhost/vers', function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
     else {return}
 });
-*/
+
 
 
 // -------------------SERVER LISTENING-------------------
