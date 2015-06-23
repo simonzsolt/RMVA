@@ -66,14 +66,14 @@ mongoose.connect(MONGOLAB_URI, function(err) {
     else {return}
 });
 */
-
+/*
 mongoose.connect(MONGOLAB_URI, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
     else {return}
 });
-
+*/
 
 //LOCAL MONGODB
 /*
