@@ -9,6 +9,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+var passport = require('passport');
+var bcrypt = require('bcrypt-nodejs');
+
 var config = require('config');
 
 // ====================LOADING CONFIG VARS====================
