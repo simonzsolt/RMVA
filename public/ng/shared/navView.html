@@ -1,32 +1,51 @@
 <nav ng-controller="navCtrl" class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#/">Teszt</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Teszt</a>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav">
+
+                <li ng-hide="path === '/list'">
+                    <a class="btn btn-default"  href="#list">
+                        <span class="glyphicon glyphicon-th-list"></span>        
+                            Lista
+                    </a>
+                </li>
+
+                <li ng-hide="path === '/list' || path === '/upload'">
+                    <a class="btn btn-default"  href="#edit/id/{{vers._id}}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Szerkesztő
+                    </a>
+                </li>
+
+                <li ng-hide="path === '/list' || path === '/upload'">
+                    <a class="btn btn-default"  href="#view/id/{{vers._id}}">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        Részletek
+                    </a>
+                </li>
+
+                <li>
+                    <a class="btn btn-default"  href="#signup">
+                        Regisztráció
+                    </a>
+                </li>
+
+                <li>
+                    <a class="btn btn-default"  href="">
+                        Bejelentkezés
+                    </a>
+                </li>
+
+                <li>
+                    <a class="btn btn-default"  href="">
+                        Kijelentkezés
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div>
-      <ul class="nav navbar-nav">
-
-        <li ng-hide="path === '/list'">
-            <a class="btn btn-default"  href="#list">
-                <span class="glyphicon glyphicon-th-list"></span>        
-                Lista
-            </a>
-        </li>
-
-        <li ng-hide="path === '/list' || path === '/upload'">
-            <a class="btn btn-default"  href="#edit/id/{{vers._id}}">
-                <span class="glyphicon glyphicon-edit"></span>
-                Szerkesztő
-            </a>
-        </li>
-
-        <li ng-hide="path === '/list' || path === '/upload'">
-            <a class="btn btn-default"  href="#view/id/{{vers._id}}">
-                <span class="glyphicon glyphicon-eye-open"></span>
-                Részletek
-            </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>

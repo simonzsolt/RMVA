@@ -1,19 +1,21 @@
 // ====================MAIN DEPENDENCIESS====================
 
 var express = require('express'); // server dep
-var app = express(); // initializing app
+    app = express(), // initializing app
 
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+    path = require('path'),
+    http = require('http'),
+    passport = require('passport'),
+    localStrategy = require('passport-local').Strategy,
+    passportLocalMongoose = require('passport-local-mongoose'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
 
-var session = require('express-session');
-var passport = require('passport');
-var bcrypt = require('bcrypt-nodejs');
+    session = require('express-session'),
 
-var config = require('config');
+    config = require('config');
 
 // ====================LOADING CONFIG VARS====================
 
@@ -28,7 +30,8 @@ else {
 
 //  mongoose
 var mongoose = require('mongoose');
-var models = require('./public/models/models.js'); 
+var models = require('./public/models/models'); 
+
 
 // ====================SERVER INIT====================
 
@@ -103,6 +106,26 @@ app.use(cookieParser());
 
 // for reaching public directory without stating 'public/'
 app.use(express.static(path.join(__dirname, 'public'))); 
+
+app.use(session({
+    secret: 'itsbettertoburnoutthantofadeaway',
+    resave: true,
+    saveUninitialized: false
+    }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// add Schema
+var Account = require('./public/models/users'); 
+// use localStrategy and authenticate function
+passport.use(new localStrategy(Account.authenticate()));
+// passport.use(Account.createStrategy());
+
+// serializing based on Shcema
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 // routing, called with: 'router.' 
 // Requires: 

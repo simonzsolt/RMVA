@@ -8,12 +8,12 @@ angular
         .controller('listingCtrl', [
             '$scope', 
             '$routeParams', 
-            'versFactory', 
+            'poemFactory', 
             '$location', 
             
-            function($scope, $routeParams, versFactory, $location){
+            function($scope, $routeParams, poemFactory, $location){
 
-                $scope.data = versFactory.query();
+                $scope.data = poemFactory.query();
                 $scope.versId = $routeParams.versId;
                 $scope.list_menu = true; // for the "List" menu "ng-hide" attr
 
@@ -27,11 +27,11 @@ angular
                     $scope.del_conf = confirm('Biztosan törölni szeretné a verset?');
 
                     if ($scope.del_conf === true) {
-                        versFactory.delete({id: vers_id}, function(){
+                        poemFactory.delete({id: vers_id}, function(){
                             alert('A vers törölve!');
                         });
 
-                        $scope.data = versFactory.query();
+                        $scope.data = poemFactory.query();
 
                     }; // if scope del_conf
                 }; //$scope.deleteVers

@@ -2,12 +2,12 @@ angular
 	.module('versApp')
 
 
-// =============================FACTORY=============================
+// =============================POEM FACTORY=============================
 
 
 		// service for listing, uploading and editing
 
-		.factory('versFactory', function($resource){
+		.factory('poemFactory', function($resource){
 
 			// var instead of return
 
@@ -15,4 +15,4 @@ angular
 				'update' : {method: 'PUT'}
 
 			}) //return $resource
-		}); // versFactory
+		}); // poemFactory

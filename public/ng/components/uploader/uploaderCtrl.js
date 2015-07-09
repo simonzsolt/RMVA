@@ -8,10 +8,10 @@ angular
 		// create new vers
 		.controller('uploaderCtrl', [
 			'$scope', 
-			'versFactory', 
+			'poemFactory', 
 			'$location',
 		    
-		    function($scope, versFactory, $location){
+		    function($scope, poemFactory, $location){
 
 		        $scope.vers = {
 
@@ -66,8 +66,8 @@ angular
 
 		            if( $scope.post_conf === true ) {
 
-			            versFactory.save($scope.vers, function($location){
-			                $scope.data = versFactory.query();
+			            poemFactory.save($scope.vers, function($location){
+			                $scope.data = poemFactory.query();
 
 			                 $scope.vers = 
 			                {
@@ -111,7 +111,7 @@ angular
 			                    mod_by: '' 
 
 			                }; // $scope.vers
-			            }); // versFactory
+			            }); // poemFactory
 			            
 			            $location.path( "/list" );
 			            alert('Sikeres feltöltés!');

@@ -6,13 +6,13 @@ angular
 		.controller('viewerCtrl', [
 			'$scope', 
 			'$routeParams', 
-			'versFactory', 
+			'poemFactory', 
 			'$location',
 		    
-		    function($scope, $routeParams, versFactory, $location) {
+		    function($scope, $routeParams, poemFactory, $location) {
 
 		        $scope.versId = $routeParams.versId;
 
-		        $scope.vers = versFactory.get({id: $routeParams.versId});
+		        $scope.vers = poemFactory.get({id: $routeParams.versId});
 
 		    }]) //viewCtrl

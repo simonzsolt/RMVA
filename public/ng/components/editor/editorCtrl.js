@@ -8,13 +8,13 @@ angular
 		.controller('editorCtrl', [
 			'$scope', 
 			'$routeParams', 
-			'versFactory', 
+			'poemFactory', 
 			'$location',
 
-		    function($scope, $routeParams, versFactory, $location) {
+		    function($scope, $routeParams, poemFactory, $location) {
 		        $scope.versId = $routeParams.versId;
-		        $scope.vers = versFactory.get({id: $routeParams.versId});
-		        $scope.data = versFactory.query();  
+		        $scope.vers = poemFactory.get({id: $routeParams.versId});
+		        $scope.data = poemFactory.query();  
 
 
 // _____________________________EDIT VERS_____________________________
@@ -26,11 +26,11 @@ angular
 
 		        if($scope.edit_conf === true) {
 
-		            versFactory.update($scope.vers, function($location){           
-		            }); // versFactory.update
+		            poemFactory.update($scope.vers, function($location){           
+		            }); // poemFactory.update
 
 		        // for list to reload this needs to be here
-		        $scope.data = versFactory.query();
+		        $scope.data = poemFactory.query();
 
 		        $location.path( "/list" );
 		        alert('Sikeres feltöltés!');
