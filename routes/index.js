@@ -3,6 +3,8 @@ var express = require('express');
     mongoose = require('mongoose'),
     Vers = mongoose.model('Vers'),
     Account = require('../public/models/users'),
+    session = require('express-session'),
+    flash = require('connect-flash'),
     passport = require('passport');
 
 
@@ -282,14 +284,17 @@ router.route('/users/:user_id')
 
 
 // authenticate user 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local', {failureFlash: true }), 
+
+function(req, res) {
   // res.redirect('/');
   console.log('/login post authenticating user');
   res.send(req.user);
+
   console.log('/login post sent user: ' + req.user.username);
 });
 
-router.get('/login', passport.authenticate('local'), function(req, res){
+router.get('/login', passport.authenticate('local', {failureFlash: true }), function(req, res){
     console.log('/login get authenticating user');
     res.send(req.user);
 });
@@ -308,6 +313,13 @@ router.get('/logout', function(req, res) {
     req.logout();
     // res.sendStatus(200);
     res.redirect('/');
+});
+
+router.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash().
+  req.flash('Flash is back!')
+  console.log(req.flash);
+  // res.send('test');
 });
 
 module.exports = router;

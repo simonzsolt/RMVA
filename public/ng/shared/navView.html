@@ -14,41 +14,65 @@
                     </a>
                 </li>
 
-                <li ng-hide="path === '/list' || path === '/upload'">
+                <li ng-show="path === viewPathId && loggedInUser.username" >
                     <a class="btn btn-default"  href="#edit/id/{{vers._id}}">
                         <span class="glyphicon glyphicon-edit"></span>
                         Szerkesztő
                     </a>
                 </li>
 
-                <li ng-hide="path === '/list' || path === '/upload'">
+                <li ng-show="path === editPathId " >
                     <a class="btn btn-default"  href="#view/id/{{vers._id}}">
                         <span class="glyphicon glyphicon-eye-open"></span>
                         Részletek
                     </a>
                 </li>
 
-                <li>
-                    <a class="btn btn-default"  href="#signup">
-                        Regisztráció
-                    </a>
-                </li>
+                <!-- <li class="btn btn-default"> {{ path }} || {{ pathId }} </li> -->
+            </ul>
 
-                <li>
-                    <a class="btn btn-default"  href="#login">
-                        Bejelentkezés
-                    </a>
-                </li>
 
-                <li>
-                    <a class="btn btn-default"  href="/logout">
-                        Kijelentkezés
-                    </a>
-                </li>
+                <div id="userNav">
 
-                <li>
-                   <h4>Logged in as: {{ loggedInUser }}</h4>
-                </li>
+                    <ul class="nav navbar-nav">
+
+
+                        <li ng-hide="path === '/signup' || loggedInUser.username">
+                            <a class="btn btn-default"  href="#signup">
+                                Regisztráció
+                            </a>
+                        </li>
+
+                        <li>
+                            <a ng-hide="path === '/login' || loggedInUser.username" class="btn btn-default"  
+                                href="#login">
+                                
+                                Bejelentkezés
+                            </a>
+                        </li>
+
+                        <li>
+                           <a ng-show="loggedInUser.username" class="btn btn-default" href="#admin">
+                                <b>{{ loggedInUser.username }}</b>
+                            </a>
+                           <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
+                        </li>
+
+                        <li>
+                            <a ng-show="loggedInUser.username" class="btn btn-default" href="/logout">
+                                Kijelentkezés
+                            </a>
+                        </li>
+
+                        <!--   
+                            <li>
+                                <a ng-show="loggedInUser.username" 
+                                    class="btn btn-default" href="#users">
+                                    Felhasználók
+                                </a>
+                            </li>
+                        -->
+                </div>
                 
             </ul>
         </div>

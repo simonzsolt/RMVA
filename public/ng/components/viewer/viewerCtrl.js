@@ -4,9 +4,9 @@ angular
 // -----------------------------VIEW CONTROLLER-----------------------------
 
 		.controller('viewerCtrl', [
-			'$scope', 
+			'$scope',
 			'$routeParams', 
-			'poemFactory', 
+			'poemFactory',
 			'$location',
 		    
 		    function($scope, $routeParams, poemFactory, $location) {

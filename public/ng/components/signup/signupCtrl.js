@@ -7,9 +7,12 @@ angular
 
 		'$scope', 
 		'signupFactory',
+		'$rootScope',
 		'$location', 
 
-		function($scope, signupFactory, $location) {
+		function($scope, signupFactory, $rootScope, $location) {
+
+		$rootScope.message = '';
 
 		$scope.user = {
 			username: '',

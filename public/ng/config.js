@@ -10,17 +10,21 @@ angular
             var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
             // Initialize a new promise
             var deferred = $q.defer();
+            $rootScope.isLoggedIn = '';
 
             // Make an AJAX call to check if the user is logged in
             $http.get('/loggedin').success(function(user){
                 // Authenticated
-                if (user !== '0')
+                if (user !== '0') {
                     /*$timeout(deferred.resolve, 0);*/
                     deferred.resolve();
+                    // $rootScope.isLoggedIn = true;
+                }
 
                 // Not Authenticated
                 else {
-                    $rootScope.message = 'You need to log in.';
+                    $rootScope.message = 'Az oldalra csak regisztrál felhasználó léphetnek be';
+                    // $rootScope.isLoggedIn = false;
                     //$timeout(function(){deferred.reject();}, 0);
                     deferred.reject();
                     $location.url('/login');
@@ -53,7 +57,7 @@ angular
 
                 .when('/list', {
                     templateUrl: 'ng/components/listing/listView.html',
-                    controller: 'listingCtrl'
+                    controller: 'listingCtrl',
                 })
 
                 .when('/view/id/:versId', {

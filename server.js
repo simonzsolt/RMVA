@@ -10,10 +10,12 @@ var express = require('express'); // server dep
     passportLocalMongoose = require('passport-local-mongoose'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
+    
     bodyParser = require('body-parser'),
 
     session = require('express-session'),
+    cookieParser = require('cookie-parser'),
+    flash = require('connect-flash'),
 
     config = require('config');
 
@@ -113,6 +115,8 @@ app.use(session({
     saveUninitialized: false
     }
 ));
+
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());

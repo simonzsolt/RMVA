@@ -1,10 +1,11 @@
 angular
 	.module('versApp')
 			
-		.controller('loginCtrl', function($scope, $rootScope, $http, $location) {
+		.controller('loginCtrl', function($scope, $rootScope, $http, $location, userLoggedInFactory) {
 	  		// This object will be filled by the form
 			  $scope.user = {};
-			  $rootScope.loggedInUser = '';
+			  $rootScope.loggedInUser = userLoggedInFactory.get();
+			  $rootScope.message = '';
 
 			  // Register the login() function
 			  $scope.login = function(){
@@ -16,12 +17,13 @@ angular
 			      // No error: authentication OK
 			      $rootScope.message = 'Authentication successful!';
 			      $location.url('/admin');
-			      $rootScope.loggedInUser = $scope.user.username;
-			      console.log('loggedInUser: ' + $rootScope.loggedInUser);
+
+			      // $rootScope.loggedInUser = $scope.user.username;
+			      // console.log('loggedInUser: ' + $rootScope.loggedInUser);
 			    })
 			    .error(function(){
 			      // Error: authentication failed
-			      $rootScope.message = 'Authentication failed.';
+			      $rootScope.message =  'Hibás felhasználónév vagy jelszó';
 			      $location.url('/login');
 			    });
 			  };

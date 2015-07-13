@@ -2,10 +2,16 @@
 
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1>Bejelentkezés</h1>
+        <h1>Bejelentkezés  
+       <!--  	<small class="error">  
+        		<span ng-show="message" class="glyphicon glyphicon-exclamation-sign"></span>
+        		{{ message }}  
+        	</small>  -->
+        </h1>
+
     </div>
 
-<form  class="form-horizontal" role="form" ng-submit="login()" > 
+<form class="form-horizontal" role="form" ng-submit="login()" > 
 	<div ng-include src="'ng/shared/userForm.html'"></div>
 
 		<div class="form-group">
