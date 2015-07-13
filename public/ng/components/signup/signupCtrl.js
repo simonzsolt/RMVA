@@ -6,10 +6,10 @@ angular
 	.controller('signupCtrl', [
 
 		'$scope', 
-		'userFactory',
+		'signupFactory',
 		'$location', 
 
-		function($scope, userFactory, $location) {
+		function($scope, signupFactory, $location) {
 
 		$scope.user = {
 			username: '',
@@ -18,8 +18,8 @@ angular
 
 		$scope.signup = function() {
 
-			userFactory.save($scope.user, function($location) {
-				$scope.accounts = userFactory.query();
+			signupFactory.save($scope.user, function($location) {
+				$scope.accounts = signupFactory.query();
 
 				$scope.user = {
 					username: '',
