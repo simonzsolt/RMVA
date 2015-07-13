@@ -1,0 +1,31 @@
+<div class="container-fluid" ng-include="'ng/shared/navView.html'"></div> 
+
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1>Users</h1>
+    </div>
+
+<div>
+    <ul ng-repeat="user in data">
+        <li> 
+			{{ user.username }} // {{ user._id }}  
+			<button class="btn btn-danger" ng-click="deleteAccount(user._id)" type="button">
+				Törlés
+			</button>
+
+		<!--  EDITING NOT WORKING YET -->
+		<!-- 
+			<a class="btn btn-primary" href="#users/edit/id/{{user._id}}" type="button" >
+				Szerkesztés
+			</a>
+
+			||
+
+			<a class="btn btn-primary" href="#users/{{user._id}}" type="button" >
+				Részletek
+			</a>
+		-->
+
+        </li>
+    </ul>
+</div>
