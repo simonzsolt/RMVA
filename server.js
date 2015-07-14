@@ -32,7 +32,7 @@ else {
 
 //  mongoose
 var mongoose = require('mongoose');
-var models = require('./public/models/models'); 
+var models = require('./public/poem/models/poemModels'); 
 
 
 // ====================SERVER INIT====================
@@ -91,6 +91,7 @@ var server = app.listen(port, ip, function () {
 }); // debug for port and ip binding
 
 var routes = require('./routes/index');
+var auth = require('./routes/auth');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -122,7 +123,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // add Schema
-var Account = require('./public/models/users'); 
+var Account = require('./public/auth/models/usersModels'); 
 // use localStrategy and authenticate function
 passport.use(new localStrategy(Account.authenticate()));
 // passport.use(Account.createStrategy());
@@ -136,6 +137,7 @@ passport.deserializeUser(Account.deserializeUser());
 //           *  var express = require('express'); 
 //           *  var router = express.Router();
 app.use('/', routes); 
+app.use('/', auth); 
 
 
 // ====================EXPORTING APP====================
