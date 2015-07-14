@@ -215,7 +215,9 @@ router.route('/auth')
         Account.register(new Account({ username: req.body.username }), 
             req.body.password, function(err) {
                 if (err) {
-                    console.log('error while user register!', err);
+                    // console.log('error while user register!', err);
+                    // res.json({ myErr: 'mea culpa' });
+                    res.json({msg: err});
                     return next(err); 
                 }
 
@@ -284,9 +286,16 @@ router.route('/users/:user_id')
 
 
 // authenticate user 
-router.post('/login', passport.authenticate('local', {failureFlash: true }), 
+router.post('/login', passport.authenticate('local'), 
 
-function(req, res) {
+function(err, req, res) {
+
+    if (err) {
+        console.log(err);
+        res.json({msg: err});
+        return next(err); 
+    }
+
   // res.redirect('/');
   console.log('/login post authenticating user');
   res.send(req.user);

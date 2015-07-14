@@ -8,9 +8,10 @@ angular
 		'$scope', 
 		'signupFactory',
 		'$rootScope',
-		'$location', 
+		'$location',
+		'$http', 
 
-		function($scope, signupFactory, $rootScope, $location) {
+		function($scope, signupFactory, $rootScope, $location, $http) {
 
 		$rootScope.message = '';
 
@@ -21,16 +22,26 @@ angular
 
 		$scope.signup = function() {
 
-			signupFactory.save($scope.user, function($location) {
+			$rootScope.signupErr = '';
+
+			signupFactory.save($scope.user, function(err, $location) {
 				$scope.accounts = signupFactory.query();
+				$rootScope.signupErr = err.msg.message;
+
+				if ($rootScope.signupErr) {
+					alert($rootScope.signupErr);
+				}
+				else {
+	            	alert('Regisztráció elküldve!');
+	            }
+
+	            $rootScope.signupErr = '';
 
 				$scope.user = {
 					username: '',
 					password: ''
 				}; 
 			});
-
-            alert('Regisztráció elküldve!');
-            $location.path( "/" );
 		};
-	    }]) //signupCtrl
+
+	}]) //signupCtrl
