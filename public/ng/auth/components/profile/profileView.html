@@ -2,5 +2,10 @@
 
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1>Fiók: {{ loggedInUser.username }}</h1>
+        <h2>
+        	Fiók: {{ loggedInUser.username }} - 
+        		<small> létrehozva: {{ loggedInUser.created_at | date:"y-MM-d H:m:s" }} </small>
+        </h2>
     </div>
+
+    <h3> <a href="#users">Felhasználók</a> </h3>

@@ -3,9 +3,10 @@ angular
 
 		.controller('usersCtrl', function($scope, userFactory, $routeParams) {
 
-			$scope.users_test = 'users_test OK';
+			$scope.predicate = '-created_at';
 
 			$scope.data = userFactory.query();
+
 
 
 			// deleting items by _id
