@@ -8,19 +8,22 @@ angular
 		.controller('editorCtrl', [
 			'$scope', 
 			'$routeParams', 
-			'poemFactory', 
+			'poemFactory',
+			'$rootScope', 
 			'$location',
 
-		    function($scope, $routeParams, poemFactory, $location) {
+		    function($scope, $routeParams, poemFactory, $rootScope, $location) {
 		        $scope.versId = $routeParams.versId;
 		        $scope.vers = poemFactory.get({id: $routeParams.versId});
-		        $scope.data = poemFactory.query();  
+		        $scope.data = poemFactory.query(); 
 
 
 // _____________________________EDIT VERS_____________________________
 
 
 		    $scope.editVers = function() {
+
+		    	$scope.vers.mod_by = $rootScope.loggedInUser.username;
 
 		        $scope.edit_conf = confirm('Biztosan módosítani akarja a verset?');
 

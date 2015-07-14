@@ -8,10 +8,11 @@ angular
 		// create new vers
 		.controller('uploaderCtrl', [
 			'$scope', 
-			'poemFactory', 
+			'poemFactory',
+			'$rootScope',
 			'$location',
 		    
-		    function($scope, poemFactory, $location){
+		    function($scope, poemFactory, $rootScope, $location){
 
 		        $scope.vers = {
 
@@ -50,9 +51,9 @@ angular
 		            imgs: '',        
 		            link_coll: '', 
 		            created_at: '', 
-		            created_by: '', 
+		            created_by: $rootScope.loggedInUser.username, 
 		            last_mod: '',    
-		            mod_by: '' 
+		            mod_by: $rootScope.loggedInUser.username 
 
 		        }; // $scope.vers
 

@@ -51,7 +51,7 @@ var versSchema = new mongoose.Schema({
     place:      String, // keletekzés helye
     place_info: String, // honnan tudjuk? - SELECT!
     conf:       String, // felekezet
-    source:       String, // forrás
+    source:     String, // forrás
     text:       String, // modern szöveg
     imgs:       [],     // array of iamge files
     link_coll:  [{
@@ -78,6 +78,6 @@ mongoose.model('Vers', versSchema);
 *               Updating data structure
 *
 *               models.js(Schema) > index.js(routing and backend of crud api) >
-*               > ng.js(controllers) > index.js and partials(forms and tables) 
+*               > ng (controllers) > index.ejs and partials(forms and tables) 
 *
 */
