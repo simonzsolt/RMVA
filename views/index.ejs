@@ -6,6 +6,8 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- STLYSHEETS -->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
       
@@ -26,28 +28,40 @@
 
 
 
-<!-- =============================EXTERNAL RESOURCES - DEPENDENCIES============================= -->
+<!-- =============================RESOURCES - DEPENDENCIES============================ -->
 
-    
+    <!-- LIBRARIES -->
     <script src="assets/lib/angular/angular.js"></script>
     <script src="assets/lib/angular-route/angular-route.js"></script>
     <script src="assets/lib/angular-resource/angular-resource.js"></script>
 
+    <!-- MAIN ANGUALR APP -->
     <script type="text/javascript" src="ng/main.js"></script>
-    <script type="text/javascript" src="ng/config.js"></script>
-    <script type="text/javascript" src="ng/services/poemFactory.js"></script>
-    <script type="text/javascript" src="ng/services/userFactory.js"></script>
-    <script type="text/javascript" src="ng/services/signupFactory.js"></script>
-    <script type="text/javascript" src="ng/services/userLoggedInFactory.js"></script>
-    <script type="text/javascript" src="ng/shared/navCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/listing/listingCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/viewer/viewerCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/editor/editorCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/uploader/uploaderCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/signup/signupCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/login/loginCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/admin/adminCtrl.js"></script>
-    <script type="text/javascript" src="ng/components/users/usersCtrl.js"></script>
+
+    <!-- ANGULAR CONFIGS -->
+    <script type="text/javascript" src="ng/auth/config/authConfig.js"></script>
+    <script type="text/javascript" src="ng/poem/config/poemConfig.js"></script>
+
+    <!-- ANGULAR SERVICES -->
+    <script type="text/javascript" src="ng/poem/services/poemFactory.js"></script>
+    <script type="text/javascript" src="ng/auth/services/userFactory.js"></script>
+    <script type="text/javascript" src="ng/auth/services/signupFactory.js"></script>
+    <script type="text/javascript" src="ng/auth/services/userLoggedInFactory.js"></script>
+
+    <!-- ANGULAT CONTROLLER FOR NAVBAR // SHARED -->
+    <script type="text/javascript" src="ng/shared/navbar/navCtrl.js"></script>
+
+    <!-- ANGULAR CONTROLLERS FOR POEM -->
+    <script type="text/javascript" src="ng/poem/components/listing/listingCtrl.js"></script>
+    <script type="text/javascript" src="ng/poem/components/viewer/viewerCtrl.js"></script>
+    <script type="text/javascript" src="ng/poem/components/editor/editorCtrl.js"></script>
+    <script type="text/javascript" src="ng/poem/components/uploader/uploaderCtrl.js"></script>
+
+    <!-- ANGULAR CONTROLLERS FOR AUTH -->
+    <script type="text/javascript" src="ng/auth/components/signup/signupCtrl.js"></script>
+    <script type="text/javascript" src="ng/auth/components/login/loginCtrl.js"></script>
+    <script type="text/javascript" src="ng/auth/components/admin/adminCtrl.js"></script>
+    <script type="text/javascript" src="ng/auth/components/users/usersCtrl.js"></script>
 
     </body>
 </html>

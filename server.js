@@ -32,7 +32,7 @@ else {
 
 //  mongoose
 var mongoose = require('mongoose');
-var models = require('./public/poem/models/poemModels'); 
+var models = require('./public/models/poemModels'); 
 
 
 // ====================SERVER INIT====================
@@ -123,7 +123,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // add Schema
-var Account = require('./public/auth/models/usersModels'); 
+var Account = require('./public/models/usersModels'); 
 // use localStrategy and authenticate function
 passport.use(new localStrategy(Account.authenticate()));
 // passport.use(Account.createStrategy());
