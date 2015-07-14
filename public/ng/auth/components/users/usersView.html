@@ -81,7 +81,7 @@
 	<div  class="row" ng-repeat="user in data | filter:filter | orderBy:predicate:reverse">
 
 		<div class="col-md-2">
-			{{ user.username }}
+			<a href="#admin/id/{{user._id}}">{{ user.username }}</a>
 		</div>
 
 		<div class="col-md-2">
@@ -98,7 +98,7 @@
 
 		<div  class="col-md-2">
 			<button class="btn btn-danger" ng-click="deleteAccount(user._id)" type="button">
-				Törlés
+				<span class="glyphicon glyphicon-remove"></span>
 			</button>
 		</div>
 

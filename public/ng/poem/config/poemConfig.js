@@ -76,11 +76,6 @@ angular
                     resolve: { 
                         loggedin: checkLoggedin 
                     } 
-                })
-                
-
-                .otherwise({
-                    redirectTo: '/list'
                 });
                 
         }); // config

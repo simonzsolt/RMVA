@@ -17,7 +17,8 @@ router.route('/auth')
         Account.register(new Account( 
             { 
                 username: req.body.username, 
-                created_at: Date.now() 
+                created_at: Date.now(),
+                role: req.body.role
             }),
 
             req.body.password, function(err) {
@@ -92,8 +93,22 @@ router.route('/users/:user_id')
 
                 res.json({ message: 'felhasználó törölve' });
             });
-        }            
-});
+        }
+    })
+
+    .put(function(req, res){
+
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        }
+
+        else {
+            Account.put({
+                username: req.body.username, 
+                role: String
+            });
+        }
+});            
 
 // -----------------------------LOGIN-----------------------------
 

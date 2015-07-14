@@ -16,7 +16,7 @@ angular
 			    .success(function(user){
 			      // No error: authentication OK
 			      $rootScope.message = 'Authentication successful!';
-			      $location.url('/admin');
+			      $location.url('/profile');
 
 			      // $rootScope.loggedInUser = $scope.user.username;
 			      // console.log('loggedInUser: ' + $rootScope.loggedInUser);

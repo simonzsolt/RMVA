@@ -79,8 +79,12 @@ angular
                     } 
                 })
 
-                .otherwise({
-                    redirectTo: '/list'
+                .when('/admin/id/:userId', {
+                    templateUrl: 'ng/auth/components/users/editUsersView.html',
+                    controller: 'editUsersCtrl',
+                    resolve: { 
+                        loggedin: checkLoggedin 
+                    } 
                 });
                 
         }); // config

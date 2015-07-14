@@ -76,11 +76,20 @@ router.route('/data')
         })
 
         .get(function(req, res){
-            Vers.find(function(err, data){
-                if (err)
-                    res.send(err);
-                res.json(data);
-            });
+
+
+            if (!req.isAuthenticated()) {
+                res.sendStatus(401);
+            }
+
+            else {
+
+                Vers.find(function(err, data){
+                    if (err)
+                        res.send(err);
+                    res.json(data);
+                });
+            }
         });
 
         
@@ -93,11 +102,19 @@ router.route('/data')
 router.route('/data/:vers_id')
 
     .get(function(req, res){
-        Vers.findById(req.params.vers_id, function(err, vers){
-            if (err)
-                res.send(err);
-            res.json(vers);
-        });
+
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        }
+
+        else {
+
+            Vers.findById(req.params.vers_id, function(err, vers){
+                if (err)
+                    res.send(err);
+                res.json(vers);
+            });
+        }
     })
 
 // _____________________________UPDATE_____________________________
