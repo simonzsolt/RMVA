@@ -26,7 +26,7 @@ angular
 
 			signupFactory.save($scope.user, function(err, $location) {
 				$scope.accounts = signupFactory.query();
-				$rootScope.signupErr = err.msg.message;
+				$rootScope.signupErr = err.message;
 
 				if ($rootScope.signupErr) {
 					alert($rootScope.signupErr);

@@ -54,7 +54,7 @@ angular
              $routeProvider
 
                 .when('/signup', {
-                    templateUrl: 'ang/uth/components/signup/signupView.html',
+                    templateUrl: 'ng/auth/components/signup/signupView.html',
                     controller: 'signupCtrl'
                 }) 
 
@@ -63,9 +63,9 @@ angular
                     controller: 'loginCtrl'
                 })
 
-                .when('/admin', {
-                    templateUrl: 'ng/auth/components/admin/adminView.html',
-                    controller: 'adminCtrl',
+                .when('/profile', {
+                    templateUrl: 'ng/auth/components/profile/profileView.html',
+                    controller: 'profileCtrl',
                     resolve: { 
                         loggedin: checkLoggedin 
                     } 

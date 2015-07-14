@@ -14,12 +14,16 @@ router.route('/auth')
     // register new user
     .post(function(req, res, next) {
         console.log('registering user');
-        Account.register(new Account({ username: req.body.username }), 
+        Account.register(new Account( 
+            { 
+                username: req.body.username, 
+                created_at: Date.now() 
+            }),
+
             req.body.password, function(err) {
                 if (err) {
-                    // console.log('error while user register!', err);
-                    // res.json({ myErr: 'mea culpa' });
-                    res.json({msg: err});
+                    res.send(err);
+                    // res.json({msg: err});
                     return next(err); 
                 }
 

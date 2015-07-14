@@ -44,7 +44,8 @@
                         </li>
 
                         <li>
-                            <a ng-hide="path === '/login' || loggedInUser.username" class="btn btn-default"  
+                            <a ng-hide="path === '/login' || loggedInUser.username" 
+                                class="btn btn-default"  
                                 href="#login">
                                 
                                 Bejelentkezés
@@ -52,14 +53,16 @@
                         </li>
 
                         <li>
-                           <a ng-show="loggedInUser.username" class="btn btn-default" href="#admin">
+                           <a ng-show="loggedInUser.username" class="btn btn-default" 
+                                href="#profile">
                                 <b>{{ loggedInUser.username }}</b>
                             </a>
                            <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
                         </li>
 
                         <li>
-                            <a ng-show="loggedInUser.username" class="btn btn-default" href="/logout">
+                            <a ng-show="loggedInUser.username" class="btn btn-default" 
+                                href="/logout">
                                 Kijelentkezés
                             </a>
                         </li>
