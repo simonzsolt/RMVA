@@ -1,15 +1,23 @@
 // ====================MAIN DEPENDENCIESS====================
 
 var express = require('express'); // server dep
-var app = express(); // initializing app
+    app = express(), // initializing app
 
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+    path = require('path'),
+    http = require('http'),
+    passport = require('passport'),
+    localStrategy = require('passport-local').Strategy,
+    passportLocalMongoose = require('passport-local-mongoose'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    
+    bodyParser = require('body-parser'),
 
-var config = require('config');
+    session = require('express-session'),
+    cookieParser = require('cookie-parser'),
+    flash = require('connect-flash'),
+
+    config = require('config');
 
 // ====================LOADING CONFIG VARS====================
 
@@ -24,7 +32,8 @@ else {
 
 //  mongoose
 var mongoose = require('mongoose');
-var models = require('./public/models/models.js'); 
+var models = require('./public/models/poemModels'); 
+
 
 // ====================SERVER INIT====================
 
@@ -83,7 +92,6 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
     }
     else {return}
 });
-
 */
 
 // -------------------SERVER LISTENING-------------------
@@ -97,6 +105,7 @@ var server = app.listen(port, ip, function () {
 }); // debug for port and ip binding
 
 var routes = require('./routes/index');
+var auth = require('./routes/auth');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -115,11 +124,34 @@ app.use(cookieParser());
 // for reaching public directory without stating 'public/'
 app.use(express.static(path.join(__dirname, 'public'))); 
 
+app.use(session({
+    secret: 'itsbettertoburnoutthantofadeaway',
+    resave: true,
+    saveUninitialized: false
+    }
+));
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// add Schema
+var Account = require('./public/models/usersModels'); 
+// use localStrategy and authenticate function
+passport.use(new localStrategy(Account.authenticate()));
+// passport.use(Account.createStrategy());
+
+// serializing based on Shcema
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
 // routing, called with: 'router.' 
 // Requires: 
 //           *  var express = require('express'); 
 //           *  var router = express.Router();
 app.use('/', routes); 
+app.use('/', auth); 
 
 
 // ====================EXPORTING APP====================
