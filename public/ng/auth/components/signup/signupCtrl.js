@@ -3,45 +3,46 @@ angular
 
 // -----------------------------SIGNUP CONTROLLER-----------------------------
 
-	.controller('signupCtrl', [
+		.controller('signupCtrl', [
 
-		'$scope', 
-		'signupFactory',
-		'$rootScope',
-		'$location',
-		'$http', 
+			'$scope', 
+			'signupFactory',
+			'$rootScope',
+			'$location',
 
-		function($scope, signupFactory, $rootScope, $location, $http) {
+			function($scope, signupFactory, $rootScope, $location) {
 
-		$rootScope.message = '';
+			$rootScope.message = '';
 
-		$scope.user = {
-			username: '',
-			password: ''
-		}; 
+			$scope.user = {
+				username: '',
+				password: '',
+				role: 'user'
+			}; 
 
-		$scope.signup = function() {
+			$scope.signup = function() {
 
-			$rootScope.signupErr = '';
+				$rootScope.signupErr = '';
 
-			signupFactory.save($scope.user, function(err, $location) {
-				$scope.accounts = signupFactory.query();
-				$rootScope.signupErr = err.message;
+				signupFactory.save($scope.user, function(err, $location) {
+					$scope.accounts = signupFactory.query();
+					$rootScope.signupErr = err.message;
 
-				if ($rootScope.signupErr) {
-					alert($rootScope.signupErr);
-				}
-				else {
-	            	alert('Regisztráció elküldve!');
-	            }
+					if ($rootScope.signupErr) {
+						alert($rootScope.signupErr);
+					}
+					else {
+		            	alert('Regisztráció elküldve!');
+		            }
 
-	            $rootScope.signupErr = '';
+		            $rootScope.signupErr = '';
 
-				$scope.user = {
-					username: '',
-					password: ''
-				}; 
-			});
-		};
+					$scope.user = {
+						username: '',
+						password: '',
+						role: ''
+					}; 
+				});
+			};
 
-	}]) //signupCtrl
+		}]) //signupCtrl

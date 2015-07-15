@@ -8,7 +8,7 @@ angular
         .controller('listingCtrl', [
             '$scope', 
             '$routeParams', 
-            'poemFactory', 
+            'poemFactory',
             '$location', 
             
             function($scope, $routeParams, poemFactory, $location){
@@ -16,6 +16,7 @@ angular
                 $scope.data = poemFactory.query();
                 $scope.versId = $routeParams.versId;
                 $scope.list_menu = true; // for the "List" menu "ng-hide" attr
+                // $rootScope.loggedInUser = userLoggedInFactory.get();
 
                 // $scope.hideListBtn = $location.path() === '/list';
 

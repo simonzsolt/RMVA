@@ -29,7 +29,7 @@ router.route('/auth')
                 }
 
                 console.log('user registered!');
-                res.redirect('/');
+                res.redirect('/#list');
         });
     });
 
@@ -39,7 +39,7 @@ router.route('/auth')
 router.get('/users', function(req, res) {
     console.log('/users get authenticating user');
 
-    if (!req.isAuthenticated()) {
+    if (!req.isAuthenticated() || req.user.role !== 'admin') {
         res.sendStatus(401);
     }
 
@@ -61,7 +61,7 @@ router.get('/users', function(req, res) {
 router.route('/users/:user_id')
     .get(function(req, res){
 
-        if (!req.isAuthenticated()) {
+        if (!req.isAuthenticated() || req.user.role !== 'admin') {
             res.sendStatus(401);
         }
 
@@ -78,7 +78,7 @@ router.route('/users/:user_id')
 
     .delete(function(req, res) {
 
-        if (!req.isAuthenticated()) {
+        if (!req.isAuthenticated() || req.user.role !== 'admin') {
             res.sendStatus(401);
         }
 
@@ -98,14 +98,31 @@ router.route('/users/:user_id')
 
     .put(function(req, res){
 
-        if (!req.isAuthenticated()) {
+        if (!req.isAuthenticated() || req.user.role !== 'admin') {
             res.sendStatus(401);
         }
 
         else {
-            Account.put({
-                username: req.body.username, 
-                role: String
+            
+            console.log('authenticated: ' + req.user.username);
+
+            Account.findById(req.params.user_id, function(err, user){
+
+                console.log('findById Account: ' + user);
+
+                if (err)
+                   res.send(err);
+
+                user.username = req.body.username;
+                user.role = req.body.role;
+                created_at = req.body.created_at;
+                
+
+                user.save(function(err){
+                    if(err)
+                        res.send(err);
+                    res.json({ msg: 'felhasználó frissítve'});
+                });
             });
         }
 });            
@@ -132,7 +149,8 @@ router.get('/login', passport.authenticate('local', {failureFlash: true }), func
 // route to test if the user is logged in or not
  router.get('/loggedin', function(req, res) { 
     console.log('/loggedin get authenticating user');
-    res.send(req.isAuthenticated() ? req.user : '0'); 
+    res.send(req.isAuthenticated() ? req.user : '0');
+    // console.log('user: ' + req.user.role);
 }); 
 
 // -----------------------------LOGOUT-----------------------------
@@ -142,7 +160,7 @@ router.get('/logout', function(req, res) {
     console.log('/logout get authenticating user');
     req.logout();
     // res.sendStatus(200);
-    res.redirect('/');
+    res.redirect('/#login');
 });
 
 module.exports = router;

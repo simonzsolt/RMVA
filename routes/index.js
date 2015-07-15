@@ -17,7 +17,7 @@ router.route('/data')
 
     .post(function(req, res){
 
-         if (!req.isAuthenticated()) {
+         if (!req.isAuthenticated() || req.user.role == 'user') {
                 res.sendStatus(401);
             }
 
@@ -103,6 +103,7 @@ router.route('/data/:vers_id')
 
     .get(function(req, res){
 
+
         if (!req.isAuthenticated()) {
             res.sendStatus(401);
         }
@@ -122,8 +123,8 @@ router.route('/data/:vers_id')
 
     .put(function(req, res){
 
-         if (!req.isAuthenticated()) {
-        res.sendStatus(401);
+        if (!req.isAuthenticated() || req.user.role == 'user') {
+            res.sendStatus(401);
         }
 
         else {
@@ -187,8 +188,8 @@ router.route('/data/:vers_id')
 
     .delete(function(req, res) {
 
-         if (!req.isAuthenticated()) {
-        res.sendStatus(401);
+        if (!req.isAuthenticated() || req.user.role !== 'admin') {
+            res.sendStatus(401);
         }
 
         else {

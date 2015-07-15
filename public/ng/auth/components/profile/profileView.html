@@ -8,4 +8,6 @@
         </h2>
     </div>
 
-    <h3> <a href="#users">Felhasználók</a> </h3>
+    <h3 ng-show="loggedInUser.role=='admin'"> 
+    	<a class="btn btn-default" href="#users">Felhasználók</a> 
+    </h3>

@@ -14,7 +14,7 @@
                     </a>
                 </li>
 
-                <li ng-show="path === viewPathId && loggedInUser.username" >
+                <li ng-show="path === viewPathId && loggedInUser.role !== 'user'" >
                     <a class="btn btn-default"  href="#edit/id/{{vers._id}}">
                         <span class="glyphicon glyphicon-edit"></span>
                         Szerkesztő
@@ -55,7 +55,7 @@
                         <li>
                            <a ng-show="loggedInUser.username" class="btn btn-default" 
                                 href="#profile">
-                                <b>{{ loggedInUser.username }}</b>
+                                <b>{{ loggedInUser.username }} || {{ loggedInUser.role }} </b>
                             </a>
                            <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
                         </li>

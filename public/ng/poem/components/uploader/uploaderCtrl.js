@@ -63,63 +63,71 @@ angular
 
 		        $scope.postVers = function() {
 
-		            $scope.post_conf = confirm('Biztosan fel akarja tölteni a ezt a verset?');
+		        	if ($rootScope.loggedInUser.role !== 'user') {
 
-		            if( $scope.post_conf === true ) {
 
-			            poemFactory.save($scope.vers, function($location){
-			                $scope.data = poemFactory.query();
+		        		$scope.post_conf = confirm('Biztosan fel akarja tölteni a ezt a verset?');
 
-			                 $scope.vers = 
-			                {
-			                    rmva: '', 
-			                    inc: '', 
+		            	if( $scope.post_conf === true ) {
 
-			                    auth_role_name: '',
-			                    auth_surname: '',
-			                    auth_add_name: '',
-			                    auth_forename: '',
+				            poemFactory.save($scope.vers, function($location){
+				                $scope.data = poemFactory.query();
 
-			                    title: '', 
-			                    arg: '', 
-			                    adnotam: '', 
-			                    acro: '', 
-			                    acro_int: '', 
-			                    krono: '', 
-			                    head: '', 
+				                 $scope.vers = {
+				                    rmva: '', 
+				                    inc: '', 
 
-			                    signo_type: '',
-			                    signo_role_name: '',
-			                    signo_surname: '',
-			                    signo_add_name: '',
-			                    signo_forename: '',
+				                    auth_role_name: '',
+				                    auth_surname: '',
+				                    auth_add_name: '',
+				                    auth_forename: '',
 
-			                    lenght: '', 
-			                    lenght_unit: '', 
-			                    col: '', 
-			                    date: '', 
-			                    date_info: '', 
-			                    place: '', 
-			                    place_info: '', 
-			                    conf: '', 
-			                    source: '', 
-			                    text: '', 
-			                    imgs: '',        
-			                    link_coll: '', 
-			                    created_at: '', 
-			                    created_by: '', 
-			                    last_mod: '',    
-			                    mod_by: '' 
+				                    title: '', 
+				                    arg: '', 
+				                    adnotam: '', 
+				                    acro: '', 
+				                    acro_int: '', 
+				                    krono: '', 
+				                    head: '', 
 
-			                }; // $scope.vers
-			            }); // poemFactory
-			            
-			            $location.path( "/list" );
-			            alert('Sikeres feltöltés!');
-			        }
-			        else {
-			            alert('Mégsem!');
-			        }
+				                    signo_type: '',
+				                    signo_role_name: '',
+				                    signo_surname: '',
+				                    signo_add_name: '',
+				                    signo_forename: '',
 
+				                    lenght: '', 
+				                    lenght_unit: '', 
+				                    col: '', 
+				                    date: '', 
+				                    date_info: '', 
+				                    place: '', 
+				                    place_info: '', 
+				                    conf: '', 
+				                    source: '', 
+				                    text: '', 
+				                    imgs: '',        
+				                    link_coll: '', 
+				                    created_at: '', 
+				                    created_by: '', 
+				                    last_mod: '',    
+				                    mod_by: '' 
+
+				                }; // $scope.vers
+				            }); // poemFactory
+				            
+				            $location.path( "/list" );
+				            alert('Sikeres feltöltés!');
+				        } // if conf
+
+				        else {
+				            alert('Mégsem!');
+				        } // else
+
+				    } // if loggeding == user
+
+				    else {
+				    	alert('Nincs jogosultsága a művelethez!');
+				    }
 		        }; // $scope.postVers
 		}]); // uploadCtrl

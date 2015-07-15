@@ -22,7 +22,7 @@ angular
                     // Not Authenticated
                     else {
                         deferred.reject();
-                        $location.url('/login');
+                        $location.url('/unauth');
                     }
                 });
 
@@ -41,7 +41,7 @@ angular
 
                     responseError: function(response) {
                         if (response.status === 401)
-                            $location.url('/login');
+                            $location.url('/unauth');
                             return $q.reject(response);
                     }
                 };

@@ -25,19 +25,28 @@ angular
 
 		    	$scope.vers.mod_by = $rootScope.loggedInUser.username;
 
-		        $scope.edit_conf = confirm('Biztosan módosítani akarja a verset?');
+		    	if($rootScope.loggedInUser.role !== 'user') {
 
-		        if($scope.edit_conf === true) {
+					$scope.edit_conf = confirm('Biztosan módosítani akarja a verset?');
 
-		            poemFactory.update($scope.vers, function($location){           
-		            }); // poemFactory.update
+			        if($scope.edit_conf === true) {
 
-		        // for list to reload this needs to be here
-		        $scope.data = poemFactory.query();
+			        poemFactory.update($scope.vers, function($location){
 
-		        $location.path( "/list" );
-		        alert('Sikeres feltöltés!');
+			        }); // poemFactory.update
 
-		        };     
+			        // for list to reload this needs to be here
+			        $scope.data = poemFactory.query();
+
+			        $location.path( "/list" );
+			        alert('Sikeres feltöltés!');
+
+			        };   
+		    	}
+
+		    	else {
+		    		alert('Nincs jogosultsága a művelethez!');
+		    	}
+	  
 		    }; //editVers
 		}]); //editCtrl

@@ -5,5 +5,5 @@ angular
 // =============================USER FACTORY=============================
 
 		.factory('userLoggedInFactory', function($resource) {
-				return $resource('/loggedin/');
+				return $resource('/loggedin');
 			})
