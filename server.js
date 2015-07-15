@@ -78,10 +78,6 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
     else {return}
 });
 
-
-
-// process.env.TZ = 'Europe/Budapest';
-
 // -------------------SERVER LISTENING-------------------
 
 var server = app.listen(port, ip, function () {
