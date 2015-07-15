@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1>Users</h1>
+        <h1>Felhasználók</h1>
     </div>
 
 
@@ -21,8 +21,8 @@
     <div class="row">
 
     	 <div class="col-md-2">
-    	 	<a href="" ng-click="predicate = 'username'; reverse=!reverse">Felhasználónév
-    	 	<span ng-show="predicate == 'username'">
+    	 	<a href="" ng-click="predicate = 'nickname'; reverse=!reverse">Felhasználónév
+    	 	<span ng-show="predicate == 'nickname'">
                    <span ng-hide="reverse">
                         <span class="glyphicon glyphicon-chevron-up"></span>
                     </span>
@@ -81,7 +81,7 @@
 	<div  class="row" ng-repeat="user in data | filter:filter | orderBy:predicate:reverse">
 
 		<div class="col-md-2">
-			<a href="#admin/id/{{user._id}}">{{ user.username }}</a>
+			<a href="#admin/id/{{user._id}}">{{ user.nickname }}</a>
 		</div>
 
 		<div class="col-md-2">

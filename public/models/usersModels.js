@@ -3,12 +3,15 @@ var mongoose = require('mongoose'),
     passportLocalMongoose = require('passport-local-mongoose');
 
 var Account = new Schema({
-    username: String,
-    password: String,
-    role: String,
+    email:      String,
+    nickname:   String,
+    first_name: String,
+    last_name:  String,
+    password:   String,
+    role:       String,
     created_at: {
-            type: Date, 
-            default: Date.now()
+            type:       Date, 
+            default:    Date.now()
         }, // létrehozva;
 	},
 

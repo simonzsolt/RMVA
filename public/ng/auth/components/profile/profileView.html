@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <div class="jumbotron">
         <h2>
-        	Fiók: {{ loggedInUser.username }} - 
+        	Fiók: {{ loggedInUser.nickname }} - 
         		<small> létrehozva: {{ loggedInUser.created_at | date:"y-MM-d H:m:s" }} </small>
         </h2>
     </div>
@@ -11,3 +11,9 @@
     <h3 ng-show="loggedInUser.role=='admin'"> 
     	<a class="btn btn-default" href="#users">Felhasználók</a> 
     </h3>
+
+     <form class="form-horizontal" role="form" ng-submit="editProfile()">
+    
+    	<div ng-cloack ng-include="'ng/auth/components/profile/editProfileForm.html'"></div>
+
+    </form>

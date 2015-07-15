@@ -1,13 +1,13 @@
 <nav ng-controller="navCtrl" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/">Teszt</a>
+            <b class="navbar-brand">RMVA</b>
         </div>
 
         <div>
             <ul class="nav navbar-nav">
 
-                <li ng-hide="path === '/list'">
+                <li ng-hide="path === '/list' || !loggedInUser.username">
                     <a class="btn btn-default"  href="#list">
                         <span class="glyphicon glyphicon-th-list"></span>        
                             Lista
@@ -21,7 +21,7 @@
                     </a>
                 </li>
 
-                <li ng-show="path === editPathId " >
+                <li ng-show="path === editPathId ">
                     <a class="btn btn-default"  href="#view/id/{{vers._id}}">
                         <span class="glyphicon glyphicon-eye-open"></span>
                         Részletek
@@ -54,8 +54,8 @@
 
                         <li>
                            <a ng-show="loggedInUser.username" class="btn btn-default" 
-                                href="#profile">
-                                <b>{{ loggedInUser.username }} || {{ loggedInUser.role }} </b>
+                                href="#profile/id/{{loggedInUser._id}}">
+                                <b>{{ loggedInUser.nickname }} || {{ loggedInUser.role }} </b>
                             </a>
                            <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
                         </li>

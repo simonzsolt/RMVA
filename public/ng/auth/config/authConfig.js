@@ -68,7 +68,7 @@ angular
                     controller: 'unauthCtrl'
                 })
 
-                .when('/profile', {
+                .when('/profile/id/:userId', {
                     templateUrl: 'ng/auth/components/profile/profileView.html',
                     controller: 'profileCtrl',
                     resolve: { 

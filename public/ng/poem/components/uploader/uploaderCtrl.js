@@ -51,9 +51,9 @@ angular
 		            imgs: '',        
 		            link_coll: '', 
 		            created_at: '', 
-		            created_by: $rootScope.loggedInUser.username, 
+		            created_by: $rootScope.loggedInUser.nickname, 
 		            last_mod: '',    
-		            mod_by: $rootScope.loggedInUser.username 
+		            mod_by: $rootScope.loggedInUser.nickname 
 
 		        }; // $scope.vers
 

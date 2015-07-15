@@ -17,7 +17,10 @@ angular
 			$scope.user = {
 				username: '',
 				password: '',
-				role: 'user'
+				role: 'editor',
+				nickname: '',
+				first_name: '',
+				last_name: ''
 			}; 
 
 			$scope.signup = function() {
@@ -40,7 +43,10 @@ angular
 					$scope.user = {
 						username: '',
 						password: '',
-						role: ''
+						role: '',
+						nickname: '',
+						first_name: '',
+						last_name: ''
 					}; 
 				});
 			};

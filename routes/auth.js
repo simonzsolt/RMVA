@@ -16,9 +16,12 @@ router.route('/auth')
         console.log('registering user');
         Account.register(new Account( 
             { 
-                username: req.body.username, 
+                username:   req.body.username,
+                nickname:   req.body.nickname,
+                first_name:  req.body.first_name,
+                last_name:  req.body.last_name,
                 created_at: Date.now(),
-                role: req.body.role
+                role:       req.body.role
             }),
 
             req.body.password, function(err) {
@@ -53,7 +56,6 @@ router.get('/users', function(req, res) {
         });
     }   
 });
-
 
 // -----------------------------GET USER BY ID-----------------------------
 
@@ -113,9 +115,14 @@ router.route('/users/:user_id')
                 if (err)
                    res.send(err);
 
-                user.username = req.body.username;
-                user.role = req.body.role;
-                created_at = req.body.created_at;
+
+                user.username   = req.body.username,
+                user.nickname   = req.body.nickname,
+                user.first_name  = req.body.first_name,
+                user.last_name  = req.body.last_name,
+                user.role       = req.body.role
+
+                created_at      = req.body.created_at;
                 
 
                 user.save(function(err){
@@ -125,7 +132,80 @@ router.route('/users/:user_id')
                 });
             });
         }
-});            
+});         
+
+
+// -----------------------------PROFILE-----------------------------
+
+router.get('/profile', function(req, res) {
+    console.log('/users get authenticating user');
+
+    if (!req.isAuthenticated()) {
+        res.sendStatus(401);
+    }
+
+    else {
+        console.log('authenticated: ' + req.user.username);
+    
+        Account.find(function(err, data){
+            if (err)
+                res.send(err);
+            res.json(data);
+        });
+    }   
+});
+
+router.route('/profile/:user_id')
+    .get(function(req, res){
+
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        }
+
+        else {
+            Account.findById(req.params.user_id, function(err, user){
+                if (err)
+                    res.send(err);
+                res.json(user);
+            });
+        }
+    })
+
+    .put(function(req, res){
+
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        }
+
+        else {
+            
+            console.log('authenticated: ' + req.user.username);
+
+            Account.findById(req.params.user_id, function(err, user){
+
+                console.log('findById Account: ' + user);
+
+                if (err)
+                   res.send(err);
+
+
+                user.username   = req.body.username,
+                user.nickname   = req.body.nickname,
+                user.first_name = req.body.first_name,
+                user.last_name  = req.body.last_name,
+                user.role       = req.body.role
+
+                created_at      = req.body.created_at;
+                
+
+                user.save(function(err){
+                    if(err)
+                        res.send(err);
+                    res.json({ msg: 'felhasználó frissítve'});
+                });
+            });
+        }
+});     
 
 // -----------------------------LOGIN-----------------------------
 

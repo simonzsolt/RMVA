@@ -23,7 +23,7 @@ angular
 
 		    $scope.editVers = function() {
 
-		    	$scope.vers.mod_by = $rootScope.loggedInUser.username;
+		    	$scope.vers.mod_by = $rootScope.loggedInUser.nickname;
 
 		    	if($rootScope.loggedInUser.role !== 'user') {
 

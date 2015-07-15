@@ -1,7 +1,16 @@
 angular
 	.module('versApp')
 			
-		.controller('loginCtrl', function($scope, $rootScope, $http, $location, userLoggedInFactory) {
+		.controller('loginCtrl', 
+
+			function(
+
+				$scope, 
+				$rootScope, 
+				$http, 
+				$location, 
+				userLoggedInFactory) {
+
 	  		// This object will be filled by the form
 			  $scope.user = {};
 			  $rootScope.loggedInUser = userLoggedInFactory.get();
@@ -23,7 +32,7 @@ angular
 			    })
 			    .error(function(){
 			      // Error: authentication failed
-			      $rootScope.message =  'Hibás felhasználónév vagy jelszó';
+			      $rootScope.message =  'Hibás felhasználónév vagy jelszó: ';
 			      $location.url('/login');
 			    });
 			  };
