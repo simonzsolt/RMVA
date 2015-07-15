@@ -1,71 +1,98 @@
 var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var Vers = mongoose.model('Vers');
-
+    router = express.Router(),
+    mongoose = require('mongoose'),
+    Vers = mongoose.model('Vers'),
 
 // =============================BACKEND CRUD API ROUTING=============================
+
+// -----------------------------INDEX-----------------------------
+
+router.get('/', function (req, res, next) {
+  res.render('index', {title: ""});
+});
 
 // -----------------------------POST-----------------------------
 
 router.route('/data')
 
     .post(function(req, res){
-        var newVers  = new Vers(); // cahnged vers to newVers
-        newVers.rmva = req.body.rmva;
-        newVers.inc  = req.body.inc;
 
-        newVers.auth_role_name = req.body.auth_role_name;
-        newVers.auth_surname   = req.body.auth_surname;
-        newVers.auth_add_name  = req.body.auth_add_name;
-        newVers.auth_forename  = req.body.auth_forename;
+         if (!req.isAuthenticated() || req.user.role == 'user') {
+                res.sendStatus(401);
+            }
 
-        newVers.title    = req.body.title;
-        newVers.arg      = req.body.arg;
-        newVers.adnotam  = req.body.adnotam;
-        newVers.acro     = req.body.acro;
-        newVers.acro_int = req.body.acro_int;
-        newVers.krono    = req.body.krono;
-        newVers.head     = req.body.head;
+        else {
 
-        newVers.signo_type      = req.body.signo_type;
-        newVers.signo_role_name = req.body.signo_role_name; 
-        newVers.signo_surname   = req.body.signo_surname;    
-        newVers.signo_add_name  = req.body.signo_add_name;   
-        newVers.signo_forename  = req.body.signo_forename;  
+            console.log('authenticated: ' + req.user.username);
 
-        newVers.lenght      = req.body.lenght;
-        newVers.lenght_unit = req.body.lenght_unit;
-        newVers.col         = req.body.col;
-        newVers.date        = req.body.date;
-        newVers.date_info   = req.body.date_info;
-        newVers.place       = req.body.place;
-        newVers.place_info  = req.body.place_info;
-        newVers.conf        = req.body.conf;
-        newVers.source      = req.body.source;
-        newVers.text        = req.body.text;
-        newVers.imgs        = req.body.imgs;
-        newVers.link_coll   = req.body.link_coll;
-        newVers.created_at  = Date.now(); // changed to Date.now()
-        newVers.created_by  = req.body.created_by;
-        newVers.last_mod    = Date.now(); // changed to Date.now()
-        newVers.mod_by      = req.body.mod_by;
-     
+            var newVers  = new Vers(); // cahnged vers to newVers
+            newVers.rmva = req.body.rmva;
+            newVers.inc  = req.body.inc;
 
-        newVers.save(function(err){
-            if(err)
-                res.send(err);
-            res.json({ msg: 'vers létrehozva req_auth_body:' + req.body.auth});
+            newVers.auth_role_name = req.body.auth_role_name;
+            newVers.auth_surname   = req.body.auth_surname;
+            newVers.auth_add_name  = req.body.auth_add_name;
+            newVers.auth_forename  = req.body.auth_forename;
+
+            newVers.title    = req.body.title;
+            newVers.arg      = req.body.arg;
+            newVers.adnotam  = req.body.adnotam;
+            newVers.acro     = req.body.acro;
+            newVers.acro_int = req.body.acro_int;
+            newVers.krono    = req.body.krono;
+            newVers.head     = req.body.head;
+
+            newVers.signo_type      = req.body.signo_type;
+            newVers.signo_role_name = req.body.signo_role_name; 
+            newVers.signo_surname   = req.body.signo_surname;    
+            newVers.signo_add_name  = req.body.signo_add_name;   
+            newVers.signo_forename  = req.body.signo_forename;  
+
+            newVers.lenght      = req.body.lenght;
+            newVers.lenght_unit = req.body.lenght_unit;
+            newVers.col         = req.body.col;
+            newVers.date        = req.body.date;
+            newVers.date_info   = req.body.date_info;
+            newVers.place       = req.body.place;
+            newVers.place_info  = req.body.place_info;
+            newVers.conf        = req.body.conf;
+            newVers.source      = req.body.source;
+            newVers.text        = req.body.text;
+            newVers.imgs        = req.body.imgs;
+            newVers.link_coll   = req.body.link_coll;
+            newVers.created_at  = Date.now(); // changed to Date.now()
+            newVers.created_by  = req.body.created_by;
+            newVers.last_mod    = Date.now(); // changed to Date.now()
+            newVers.mod_by      = req.body.mod_by;
+         
+
+            newVers.save(function(err){
+                if(err)
+                    res.send(err);
+                res.json({ msg: 'vers létrehozva req_auth_body:' + req.body.auth});
+            });
+        }
+
+        })
+
+        .get(function(req, res){
+
+
+            if (!req.isAuthenticated()) {
+                res.sendStatus(401);
+            }
+
+            else {
+
+                Vers.find(function(err, data){
+                    if (err)
+                        res.send(err);
+                    res.json(data);
+                });
+            }
         });
-    })
 
-    .get(function(req, res){
-        Vers.find(function(err, data){
-            if (err)
-                res.send(err);
-            res.json(data);
-        });
-    });
+        
 
 // -----------------------------ID ROUTE-----------------------------
 
@@ -75,88 +102,110 @@ router.route('/data')
 router.route('/data/:vers_id')
 
     .get(function(req, res){
-        Vers.findById(req.params.vers_id, function(err, vers){
-            if (err)
-                res.send(err);
-            res.json(vers);
-        });
+
+
+        if (!req.isAuthenticated()) {
+            res.sendStatus(401);
+        }
+
+        else {
+
+            Vers.findById(req.params.vers_id, function(err, vers){
+                if (err)
+                    res.send(err);
+                res.json(vers);
+            });
+        }
     })
 
 // _____________________________UPDATE_____________________________
 
 
     .put(function(req, res){
-        Vers.findById(req.params.vers_id, function(err, vers){
-            if (err)
-               res.send(err);
 
-            vers.rmva = req.body.rmva;
-            vers.inc = req.body.inc;
-       
-            vers.auth_role_name = req.body.auth_role_name;
-            vers.auth_surname   = req.body.auth_surname;
-            vers.auth_add_name  = req.body.auth_add_name;
-            vers.auth_forename  = req.body.auth_forename;
+        if (!req.isAuthenticated() || req.user.role == 'user') {
+            res.sendStatus(401);
+        }
 
-            vers.title = req.body.title;
-            vers.arg = req.body.arg;
-            vers.adnotam = req.body.adnotam;
-            vers.acro = req.body.acro;
-            vers.krono = req.body.krono;
-            vers.head = req.body.head;
+        else {
+            console.log('authenticated: ' + req.user.username);
 
-            vers.signo_type = req.body.signo_type;
-            vers.signo_role_name = req.body.signo_role_name; 
-            vers.signo_surname   = req.body.signo_surname;    
-            vers.signo_add_name  = req.body.signo_add_name;   
-            vers.signo_forename  = req.body.signo_forename;  
+            Vers.findById(req.params.vers_id, function(err, vers){
+                if (err)
+                   res.send(err);
 
-
-            vers.lenght = req.body.lenght;
-            vers.lenght_unit = req.body.lenght_unit;
-            vers.col = req.body.col;
-            vers.date = req.body.date;
-            vers.date_info = req.body.date_info;
-            vers.place = req.body.place;
-            vers.place_info = req.body.place_info;
-            vers.conf = req.body.conf;
-            vers.source = req.body.source;
-            vers.text = req.body.text;
-            vers.imgs = req.body.imgs;
-            vers.link_coll = req.body.link_coll;
-            vers.created_at = req.body.created_at;
-            vers.created_by = req.body.created_by;
-            vers.last_mod = Date.now(); // changed to Date.now()
-            vers.mod_by = req.body.mod_by;
-
+                vers.rmva = req.body.rmva;
+                vers.inc = req.body.inc;
            
-            vers.save(function(err){
-                if(err)
-                    res.send(err);
-                res.json({ msg: 'vers frissítve'});
-            });
+                vers.auth_role_name = req.body.auth_role_name;
+                vers.auth_surname   = req.body.auth_surname;
+                vers.auth_add_name  = req.body.auth_add_name;
+                vers.auth_forename  = req.body.auth_forename;
 
-        });
+                vers.title = req.body.title;
+                vers.arg = req.body.arg;
+                vers.adnotam = req.body.adnotam;
+                vers.acro = req.body.acro;
+                vers.krono = req.body.krono;
+                vers.head = req.body.head;
+
+                vers.signo_type = req.body.signo_type;
+                vers.signo_role_name = req.body.signo_role_name; 
+                vers.signo_surname   = req.body.signo_surname;    
+                vers.signo_add_name  = req.body.signo_add_name;   
+                vers.signo_forename  = req.body.signo_forename;  
+
+
+                vers.lenght = req.body.lenght;
+                vers.lenght_unit = req.body.lenght_unit;
+                vers.col = req.body.col;
+                vers.date = req.body.date;
+                vers.date_info = req.body.date_info;
+                vers.place = req.body.place;
+                vers.place_info = req.body.place_info;
+                vers.conf = req.body.conf;
+                vers.source = req.body.source;
+                vers.text = req.body.text;
+                vers.imgs = req.body.imgs;
+                vers.link_coll = req.body.link_coll;
+                vers.created_at = req.body.created_at;
+                vers.created_by = req.body.created_by;
+                vers.last_mod = Date.now(); // changed to Date.now()
+                vers.mod_by = req.body.mod_by;
+
+               
+                vers.save(function(err){
+                    if(err)
+                        res.send(err);
+                    res.json({ msg: 'vers frissítve'});
+                });
+            });
+        }
     })
 
 // _____________________________DELETE_____________________________
 
 
     .delete(function(req, res) {
-        Vers.remove({
-            _id: req.params.vers_id
 
-        }, 
-        function(err, Vers) {
-            if (err)
-            res.send(err);
+        if (!req.isAuthenticated() || req.user.role !== 'admin') {
+            res.sendStatus(401);
+        }
 
-            res.json({ message: 'vers törölve' });
-    }); 
+        else {
+            console.log('authenticated: ' + req.user.username);
+
+            Vers.remove({
+                _id: req.params.vers_id
+            }, 
+
+            function(err, Vers) {
+                if (err)
+                res.send(err);
+
+                res.json({ message: 'vers törölve' });
+            });
+        }
 });
-
-router.get('/', function (req, res, next) {
-  res.render('index', {title: "Tesztüzem"});
-});
-
+    
 module.exports = router;
