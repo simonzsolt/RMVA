@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1>Részletes leírás  <small> - RMVA {{vers.rmva}} </small> </h1>
+        <h1>Részletes leírás  <small> - RMVA {{vers.rmva | fillZero:5}} </small> </h1>
 
         <h1>Cím: {{vers.title}} <small> ({{vers.date}}) </small> </h1>
      
@@ -51,8 +51,19 @@
             {{vers.text}} 
         </pre> 
     </div> 
-    <!-- <div> Képek: {{vers.imgs}} </div>  --> <!-- Temp not av. -->
-    <!-- <div> Kapcsolódások: {{vers.link_coll}} </div>  --> <!-- Temp not av. -->
+
+    <!-- <div> Képek: {{vers.imgs}} </div>  --> <!-- Temp not av. -->3
+    
+    <div> 
+        Kapcsolódások:
+        <ul ng-repeat="link in vers.link_coll ">
+            <li> 
+                <a href="#view/id/{{link | fillZero:5}}"> {{ link | fillZero:5 }} 
+                </a> 
+            </li>
+        </ul>
+    </div>  
+
     <div> 
         Létrehozva: 
             {{vers.created_by}} - {{vers.created_at | date:"y-MM-d H:mm:ss"}} 

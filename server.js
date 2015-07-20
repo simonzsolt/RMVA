@@ -8,6 +8,7 @@ var express = require('express'); // server dep
     passport = require('passport'),
     localStrategy = require('passport-local').Strategy,
     passportLocalMongoose = require('passport-local-mongoose'),
+    autoIncrement = require('mongoose-auto-increment'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     
@@ -16,6 +17,8 @@ var express = require('express'); // server dep
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
     flash = require('connect-flash'),
+
+    zeroFill = require('zero-fill'),
 
     config = require('config');
 

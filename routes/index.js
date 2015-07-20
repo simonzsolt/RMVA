@@ -62,10 +62,12 @@ router.route('/data')
             newVers.link_coll   = req.body.link_coll;
             newVers.created_at  = Date.now(); // changed to Date.now()
             newVers.created_by  = req.body.created_by;
-            newVers.last_mod    = Date.now(); // changed to Date.now()
+            newVers.last_mod    = req.body.last_mod; // changed to Date.now()
             newVers.mod_by      = req.body.mod_by;
-         
 
+
+            console.log('req.body.link_coll: ' + req.body.link_coll);
+         
             newVers.save(function(err){
                 if(err)
                     res.send(err);
@@ -99,7 +101,8 @@ router.route('/data')
 // _____________________________GET BY ID_____________________________
 
 
-router.route('/data/:vers_id')
+// _id --> rmva
+router.route('/data/:rmva')
 
     .get(function(req, res){
 
@@ -110,7 +113,12 @@ router.route('/data/:vers_id')
 
         else {
 
-            Vers.findById(req.params.vers_id, function(err, vers){
+            // zerofill unfilled id from mongodb
+            rmvaID = zeroFill(5, req.params.rmva);
+            // console.log('rmvaID: ' + rmvaID);
+
+            // Vers.findById(req.params.vers_id, function(err, vers){
+            Vers.findOne({ 'rmva': rmvaID }, function(err, vers){
                 if (err)
                     res.send(err);
                 res.json(vers);
@@ -130,7 +138,8 @@ router.route('/data/:vers_id')
         else {
             console.log('authenticated: ' + req.user.username);
 
-            Vers.findById(req.params.vers_id, function(err, vers){
+            // Vers.findById(req.params.vers_id, function(err, vers){
+            Vers.findOne({ 'rmva': rmvaID }, function(err, vers){
                 if (err)
                    res.send(err);
 
@@ -193,10 +202,14 @@ router.route('/data/:vers_id')
         }
 
         else {
-            console.log('authenticated: ' + req.user.username);
+
+            rmvaID = zeroFill(5, req.params.rmva);
+            // console.log('rmvaID: ' + rmvaID);
+            // console.log('authenticated: ' + req.user.username);
 
             Vers.remove({
-                _id: req.params.vers_id
+                // _id: req.params.vers_id
+                rmva: rmvaID
             }, 
 
             function(err, Vers) {
