@@ -24,7 +24,7 @@ angular
                 $scope.deleteVers = function(vers_id){
 
                     $scope.del_conf = confirm(
-                        'Biztosan törölni szeretné ezt a verset? RMVA: ' + vers_id);
+                        'Biztosan törölni szeretné ezt a verset?');
 
                     if ($scope.del_conf === true) {
                         poemFactory.delete({id: vers_id}, function(){

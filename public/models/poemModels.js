@@ -12,10 +12,11 @@ var connection = mongoose.createConnection('mongodb://localhost/vers', function(
 
 autoIncrement.initialize(connection);
 
+// var poemConnections = new Schema({ link: Number });
 
 var versSchema = new mongoose.Schema({
 
-    rmva:       Number, // rmva azonosító 
+    rmva:       { type: 'number', unique: true }, // rmva azonosító 
     inc:        String, // incipit
 
 
@@ -50,9 +51,7 @@ var versSchema = new mongoose.Schema({
     source:     String, // forrás
     text:       String, // modern szöveg
     imgs:       [],     // array of iamge files
-    link_coll:  [{
-                    link: Number
-                }], // összekapcsolt adatlap azonosítója
+    link_coll:  [String], // összekapcsolt adatlap azonosítója
     created_at:
         {
             type: Date, 
@@ -61,8 +60,7 @@ var versSchema = new mongoose.Schema({
     created_by: String, // felhasználónév - USER API!
     last_mod:   
         {
-            type: Date, 
-            default: Date.now()
+            type: Date
         }, // utolsó módosítás
     mod_by:     String, // módosító felhasználóneve - USER API!
 });

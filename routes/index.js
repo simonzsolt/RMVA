@@ -62,8 +62,11 @@ router.route('/data')
             newVers.link_coll   = req.body.link_coll;
             newVers.created_at  = Date.now(); // changed to Date.now()
             newVers.created_by  = req.body.created_by;
-            newVers.last_mod    = Date.now(); // changed to Date.now()
+            newVers.last_mod    = req.body.last_mod; // changed to Date.now()
             newVers.mod_by      = req.body.mod_by;
+
+
+            console.log('req.body.link_coll: ' + req.body.link_coll);
          
             newVers.save(function(err){
                 if(err)

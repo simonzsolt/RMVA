@@ -14,6 +14,8 @@ angular
 		    
 		    function($scope, poemFactory, $rootScope, $location){
 
+		    	$scope.data = poemFactory.query();
+
 		        $scope.vers = {
 
 		            rmva: '', 
@@ -53,12 +55,18 @@ angular
 		            created_at: '', 
 		            created_by: $rootScope.loggedInUser.nickname, 
 		            last_mod: '',    
-		            mod_by: $rootScope.loggedInUser.nickname 
+		            mod_by: '' 
 
 		        }; // $scope.vers
 
 
 		// _____________________________CREATE NEW VERS_____________________________
+
+
+	         // 	$scope.conListToRight = function() {
+		        //  	alert('good btn');
+		        //  	console.log('fuck');
+		        // };
 
 
 		        $scope.postVers = function() {
