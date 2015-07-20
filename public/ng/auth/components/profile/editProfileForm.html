@@ -4,7 +4,7 @@
 	    <label class="control-label col-md-4" for="username">E-mail:</label>
 	    <div class="col-md-4">
 	        <input name="username" class="form-control" id="username" type="text" 
-	        	placeholder="E-mail"  ng-model="user.username" required> 
+	        	placeholder="E-mail"  ng-model="user.username" required readonly> 
 			</input>
 	    </div>
 	</div>
@@ -35,25 +35,28 @@
 			</input>
 	    </div>
 	</div>
-
-    	<div class="form-group">
-		    <label class="control-label col-md-4" for="role">Jogosultság:</label>
-		    <div class="col-md-4">
-	        	<select name="role" class="form-control" id="role"  
-	        		placeholder="Jogosultság" ng-model="user.role" required>
-
-
-	        		<option>admin</option>
-	        		<option>editor</option>
-	        		<option>user</option>
+	
+		 
+	<div ng-show="loggedInUser.role=='admin'" class="form-group">
+	    <label class="control-label col-md-4" for="role">Jogosultság:</label>
+	    <div class="col-md-4">
+        	<select name="role" class="form-control" id="role"  
+        		placeholder="Jogosultság" ng-model="user.role" 
+        		required>
 
 
-				</select>
-	    	</div>
-		</div>
+        		<option>admin</option>
+        		<option>editor</option>
+        		<option>user</option>
 
-		<div class="form-group">
-		    <div  class="col-md-6 col-md-offset-4">
-		        <input class="btn btn-success" type="submit" value="Mentés"> </input> 
-		    </div>
-		</div>
+
+			</select>
+    	</div>
+	</div>
+ 	
+
+	<div class="form-group">
+	    <div  class="col-md-6 col-md-offset-4">
+	        <input class="btn btn-success" type="submit" value="Mentés"> </input> 
+	    </div>
+	</div>
