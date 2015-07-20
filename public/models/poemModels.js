@@ -1,25 +1,22 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    autoIncrement = require('mongoose-auto-increment'),
+    Schema = mongoose.Schema;
 
-/*
-==============================================================================================
-|| 
-||
-||
-||
-||
-||                       ARRAYS NEED SEPATRE MODELS!!!!!!!!!!!
-||
-||
-||
-||
-||
-==============================================================================================
-*/
+
+var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+
+autoIncrement.initialize(connection);
+
+// var poemConnections = new Schema({ link: Number });
 
 var versSchema = new mongoose.Schema({
 
-    rmva:       Number, // rmva azonosító (5jegyű, automatikus, szöveghez!, 160-, vagy 17 kezdetű)
+    rmva:       { type: 'number', unique: true }, // rmva azonosító 
     inc:        String, // incipit
 
 
@@ -54,9 +51,7 @@ var versSchema = new mongoose.Schema({
     source:     String, // forrás
     text:       String, // modern szöveg
     imgs:       [],     // array of iamge files
-    link_coll:  [{
-                    link: Number
-                }], // összekapcsolt adatlap azonosítója
+    link_coll:  [String], // összekapcsolt adatlap azonosítója
     created_at:
         {
             type: Date, 
@@ -65,12 +60,17 @@ var versSchema = new mongoose.Schema({
     created_by: String, // felhasználónév - USER API!
     last_mod:   
         {
-            type: Date, 
-            default: Date.now()
+            type: Date
         }, // utolsó módosítás
     mod_by:     String, // módosító felhasználóneve - USER API!
 });
 
+versSchema.plugin(autoIncrement.plugin, {
+    model: 'Vers',
+    field: 'rmva',
+    startAt: 1,
+    incrementBy: 1
+});
 mongoose.model('Vers', versSchema);
 
 /*
