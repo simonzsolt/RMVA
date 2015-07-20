@@ -1,25 +1,21 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    autoIncrement = require('mongoose-auto-increment'),
+    Schema = mongoose.Schema;
 
-/*
-==============================================================================================
-|| 
-||
-||
-||
-||
-||                       ARRAYS NEED SEPATRE MODELS!!!!!!!!!!!
-||
-||
-||
-||
-||
-==============================================================================================
-*/
+
+var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+
+autoIncrement.initialize(connection);
+
 
 var versSchema = new mongoose.Schema({
 
-    rmva:       Number, // rmva azonosító (5jegyű, automatikus, szöveghez!, 160-, vagy 17 kezdetű)
+    rmva:       Number, // rmva azonosító 
     inc:        String, // incipit
 
 
@@ -71,6 +67,12 @@ var versSchema = new mongoose.Schema({
     mod_by:     String, // módosító felhasználóneve - USER API!
 });
 
+versSchema.plugin(autoIncrement.plugin, {
+    model: 'Vers',
+    field: 'rmva',
+    startAt: 1,
+    incrementBy: 1
+});
 mongoose.model('Vers', versSchema);
 
 /*

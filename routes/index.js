@@ -65,7 +65,6 @@ router.route('/data')
             newVers.last_mod    = Date.now(); // changed to Date.now()
             newVers.mod_by      = req.body.mod_by;
          
-
             newVers.save(function(err){
                 if(err)
                     res.send(err);
