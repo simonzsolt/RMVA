@@ -78,18 +78,18 @@
     <div  class="row" ng-repeat="vers in data | filter:filter | orderBy:predicate:reverse">
 
         <div class="col-md-2"> {{vers.rmva | fillZero:5}} </div> 
-        <div class="col-md-2"> <a href="#view/id/{{vers._id}}"> {{vers.title}} </a> </div> 
+        <div class="col-md-2"> <a href="#view/id/{{vers.rmva | fillZero:5}}"> {{vers.title}} </a> </div> 
         <div class="col-md-2"> {{vers.inc}} </div> 
         <div class="col-md-2"> {{vers.created_at | date:"y-MM-dd H:mm:ss"}} </div> 
              
         <div ng-show="loggedInUser.role=='admin'" class="col-md-2"> 
-            <button class="btn btn-danger" ng-click="deleteVers(vers._id)" type="button"> 
+            <button class="btn btn-danger" ng-click="deleteVers(vers.rmva)" type="button"> 
                 <span class="glyphicon glyphicon-remove"></span>
             </button>
         </div>
         
         <div ng-hide="loggedInUser.role=='user'" class="col-md-2"> 
-            <a class="btn btn-primary" href="#edit/id/{{vers._id}}" type="button" >
+            <a class="btn btn-primary" href="#edit/id/{{vers.rmva | fillZero:5}}" type="button" >
                 <span class="glyphicon glyphicon-edit"></span>
             </a>
         </div>

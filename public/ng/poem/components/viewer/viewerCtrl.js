@@ -12,7 +12,6 @@ angular
 		    function($scope, $routeParams, poemFactory, $location) {
 
 		        $scope.versId = $routeParams.versId;
-
 		        $scope.vers = poemFactory.get({id: $routeParams.versId});
 
 		    }]) //viewCtrl
