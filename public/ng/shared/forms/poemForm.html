@@ -1,26 +1,3 @@
-<!-- 
-===========================================================================
- *
- *
- *            FOR UPLOAD VERS IS NOT AN ARRAY! (vers.auth.propetry)
- *
- *
- *            FOR EDITING VERS IS AN ARRAY! (vers.auth[number].property)
- *
- *
- *
- ===========================================================================
- -->
-
-<!-- 
-<div class="form-group">
-    <label class="control-label col-md-2" for="rmva">RMVA:</label>
-    <div class="col-md-10">
-        <input id="rmva" type="number" placeholder="ID" ng-model="vers.rmva"  min="16000" max="17999"> </input>
-    </div>
-</div> 
--->
-
 <div class="form-group">
     <label class="control-label col-md-2" for="inc">Incipit:</label> <!-- TODO: from textarea -->
     <div id="inc" class="col-md-10">
@@ -171,7 +148,13 @@
     <div class="form-group">
         <label class="control-label col-md-2" for="date">Dátum:</label>
         <div id="date" class="col-md-10">
-            <input placeholder="Dátum" type="number" min=1500 max=1800 ng-model="vers.date" > </input>
+         
+            <input placeholder="Dátum" type="number" min=1500 max=1800 ng-model="vers.date" > 
+            </input> 
+           
+            <!-- Needs model to be js Date object -->
+            <!-- <input ui-date="dateOptions" name="DateOfBirth" > -->
+
         </div>
     </div>
 
@@ -228,7 +211,7 @@
     </div>
 </div>
 
-
+<!-- 
 <div class="form-group">
 
     <label class="control-label col-md-2" for="text">Kapcsolódás:</label>
@@ -236,12 +219,52 @@
      
    <div id="link" class="col-md-1">                                                             
         <select multiple ng-model="vers.link_coll" size="15"
-            ng-options=" vers.rmva as ( vers.rmva | fillZero:5 ) for vers in data">      
+            ng-options=" vers.rmva as ( vers.rmva | fillZero:5 ) for vers in data ">      
         </select>
     </div>
    
 
 </div>
+ -->
+
+<div class="form-group">
+
+    <label class="control-label col-md-2" for="text">Kapcsolódás:</label>
+
+    <div id="link" class="col-md-10">
+        <ui-select 
+                multiple 
+                ng-model="vers.link_coll" 
+                theme="bootstrap" 
+                close-on-select="false">
+
+            <ui-select-match 
+                    placeholder="Kapcsolódási pontok...">
+
+                {{ $item.rmva | fillZero:5 }} || {{ $item.title }}
+            
+            </ui-select-match>
+
+            <ui-select-choices 
+                    repeat="vers in data | filter: $select.search">
+              {{ vers.rmva | fillZero:5 }} || {{ vers.title }}
+
+            </ui-select-choices>
+
+        </ui-select>
+
+          <p>Selected: {{vers.link_coll | json: 4}}</p>
+
+          <p>Selected.length: {{ vers.link_coll.length }}</p>
+
+          <p>Selected.length_scope: {{ selectedLenght }}</p>
+    </div>
+</div>
+
+
+
+
+
 
 <div class="form-group">
     <div  class="col-md-6 col-md-offset-6">
@@ -249,3 +272,4 @@
     </div>
 </div>
 
+<!-- vers.rmva as ( vers.rmva | fillZero:5 ) for vers in data -->
