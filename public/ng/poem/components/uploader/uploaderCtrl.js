@@ -14,13 +14,13 @@ angular
 		    
 		    function($scope, poemFactory, $rootScope, $location){
 
-		    	$scope.data = poemFactory.query();
+		    	$rootScope.data = poemFactory.query();
+
 
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
 		    		$location.path('/list');
 		    	}
-
 
 		        $scope.vers = {
 
@@ -68,44 +68,9 @@ angular
 
 		// _____________________________CREATE NEW VERS_____________________________
 
-
-	         // 	$scope.conListToRight = function() {
-		        //  	alert('good btn');
-		        //  	console.log('fuck');
-		        // };
-
-
 		        $scope.postVers = function() {
 
 		        	if ($rootScope.loggedInUser.role !== 'user') {
-
-				    	if ($scope.vers.link_coll) {
-				    		$scope.selectedLenght = $scope.vers.link_coll.length;
-				    		console.log('$scope.selectedLenght: ' + $scope.selectedLenght);
-				    		// alert($scope.selectedLenght);
-
-				    		// for(var i =0; i <== $scope.selectedLenght; i++) {
-				    		// 	console.log('arrays: ' +$scope.vers.link_coll[i]);
-				    		// }
-				    		$scope.array = [];
-				    		angular.forEach($scope.vers.link_coll, function(value, index){
-				    			console.log('$scope.vers.link_coll :' + $scope.vers.link_coll.length);
-				    			console.log('value.rmva :' + value.rmva);
-				    			
-				    			$scope.array.push(value.rmva);
-				    			console.log($scope.array.length);
-				    		// 	$scope.vers.link_coll = '';
-				  			// 	$scope.vers.link_coll.push(value.rmva);
-				  			// 	console.log('after push: ' + $scope.vers.link_coll);
-				    		});
-				    		console.log('$scope.array after forach: ' + $scope.array.length + ' :: ' + $scope.array);
-				    		$scope.vers.link_coll = $scope.array;
-				    		console.log(' $scope.vers.link_coll after forach: ' + $scope.vers.link_coll.length + ' :: ' + $scope.vers.link_coll);
-				    	}
-						else {
-							$scope.selectedLenght = '';
-						}
-
 
 		        		$scope.post_conf = confirm('Biztosan fel akarja tölteni a ezt a verset?');
 

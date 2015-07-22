@@ -56,9 +56,11 @@
     
     <div> 
         Kapcsolódások:
-        <ul ng-repeat="link in vers.link_coll ">
+        <ul ng-hide='vers.link_coll.length == 0' ng-repeat="link in vers.link_coll ">
             <li> 
-                <a href="#view/id/{{link | fillZero:5}}"> {{ link | fillZero:5 }} 
+                RMVA
+                <a href="#view/id/{{link.rmva | fillZero:5}}"> 
+                   {{ link.rmva | fillZero:5 }} ({{ link.title }})
                 </a> 
             </li>
         </ul>

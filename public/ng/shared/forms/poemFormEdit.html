@@ -212,59 +212,48 @@
 </div>
 
 <!-- 
+|   multiple selector for linking 
+|   separate controller for match elements
+-->
 <div class="form-group">
 
     <label class="control-label col-md-2" for="text">Kapcsolódás:</label>
 
-     
-   <div id="link" class="col-md-1">                                                             
-        <select multiple ng-model="vers.link_coll" size="15"
-            ng-options=" vers.rmva as ( vers.rmva | fillZero:5 ) for vers in data ">      
-        </select>
-    </div>
-   
-
-</div>
- -->
-
-<div class="form-group">
-
-    <label class="control-label col-md-2" for="text">Kapcsolódás:</label>
-
-    <div id="link" class="col-md-10">
+    <div ng-controller="selectLinkEditCtrl" id="link" class="col-md-10">
         <ui-select 
-                multiple 
+                multiple="true"
+                refresh 
                 ng-model="vers.link_coll" 
                 theme="bootstrap" 
                 close-on-select="false">
 
+            <!-- 
+            |   match shows selected tags 
+            |   $item is the return of the Ctrl(selectLinkCtrl)     
+            -->
             <ui-select-match 
                     placeholder="Kapcsolódási pontok...">
 
-                {{ $item.rmva | fillZero:5 }} || {{ $item.title }}
+                {{ $item.rmva | fillZero:5 }} ({{ $item.title }})
             
             </ui-select-match>
 
+            <!-- 
+            |   choices are produced in Ctrl
+            |   passed with ngRepeat with
+            -->
             <ui-select-choices 
-                    repeat="vers in data | filter: $select.search">
-              {{ vers.rmva | fillZero:5 }} || {{ vers.title }}
+                    repeat="link in array | filter: $select.search">
+
+                        {{ link.rmva | fillZero:5 }} ({{ link.title }})
 
             </ui-select-choices>
-
         </ui-select>
-
-          <p>Selected: {{vers.link_coll | json: 4}}</p>
-
-          <p>Selected.length: {{ vers.link_coll.length }}</p>
-
-          <p>Selected.length_scope: {{ selectedLenght }}</p>
     </div>
+
+        <p> 'vers.link_coll:' {{ vers.link_coll }} </p>
+
 </div>
-
-
-
-
-
 
 <div class="form-group">
     <div  class="col-md-6 col-md-offset-6">
@@ -272,4 +261,44 @@
     </div>
 </div>
 
-<!-- vers.rmva as ( vers.rmva | fillZero:5 ) for vers in data -->
+<!-- $rootScope.data: {{ data }} -->
+
+<div ng-controller="DemoCtrl">
+
+  <h1>Multi Selection Demos</h1>
+
+  <h3>Array of strings</h3>
+
+  <ui-select 
+        multiple 
+        ng-model="multipleDemo.colors" 
+        theme="bootstrap" 
+        close-on-select="false" 
+        style="width: 300px;">
+
+    <ui-select-match 
+            placeholder="Select colors...">
+
+        {{$item}}
+    
+    </ui-select-match>
+
+    <ui-select-choices 
+            repeat="color in availableColors | filter:$select.search">
+      {{color}}
+
+    </ui-select-choices>
+
+  </ui-select>
+
+  <p>Selected: {{multipleDemo.colors}}</p>
+
+
+    <script src="assets/lib/angular/angular.js"></script>
+    <script src="assets/lib/angular-sanitize/angular-sanitize.js"></script>
+
+    <script src="assets/lib/angular-ui-select/dist/select.js"></script>
+
+    <script src="js/ng.js"></script>
+
+</div>
