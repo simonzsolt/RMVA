@@ -136,12 +136,14 @@ app.use(session({
     store: new MongoStore({
 
         // for dev
-        // mongooseConnection: mongoose.connection,
+        mongooseConnection: mongoose.connection,
 
         // for production
-        mongooseConnection: process.env.MONGOLAB_URI,
+        // mongooseConnection: process.env.MONGOLAB_URI,
         
         // url: 'mongodb://localhost/vers'
+
+        url: process.env.MONGOLAB_URI
     })
 }));
 
