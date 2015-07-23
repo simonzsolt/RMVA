@@ -52,13 +52,15 @@
         </pre> 
     </div> 
 
-    <!-- <div> Képek: {{vers.imgs}} </div>  --> <!-- Temp not av. -->3
+    <!-- <div> Képek: {{vers.imgs}} </div>  --> <!-- Temp not av. -->
     
     <div> 
         Kapcsolódások:
-        <ul ng-repeat="link in vers.link_coll ">
+        <ul ng-hide='vers.link_coll.length == 0' ng-repeat="link in vers.link_coll ">
             <li> 
-                <a href="#view/id/{{link | fillZero:5}}"> {{ link | fillZero:5 }} 
+                RMVA
+                <a href="#view/id/{{link | fillZero:5}}"> 
+                   {{ link | fillZero:5 }} 
                 </a> 
             </li>
         </ul>

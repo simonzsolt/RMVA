@@ -18,6 +18,8 @@ var express = require('express'); // server dep
     cookieParser = require('cookie-parser'),
     flash = require('connect-flash'),
 
+    MongoStore = require('connect-mongo')(session),
+
     zeroFill = require('zero-fill'),
 
     config = require('config');
@@ -130,9 +132,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'itsbettertoburnoutthantofadeaway',
     resave: true,
-    saveUninitialized: false
-    }
-));
+    saveUninitialized: false,
+    store: new MongoStore({
+
+        // for dev
+        mongooseConnection: mongoose.connection,
+
+        // for production
+        // mongooseConnection: process.env.MONGOLAB_URI,
+        
+        url: 'mongodb://localhost/vers'
+    })
+}));
 
 app.use(flash());
 
