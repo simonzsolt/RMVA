@@ -14,7 +14,13 @@ angular
 		    
 		    function($scope, poemFactory, $rootScope, $location){
 
-		    	$scope.data = poemFactory.query();
+		    	$rootScope.data = poemFactory.query();
+
+
+		    	if (!$rootScope.loggedInUser) {
+		    		console.log('no user');
+		    		$location.path('/list');
+		    	}
 
 		        $scope.vers = {
 
@@ -62,17 +68,9 @@ angular
 
 		// _____________________________CREATE NEW VERS_____________________________
 
-
-	         // 	$scope.conListToRight = function() {
-		        //  	alert('good btn');
-		        //  	console.log('fuck');
-		        // };
-
-
 		        $scope.postVers = function() {
 
 		        	if ($rootScope.loggedInUser.role !== 'user') {
-
 
 		        		$scope.post_conf = confirm('Biztosan fel akarja tölteni a ezt a verset?');
 

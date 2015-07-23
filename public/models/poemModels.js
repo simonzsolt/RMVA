@@ -51,7 +51,7 @@ var versSchema = new mongoose.Schema({
     source:     String, // forrás
     text:       String, // modern szöveg
     imgs:       [],     // array of iamge files
-    link_coll:  [String], // összekapcsolt adatlap azonosítója
+    link_coll:  {}, // összekapcsolt adatlap azonosítója
     created_at:
         {
             type: Date, 

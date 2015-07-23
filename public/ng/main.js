@@ -1,5 +1,7 @@
 angular
     .module('versApp', [
         'ngRoute',
-        'ngResource'
+        'ngResource',
+        'ui.select',
+        'ngSanitize'
     ]);

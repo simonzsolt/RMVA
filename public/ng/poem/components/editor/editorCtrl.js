@@ -17,6 +17,8 @@ angular
 		        $scope.vers = poemFactory.get({id: $routeParams.versId});
 		        $scope.data = poemFactory.query(); 
 
+		        // console.log('ready! + this data: ' + $scope.data.length);
+
 
 // _____________________________EDIT VERS_____________________________
 
