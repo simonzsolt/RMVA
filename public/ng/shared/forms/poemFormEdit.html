@@ -234,8 +234,8 @@
             <ui-select-match 
                     placeholder="Kapcsolódási pontok...">
 
-                {{ $item.rmva | fillZero:5 }} ({{ $item.title }})
-            
+                {{ $item | fillZero:5 }} 
+
             </ui-select-match>
 
             <!-- 
@@ -245,13 +245,11 @@
             <ui-select-choices 
                     repeat="link in array | filter: $select.search">
 
-                        {{ link.rmva | fillZero:5 }} ({{ link.title }})
+                        {{ link | fillZero:5 }} 
 
             </ui-select-choices>
         </ui-select>
     </div>
-
-        <p> 'vers.link_coll:' {{ vers.link_coll }} </p>
 
 </div>
 
@@ -259,46 +257,4 @@
     <div  class="col-md-6 col-md-offset-6">
         <input class="btn btn-success" type="submit" value="Feltöltés"> </input> 
     </div>
-</div>
-
-<!-- $rootScope.data: {{ data }} -->
-
-<div ng-controller="DemoCtrl">
-
-  <h1>Multi Selection Demos</h1>
-
-  <h3>Array of strings</h3>
-
-  <ui-select 
-        multiple 
-        ng-model="multipleDemo.colors" 
-        theme="bootstrap" 
-        close-on-select="false" 
-        style="width: 300px;">
-
-    <ui-select-match 
-            placeholder="Select colors...">
-
-        {{$item}}
-    
-    </ui-select-match>
-
-    <ui-select-choices 
-            repeat="color in availableColors | filter:$select.search">
-      {{color}}
-
-    </ui-select-choices>
-
-  </ui-select>
-
-  <p>Selected: {{multipleDemo.colors}}</p>
-
-
-    <script src="assets/lib/angular/angular.js"></script>
-    <script src="assets/lib/angular-sanitize/angular-sanitize.js"></script>
-
-    <script src="assets/lib/angular-ui-select/dist/select.js"></script>
-
-    <script src="js/ng.js"></script>
-
 </div>

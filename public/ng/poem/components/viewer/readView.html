@@ -59,8 +59,8 @@
         <ul ng-hide='vers.link_coll.length == 0' ng-repeat="link in vers.link_coll ">
             <li> 
                 RMVA
-                <a href="#view/id/{{link.rmva | fillZero:5}}"> 
-                   {{ link.rmva | fillZero:5 }} ({{ link.title }})
+                <a href="#view/id/{{link | fillZero:5}}"> 
+                   {{ link | fillZero:5 }} 
                 </a> 
             </li>
         </ul>
