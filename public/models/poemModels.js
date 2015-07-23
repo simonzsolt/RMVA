@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
