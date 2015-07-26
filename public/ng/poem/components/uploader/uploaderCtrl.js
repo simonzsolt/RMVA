@@ -11,11 +11,11 @@ angular
 			'poemFactory',
 			'$rootScope',
 			'$location',
-		    
+
+
 		    function($scope, poemFactory, $rootScope, $location){
 
 		    	$rootScope.data = poemFactory.query();
-
 
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');

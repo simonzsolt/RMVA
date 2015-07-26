@@ -48,10 +48,23 @@ router.route('/data')
             newVers.signo_add_name  = req.body.signo_add_name;   
             newVers.signo_forename  = req.body.signo_forename;  
 
-            newVers.lenght      = req.body.lenght;
-            newVers.lenght_unit = req.body.lenght_unit;
-            newVers.col         = req.body.col;
-            newVers.date        = req.body.date;
+            newVers.lenght          = req.body.lenght;
+            newVers.lenght_unit     = req.body.lenght_unit;
+            newVers.col             = req.body.col;
+
+            newVers.date.exact_date = req.body.date.exact_date;
+            newVers.date.year       = req.body.date.year;    
+            newVers.date.month      = req.body.date.month;   
+            newVers.date.day        = req.body.date.day;    
+            newVers.date.cent       = req.body.date.cent;    
+            newVers.date.fest       = req.body.date.fest;   
+            newVers.date.approx     = req.body.date.approx; 
+
+            // newVers.period.from = req.body.period.from;
+            // newVers.period.to   = req.body.period.to;
+
+            newVers.period   = req.body.period;
+
             newVers.date_info   = req.body.date_info;
             newVers.place       = req.body.place;
             newVers.place_info  = req.body.place_info;

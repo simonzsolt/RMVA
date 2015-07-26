@@ -14,6 +14,23 @@ autoIncrement.initialize(connection);
 
 // var poemConnections = new Schema({ link: Number });
 
+
+var dateObj = {
+
+    exact_date: Date,
+    year:       Number,
+    month:      Number,
+    day:        Number,
+    cent:       Number,
+    fest:       String,
+    approx:     String
+};
+
+var periodObj ={
+    from:   dateObj,
+    to:     dateObj    
+};
+
 var versSchema = new mongoose.Schema({
 
     rmva:       { type: 'number', unique: true }, // rmva azonosító 
@@ -43,7 +60,10 @@ var versSchema = new mongoose.Schema({
     lenght:     Number, // terjedelem
     lenght_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
-    date:       Number, // keletkezés - DATE is limited to 1970!
+    date:   dateObj,
+
+    period: periodObj,
+    
     date_info:  String, // honnan tudjuk? - SELECT!
     place:      String, // keletekzés helye
     place_info: String, // honnan tudjuk? - SELECT!

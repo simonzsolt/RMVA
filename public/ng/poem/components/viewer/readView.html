@@ -1,13 +1,13 @@
-<div class="container-fluid">
+<div ng-cloack class="container-fluid">
     <div ng-include="'ng/shared/navbar/navView.html'"></div> 
 </div>
 
 
-<div class="container-fluid">
+<div ng-cloack class="container-fluid">
     <div class="jumbotron">
         <h1>Részletes leírás  <small> - RMVA {{vers.rmva | fillZero:5}} </small> </h1>
 
-        <h1>Cím: {{vers.title}} <small> ({{vers.date}}) </small> </h1>
+        <h1>Cím: {{vers.title}} <small> ({{vers.date | date:"y-MM-d"}}) </small> </h1>
      
         <h2>Incipit: {{vers.inc}}   </h2>
 
@@ -39,8 +39,15 @@
     <div> Terjedelem mértékegysége: {{vers.lenght_unit}} </div> 
     <div> Kolofón: {{vers.col}} </div> 
     <div> 
-        Dátum: {{vers.date}}: {{vers.date_info}} 
+        Dátum: {{vers.date | date:"y-MM-d"}}: {{vers.date_info}} 
     </div> 
+
+    <div> 
+
+        Időszak:
+            <div>{{ vers.period.from }} - {{ vers.period.to }} </div>  
+
+    </div>
 
     <div> Hely: {{vers.place}}: {{vers.place_info}} </div> 
 

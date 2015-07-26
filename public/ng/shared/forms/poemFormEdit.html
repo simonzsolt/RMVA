@@ -145,15 +145,15 @@
     </div>
 </div>
     
-    <div class="form-group">
+    <div ng-controller="selectDateCtrl" class="form-group">
         <label class="control-label col-md-2" for="date">Dátum:</label>
         <div id="date" class="col-md-10">
          
-            <input placeholder="Dátum" type="number" min=1500 max=1800 ng-model="vers.date" > 
+            <input 
+                placeholder="Dátum" 
+                ui-date="dateOptions"
+                ng-model="vers.date" > 
             </input> 
-           
-            <!-- Needs model to be js Date object -->
-            <!-- <input ui-date="dateOptions" name="DateOfBirth" > -->
 
         </div>
     </div>
