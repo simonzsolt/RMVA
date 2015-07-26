@@ -3,13 +3,13 @@ angular
 
 		.controller('selectDateCtrl', function($scope){
 
-			$scope.dateSelectMenu = 'exact_date';
+			$scope.selectDateMenu = '';
 
-			$scope.dateSelectFromMenu = 'exact_date';
+			$scope.selectdateFromMenu = '';
 
-			$scope.dateSelectToMenu = 'exact_date';
+			$scope.selectDateToMenu = '';
 
-			$scope.dateSelectApprox = '';
+			$scope.selectDateApprox = false;
 
 			$scope.months = [
 				"Január",		

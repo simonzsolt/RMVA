@@ -1,20 +1,10 @@
 
-<!-- 
-<div class="form-group">
-    <label class="control-label col-md-2" for="head">Élőfej:</label>
-    <div id="head" class="col-md-10">
-        <input type="text" class="form-control" placeholder="Élőfej" ng-model="vers.head" > </input> 
-    </div>
-</div>
- -->
-
-
-<div ng-show=" dateSelectMenu == 'exact_date'" class="form-group">
+<div ng-show=" selectDateFromMenu == 'exact_date'" class="form-group">
 	<label 
 		class="control-label col-md-4" 
 		
 		for="exact_date">
-			Pontos Dátum:
+			Pontos dátum:
 	</label>
 	<div id="exact_date" class="col-md-6">
 		<input 
@@ -23,12 +13,14 @@
 			
 		    placeholder="Ponts dátum" 
 		    ui-date="dateOptions"
-		    ng-model="vers.date.exact_date" > 
+		    ng-model="vers.period.from.exact_date" > 
 		</input> 
 	</div>
 </div>
 
-<div ng-show=" dateSelectMenu == 'year' || dateSelectMenu == 'year-month'" class="form-group">
+<div 
+	ng-show=" selectDateFromMenu == 'year' || selectDateFromMenu == 'year-month'" 
+	class="form-group">
 	 <label 
 	 	class="control-label col-md-4" 
 	 	
@@ -44,12 +36,12 @@
 		    placeholder="Év" 
 		    type="number"
 		    min="1600" max="1800" 
-		    ng-model="vers.date.year" > 
+		    ng-model="vers.period.from.year" > 
 		</input>
 	</div>
 </div>
 
-<div ng-show=" dateSelectMenu == 'month' || dateSelectMenu == 'year-month'" class="form-group">
+<div ng-show=" selectDateFromMenu == 'month' || selectDateFromMenu == 'year-month'" class="form-group">
 	 <label 
 	 	class="control-label col-md-4" 
 	 	
@@ -62,15 +54,15 @@
 	 		class="form-control"
 		 	
 		    type="text"
-		    ng-model="vers.date.month"
-		    ng-options="select as month for month in months" >
+		    ng-model="vers.period.from.month"
+		    ng-options="month for month in months" >
 	        	<option value="" disabled selected>-- Hónap --</option>
 		</select>
 	</div>
 </div>
 
 
-<div ng-show=" dateSelectMenu == 'cent'"  	  class="form-group">
+<div ng-show=" selectDateFromMenu == 'cent'"  	  class="form-group">
 	<label
 		class="control-label col-md-4" 
 		
@@ -85,12 +77,12 @@
 		    placeholder="Század" 
 		    type="number"
 		    min="17" max="19" 
-		    ng-model="vers.date.cent" > 
+		    ng-model="vers.period.from.cent" > 
 		</input>  
 	</div>
 </div>
 
-<div ng-show=" dateSelectMenu == 'fest'"   class="form-group">
+<div ng-show=" selectDateFromMenu == 'fest'"   class="form-group">
 	<label
 		class="control-label col-md-4" 
 			 
@@ -104,13 +96,18 @@
 			
 		    placeholder="Ünnep" 
 		    type="text"
-		    ng-model="vers.date.fest" > 
+		    ng-model="vers.period.from.fest" > 
 		</input> 
 	</div>
 </div>
 
 <div 
-	ng-hide="dateSelectMenu == 'exact_date' || dateSelectMenu == 'period'"  
+	ng-show=
+		"selectDateFromMenu == 'year' || 
+		selectDateFromMenu == 'month' || 
+		selectDateFromMenu == 'year-month' || 
+		selectDateFromMenu == 'fest' || 
+		selectDateFromMenu == 'cent'"    
 	class="form-group">
 	
 	 <div class="col-sm-offset-4 col-sm-6">
@@ -118,7 +115,7 @@
 	        <label class="control-label col-md-2" >
 	            <input 
 	                value="true" 
-	                ng-model="dateSelectApprox"
+	                ng-model="selectDateFromApprox"
 	                type="checkbox"> 
 
 	                Kiegészítés: 
@@ -129,7 +126,7 @@
 </div>
 
 
-<div ng-show="dateSelectApprox"  class="form-group">
+<div ng-show="selectDateFromApprox"  class="form-group">
 	<label
 		class="control-label col-md-4" 
 		
@@ -143,7 +140,7 @@
 			
 		    placeholder="Megjegyzés" 
 		    type="text"
-		    ng-model="vers.date.approx" > 
+		    ng-model="vers.period.from.approx" > 
 		</input> 
 	</div>
 </div>

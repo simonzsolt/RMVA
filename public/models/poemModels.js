@@ -19,17 +19,31 @@ var dateObj = {
 
     exact_date: Date,
     year:       Number,
-    month:      Number,
+    month:      String,
     day:        Number,
     cent:       Number,
     fest:       String,
     approx:     String
 };
 
-var periodObj ={
-    from:   dateObj,
-    to:     dateObj    
+// var periodObj = {
+//     from:   dateObj,
+//     to:     dateObj    
+// };
+
+var date = {
+
+    single: dateObj,
+
+    period: {
+
+        from: dateObj,
+        to: dateObj
+    }
 };
+
+
+
 
 var versSchema = new mongoose.Schema({
 
@@ -60,9 +74,10 @@ var versSchema = new mongoose.Schema({
     lenght:     Number, // terjedelem
     lenght_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
-    date:   dateObj,
 
-    period: periodObj,
+    date:   date,
+
+    // period: periodObj,
     
     date_info:  String, // honnan tudjuk? - SELECT!
     place:      String, // keletekzés helye

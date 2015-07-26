@@ -144,19 +144,85 @@
         <input type="text" class="form-control" placeholder="Kolofón" ng-model="vers.col" > </input>  
     </div>
 </div>
-    
-    <div ng-controller="selectDateCtrl" class="form-group">
-        <label class="control-label col-md-2" for="date">Dátum:</label>
-        <div id="date" class="col-md-10">
-         
-            <input 
-                placeholder="Dátum" 
-                ui-date="dateOptions"
-                ng-model="vers.date" > 
-            </input> 
 
+
+<div ng-controller="selectDateEditCtrl" >
+
+    <div class="form-group">
+
+        <label class="control-label col-md-2" for="date">Dátum leírása:</label>
+
+        <div id="selectDateMenu" class="col-md-10">
+            <select class="form-control" ng-model="selectDateMenu">
+                <option value="" disabled selected>Dátum Leírása</option>
+                <option value="exact_date">Pontos dátum</option>
+                <option value="year">Év</option>
+                <option value="year-month">Év - hónap</option>
+                <option value="month">Hónap</option>
+                <option value="cent">Század</option>
+                <option value="fest">Ünnep</option>
+                <option value="period">Időszak</option>
+             </select>
         </div>
     </div>
+
+    <ng-include 
+        src="'ng/poem/components/uploader/selectDate/selectDateView.html'">
+    </ng-include>
+
+    <div ng-show="selectDateMenu == 'period'"  class="form-group">
+        <label class="control-label col-md-2" for="period">Időszak:</label>
+        <div id="period" class="col-md-10"> 
+
+            <div class="form-group">
+
+                <label class="control-label col-md-3" for="date">Kezdő dátum:</label>
+
+                <div id="selectDateFromMenu" class="col-md-9">
+                    <select class="form-control" ng-model="selectDateFromMenu">
+                        <option value="" disabled selected>Dátum Leírása</option>
+                        <option value="exact_date">Pontos dátum</option>
+                        <option value="year">Év</option>
+                        <option value="year-month">Év - hónap</option>
+                        <option value="month">Hónap</option>
+                        <option value="cent">Század</option>
+                        <option value="fest">Ünnep</option>
+                     </select>
+                </div>
+            </div>
+
+             <ng-include 
+                src="'ng/poem/components/uploader/selectDate/selectDateFromView.html'">
+            </ng-include>
+
+            <div class="form-group">
+
+                <label class="control-label col-md-3" for="date">Záró dátum:</label>
+
+                <div id="selectDateToMenu" class="col-md-9">
+                    <select class="form-control" ng-model="selectDateToMenu">
+                        <option value="" disabled selected>Dátum Leírása</option>
+                        <option value="exact_date">Pontos dátum</option>
+                        <option value="year">Év</option>
+                        <option value="year-month">Év - hónap</option>
+                        <option value="month">Hónap</option>
+                        <option value="cent">Század</option>
+                        <option value="fest">Ünnep</option>
+                     </select>
+                </div>
+            </div>
+
+            <ng-include 
+                src="'ng/poem/components/uploader/selectDate/selectDateToView.html'">
+            </ng-include>
+
+        </div>
+    </div>  
+</div>
+
+
+
+
 
     <div class="form-group">
         <label class="control-label col-md-2" for="date_info">Datálás:</label>

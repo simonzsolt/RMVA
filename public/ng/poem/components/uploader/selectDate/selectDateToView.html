@@ -1,10 +1,10 @@
 
-<div ng-show=" dateSelectToMenu == 'exact_date'" class="form-group">
+<div ng-show=" selectDateToMenu == 'exact_date'" class="form-group">
 	<label 
 		class="control-label col-md-4" 
 		
 		for="exact_date">
-			Pontos Dátum:
+			Pontos dátum:
 	</label>
 	<div id="exact_date" class="col-md-6">
 		<input 
@@ -19,7 +19,7 @@
 </div>
 
 <div 
-	ng-show=" dateSelectToMenu == 'year' || dateSelectToMenu == 'year-month'" 
+	ng-show=" selectDateToMenu == 'year' || selectDateToMenu == 'year-month'" 
 	class="form-group">
 	 <label 
 	 	class="control-label col-md-4" 
@@ -41,7 +41,7 @@
 	</div>
 </div>
 
-<div ng-show=" dateSelectToMenu == 'month' || dateSelectToMenu == 'year-month'" class="form-group">
+<div ng-show=" selectDateToMenu == 'month' || selectDateToMenu == 'year-month'" class="form-group">
 	 <label 
 	 	class="control-label col-md-4" 
 	 	
@@ -55,14 +55,14 @@
 		 	
 		    type="text"
 		    ng-model="vers.period.to.month"
-		    ng-options="select as month for month in months" >
+		    ng-options="month for month in months" >
 	        	<option value="" disabled selected>-- Hónap --</option>
 		</select>
 	</div>
 </div>
 
 
-<div ng-show=" dateSelectToMenu == 'cent'"  	  class="form-group">
+<div ng-show=" selectDateToMenu == 'cent'"  	  class="form-group">
 	<label
 		class="control-label col-md-4" 
 		
@@ -82,7 +82,7 @@
 	</div>
 </div>
 
-<div ng-show=" dateSelectToMenu == 'fest'"   class="form-group">
+<div ng-show=" selectDateToMenu == 'fest'"   class="form-group">
 	<label
 		class="control-label col-md-4" 
 			 
@@ -102,7 +102,12 @@
 </div>
 
 <div 
-	ng-hide="dateSelectToMenu == 'exact_date' || dateSelectToMenu == 'period'"  
+	ng-show=
+		"selectDateToMenu == 'year' || 
+		selectDateToMenu == 'month' || 
+		selectDateToMenu == 'year-month' || 
+		selectDateToMenu == 'fest' || 
+		selectDateToMenu == 'cent'"    
 	class="form-group">
 	
 	 <div class="col-sm-offset-4 col-sm-6">
@@ -110,7 +115,7 @@
 	        <label class="control-label col-md-2" >
 	            <input 
 	                value="true" 
-	                ng-model="dateSelectApprox"
+	                ng-model="selectDateToApprox"
 	                type="checkbox"> 
 
 	                Kiegészítés: 
@@ -121,7 +126,7 @@
 </div>
 
 
-<div ng-show="dateSelectApprox"  class="form-group">
+<div ng-show="selectDateToApprox"  class="form-group">
 	<label
 		class="control-label col-md-4" 
 		
