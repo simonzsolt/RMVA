@@ -3,6 +3,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
+
+// var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+
 var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
@@ -13,6 +16,52 @@ var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(er
 autoIncrement.initialize(connection);
 
 // var poemConnections = new Schema({ link: Number });
+
+
+var dateObj = {
+
+    exact_date: Date,
+    
+    only_year: {    
+        year:   Number,
+        approx: String
+    },
+
+    year_month: {
+        year:   Number,
+        month:  String,
+        approx: String
+    },
+
+    only_cent: {
+        cent:   Number,
+        approx: String
+    },
+
+    only_fest: {
+        fest:   String,
+        approx: String
+    },
+};
+
+// var periodObj = {
+//     from:   dateObj,
+//     to:     dateObj    
+// };
+/*
+var date = {
+
+    single: dateObj,
+
+    period: {
+
+        from: dateObj,
+        to:   dateObj
+    }
+};
+
+*/
+
 
 var versSchema = new mongoose.Schema({
 
@@ -43,7 +92,20 @@ var versSchema = new mongoose.Schema({
     lenght:     Number, // terjedelem
     lenght_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
-    date:       Number, // keletkezés - DATE is limited to 1970!
+
+    date:   {
+
+        single: dateObj,
+
+        period: {
+
+            from: dateObj,
+            to:   dateObj
+        }
+    },
+
+    // period: periodObj,
+    
     date_info:  String, // honnan tudjuk? - SELECT!
     place:      String, // keletekzés helye
     place_info: String, // honnan tudjuk? - SELECT!

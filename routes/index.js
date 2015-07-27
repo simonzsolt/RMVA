@@ -25,50 +25,70 @@ router.route('/data')
 
             console.log('authenticated: ' + req.user.username);
 
-            var newVers  = new Vers(); // cahnged vers to newVers
-            newVers.rmva = req.body.rmva;
-            newVers.inc  = req.body.inc;
+            var vers  = new Vers(); // cahnged vers to vers
+            vers.rmva = req.body.rmva;
+            vers.inc  = req.body.inc;
 
-            newVers.auth_role_name = req.body.auth_role_name;
-            newVers.auth_surname   = req.body.auth_surname;
-            newVers.auth_add_name  = req.body.auth_add_name;
-            newVers.auth_forename  = req.body.auth_forename;
+            vers.auth_role_name = req.body.auth_role_name;
+            vers.auth_surname   = req.body.auth_surname;
+            vers.auth_add_name  = req.body.auth_add_name;
+            vers.auth_forename  = req.body.auth_forename;
 
-            newVers.title    = req.body.title;
-            newVers.arg      = req.body.arg;
-            newVers.adnotam  = req.body.adnotam;
-            newVers.acro     = req.body.acro;
-            newVers.acro_int = req.body.acro_int;
-            newVers.krono    = req.body.krono;
-            newVers.head     = req.body.head;
+            vers.title    = req.body.title;
+            vers.arg      = req.body.arg;
+            vers.adnotam  = req.body.adnotam;
+            vers.acro     = req.body.acro;
+            vers.acro_int = req.body.acro_int;
+            vers.krono    = req.body.krono;
+            vers.head     = req.body.head;
 
-            newVers.signo_type      = req.body.signo_type;
-            newVers.signo_role_name = req.body.signo_role_name; 
-            newVers.signo_surname   = req.body.signo_surname;    
-            newVers.signo_add_name  = req.body.signo_add_name;   
-            newVers.signo_forename  = req.body.signo_forename;  
+            vers.signo_type      = req.body.signo_type;
+            vers.signo_role_name = req.body.signo_role_name; 
+            vers.signo_surname   = req.body.signo_surname;    
+            vers.signo_add_name  = req.body.signo_add_name;   
+            vers.signo_forename  = req.body.signo_forename;  
 
-            newVers.lenght      = req.body.lenght;
-            newVers.lenght_unit = req.body.lenght_unit;
-            newVers.col         = req.body.col;
-            newVers.date        = req.body.date;
-            newVers.date_info   = req.body.date_info;
-            newVers.place       = req.body.place;
-            newVers.place_info  = req.body.place_info;
-            newVers.conf        = req.body.conf;
-            newVers.source      = req.body.source;
-            newVers.text        = req.body.text;
-            newVers.imgs        = req.body.imgs;
-            newVers.link_coll   = req.body.link_coll;
-            newVers.created_at  = Date.now(); // changed to Date.now()
-            newVers.created_by  = req.body.created_by;
-            newVers.last_mod    = req.body.last_mod; // changed to Date.now()
-            newVers.mod_by      = req.body.mod_by;
+            vers.lenght          = req.body.lenght;
+            vers.lenght_unit     = req.body.lenght_unit;
+            vers.col             = req.body.col;
+
+            vers.date = req.body.date;
+
+            // vers.date.period = req.body.date.period;
+            // vers.date.month  = req.body.date.month;
+
+            // vers.period = req.body.period;
+
+            // vers.date.exact_date = req.body.date.exact_date;
+            // vers.date.year       = req.body.date.year;    
+            // vers.date.month      = req.body.date.month;   
+            // vers.date.day        = req.body.date.day;    
+            // vers.date.cent       = req.body.date.cent;    
+            // vers.date.fest       = req.body.date.fest;   
+            // vers.date.approx     = req.body.date.approx; 
+
+            // vers.period.from = req.body.period.from;
+            // vers.period.to   = req.body.period.to;
+
+            // vers.date.period   = req.body.date.period;
+
+            vers.date_info   = req.body.date_info;
+            vers.place       = req.body.place;
+            vers.place_info  = req.body.place_info;
+            vers.conf        = req.body.conf;
+            vers.source      = req.body.source;
+            vers.text        = req.body.text;
+            vers.imgs        = req.body.imgs;
+            vers.link_coll   = req.body.link_coll;
+            vers.created_at  = Date.now(); // changed to Date.now()
+            vers.created_by  = req.body.created_by;
+            vers.last_mod    = req.body.last_mod; // changed to Date.now()
+            vers.mod_by      = req.body.mod_by;
 
 
             console.log('req.body.link_coll: ' + req.body.link_coll);
          
-            newVers.save(function(err){
+            vers.save(function(err){
                 if(err)
                     res.send(err);
                 res.json({ msg: 'vers létrehozva req_auth_body:' + req.body.auth});
@@ -151,12 +171,13 @@ router.route('/data/:rmva')
                 vers.auth_add_name  = req.body.auth_add_name;
                 vers.auth_forename  = req.body.auth_forename;
 
-                vers.title = req.body.title;
-                vers.arg = req.body.arg;
-                vers.adnotam = req.body.adnotam;
-                vers.acro = req.body.acro;
-                vers.krono = req.body.krono;
-                vers.head = req.body.head;
+                vers.title      = req.body.title;
+                vers.arg        = req.body.arg;
+                vers.adnotam    = req.body.adnotam;
+                vers.acro       = req.body.acro;
+                vers.acro_int   = req.body.acro_int;
+                vers.krono      = req.body.krono;
+                vers.head       = req.body.head;
 
                 vers.signo_type = req.body.signo_type;
                 vers.signo_role_name = req.body.signo_role_name; 
@@ -168,7 +189,19 @@ router.route('/data/:rmva')
                 vers.lenght = req.body.lenght;
                 vers.lenght_unit = req.body.lenght_unit;
                 vers.col = req.body.col;
+
                 vers.date = req.body.date;
+
+                // vers.period = req.body.period;
+
+                // vers.date.exact_date = req.body.date.exact_date;
+                // vers.date.year       = req.body.date.year;    
+                // vers.date.month      = req.body.date.month;   
+                // vers.date.day        = req.body.date.day;    
+                // vers.date.cent       = req.body.date.cent;    
+                // vers.date.fest       = req.body.date.fest;   
+                // vers.date.approx     = req.body.date.approx;
+
                 vers.date_info = req.body.date_info;
                 vers.place = req.body.place;
                 vers.place_info = req.body.place_info;

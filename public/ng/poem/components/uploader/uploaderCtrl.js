@@ -11,12 +11,13 @@ angular
 			'poemFactory',
 			'$rootScope',
 			'$location',
-		    
+
 		    function($scope, poemFactory, $rootScope, $location){
 
 		    	$rootScope.data = poemFactory.query();
 
-
+		    	$scope.selectDate = '';
+		    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
 		    		$location.path('/list');
@@ -70,7 +71,7 @@ angular
 
 		        $scope.postVers = function() {
 
-		        	if ($rootScope.loggedInUser.role !== 'user') {
+		        	if ($rootScope.loggedInUser.role !== 'user') {		        		
 
 		        		$scope.post_conf = confirm('Biztosan fel akarja tölteni a ezt a verset?');
 
