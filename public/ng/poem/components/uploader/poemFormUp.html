@@ -57,7 +57,7 @@
     <div class="col-sm-offset-2 col-sm-10">
         <div class="checkbox">
             <label>
-                <input value="ture" ng-model="vers.acro_int" type="checkbox"> Akrosztichon integráns
+                <input ng-model="vers.acro_int" type="checkbox"> Akrosztichon integráns
             </label>
         </div>
     </div>
@@ -119,7 +119,8 @@
 <div class="form-group">
     <label class="control-label col-md-2" for="lenght">Terjedelem:</label>
     <div id="lenght" class="col-md-10">
-        <input type="number" placeholder="Terjedelem" ng-model="vers.lenght" > </input>  <!-- number -->
+        <input type="number" placeholder="Terjedelem" ng-model="vers.lenght" > 
+        </input> 
     </div>
 </div>
 
@@ -144,19 +145,119 @@
         <input type="text" class="form-control" placeholder="Kolofón" ng-model="vers.col" > </input>  
     </div>
 </div>
-    
+
+<div class="form-group">
+    <label class="control-label col-md-2" for="col">Dátum megadása:</label>
+
+    <div id="selectDate" class="col-md-10">
+        <select class="form-control"  
+                ng-model="selectDate">
+
+            <option value="" isabled selected >-- Dátum megadása --</option>
+            <option value="single">Egyszerű dátum</option>
+            <option value="period">Időszak</option>
+        </select>
+    </div>
+</div>
+
+<div ng-show="selectDate == 'single'" ng-controller="selectDateCtrl" >
+
     <div class="form-group">
-        <label class="control-label col-md-2" for="date">Dátum:</label>
-        <div id="date" class="col-md-10">
-         
-            <input placeholder="Dátum" type="number" min=1500 max=1800 ng-model="vers.date" > 
-            </input> 
-           
-            <!-- Needs model to be js Date object -->
-            <!-- <input ui-date="dateOptions" name="DateOfBirth" > -->
+
+        <label class="control-label col-md-2" for="date">Dátum leírása:</label>
+
+        <div id="selectDateMenu" class="col-md-10">
+            <select 
+                class="form-control" 
+                ng-click="select()" 
+                ng-model="selectDateMenu">
+
+                    <option value="" disabled selected>Dátum Leírása</option>
+                    <option value="exact_date">Pontos dátum</option>
+                    <option value="year">Év</option>
+                    <option value="year-month">Év - hónap</option>
+                    <!-- <option value="month">Hónap</option> -->
+                    <option value="cent">Század</option>
+                    <option value="fest">Ünnep</option>
+                    <!-- <option value="period">Időszak</option> -->
+             </select>
+
+             <ng-include 
+                src="'ng/poem/components/uploader/selectDate/selectDateView.html'">
+            </ng-include>
 
         </div>
     </div>
+</div>
+
+<div ng-controller="selectDateFromCtrl" >
+
+    <div ng-show="selectDate == 'period'"  class="form-group">
+        <label class="control-label col-md-3" for="period">Időszak:</label>
+        <div id="period" class="col-md-12"> 
+
+            <div class="form-group">
+
+                <label class="control-label col-md-4" for="date">Kezdő dátum:</label>
+
+                <div id="selectDateFromMenu" class="col-md-8">
+                    <select 
+                        class="form-control" 
+                        ng-click="selectFrom()" 
+                        ng-model="selectDateFromMenu">
+
+                            <option value="" disabled selected>Dátum Leírása</option>
+                            <option value="exact_date">Pontos dátum</option>
+                            <option value="year">Év</option>
+                            <option value="year-month">Év - hónap</option>
+                            <!-- <option value="month">Hónap</option> -->
+                            <option value="cent">Század</option>
+                            <option value="fest">Ünnep</option>
+                     </select>
+                </div>
+            </div>
+
+             <ng-include 
+                src="'ng/poem/components/uploader/selectDate/selectDateFromView.html'">
+            </ng-include>
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-controller="selectDateToCtrl" >
+
+        <div class="col-md-12" ng-show="selectDate == 'period'" id="period" > 
+
+            <div class="form-group">
+
+                <label class="control-label col-md-4" for="date">Záró dátum:</label>
+
+                <div id="selectDateToMenu" class="col-md-8">
+                    <select 
+                        class="form-control" 
+                        ng-click="selectTo()" 
+                        ng-model="selectDateToMenu">
+
+                            <option value="" disabled selected>Dátum Leírása</option>
+                            <option value="exact_date">Pontos dátum</option>
+                            <option value="year">Év</option>
+                            <option value="year-month">Év - hónap</option>
+                            <!-- <option value="month">Hónap</option> -->
+                            <option value="cent">Század</option>
+                            <option value="fest">Ünnep</option>
+                     </select>
+                </div>
+            </div>
+
+             <ng-include 
+                src="'ng/poem/components/uploader/selectDate/selectDateToView.html'">
+            </ng-include>
+        </div>
+    </div>
+</div>
+  
 
     <div class="form-group">
         <label class="control-label col-md-2" for="date_info">Datálás:</label>
@@ -219,10 +320,9 @@
 
     <label class="control-label col-md-2" for="text">Kapcsolódás:</label>
 
-    <div ng-controller="selectLinkEditCtrl" id="link" class="col-md-10">
+    <div ng-controller="selectLinkUpCtrl" id="link" class="col-md-10">
         <ui-select 
-                multiple="true"
-                refresh 
+                multiple 
                 ng-model="vers.link_coll" 
                 theme="bootstrap" 
                 close-on-select="false">
@@ -235,7 +335,6 @@
                     placeholder="Kapcsolódási pontok...">
 
                 {{ $item | fillZero:5 }} 
-
             </ui-select-match>
 
             <!-- 
@@ -246,7 +345,6 @@
                     repeat="link in array | filter: $select.search">
 
                         {{ link | fillZero:5 }} 
-
             </ui-select-choices>
         </ui-select>
     </div>

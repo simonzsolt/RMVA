@@ -3,5 +3,6 @@ angular
         'ngRoute',
         'ngResource',
         'ui.select',
+        'ui.date',
         'ngSanitize'
     ]);
