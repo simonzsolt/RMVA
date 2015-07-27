@@ -5,80 +5,44 @@ angular
 
 			var vers = poemFactory.get({id: $routeParams.versId}, function(){
 
-				if(vers.date){
-					var indxArr = [];
-					angular.forEach(vers.date, function(value, index){
-						indxArr.push(index);
-						
-						if(index == 'approx'){ $scope.selectDateApprox = true; }
-					});
+				if ($scope.vers.date.single) {
 
-					if(indxArr.indexOf('approx') > -1){
-						indxArr.splice(indxArr.indexOf('approx'), 1);
-					}
+					angular.forEach($scope.vers.date.single ,function(value, index){
 
-					$scope.selectDateMenu = indxArr[0];
-
-					if(indxArr.length == 2){$scope.selectDateMenu = 'year-month'}
-
-					// $scope.vers.period = '';
-				}
-
-
-				if(vers.period){
-					var indxArr = [];
-					$scope.selectDateMenu = 'period';
+						if (index == 'exact_date') 	{$scope.selectDateMenu = 'exact_date'};
+						if (index == 'only_year') 	{$scope.selectDateMenu = 'year'};
+						if (index == 'year_month') 	{$scope.selectDateMenu = 'year-month'};
+						if (index == 'only_cent') 	{$scope.selectDateMenu = 'cent'};
+						if (index == 'only_fest') 	{$scope.selectDateMenu = 'fest'};
 					
-
-					angular.forEach(vers.period.from, function(value, index){
-						
-						indxArr.push(index);
-
-						if(index == 'approx'){$scope.selectDateFromApprox = true}
-						
 					});
 
-					if(indxArr.indexOf('approx') > -1){
-						indxArr.splice(indxArr.indexOf('approx'), 1);
-					}
+					$scope.select = function(){
 
-					$scope.selectDateFromMenu = indxArr[0];
+						var Arr = [];
+						$scope.vers.date.period = '';
 
-					if(indxArr.length == 2){
-						$scope.selectDateFromMenu = 'year-month'
-					}
+						angular.forEach($scope.vers.date.single ,function(value, index){
 
-					var indxArr = [];
+							Arr.push({index: value});
+						});
 
-					angular.forEach(vers.period.to, function(value, index){
-						console.log('value_from: ' + value + ' index_from: ' + index);
+						angular.forEach(Arr ,function(value, index){
+							if(index !== $scope.selectDateMenu){
 
-						indxArr.push(index);
-						
-						if(index == 'approx'){ $scope.selectDateToApprox = true; }
-					});
+								Arr.splice(Arr.indexOf($scope.vers.date.single.approx));
+								Arr.splice(index, 1);
+							}
+						});
+						$scope.vers.date.single = Arr[0];
 
-					console.log('$scope.selectDateToMenu: ' + $scope.selectDateToMenu + 
-						'  ' + 'indxArr[0]: ' + indxArr[0]);
 
-					if(indxArr.indexOf('approx') > -1){
-						indxArr.splice(indxArr.indexOf('approx'), 1);
-					}
-					
 
-					$scope.selectDateToMenu = indxArr[0];
-
-					console.log('$scope.selectDateToMenu: ' + $scope.selectDateToMenu + 
-						'  ' + 'indxArr[0]: ' + indxArr[0]);
-						
-						
-					if(indxArr.length == 2){
-						$scope.selectDateToMenu = 'year-month'
-					}
-
-					var indxArr = [];
-
-				}
+						// if($scope.selectDateMenu == 'period'){
+						// 	$scope.vers.date.single = '';
+						// }
+					};
+				};
 			});
 
 			$scope.months = [

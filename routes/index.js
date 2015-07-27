@@ -189,15 +189,17 @@ router.route('/data/:rmva')
                 vers.lenght_unit = req.body.lenght_unit;
                 vers.col = req.body.col;
 
-                vers.period = req.body.period;
+                vers.date = req.body.date;
 
-                vers.date.exact_date = req.body.date.exact_date;
-                vers.date.year       = req.body.date.year;    
-                vers.date.month      = req.body.date.month;   
-                vers.date.day        = req.body.date.day;    
-                vers.date.cent       = req.body.date.cent;    
-                vers.date.fest       = req.body.date.fest;   
-                vers.date.approx     = req.body.date.approx;
+                // vers.period = req.body.period;
+
+                // vers.date.exact_date = req.body.date.exact_date;
+                // vers.date.year       = req.body.date.year;    
+                // vers.date.month      = req.body.date.month;   
+                // vers.date.day        = req.body.date.day;    
+                // vers.date.cent       = req.body.date.cent;    
+                // vers.date.fest       = req.body.date.fest;   
+                // vers.date.approx     = req.body.date.approx;
 
                 vers.date_info = req.body.date_info;
                 vers.place = req.body.place;

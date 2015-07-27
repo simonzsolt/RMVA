@@ -14,11 +14,21 @@ angular
 
 		    function($scope, $routeParams, poemFactory, $rootScope, $location) {
 		        $scope.versId = $routeParams.versId;
-		        $scope.vers = poemFactory.get({id: $routeParams.versId});
+		        $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
+
+					if ($scope.vers.date.single) {
+						// console.log('$scope.vers.date.single: ' + $scope.vers.date.single);
+						$scope.selectDate = 'single';
+					};
+
+					if ($scope.vers.date.period) {
+						// console.log('$scope.vers.date.single: ' + $scope.vers.date.single);
+						$scope.selectDate = 'period';
+					};
+
+				});
+
 		        $scope.data = poemFactory.query(); 
-
-		        // console.log('ready! + this data: ' + $scope.data.length);
-
 
 // _____________________________EDIT VERS_____________________________
 
@@ -26,6 +36,8 @@ angular
 		    $scope.editVers = function() {
 
 		    	$scope.vers.mod_by = $rootScope.loggedInUser.nickname;
+
+		    	$scope.selectDate = '';
 
 		    	if($rootScope.loggedInUser.role !== 'user') {
 
