@@ -171,12 +171,13 @@ router.route('/data/:rmva')
                 vers.auth_add_name  = req.body.auth_add_name;
                 vers.auth_forename  = req.body.auth_forename;
 
-                vers.title = req.body.title;
-                vers.arg = req.body.arg;
-                vers.adnotam = req.body.adnotam;
-                vers.acro = req.body.acro;
-                vers.krono = req.body.krono;
-                vers.head = req.body.head;
+                vers.title      = req.body.title;
+                vers.arg        = req.body.arg;
+                vers.adnotam    = req.body.adnotam;
+                vers.acro       = req.body.acro;
+                vers.acro_int   = req.body.acro_int;
+                vers.krono      = req.body.krono;
+                vers.head       = req.body.head;
 
                 vers.signo_type = req.body.signo_type;
                 vers.signo_role_name = req.body.signo_role_name; 

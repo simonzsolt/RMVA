@@ -16,32 +16,26 @@ angular
 						if (index == 'only_fest') 	{$scope.selectDateMenu = 'fest'};
 					
 					});
+				};
 
-					$scope.select = function(){
+				$scope.select = function(){
 
-						var Arr = [];
-						$scope.vers.date.period = '';
+					var Arr = [];
+					$scope.vers.date.period = '';
 
-						angular.forEach($scope.vers.date.single ,function(value, index){
+					angular.forEach($scope.vers.date.single ,function(value, index){
 
-							Arr.push({index: value});
-						});
+						Arr.push({index: value});
+					});
 
-						angular.forEach(Arr ,function(value, index){
-							if(index !== $scope.selectDateMenu){
+					angular.forEach(Arr ,function(value, index){
+						if(index !== $scope.selectDateMenu){
 
-								Arr.splice(Arr.indexOf($scope.vers.date.single.approx));
-								Arr.splice(index, 1);
-							}
-						});
-						$scope.vers.date.single = Arr[0];
-
-
-
-						// if($scope.selectDateMenu == 'period'){
-						// 	$scope.vers.date.single = '';
-						// }
-					};
+							Arr.splice(Arr.indexOf($scope.vers.date.single.approx));
+							Arr.splice(index, 1);
+						}
+					});
+					$scope.vers.date.single = Arr[0];
 				};
 			});
 
