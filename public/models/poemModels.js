@@ -18,12 +18,27 @@ autoIncrement.initialize(connection);
 var dateObj = {
 
     exact_date: Date,
-    year:       Number,
-    month:      String,
-    day:        Number,
-    cent:       Number,
-    fest:       String,
-    approx:     String
+    
+    only_year: {    
+        year:   Number,
+        approx: String
+    },
+
+    year_month: {
+        year:   Number,
+        month:  String,
+        approx: String
+    },
+
+    only_cent: {
+        cent:   Number,
+        approx: String
+    },
+
+    only_fest: {
+        fest:   String,
+        approx: String
+    },
 };
 
 // var periodObj = {

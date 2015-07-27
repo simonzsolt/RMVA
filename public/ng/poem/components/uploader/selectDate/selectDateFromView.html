@@ -13,7 +13,7 @@
 			
 		    placeholder="Ponts dátum" 
 		    ui-date="dateOptions"
-		    ng-model="vers.period.from.exact_date" > 
+		    ng-model="vers.date.period.from.exact_date" > 
 		</input> 
 	</div>
 </div>
@@ -36,12 +36,12 @@
 		    placeholder="Év" 
 		    type="number"
 		    min="1600" max="1800" 
-		    ng-model="vers.period.from.year" > 
+		    ng-model="vers.date.period.from.year" > 
 		</input>
 	</div>
 </div>
 
-<div ng-show=" selectDateFromMenu == 'month' || selectDateFromMenu == 'year-month'" class="form-group">
+<div ng-show=" selectDateFromMenu == 'year-month'" class="form-group">
 	 <label 
 	 	class="control-label col-md-4" 
 	 	
@@ -54,7 +54,7 @@
 	 		class="form-control"
 		 	
 		    type="text"
-		    ng-model="vers.period.from.month"
+		    ng-model="vers.date.period.from.month"
 		    ng-options="month for month in months" >
 	        	<option value="" disabled selected>-- Hónap --</option>
 		</select>
@@ -77,7 +77,7 @@
 		    placeholder="Század" 
 		    type="number"
 		    min="17" max="19" 
-		    ng-model="vers.period.from.cent" > 
+		    ng-model="vers.date.period.from.cent" > 
 		</input>  
 	</div>
 </div>
@@ -96,7 +96,7 @@
 			
 		    placeholder="Ünnep" 
 		    type="text"
-		    ng-model="vers.period.from.fest" > 
+		    ng-model="vers.date.period.from.fest" > 
 		</input> 
 	</div>
 </div>
@@ -140,7 +140,7 @@
 			
 		    placeholder="Megjegyzés" 
 		    type="text"
-		    ng-model="vers.period.from.approx" > 
+		    ng-model="vers.date.period.from.approx" > 
 		</input> 
 	</div>
 </div>

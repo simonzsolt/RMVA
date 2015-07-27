@@ -150,17 +150,19 @@
 
 <div ng-controller="selectDateCtrl" >
 
-    <div class="form-group">
+    <div 
+        class="form-group"
+        ng-disabled="selectDateMenu == 'period'" >
 
         <label class="control-label col-md-2" for="date">Dátum leírása:</label>
 
         <div id="selectDateMenu" class="col-md-10">
-            <select class="form-control" ng-model="selectDateMenu">
+            <select ng-click="select()" class="form-control" ng-model="selectDateMenu">
                 <option value="" disabled selected>Dátum Leírása</option>
                 <option value="exact_date">Pontos dátum</option>
                 <option value="year">Év</option>
                 <option value="year-month">Év - hónap</option>
-                <option value="month">Hónap</option>
+                <!-- <option value="month">Hónap</option> -->
                 <option value="cent">Század</option>
                 <option value="fest">Ünnep</option>
                 <option value="period">Időszak</option>
@@ -171,6 +173,12 @@
     <ng-include 
         src="'ng/poem/components/uploader/selectDate/selectDateView.html'">
     </ng-include>
+
+    <p>Selected vers.date.single: {{ vers.date.single }} </p>
+
+    <p>Selected $scope.selectDateMenu: {{ selectDateMenu }} </p>
+
+    <p>Selected $scope.selectDateApprox: {{ selectDateApprox }} </p>
 
     <div ng-show="selectDateMenu == 'period'"  class="form-group">
         <label class="control-label col-md-2" for="period">Időszak:</label>
@@ -186,7 +194,7 @@
                         <option value="exact_date">Pontos dátum</option>
                         <option value="year">Év</option>
                         <option value="year-month">Év - hónap</option>
-                        <option value="month">Hónap</option>
+                        <!-- <option value="month">Hónap</option> -->
                         <option value="cent">Század</option>
                         <option value="fest">Ünnep</option>
                      </select>
@@ -207,7 +215,7 @@
                         <option value="exact_date">Pontos dátum</option>
                         <option value="year">Év</option>
                         <option value="year-month">Év - hónap</option>
-                        <option value="month">Hónap</option>
+                        <!-- <option value="month">Hónap</option> -->
                         <option value="cent">Század</option>
                         <option value="fest">Ünnep</option>
                      </select>

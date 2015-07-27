@@ -9,7 +9,50 @@ angular
 
 			$scope.selectDateToMenu = '';
 
-			$scope.selectDateApprox = false;
+
+
+			$scope.checkApprox = function(){
+
+			};
+
+			$scope.select = function(){
+
+				// console.log('dateCtrl $scope.selectDateMenu: ' + $scope.selectDateMenu);
+				if($scope.selectDateMenu !== 'period'){
+					// console.log('not period');
+					var Arr = [];
+					angular.forEach($scope.vers.date.single ,function(value, index){
+						console.log('value: ' + value + ' index: ' + index);
+
+						Arr.push({index: value});
+
+					});
+
+					// $scope.vers.date.single.approx = '';
+					// $scope.selectDateApprox = false;
+
+
+					angular.forEach(Arr ,function(value, index){
+
+						console.log('Arr value: ' + value + ' Arr index: ' + index);
+
+						if(index !== $scope.selectDateMenu){
+
+							Arr.splice(Arr.indexOf($scope.vers.date.single.approx));
+
+							// $scope.vers.date.single.approx = '';
+							// $scope.selectDateApprox = false;
+
+
+								Arr.splice(index, 1);
+
+						}
+					});
+
+					$scope.vers.date.single = Arr[0];
+
+				}
+			};
 
 			$scope.months = [
 				"Január",		
