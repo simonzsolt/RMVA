@@ -45,7 +45,7 @@ var dateObj = {
 //     from:   dateObj,
 //     to:     dateObj    
 // };
-
+/*
 var date = {
 
     single: dateObj,
@@ -53,11 +53,11 @@ var date = {
     period: {
 
         from: dateObj,
-        to: dateObj
+        to:   dateObj
     }
 };
 
-
+*/
 
 
 var versSchema = new mongoose.Schema({
@@ -90,7 +90,16 @@ var versSchema = new mongoose.Schema({
     lenght_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
 
-    date:   date,
+    date:   {
+
+        single: dateObj,
+
+        period: {
+
+            from: dateObj,
+            to:   dateObj
+        }
+    },
 
     // period: periodObj,
     

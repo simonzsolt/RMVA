@@ -12,12 +12,12 @@ angular
 			'$rootScope',
 			'$location',
 
-
 		    function($scope, poemFactory, $rootScope, $location){
 
 		    	$rootScope.data = poemFactory.query();
 
-
+		    	$scope.selectDate = '';
+		    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
 		    		$location.path('/list');

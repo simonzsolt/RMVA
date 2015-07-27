@@ -1,37 +1,36 @@
 angular
 	.module('versApp')
 
-		.controller('selectDateCtrl', function($scope){
+		.controller('selectDateFromCtrl', function($scope){
 
+			$scope.selectdateFromMenu = 'exact_date';
 
-			$scope.select = function(){
+			$scope.selectDateMenu = '';
 
-				if($scope.selectDateMenu !== 'period'){
-					var Arr = [];
-					angular.forEach($scope.vers.date.single ,function(value, index){
+			$scope.selectFrom = function(){
 
-						Arr.push({index: value});
-					});
+				if($scope.selectDateFromMenu !== ''){
+					var arrFrom = [];
+					if($scope.vers.date.period.from){
 
-					angular.forEach(Arr ,function(value, index){
-						if(index !== $scope.selectDateMenu){
+						angular.forEach($scope.vers.date.period.from ,function(value, index){
+						
+							// console.log('1value: ' + value + ' 1index:  ' + index);
 
-							Arr.splice(Arr.indexOf($scope.vers.date.single.approx));
-							Arr.splice(index, 1);
-						}
-					});
-					$scope.vers.date.single = Arr[0];
+							arrFrom.push({index: value});
+						});
 
-					// $scope.vers.date.period.from = '';
-					// $scope.vers.date.period.to 	 = '';
+						angular.forEach(arrFrom ,function(value, index){
+							if(index !== $scope.selectDateFromMenu && arrFrom.length > 0){
+								arrFrom.splice(index, 1);
+							}
+							// console.log('value: ' + value + ' index: ' + index);
+						});
+
+						$scope.vers.date.period.from = arrFrom[0];
+					}
 				}
-
-				if($scope.selectDateMenu == 'period'){
-					$scope.vers.date.single = '';
-					console.log('per');
-				}
-			}
-
+			};
 
 			$scope.months = [
 				"Január",		
