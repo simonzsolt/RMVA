@@ -16,53 +16,28 @@
 <!-- Nem metrumváltó -->
 
 	<!-- Egy összetevő -->
+<div class="form-group"  ng-repeat="comp_group in vers.metrum">
+	<label  class="control-label col-md-2" for="comp_group">
+		Összetevő #{{ $index +1 }}:
+	</label>
 
-	<label class="control-label col-md-2" for="comp_group">Összetevő:</label>
-
-    <div id="comp" class="col-md-10" ng-repeat="x in vers.metrum">
+    <div id="comp" class="col-md-8">
         <select 
             class="form-control"
-            ng-model="x.comp.name" >
+            ng-model="comp_group.comp.name" >
             
             <option value="" disabled selected>Összetevő</option>
             <option  ng-repeat="select in selectComp" value="{{select}}">{{select}}</option>
 
         </select>  
-    </div>
     
-    <a ng-click="addField()" href="">Add Field</a>
 
-<!-- 
-
-    <fieldset data-ng-repeat="choice in choices">
-        <select>
-            <option>Mobile</option>
-            <option>Office</option>
-            <option>Home</option>
-        </select>
-
-        <input type="text" ng-model="choice.name" name="" placeholder="Enter mobile number">
-
-        <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-
-    </fieldset>
-
-    <a class="addfields" ng-click="addNewChoice()">Add fields</a>
-
-    <div id="choicesDisplay">{{ choices }}</div>
-
-
-
-
- --> 
-
-<!-- 
-     <label class="control-label col-md-2" for="comp_type">Fajta (összetevő):</label>
+    <label class="control-label col-md-2" for="comp_type">Fajta (összetevő):</label>
 
     <div id="comp_type" class="col-md-10">
         <select 
             class="form-control" 
-            ng-model="vers.metrum.comp.comp_type" >
+            ng-model="comp_group.comp.comp_type" >
             
             <option value="" disabled selected>Fajta (összetevő)</option>
             <option value="szám">szám</option>
@@ -70,6 +45,54 @@
 
         </select>  
     </div>
+
+       <label 
+     	class="control-label col-md-2" 
+     	ng-show="comp_group.comp.comp_type=='tartalom'"
+     	for="quality">
+
+     	Összetevő (minőség): 
+     </label>
+
+    <div 
+    	id="quality" 
+    	class="col-md-10"
+    	ng-show="comp_group.comp.comp_type=='tartalom'">
+
+        <select 
+            class="form-control" 
+            ng-model="comp_group.comp.quality" >
+            
+            <option value="" disabled selected>Minőség (összetevő)</option>
+            <option value="részleges">részleges</option>
+            <option value="teljes">teljes</option>
+
+        </select>  
+    </div>
+
+
+
+</div>
+    
+    <label class="control-label col-md-1" for="comp_group">
+	    <a ng-click="addField()" ng-show="$last" href="">
+	    	<span class="glyphicon glyphicon-plus"></span>
+	    	További
+	   	</a>
+   	</label>  
+
+    <label class="control-label col-md-1" ng-show="$index > 0" for="comp_group">
+	    <a ng-click="removeField()" ng-show="$last" href="">
+	    	<span class="glyphicon glyphicon-minus"></span>
+	    	Eltávolít
+	   	</a>
+   	</label>
+
+</div>
+
+
+<!-- 
+  
 
      <label 
      	class="control-label col-md-2" 
@@ -241,8 +264,10 @@
  -->
 
 
-
- <p>vers.metrum: {{ vers.metrum }} </p>
+<div class="col-md-10">
+	<p>vers.metrum: {{ vers.metrum }} </p>
+</div>
+ 
 
 
 </div>

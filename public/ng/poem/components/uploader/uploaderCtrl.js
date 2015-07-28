@@ -102,11 +102,12 @@ angular
 
 		        $scope.addField = function addField () {
 					$scope.vers.metrum.push({});
+					console.log($scope.vers.metrum.comp);
 				}
 
 				$scope.removeField = function removeField () {
-					var lastItem = $scope.metrum.length -1; 
-					$scope.metrum.splice(lastItem);
+					var lastItem = $scope.vers.metrum.length -1;
+					$scope.vers.metrum.splice(lastItem);
 				}
 
 

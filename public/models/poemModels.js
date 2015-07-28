@@ -142,9 +142,12 @@ var versSchema = new mongoose.Schema({
 
     metrum: [ 
                 {    
-                    comp: {name: String}
+                    comp: {
+                        name:       String,
+                        comp_type:  String,
+                        quality:    String
+                    }
                 }
-                    // name:          String
                     // comp_type:     String,
                     // quality:       String,
                     // rep:           String,
