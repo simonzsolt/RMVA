@@ -17,6 +17,14 @@ angular
 		    	$rootScope.data = poemFactory.query();
 
 		    	$scope.selectDate = '';
+
+		    	$scope.selectComp = [
+			    	'beszédhang', 
+					'szótag', 
+					'morféma', 
+					'szintagma', 
+					'mondat'
+				];
 		    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
@@ -48,7 +56,10 @@ angular
 		            signo_forename: '',
 
 		            lenght: '', 
-		            lenght_unit: '', 
+		            lenght_unit: '',
+
+		            metrum: '',
+
 		            col: '', 
 		            date: '', 
 		            date_info: '', 
@@ -65,6 +76,40 @@ angular
 		            mod_by: '' 
 
 		        }; // $scope.vers
+
+
+		        // var Arr = [];
+		        
+		        // $scope.selectCompMenu = function(){
+
+		        // 	angular.forEach($scope.x ,function(value, index){
+		        // 		console.log('$scope.x value: ' + value + ' $scope.x index: ' + index);
+		        // 		Arr.push({index : value});
+		        // 	});
+
+		        // 	// $scope.vers.metrum = '';
+
+		        // 	angular.forEach(Arr ,function(value, index){
+		        // 		// console.log('valueArr : ' + value + ' indexArr : ' + index);
+		        // 		angular.forEach(value ,function(v, i){
+		        // 			console.log('v: ' + v + ' index: ' + index);
+		        // 		});
+		        // 	});
+		        // };
+
+
+		        $scope.vers.metrum = [{}];
+
+		        $scope.addField = function addField () {
+					$scope.vers.metrum.push({});
+				}
+
+				$scope.removeField = function removeField () {
+					var lastItem = $scope.metrum.length -1; 
+					$scope.metrum.splice(lastItem);
+				}
+
+
 
 
 		// _____________________________CREATE NEW VERS_____________________________
@@ -105,6 +150,9 @@ angular
 
 				                    lenght: '', 
 				                    lenght_unit: '', 
+
+				                    metrum: '',
+
 				                    col: '', 
 				                    date: '', 
 				                    date_info: '', 

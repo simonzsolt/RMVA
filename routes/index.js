@@ -50,27 +50,12 @@ router.route('/data')
 
             vers.lenght          = req.body.lenght;
             vers.lenght_unit     = req.body.lenght_unit;
-            vers.col             = req.body.col;
+
+            vers.metrum = req.body.metrum;
+
+            vers.col = req.body.col;
 
             vers.date = req.body.date;
-
-            // vers.date.period = req.body.date.period;
-            // vers.date.month  = req.body.date.month;
-
-            // vers.period = req.body.period;
-
-            // vers.date.exact_date = req.body.date.exact_date;
-            // vers.date.year       = req.body.date.year;    
-            // vers.date.month      = req.body.date.month;   
-            // vers.date.day        = req.body.date.day;    
-            // vers.date.cent       = req.body.date.cent;    
-            // vers.date.fest       = req.body.date.fest;   
-            // vers.date.approx     = req.body.date.approx; 
-
-            // vers.period.from = req.body.period.from;
-            // vers.period.to   = req.body.period.to;
-
-            // vers.date.period   = req.body.date.period;
 
             vers.date_info   = req.body.date_info;
             vers.place       = req.body.place;
@@ -86,7 +71,7 @@ router.route('/data')
             vers.mod_by      = req.body.mod_by;
 
 
-            console.log('req.body.link_coll: ' + req.body.link_coll);
+            // console.log('req.body.metrum.comp_rep: ' + req.body.metrum.comp_rep);
          
             vers.save(function(err){
                 if(err)
