@@ -78,31 +78,11 @@ angular
 		        }; // $scope.vers
 
 
-		        // var Arr = [];
-		        
-		        // $scope.selectCompMenu = function(){
-
-		        // 	angular.forEach($scope.x ,function(value, index){
-		        // 		console.log('$scope.x value: ' + value + ' $scope.x index: ' + index);
-		        // 		Arr.push({index : value});
-		        // 	});
-
-		        // 	// $scope.vers.metrum = '';
-
-		        // 	angular.forEach(Arr ,function(value, index){
-		        // 		// console.log('valueArr : ' + value + ' indexArr : ' + index);
-		        // 		angular.forEach(value ,function(v, i){
-		        // 			console.log('v: ' + v + ' index: ' + index);
-		        // 		});
-		        // 	});
-		        // };
-
-
 		        $scope.vers.metrum = [{}];
 
 		        $scope.addField = function addField () {
 					$scope.vers.metrum.push({});
-					console.log($scope.vers.metrum.comp);
+					// console.log($scope.vers.metrum.comp);
 				}
 
 				$scope.removeField = function removeField () {
@@ -110,6 +90,13 @@ angular
 					$scope.vers.metrum.splice(lastItem);
 				}
 
+				$scope.compTypeNum = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.comp_type == 'szám'){
+							delete $scope.vers.metrum[index].comp.quality;
+						}
+					});
+				};
 
 
 
