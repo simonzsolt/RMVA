@@ -48,7 +48,7 @@ var metrumObj = {
 
     comp: {
         name:          String,
-        type:          String,
+        comp_type:     String,
         quality:       String,
         rep:           String,
         symbol:        String,
@@ -141,13 +141,9 @@ var versSchema = new mongoose.Schema({
     // ==============================METRUM===============================
 
     metrum: [ 
-                {    
-                    comp: {
-                        name:       String,
-                        comp_type:  String,
-                        quality:    String
-                    }
-                }
+                    
+                    metrumObj
+                
                     // comp_type:     String,
                     // quality:       String,
                     // rep:           String,

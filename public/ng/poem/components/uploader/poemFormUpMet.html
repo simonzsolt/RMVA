@@ -34,7 +34,7 @@
 
     <label class="control-label col-md-2" for="comp_type">Fajta (összetevő):</label>
 
-    <div id="comp_type" class="col-md-10">
+    <div id="comp_type" class="col-md-8">
         <select 
             class="form-control" 
             ng-model="comp_group.comp.comp_type" >
@@ -56,7 +56,7 @@
 
     <div 
     	id="quality" 
-    	class="col-md-10"
+    	class="col-md-8"
     	ng-show="comp_group.comp.comp_type=='tartalom'">
 
         <select 
@@ -66,6 +66,31 @@
             <option value="" disabled selected>Minőség (összetevő)</option>
             <option value="részleges">részleges</option>
             <option value="teljes">teljes</option>
+
+        </select>  
+    </div>
+
+    <label 
+        class="control-label col-md-2" 
+        ng-show="comp_group.comp.quality=='részleges'"
+        for="quality">
+
+        Összetevő (érték):
+     </label>
+
+    <div 
+        id="value" 
+        class="col-md-8"
+        ng-show="comp_group.comp.quality=='részleges'">
+
+        <select 
+            class="form-control" 
+            ng-model="comp_group.comp.rep" >
+            
+            <option value="" disabled selected>Érték (összetevő)</option>
+            <option value="hangérték">hangérték</option>
+            <option value="hosszérték">hosszérték</option>
+            <option value="szintaxis">szintaxis</option>
 
         </select>  
     </div>
