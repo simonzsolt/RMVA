@@ -19,14 +19,14 @@
 	<!-- Egy összetevő -->
 <div class="form-group"  ng-repeat="comp_group in vers.metrum">
 
-
+<h3> Összetevő #{{ $index +1 }}:</h3>
 
     <div class="form-group">
         <label  class="control-label col-md-2" for="comp_group">
-        Összetevő #{{ $index +1 }}:
+           Összetevő:
         </label>
 
-        <div class="col-md-8" id="comp" >
+        <div class="col-md-10" id="comp" >
             <select 
                 class="form-control" 
                 ng-model="comp_group.comp.name" >
@@ -44,7 +44,7 @@
             Fajta (összetevő):
         </label>
 
-        <div class="col-md-8" id="comp_type" >
+        <div class="col-md-10" id="comp_type" >
             <select 
                 class="form-control"
                 ng-click="compTypeNum()"
@@ -69,7 +69,8 @@
 
         <div 
         	id="quality" 
-        	class="col-md-8"
+        	class="col-md-10"
+            ng-click="qualityPartial()"
         	ng-show="comp_group.comp.comp_type=='tartalom'">
 
             <select 
@@ -88,18 +89,18 @@
         <label 
             class="control-label col-md-2" 
             ng-show="comp_group.comp.quality=='részleges'"
-            for="quality">
+            for="rep">
 
             Összetevő (érték):
          </label>
 
         <div 
-            id="value" 
-            class="col-md-8"
+            id="rep" 
+            class="col-md-10"
             ng-show="comp_group.comp.quality=='részleges'">
 
             <select 
-                class="form-control" 
+                class="form-control"
                 ng-model="comp_group.comp.rep" >
                 
                 <option value="" disabled selected>Érték (összetevő)</option>
@@ -111,145 +112,165 @@
         </div>
     </div>
 
+<!--============================== PART ==============================-->
 
+    <div class="form-group" ng-repeat="x in vers.metrum.myPart">
 
-     <div class="form-group">
-        <label 
-            class="control-label col-md-2" 
-            for="comp_symbol">
+        <h3>Részösszetevő #{{ $index+1 }}  </h3>
+         <div class="form-group">
+            <label 
+                class="control-label col-md-2" 
+                for="comp_symbol">
 
-            Szimbólum:
-         </label>
+                Szimbólum:
+             </label>
 
-        <div 
-            id="comp_symbol" 
-            class="col-md-8">
+            <div 
+                id="comp_symbol" 
+                class="col-md-10">
 
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="comp_group.comp.symbol" 
-                placeholder="Szimbólum">
-            </input>
+                <input 
+                    class="form-control" 
+                    type="text" 
+                    ng-model="x.part.symbol" 
+                    placeholder="Szimbólum">
+                </input>
+            </div>
         </div>
-    </div>
 
 
-    <div class="form-group">
-        <label 
-            class="control-label col-md-2" 
-            for="comp_symbol_type">
+        <div class="form-group">
+            <label 
+                class="control-label col-md-2" 
+                for="comp_symbol_type">
 
-            Szimbólum (érték):
-         </label>
+                Szimbólum (érték):
+             </label>
 
-        <div 
-            id="comp_symbol_type" 
-            class="col-md-8">
+            <div 
+                id="comp_symbol_type" 
+                class="col-md-10">
 
-            <select 
-                class="form-control" 
-                ng-model="comp_group.comp.symbol_type" >
-                
-                <option value="" disabled selected>Érték (szimbólum)</option>
-                <option value="sazbály">sazbály</option>
-                <option value="tendencia">tendencia</option>
+                <select 
+                    class="form-control" 
+                    ng-model="partComp.comp.part.symbol_type" >
+                    
+                    <option value="" disabled selected>Érték (szimbólum)</option>
+                    <option value="sazbály">sazbály</option>
+                    <option value="tendencia">tendencia</option>
 
-            </select>  
+                </select>  
+            </div>
         </div>
-    </div>
 
 
 
-    <div class="form-group">
-        <label 
-            class="control-label col-md-2" 
-            for="comp_limit">
+        <div class="form-group">
+            <label 
+                class="control-label col-md-2" 
+                for="comp_limit">
 
-            Határ
-         </label>
+                Határ
+             </label>
 
-        <div 
-            id="comp_limit" 
-            class="col-md-8">
+            <div 
+                id="comp_limit" 
+                class="col-md-10">
 
-            <select 
-                class="form-control" 
-                ng-model="comp_group.comp.limit" >
-                
-                <option value="" disabled selected>Határ</option>
-                <option ng-repeat="comp in selectComp" value="{{comp}}">{{comp}}</option>
+                <select 
+                    class="form-control" 
+                    ng-model="partComp.part.comp.limit" >
+                    
+                    <option value="" disabled selected>Határ</option>
+                    <option ng-repeat="comp in selectComp" value="{{comp}}">{{comp}}</option>
 
-            </select>  
+                </select>  
+            </div>
         </div>
-    </div>
 
 
 
-    <div class="form-group">
-        <label 
-            class="control-label col-md-2" 
-            for="comp_limit_type">
+        <div class="form-group">
+            <label 
+                class="control-label col-md-2" 
+                for="comp_limit_type">
 
-            Határ (érték):
-         </label>
+                Határ (érték):
+             </label>
 
-        <div 
-            id="comp_limit_type" 
-            class="col-md-8">
+            <div 
+                id="comp_limit_type" 
+                class="col-md-10">
 
-            <select 
-                class="form-control" 
-                ng-model="comp_group.comp.limit_type" >
-                
-                <option value="" disabled selected>Határ (érték)</option>
-                <option value="előtte">előtte</option>
-                <option value="utána">utána</option>
+                <select 
+                    class="form-control" 
+                    ng-model="partComp.comp.part.limit_type" >
+                    
+                    <option value="" disabled selected>Határ (érték)</option>
+                    <option value="előtte">előtte</option>
+                    <option value="utána">utána</option>
 
-            </select>  
+                </select>  
+            </div>
         </div>
-    </div>
 
 
 
-     <div class="form-group">
-        <label 
-            class="control-label col-md-2" 
-            for="comp_count">
+         <div class="form-group">
+            <label 
+                class="control-label col-md-2" 
+                for="comp_count">
 
-            Darab:
-         </label>
+                Darab:
+             </label>
 
-        <div 
-            id="comp_count" 
-            class="col-md-8">
+            <div 
+                id="comp_count" 
+                class="col-md-10">
 
-            <input 
-                class="form-control" 
-                type="number" 
-                ng-model="comp_group.comp.count" 
-                min=0>
-            </input>  
+                <input 
+                    class="form-control" 
+                    type="number" 
+                    ng-model="partComp.comp.part.count" 
+                    min=0>
+                </input>  
+            </div>
         </div>
-    </div>
 
 
-     <div class="form-group">
-        <label class="control-label col-md-1" for="comp_group">
-            <a ng-click="addField()" ng-show="$last" href="">
+        <label class="control-label col-md-2" for="part">
+            <a ng-click="addFieldPart()" ng-show="$last" href="">
                 <span class="glyphicon glyphicon-plus"></span>
-                További
+                Részösszetevő hozzáadása 
             </a>
         </label>  
 
-         <label class="control-label col-md-1" ng-show="$index > 0" for="comp_group">
-            <a ng-click="removeField()" ng-show="$last" href="">
+        <label class="control-label col-md-2" ng-show="$index > 0" for="part">
+            <a ng-click="removeFieldPart()" ng-show="$last" href="">
                 <span class="glyphicon glyphicon-minus"></span>
-                Eltávolít
+                Részösszetevő eltávolítása
             </a>
         </label>
+
     </div>
- 
+
+       
+
+
+        <label class="control-label col-md-2" for="comp_group">
+            <a ng-click="addField()" ng-show="$last" href="">
+                <span class="glyphicon glyphicon-plus"></span>
+                Összetevő hozzáadása 
+            </a>
+        </label>  
+
+         <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
+            <a ng-click="removeFieldPart()" ng-show="$last" href="">
+                <span class="glyphicon glyphicon-minus"></span>
+                Összetevő eltávolítása
+            </a>
+        </label>
+
 
 
 </div>

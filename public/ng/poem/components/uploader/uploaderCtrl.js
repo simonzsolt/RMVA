@@ -94,9 +94,31 @@ angular
 					angular.forEach($scope.vers.metrum ,function(value, index){
 						if(value.comp.comp_type == 'szám'){
 							delete $scope.vers.metrum[index].comp.quality;
+							delete $scope.vers.metrum[index].comp.rep;
 						}
 					});
 				};
+
+				$scope.qualityPartial = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.quality == 'teljes'){
+							delete $scope.vers.metrum[index].comp.rep;
+						}
+					});
+				};
+
+				$scope.vers.metrum.myPart = [{}];
+
+				$scope.addFieldPart = function addFieldPart () {
+					$scope.vers.metrum.myPart.push({});
+					// console.log($scope.vers.metrum.myPart);
+				}
+
+				$scope.removeFieldPart = function removeFieldPart () {
+					var lastItem = $scope.vers.metrum.myPart.length -1;
+					$scope.vers.metrum.myPart.splice(lastItem);
+				}
+
 
 
 

@@ -43,6 +43,15 @@ var dateObj = {
 // =====================================Metric model==================================
 
 
+var comp_part = {
+
+    symbol:        String,
+    symbol_type:   String,
+    limit:         String,
+    limit_type:    String,
+    count:         Number
+}
+
 
 var metrumObj = {
 
@@ -51,23 +60,8 @@ var metrumObj = {
         comp_type:     String,
         quality:       String,
         rep:           String,
-        symbol:        String,
-        symbol_type:   String,
-        limit:         String,
-        limit_type:    String,
-        count:         Number
+        myPart:          [{part: {symbol: String } }]
     }
-
-    /*
-    comp:               String,
-    comp_type:          String,
-    comp_quality:       String,
-    comp_rep:           String,
-    comp_symbol:        String,
-    comp_symbol_type:   String,
-    comp_limit:         String,
-    comp_limit_type:    String,
-    comp_count:         Number*/
 };
 
 
@@ -140,21 +134,7 @@ var versSchema = new mongoose.Schema({
 
     // ==============================METRUM===============================
 
-    metrum: [ 
-                    
-                    metrumObj
-                
-                    // comp_type:     String,
-                    // quality:       String,
-                    // rep:           String,
-                    // symbol:        String,
-                    // symbol_type:   String,
-                    // limit:         String,
-                    // limit_type:    String,
-                    // count:         Number
-                    // }
-                // }
-    ]
+    metrum: [ metrumObj ]
 });
 
 versSchema.plugin(autoIncrement.plugin, {
