@@ -17,34 +17,41 @@
 
 	<!-- Egy összetevő -->
 <div class="form-group"  ng-repeat="comp_group in vers.metrum">
-	<label  class="control-label col-md-2" for="comp_group">
-		Összetevő #{{ $index +1 }}:
-	</label>
 
-    <div id="comp" class="col-md-8">
-        <select 
-            class="form-control"
-            ng-model="comp_group.comp.name" >
-            
-            <option value="" disabled selected>Összetevő</option>
-            <option  ng-repeat="select in selectComp" value="{{select}}">{{select}}</option>
+    <div class="form-group">
+    	<label  class="control-label col-md-2" for="comp_group">
+    		Összetevő #{{ $index +1 }}:
+    	</label>
 
-        </select>  
-    
+        <div id="comp" class="col-md-8">
+            <select 
+                class="form-control"
+                ng-model="comp_group.comp.name" >
+                
+                <option value="" disabled selected>Összetevő</option>
+                <option  ng-repeat="select in selectComp" value="{{select}}">{{select}}</option>
 
-    <label class="control-label col-md-2" for="comp_type">Fajta (összetevő):</label>
+            </select>  
+    </div>    
 
-    <div id="comp_type" class="col-md-8">
-        <select 
-            class="form-control" 
-            ng-model="comp_group.comp.comp_type" >
-            
-            <option value="" disabled selected>Fajta (összetevő)</option>
-            <option value="szám">szám</option>
-            <option value="tartalom">tartalom</option>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="comp_type">
+            Fajta (összetevő):
+        </label>
 
-        </select>  
+        <div id="comp_type" class="col-md-8">
+            <select 
+                class="form-control" 
+                ng-model="comp_group.comp.comp_type" >
+                
+                <option value="" disabled selected>Fajta (összetevő)</option>
+                <option value="szám">szám</option>
+                <option value="tartalom">tartalom</option>
+
+            </select>  
+        </div>
     </div>
+
 
        <label 
      	class="control-label col-md-2" 
@@ -97,21 +104,142 @@
 
 
 
-</div>
-    
-    <label class="control-label col-md-1" for="comp_group">
-	    <a ng-click="addField()" ng-show="$last" href="">
-	    	<span class="glyphicon glyphicon-plus"></span>
-	    	További
-	   	</a>
-   	</label>  
 
-    <label class="control-label col-md-1" ng-show="$index > 0" for="comp_group">
-	    <a ng-click="removeField()" ng-show="$last" href="">
-	    	<span class="glyphicon glyphicon-minus"></span>
-	    	Eltávolít
-	   	</a>
-   	</label>
+    <label 
+        class="control-label col-md-2" 
+        for="comp_symbol">
+
+        Szimbólum:
+     </label>
+
+    <div 
+        id="comp_symbol" 
+        class="col-md-10">
+
+        <input 
+            class="form-control" 
+            type="text" 
+            ng-model="comp_group.comp.symbol" 
+            placeholder="Szimbólum">
+        </input>
+    </div>
+
+
+
+    <label 
+        class="control-label col-md-2" 
+        for="comp_symbol_type">
+
+        Szimbólum (érték):
+     </label>
+
+    <div 
+        id="comp_symbol_type" 
+        class="col-md-10">
+
+        <select 
+            class="form-control" 
+            ng-model="comp_group.comp.symbol_type" >
+            
+            <option value="" disabled selected>Érték (szimbólum)</option>
+            <option value="sazbály">sazbály</option>
+            <option value="tendencia">tendencia</option>
+
+        </select>  
+    </div>
+
+
+
+
+    <label 
+        class="control-label col-md-2" 
+        for="comp_limit">
+
+        Határ
+     </label>
+
+    <div 
+        id="comp_limit" 
+        class="col-md-10">
+
+        <select 
+            class="form-control" 
+            ng-model="comp_group.comp.limit" >
+            
+            <option value="" disabled selected>Határ</option>
+            <option ng-repeat="comp in selectComp" value="{{comp}}">{{comp}}</option>
+
+        </select>  
+    </div>
+
+
+
+
+
+    <label 
+        class="control-label col-md-2" 
+        for="comp_limit_type">
+
+        Határ (érték):
+     </label>
+
+    <div 
+        id="comp_limit_type" 
+        class="col-md-10">
+
+        <select 
+            class="form-control" 
+            ng-model="comp_group.comp.limit_type" >
+            
+            <option value="" disabled selected>Határ (érték)</option>
+            <option value="előtte">előtte</option>
+            <option value="utána">utána</option>
+
+        </select>  
+    </div>
+
+
+
+
+
+    <label 
+        class="control-label col-md-2" 
+        for="comp_count">
+
+        Darab:
+     </label>
+
+    <div 
+        id="comp_count" 
+        class="col-md-10">
+
+    <input 
+        class="form-control" 
+        type="number" 
+        ng-model="comp_group.comp.count" 
+        min=0>
+    </input>  
+    </div>
+
+
+</div>
+
+
+    <div class="form-group">    
+        <label class="control-label col-md-1" for="comp_group">
+    	    <a ng-click="addField()" ng-show="$last" href="">
+    	    	<span class="glyphicon glyphicon-plus"></span>
+    	    	További
+    	   	</a>
+       	</label>  
+
+        <label class="control-label col-md-1" ng-show="$index > 0" for="comp_group">
+    	    <a ng-click="removeField()" ng-show="$last" href="">
+    	    	<span class="glyphicon glyphicon-minus"></span>
+    	    	Eltávolít
+    	   	</a>
+       	</label>
+    </div>
 
 </div>
 
