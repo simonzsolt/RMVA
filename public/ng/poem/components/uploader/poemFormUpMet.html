@@ -17,9 +17,9 @@
 <!-- Nem metrumváltó -->
 
 	<!-- Egy összetevő -->
-<div class="form-group"  ng-repeat="comp_group in vers.metrum">
+<div class="form-group"  ng-repeat="comp_group in vers.metrum" ng-init="compIn = $index">
 
-<h3> Összetevő #{{ $index +1 }}:</h3>
+    <h3> Összetevő #{{ $index +1 }}:</h3>
 
     <div class="form-group">
         <label  class="control-label col-md-2" for="comp_group">
@@ -113,12 +113,16 @@
     </div>
 
 <!--============================== PART ==============================-->
+    <div 
+        class="form-group" 
+        ng-repeat="compPart in comp_group.comp.comp_part" 
+        ng-init="partIn = $index">
 
-    <div class="form-group" ng-repeat="x in vers.metrum.myPart">
+   
 
-        <h3>Részösszetevő #{{ $index+1 }}  </h3>
+        <h3>Részösszetevő #{{ $parent.$index+1 }}.{{ $index+1 }}  </h3>
          <div class="form-group">
-            <label 
+            <label
                 class="control-label col-md-2" 
                 for="comp_symbol">
 
@@ -132,7 +136,7 @@
                 <input 
                     class="form-control" 
                     type="text" 
-                    ng-model="x.part.symbol" 
+                    ng-model="compPart.symbol" 
                     placeholder="Szimbólum">
                 </input>
             </div>
@@ -153,7 +157,7 @@
 
                 <select 
                     class="form-control" 
-                    ng-model="partComp.comp.part.symbol_type" >
+                    ng-model="compPart.symbol_type" >
                     
                     <option value="" disabled selected>Érték (szimbólum)</option>
                     <option value="sazbály">sazbály</option>
@@ -179,7 +183,7 @@
 
                 <select 
                     class="form-control" 
-                    ng-model="partComp.part.comp.limit" >
+                    ng-model="compPart.limit" >
                     
                     <option value="" disabled selected>Határ</option>
                     <option ng-repeat="comp in selectComp" value="{{comp}}">{{comp}}</option>
@@ -204,7 +208,7 @@
 
                 <select 
                     class="form-control" 
-                    ng-model="partComp.comp.part.limit_type" >
+                    ng-model="compPart.limit_type" >
                     
                     <option value="" disabled selected>Határ (érték)</option>
                     <option value="előtte">előtte</option>
@@ -231,28 +235,22 @@
                 <input 
                     class="form-control" 
                     type="number" 
-                    ng-model="partComp.comp.part.count" 
+                    ng-model="compPart.count" 
                     min=0>
                 </input>  
             </div>
         </div>
 
-
-        <label class="control-label col-md-2" for="part">
-            <a ng-click="addFieldPart()" ng-show="$last" href="">
+        <label class="control-label col-md-2" for="comp_group">
+            <a ng-click="addFieldPart(compIn, partIn)" ng-show="$last" href="">
                 <span class="glyphicon glyphicon-plus"></span>
                 Részösszetevő hozzáadása 
             </a>
         </label>  
 
-        <label class="control-label col-md-2" ng-show="$index > 0" for="part">
-            <a ng-click="removeFieldPart()" ng-show="$last" href="">
-                <span class="glyphicon glyphicon-minus"></span>
-                Részösszetevő eltávolítása
-            </a>
-        </label>
-
     </div>
+
+         
 
        
 
@@ -265,12 +263,11 @@
         </label>  
 
          <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-            <a ng-click="removeFieldPart()" ng-show="$last" href="">
+            <a ng-click="removeField()" ng-show="$last" href="">
                 <span class="glyphicon glyphicon-minus"></span>
                 Összetevő eltávolítása
             </a>
         </label>
-
 
 
 </div>
@@ -278,9 +275,7 @@
 
 
 <div class="col-md-10">
-	<p>vers.metrum: {{ vers.metrum }} </p>
+	<pre ng-bind="vers.metrum | json"></pre >
 </div>
  
 
-
-</div>

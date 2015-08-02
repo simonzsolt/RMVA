@@ -78,10 +78,39 @@ angular
 		        }; // $scope.vers
 
 
-		        $scope.vers.metrum = [{}];
+		        $scope.vers.metrum = [{
+
+				    comp: {
+				        name:          '',
+				        comp_type:     '',
+				        quality:       '',
+				        rep:           '',
+				        comp_part: [{ 
+				                symbol:        '',
+				                symbol_type:   '',
+				                limit:         '',
+				                limit_type:    '',
+				                count:         ''  
+				        }]
+				    }
+				}];
 
 		        $scope.addField = function addField () {
-					$scope.vers.metrum.push({});
+					$scope.vers.metrum.push({
+						comp: {
+					        name:          '',
+					        comp_type:     '',
+					        quality:       '',
+					        rep:           '',
+					        comp_part: [{ 
+					                symbol:        '',
+					                symbol_type:   '',
+					                limit:         '',
+					                limit_type:    '',
+					                count:         ''  
+					        }]
+					    }
+					});
 					// console.log($scope.vers.metrum.comp);
 				}
 
@@ -107,17 +136,19 @@ angular
 					});
 				};
 
-				$scope.vers.metrum.myPart = [{}];
-
-				$scope.addFieldPart = function addFieldPart () {
-					$scope.vers.metrum.myPart.push({});
-					// console.log($scope.vers.metrum.myPart);
-				}
-
-				$scope.removeFieldPart = function removeFieldPart () {
-					var lastItem = $scope.vers.metrum.myPart.length -1;
-					$scope.vers.metrum.myPart.splice(lastItem);
-				}
+				$scope.addFieldPart = function(compIn, partIn){
+					// console.log('compIn: ' + compIn + ' partIn: ' + partIn);
+					$scope.vers.metrum[compIn].comp.comp_part.push({ 
+			                symbol:        '',
+			                symbol_type:   '',
+			                limit:         '',
+			                limit_type:    '',
+			                count:         ''  
+			        });
+					// console.log('$scope.vers.metrum[compIn].comp.comp_part[partIn]: ' +
+						// $scope.vers.metrum[compIn].comp.comp_part[partIn]);
+					
+				};
 
 
 

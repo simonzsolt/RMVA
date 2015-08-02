@@ -60,7 +60,13 @@ var metrumObj = {
         comp_type:     String,
         quality:       String,
         rep:           String,
-        myPart:          [{part: {symbol: String } }]
+        comp_part: [{ 
+                symbol:        String,
+                symbol_type:   String,
+                limit:         String,
+                limit_type:    String,
+                count:         Number  
+        }]
     }
 };
 
