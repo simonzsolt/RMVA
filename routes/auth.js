@@ -18,7 +18,7 @@ router.route('/auth')
             { 
                 username:   req.body.username,
                 nickname:   req.body.nickname,
-                first_name:  req.body.first_name,
+                first_name: req.body.first_name,
                 last_name:  req.body.last_name,
                 created_at: Date.now(),
                 role:       req.body.role

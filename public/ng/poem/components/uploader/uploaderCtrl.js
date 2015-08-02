@@ -17,6 +17,14 @@ angular
 		    	$rootScope.data = poemFactory.query();
 
 		    	$scope.selectDate = '';
+
+		    	$scope.selectComp = [
+			    	'beszédhang', 
+					'szótag', 
+					'morféma', 
+					'szintagma', 
+					'mondat'
+				];
 		    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
@@ -48,7 +56,10 @@ angular
 		            signo_forename: '',
 
 		            lenght: '', 
-		            lenght_unit: '', 
+		            lenght_unit: '',
+
+		            metrum: '',
+
 		            col: '', 
 		            date: '', 
 		            date_info: '', 
@@ -65,6 +76,81 @@ angular
 		            mod_by: '' 
 
 		        }; // $scope.vers
+
+
+		        $scope.vers.metrum = [{
+
+				    comp: {
+				        name:          '',
+				        comp_type:     '',
+				        quality:       '',
+				        rep:           '',
+				        comp_part: [{ 
+				                symbol:        '',
+				                symbol_type:   '',
+				                limit:         '',
+				                limit_type:    '',
+				                count:         ''  
+				        }]
+				    }
+				}];
+
+		        $scope.addField = function addField () {
+					$scope.vers.metrum.push({
+						comp: {
+					        name:          '',
+					        comp_type:     '',
+					        quality:       '',
+					        rep:           '',
+					        comp_part: [{ 
+					                symbol:        '',
+					                symbol_type:   '',
+					                limit:         '',
+					                limit_type:    '',
+					                count:         ''  
+					        }]
+					    }
+					});
+				}
+
+				$scope.removeField = function removeField () {
+					var lastItem = $scope.vers.metrum.length -1;
+					$scope.vers.metrum.splice(lastItem, 1);
+				}
+
+				$scope.compTypeNum = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.comp_type == 'szám'){
+							delete $scope.vers.metrum[index].comp.quality;
+							delete $scope.vers.metrum[index].comp.rep;
+						}
+					});
+				};
+
+				$scope.qualityPartial = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.quality == 'teljes'){
+							delete $scope.vers.metrum[index].comp.rep;
+						}
+					});
+				};
+
+				$scope.addFieldPart = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part.push({ 
+			                symbol:        '',
+			                symbol_type:   '',
+			                limit:         '',
+			                limit_type:    '',
+			                count:         ''  
+			        });
+					
+				};
+
+				$scope.removeFieldPart = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				};
+
+
 
 
 		// _____________________________CREATE NEW VERS_____________________________
@@ -105,6 +191,9 @@ angular
 
 				                    lenght: '', 
 				                    lenght_unit: '', 
+
+				                    metrum: '',
+
 				                    col: '', 
 				                    date: '', 
 				                    date_info: '', 

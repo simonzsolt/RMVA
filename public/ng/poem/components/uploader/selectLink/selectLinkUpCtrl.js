@@ -4,6 +4,7 @@ angular
 		.controller('selectLinkUpCtrl', function($scope, $resource, $routeParams){
 
 			$scope.array = [];
+
 			var data = $resource('/data/:id', {id: '@_id'});
 			var allData = data.query(function(){	
 				angular.forEach(allData, function(value, index){			

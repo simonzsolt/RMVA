@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
+var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
 
+// session storage connection
 // var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
 
-var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -15,8 +16,7 @@ var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(er
 
 autoIncrement.initialize(connection);
 
-// var poemConnections = new Schema({ link: Number });
-
+// =====================================Date model==================================
 
 var dateObj = {
 
@@ -44,26 +44,42 @@ var dateObj = {
     },
 };
 
-// var periodObj = {
-//     from:   dateObj,
-//     to:     dateObj    
-// };
-/*
-var date = {
+// =====================================Metric model==================================
 
-    single: dateObj,
 
-    period: {
+var comp_part = {
 
-        from: dateObj,
-        to:   dateObj
+    symbol:        String,
+    symbol_type:   String,
+    limit:         String,
+    limit_type:    String,
+    count:         Number
+}
+
+
+var metrumObj = {
+
+    comp: {
+        name:          String,
+        comp_type:     String,
+        quality:       String,
+        rep:           String,
+        comp_part: [{ 
+                symbol:        String,
+                symbol_type:   String,
+                limit:         String,
+                limit_type:    String,
+                count:         Number  
+        }]
     }
 };
 
-*/
 
+// =====================================POEM SCHEMA==================================
 
 var versSchema = new mongoose.Schema({
+
+    // ==============================TEXTOLOGY===============================
 
     rmva:       { type: 'number', unique: true }, // rmva azonosító 
     inc:        String, // incipit
@@ -104,7 +120,6 @@ var versSchema = new mongoose.Schema({
         }
     },
 
-    // period: periodObj,
     
     date_info:  String, // honnan tudjuk? - SELECT!
     place:      String, // keletekzés helye
@@ -124,7 +139,12 @@ var versSchema = new mongoose.Schema({
         {
             type: Date
         }, // utolsó módosítás
+
     mod_by:     String, // módosító felhasználóneve - USER API!
+
+    // ==============================METRUM===============================
+
+    metrum: [ metrumObj ]
 });
 
 versSchema.plugin(autoIncrement.plugin, {
