@@ -111,12 +111,11 @@ angular
 					        }]
 					    }
 					});
-					// console.log($scope.vers.metrum.comp);
 				}
 
 				$scope.removeField = function removeField () {
 					var lastItem = $scope.vers.metrum.length -1;
-					$scope.vers.metrum.splice(lastItem);
+					$scope.vers.metrum.splice(lastItem, 1);
 				}
 
 				$scope.compTypeNum = function(){
@@ -137,7 +136,6 @@ angular
 				};
 
 				$scope.addFieldPart = function(compIn, partIn){
-					// console.log('compIn: ' + compIn + ' partIn: ' + partIn);
 					$scope.vers.metrum[compIn].comp.comp_part.push({ 
 			                symbol:        '',
 			                symbol_type:   '',
@@ -145,9 +143,11 @@ angular
 			                limit_type:    '',
 			                count:         ''  
 			        });
-					// console.log('$scope.vers.metrum[compIn].comp.comp_part[partIn]: ' +
-						// $scope.vers.metrum[compIn].comp.comp_part[partIn]);
 					
+				};
+
+				$scope.removeFieldPart = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
 				};
 
 
