@@ -25,7 +25,8 @@ router.route('/data')
 
             console.log('authenticated: ' + req.user.username);
 
-            var vers  = new Vers(); // cahnged vers to vers
+            var vers  = new Vers();
+
             vers.rmva = req.body.rmva;
             vers.inc  = req.body.inc;
 
@@ -176,16 +177,6 @@ router.route('/data/:rmva')
                 vers.col = req.body.col;
 
                 vers.date = req.body.date;
-
-                // vers.period = req.body.period;
-
-                // vers.date.exact_date = req.body.date.exact_date;
-                // vers.date.year       = req.body.date.year;    
-                // vers.date.month      = req.body.date.month;   
-                // vers.date.day        = req.body.date.day;    
-                // vers.date.cent       = req.body.date.cent;    
-                // vers.date.fest       = req.body.date.fest;   
-                // vers.date.approx     = req.body.date.approx;
 
                 vers.date_info = req.body.date_info;
                 vers.place = req.body.place;
