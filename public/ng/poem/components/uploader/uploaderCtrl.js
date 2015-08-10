@@ -90,7 +90,7 @@ angular
 				                symbol_type:   '',
 				                limit:         '',
 				                limit_type:    '',
-				                count:         ''  
+				                count:         [{ level: '' }]  
 				        }]
 				    }
 				}];
@@ -107,7 +107,7 @@ angular
 					                symbol_type:   '',
 					                limit:         '',
 					                limit_type:    '',
-					                count:         ''  
+					                count:         [{ level: '' }]  
 					        }]
 					    }
 					});
@@ -135,19 +135,31 @@ angular
 					});
 				};
 
+				// $scope.
+
 				$scope.addFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.push({ 
 			                symbol:        '',
 			                symbol_type:   '',
 			                limit:         '',
 			                limit_type:    '',
-			                count:         ''  
+			                count:         [{ level: '' }]  
 			        });
 					
 				};
 
 				$scope.removeFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				};
+
+				$scope.addFieldCount = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.push({
+						level: ''
+					});
+				};	
+
+				$scope.removeFieldCount = function(compIn, partIn, countIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.splice(countIn, 1);
 				};
 
 

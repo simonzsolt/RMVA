@@ -65,7 +65,7 @@ var metrumObj = {
                 symbol_type:   String,
                 limit:         String,
                 limit_type:    String,
-                count:         Number  
+                count:         [{ level: Number }]  
         }]
     }
 };

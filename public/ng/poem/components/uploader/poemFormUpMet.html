@@ -218,28 +218,59 @@
             </div>
         </div>
 
+        <h4>Darab</h4>
 
-
-         <div class="form-group">
-            <label 
-                class="control-label col-md-2" 
-                for="comp_count">
-
-                Darab:
-             </label>
+        <div class="form-group">
 
             <div 
-                id="comp_count" 
-                class="col-md-10">
+                ng-repeat="count in compPart.count"
+                ng-init="countIn = $index">
+                <label 
+                    class="control-label col-md-2" 
+                    for="comp_count">
 
-                <input 
-                    class="form-control" 
-                    type="number" 
-                    ng-model="compPart.count" 
-                    min=0>
-                </input>  
+                    Szint# {{ $index +1 }}:
+                 </label>
+
+                <div 
+                    id="comp_count" 
+                    class="col-md-10">
+
+                    <input 
+                        class="form-control" 
+                        type="number" 
+                        ng-model="count.level" 
+                        min=0>
+                    </input>  
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-md-2" for="comp_group">
+                        <a ng-click="addFieldCount(compIn, partIn, countIn)" 
+                            ng-show="$last" href="">
+                           
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Szint hozzáadása 
+                        </a>
+                    </label> 
+
+                    <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
+                        <a ng-click="removeFieldCount(compIn, partIn, countIn)" 
+                            ng-show="$last" href="">
+                           
+                            <span class="glyphicon glyphicon-minus"></span>
+                            Szint eltávolítása
+                        </a>
+                    </label>
+
+                </div>
+
             </div>
+
         </div>
+
+       
 
         <label class="control-label col-md-2" for="comp_group">
             <a ng-click="addFieldPart(compIn, partIn)" ng-show="$last" href="">
@@ -275,10 +306,9 @@
 </div>
 
 
-<!-- 
+
 
 <div class="col-md-10">
 	<pre ng-bind="vers.metrum | json"></pre >
 </div>
  
- -->
