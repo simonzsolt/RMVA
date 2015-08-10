@@ -86,11 +86,17 @@ angular
 				        quality:       '',
 				        rep:           '',
 				        comp_part: [{ 
-				                symbol:        '',
-				                symbol_type:   '',
-				                limit:         '',
-				                limit_type:    '',
-				                count:         ''  
+				                symbols:       [{
+				                	symbol: '',
+				                	symbol_type:   ''
+				                }],
+				                
+				                limits: [{
+				                	limit:         '',
+				               		limit_type:    '',
+				                }],
+
+				                count:         [{ level: '' }]  
 				        }]
 				    }
 				}];
@@ -103,11 +109,16 @@ angular
 					        quality:       '',
 					        rep:           '',
 					        comp_part: [{ 
-					                symbol:        '',
-					                symbol_type:   '',
-					                limit:         '',
-					                limit_type:    '',
-					                count:         ''  
+					                symbols:       [{
+					                	symbol: '',
+					                	symbol_type:   ''
+					                }],
+
+					                limits: [{
+					                	limit:         '',
+					               		limit_type:    '',
+					                }],
+					                count:         [{ level: '' }]  
 					        }]
 					    }
 					});
@@ -135,19 +146,60 @@ angular
 					});
 				};
 
+				// $scope.
+
 				$scope.addFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.push({ 
-			                symbol:        '',
-			                symbol_type:   '',
-			                limit:         '',
-			                limit_type:    '',
-			                count:         ''  
+			               symbols: [{
+			                	symbol: '',
+			                	symbol_type:   ''
+			                }],
+
+			               	limits: [{
+			                	limit:         '',
+			               		limit_type:    '',
+			                }],
+
+			                count:         [{ level: '' }]  
 			        });
 					
 				};
 
 				$scope.removeFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				};
+
+				$scope.addFieldSymbol = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.push({
+						symbol: '', symbol_type:   ''
+					});
+				};
+
+				$scope.removeFieldSymbol = function(compIn, partIn, symbolIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.splice(symbolIn, 1);
+				};
+
+				
+				$scope.addFieldLimit = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.push({
+						limit: '', limit_type: '',
+					});
+				};
+
+				$scope.removeFieldLimit = function(compIn, partIn, limitIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.splice(limitIn, 1);
+				};
+
+			
+
+				$scope.addFieldCount = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.push({
+						level: ''
+					});
+				};	
+
+				$scope.removeFieldCount = function(compIn, partIn, countIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.splice(countIn, 1);
 				};
 
 
