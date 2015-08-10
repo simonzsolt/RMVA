@@ -86,8 +86,11 @@ angular
 				        quality:       '',
 				        rep:           '',
 				        comp_part: [{ 
-				                symbol:        '',
-				                symbol_type:   '',
+				                symbols:       [{
+				                	symbol: '',
+				                	symbol_type:   ''
+				                }],
+				                
 				                limit:         '',
 				                limit_type:    '',
 				                count:         [{ level: '' }]  
@@ -103,8 +106,11 @@ angular
 					        quality:       '',
 					        rep:           '',
 					        comp_part: [{ 
-					                symbol:        '',
-					                symbol_type:   '',
+					                symbols:       [{
+					                	symbol: '',
+					                	symbol_type:   ''
+					                }],
+
 					                limit:         '',
 					                limit_type:    '',
 					                count:         [{ level: '' }]  
@@ -139,8 +145,11 @@ angular
 
 				$scope.addFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.push({ 
-			                symbol:        '',
-			                symbol_type:   '',
+			               symbols: [{
+			                	symbol: '',
+			                	symbol_type:   ''
+			                }],
+
 			                limit:         '',
 			                limit_type:    '',
 			                count:         [{ level: '' }]  
@@ -150,6 +159,17 @@ angular
 
 				$scope.removeFieldPart = function(compIn, partIn){
 					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				};
+
+
+				$scope.removeFieldSymbol = function(compIn, partIn, symbolIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.splice(symbolIn, 1);
+				};
+
+				$scope.addFieldSymbol = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.push({
+						symbol: '', symbol_type:   ''
+					});
 				};
 
 				$scope.addFieldCount = function(compIn, partIn){
