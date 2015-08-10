@@ -17,7 +17,7 @@
 <!-- Nem metrumváltó -->
 
 	<!-- Egy összetevő -->
-<div class="form-group"  ng-repeat="comp_group in vers.metrum" ng-init="compIn = $index">
+<div  ng-repeat="comp_group in vers.metrum" ng-init="compIn = $index">
 
     <h3> Összetevő #{{ $index +1 }}:</h3>
 
@@ -113,8 +113,8 @@
     </div>
 
 <!--============================== PART ==============================-->
-    <div 
-        class="form-group" 
+
+    <div
         ng-repeat="compPart in comp_group.comp.comp_part" 
         ng-init="partIn = $index">
 
@@ -271,23 +271,25 @@
         </div>
 
        
+        <div class="form-group">
+            <label class="control-label col-md-2" for="comp_group">
+                <a ng-click="addFieldPart(compIn, partIn)" ng-show="$last" href="">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Részösszetevő hozzáadása 
+                </a>
+            </label>  
 
-        <label class="control-label col-md-2" for="comp_group">
-            <a ng-click="addFieldPart(compIn, partIn)" ng-show="$last" href="">
-                <span class="glyphicon glyphicon-plus"></span>
-                Részösszetevő hozzáadása 
-            </a>
-        </label>  
-
-        <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-            <a ng-click="removeFieldPart(compIn, partIn)" ng-show="$last" href="">
-                <span class="glyphicon glyphicon-minus"></span>
-                Részösszetevő eltávolítása
-            </a>
-        </label>
+            <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
+                <a ng-click="removeFieldPart(compIn, partIn)" ng-show="$last" href="">
+                    <span class="glyphicon glyphicon-minus"></span>
+                    Részösszetevő eltávolítása
+                </a>
+            </label>
+        </div>
 
     </div>
 
+    <div class="form-group">
         <label class="control-label col-md-2" for="comp_group">
             <a ng-click="addField()" ng-show="$last" href="">
                 <span class="glyphicon glyphicon-plus"></span>
@@ -301,14 +303,15 @@
                 Összetevő eltávolítása
             </a>
         </label>
-
+    </div>
 
 </div>
 
 
 
-
-<div class="col-md-10">
+<!-- 
+<div class=" form-group col-md-10">
 	<pre ng-bind="vers.metrum | json"></pre >
 </div>
  
+ -->
