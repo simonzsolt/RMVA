@@ -80,12 +80,83 @@ angular
 
 		        $scope.vers.metrum = [{
 
-				    comp: {
-				        name:          '',
-				        comp_type:     '',
-				        quality:       '',
-				        rep:           '',
-				        comp_part: [{ 
+		        	parts: {
+
+			        	part_range: '',
+
+			        	part: [{
+
+							comp: {
+						        name:          '',
+						        comp_type:     '',
+						        quality:       '',
+						        rep:           '',
+						        comp_part: [{ 
+					                symbols:       [{
+					                	symbol: '',
+					                	symbol_type:   ''
+					                }],
+					                
+					                limits: [{
+					                	limit:         '',
+					               		limit_type:    '',
+					                }],
+
+					                count: [{ level: '' }]  
+						        }]
+					    	}
+			        	}]
+					}
+				}];
+
+				// $scope.metrumChange = false;
+
+		        $scope.addPart = function addPart () {
+					$scope.vers.metrum.push({
+						parts: {
+
+				        	part_range: '',
+
+				        	part: [{
+
+								comp: {
+							        name:          '',
+							        comp_type:     '',
+							        quality:       '',
+							        rep:           '',
+							        comp_part: [{ 
+						                symbols:       [{
+						                	symbol: '',
+						                	symbol_type:   ''
+						                }],
+						                
+						                limits: [{
+						                	limit:         '',
+						               		limit_type:    '',
+						                }],
+
+						                count: [{ level: '' }]  
+							        }]
+						    	}
+				        	}]
+						}
+					});
+				};
+
+				$scope.removePart = function removePart () {
+					var lastItem = $scope.vers.metrum.length -1;
+					$scope.vers.metrum.splice(lastItem, 1);
+				};
+
+
+				$scope.addComp = function addComp (metrumIn) {
+					$scope.vers.metrum[metrumIn].parts.part.push({
+						comp: {
+					        name:          '',
+					        comp_type:     '',
+					        quality:       '',
+					        rep:           '',
+					        comp_part: [{ 
 				                symbols:       [{
 				                	symbol: '',
 				                	symbol_type:   ''
@@ -96,83 +167,44 @@ angular
 				               		limit_type:    '',
 				                }],
 
-				                count:         [{ level: '' }]  
-				        }]
-				    }
-				}];
-
-		        $scope.addField = function addField () {
-					$scope.vers.metrum.push({
-						comp: {
-					        name:          '',
-					        comp_type:     '',
-					        quality:       '',
-					        rep:           '',
-					        comp_part: [{ 
-					                symbols:       [{
-					                	symbol: '',
-					                	symbol_type:   ''
-					                }],
-
-					                limits: [{
-					                	limit:         '',
-					               		limit_type:    '',
-					                }],
-					                count:         [{ level: '' }]  
+				                count: [{ level: '' }]  
 					        }]
-					    }
-					});
-				}
-
-				$scope.removeField = function removeField () {
-					var lastItem = $scope.vers.metrum.length -1;
-					$scope.vers.metrum.splice(lastItem, 1);
-				}
-
-				$scope.compTypeNum = function(){
-					angular.forEach($scope.vers.metrum ,function(value, index){
-						if(value.comp.comp_type == 'szám'){
-							delete $scope.vers.metrum[index].comp.quality;
-							delete $scope.vers.metrum[index].comp.rep;
-						}
-					});
+				    	}
+					}) 
 				};
 
-				$scope.qualityPartial = function(){
-					angular.forEach($scope.vers.metrum ,function(value, index){
-						if(value.comp.quality == 'teljes'){
-							delete $scope.vers.metrum[index].comp.rep;
-						}
-					});
+				$scope.removeComp = function removeComp (metrumIn, partIn) {
+					$scope.vers.metrum[metrumIn].parts.part.splice(partIn, 1);
 				};
 
-				// $scope.
-
-				$scope.addFieldPart = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part.push({ 
-			               symbols: [{
+				$scope.addCompPart = function addCompPart (metrumIn, partIn) {
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part.push({
+						
+						symbols: [{
 			                	symbol: '',
 			                	symbol_type:   ''
 			                }],
-
-			               	limits: [{
+			                
+			                limits: [{
 			                	limit:         '',
 			               		limit_type:    '',
 			                }],
 
-			                count:         [{ level: '' }]  
-			        });
-					
+			                count: [{ level: '' }]  
+					})
 				};
 
-				$scope.removeFieldPart = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				$scope.removeCompPart = function removeCompPart (metrumIn, partIn, compPartIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part.splice(
+						compPartIn, 1
+					)
 				};
 
-				$scope.addFieldSymbol = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.push({
+				$scope.addFieldSymbol = function addFieldSymbol (metrumIn, partIn, compPartIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].symbols.push({
 						symbol: '', symbol_type:   ''
 					});
+					console.log('partIn: ' + partIn);
 				};
 
 				$scope.removeFieldSymbol = function(compIn, partIn, symbolIn){
@@ -201,6 +233,52 @@ angular
 				$scope.removeFieldCount = function(compIn, partIn, countIn){
 					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.splice(countIn, 1);
 				};
+
+
+
+				/*TODO: DELETE HIDDEN FIELDS!!!*/
+/*
+				$scope.compTypeNum = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.comp_type == 'szám'){
+							delete $scope.vers.metrum[index].comp.quality;
+							delete $scope.vers.metrum[index].comp.rep;
+						}
+					});
+				};
+
+				$scope.qualityPartial = function(){
+					angular.forEach($scope.vers.metrum ,function(value, index){
+						if(value.comp.quality == 'teljes'){
+							delete $scope.vers.metrum[index].comp.rep;
+						}
+					});
+				};
+*/
+				// $scope.
+
+				$scope.addFieldPart = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part.push({ 
+			               symbols: [{
+			                	symbol: '',
+			                	symbol_type:   ''
+			                }],
+
+			               	limits: [{
+			                	limit:         '',
+			               		limit_type:    '',
+			                }],
+
+			                count:         [{ level: '' }]  
+			        });
+					
+				};
+
+				$scope.removeFieldPart = function(compIn, partIn){
+					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
+				};
+
+				
 
 
 
