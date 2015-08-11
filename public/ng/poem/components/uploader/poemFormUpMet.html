@@ -143,13 +143,13 @@
 
             <div ng-repeat="comp_part in part.comp.comp_part" ng-init="compPartIn = $index">
                 
-                <h3>Részösszetevő #{{ metrumIn +1 }}.{{ compPartIn +1 }}  </h3>
+                <h3>Részösszetevő #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}  </h3>
 
 
 
-                <div ng-repeat="symbols in comp_part.symbols" ng-init="symbolIn = $index">
+                <div ng-repeat="symbols in comp_part.symbols" ng-init="symbolIn = $index; partnIn=$parent.$parent.$index">
                     
-                    <h4>Szimbólumok #{{ metrumIn +1 }}.{{ PartIn +1 }}.{{ compPartIn +1 }}.{{symbolIn +1}}</h4>
+                    <h4>Szimbólumok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ symbolIn +1 }}</h4>
             
                     <div class="form-group">
 
@@ -213,7 +213,7 @@
                         </label> 
 
                         <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                            <a ng-click="removeFieldSymbol(compIn, partIn, limitIn)" 
+                            <a ng-click="removeFieldSymbol(metrumIn, partIn, compPartIn, symbolIn)" 
                                 ng-show="$last" href="">
                                
                                 <span class="glyphicon glyphicon-minus"></span>
@@ -228,9 +228,9 @@
 
               
 
-                <div ng-repeat="limits in comp_part.limits" ng-init="limitIn = $index">
+                <div ng-repeat="limits in comp_part.limits" ng-init="limitIn = $index; partnIn=$parent.$parent.$index">
                     
-                    <h4>Határok #{{ compIn +1 }}.{{ compPartIn +1 }}.{{ limitIn +1 }}</h4>
+                    <h4>Határok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ limitIn +1 }}</h4>
             
                     <div class="form-group">
 
@@ -296,7 +296,7 @@
                         </label> 
 
                         <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                            <a ng-click="removeFieldLimit(compIn, partIn, limitIn)" 
+                            <a ng-click="removeFieldLimit(metrumIn, partIn, compPartIn, limitIn)" 
                                 ng-show="$last" href="">
                                
                                 <span class="glyphicon glyphicon-minus"></span>
@@ -308,12 +308,12 @@
 
                 </div> <!-- repeat limits -->
 
-                <h4>Darab #{{ compIn +1 }}.{{ compPartIn +1 }}</h4>
+                <h4 ng-init="partnIn=$parent.$parent.$index">
+                    Darab #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}
+                </h4>
 
                 <div ng-repeat="count in comp_part.count" ng-init="countIn = $index">
 
-
-                   
 
                     <div>
 
@@ -353,7 +353,7 @@
                                 class="control-label col-md-2" 
                                 ng-show="$index > 0" for="comp_group">
                                 <a 
-                                    ng-click="removeFieldCount(metrumIn, partIn, compPartIn)" 
+                                    ng-click="removeFieldCount(metrumIn, partIn, compPartIn, countIn)" 
                                     ng-show="$last" href="">
                                    
                                     <span class="glyphicon glyphicon-minus"></span>
@@ -386,14 +386,6 @@
                         </a>
                     </label>
                 </div>
-<!-- 
-                <h2>Integers (compPart rep)</h2>
-                <p>metrumIn:    {{ metrumIn     }}  </p>
-                <p>partIn:      {{ partIn       }}  </p>
-                <p>compPartIn:  {{ compPartIn   }}  </p>
-                <p>symbolIn:    {{ symbolIn     }}  </p>
-
- -->
             </div> <!-- repeat comp_part -->
 
             <div class="form-group">
@@ -411,13 +403,6 @@
                     </a>
                 </label>
             </div>
-<!-- 
-            <h2>Integers (part rep)</h2>
-            <p>metrumIn:    {{ metrumIn     }}  </p>
-            <p>partIn:      {{ partIn       }}  </p>
-            <p>compPartIn:  {{ compPartIn   }}  </p>
-            <p>symbolIn:    {{ symbolIn     }}  </p>
- -->
         </div> <!-- repeat part -->
 
 
@@ -436,13 +421,6 @@
                 </a>
             </label>
         </div>
-<!-- 
-        <h2>Integers (metrum rep)</h2>
-        <p>metrumIn:    {{ metrumIn     }}  </p>
-        <p>PartIn:      {{ PartIn       }}  </p>
-        <p>compPartIn:  {{ compPartIn   }}  </p>
-        <p>symbolIn:    {{ symbolIn     }}  </p>
- -->
 
     </div> <!-- repeat metrum -->
 </div> <!-- form-group -->

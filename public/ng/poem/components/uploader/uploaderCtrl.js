@@ -77,6 +77,10 @@ angular
 
 		        }; // $scope.vers
 
+// ============================ADD AND REMOVE FILEDS============================
+
+// Hierarchy of repeat indexes
+// metrumIn > partIn > compPartIn > symbolIn, limitIn, countIn
 
 		        $scope.vers.metrum = [{
 
@@ -109,8 +113,10 @@ angular
 					}
 				}];
 
+
 				// $scope.metrumChange = false;
 
+				// add Part fieldset to form
 		        $scope.addPart = function addPart () {
 					$scope.vers.metrum.push({
 						parts: {
@@ -143,12 +149,13 @@ angular
 					});
 				};
 
+				// remove Part set from form
 				$scope.removePart = function removePart () {
 					var lastItem = $scope.vers.metrum.length -1;
 					$scope.vers.metrum.splice(lastItem, 1);
 				};
 
-
+				// add Components set to form
 				$scope.addComp = function addComp (metrumIn) {
 					$scope.vers.metrum[metrumIn].parts.part.push({
 						comp: {
@@ -173,10 +180,12 @@ angular
 					}) 
 				};
 
+				// remove Components set from form
 				$scope.removeComp = function removeComp (metrumIn, partIn) {
 					$scope.vers.metrum[metrumIn].parts.part.splice(partIn, 1);
 				};
 
+				// add Subcomponent set to form
 				$scope.addCompPart = function addCompPart (metrumIn, partIn) {
 					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part.push({
 						
@@ -192,62 +201,56 @@ angular
 
 			                count: [{ level: '' }]  
 					})
-					console.log('parts.part: ' +
-						$scope.vers.metrum[metrumIn].parts.part[partIn] + ' partIn: ' + partIn);
 				};
 
+				// remove Subcomponent set from form
 				$scope.removeCompPart = function removeCompPart (metrumIn, partIn, compPartIn){
 					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part.splice(
 						compPartIn, 1
 					)
 				};
 
-				
-/*
-				$scope.addFieldSymbol = function addFieldSymbol (metrumIn, partIn, compPartIn){
-					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].symbols.push({
-						symbol: '', symbol_type:   ''
-					});
-					console.log('parts.part: ' +
-						$scope.vers.metrum[metrumIn].parts.part[partIn] + ' partIn: ' + partIn);
-				};
-
-				$scope.removeFieldSymbol = function(compIn, partIn, symbolIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.splice(symbolIn, 1);
-				};
-*/
-				
+				// add Symbols set to form 
 				$scope.addFieldSymbol = function(metrumIn, partIn, compPartIn){
-					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].symbols.push({
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].symbols.push({
 						symbol: '', symbol_type: '',
 					});
 				};
 
-				/*$scope.removeFieldLimit = function(compIn, partIn, limitIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.splice(limitIn, 1);
-				};*/
+				// remove Symbols set from form
+				$scope.removeFieldSymbol = function(metrumIn, partIn, compPartIn, symbolIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].symbols.splice(symbolIn, 1);
+				};
 
-				
+				// add Limits set to form
 				$scope.addFieldLimit = function(metrumIn, partIn, compPartIn){
-					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].limits.push({
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].limits.push({
 						limit: '', limit_type: '',
 					});
 				};
 
-				/*$scope.removeFieldLimit = function(compIn, partIn, limitIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.splice(limitIn, 1);
+				// remove Limits from field 
+				$scope.removeFieldLimit = function(metrumIn, partIn, compPartIn, limitIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].limits.splice(limitIn, 1);
 				};
-				*/
+				
 			
-
+				// add Counter of levels to form
 				$scope.addFieldCount = function(metrumIn, partIn, compPartIn){
-					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].count.push({
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].count.push({
 						level: ''
 					});
 				};	
 
-				$scope.removeFieldCount = function(compIn, partIn, countIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.splice(countIn, 1);
+				// remove Counter set from form
+				$scope.removeFieldCount = function(metrumIn, partIn, compPartIn, countIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.
+						comp_part[compPartIn].count.splice(countIn, 1);
 				};
 
 
@@ -270,28 +273,8 @@ angular
 					});
 				};
 */
-				// $scope.
 
-				$scope.addFieldPart = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part.push({ 
-			               symbols: [{
-			                	symbol: '',
-			                	symbol_type:   ''
-			                }],
 
-			               	limits: [{
-			                	limit:         '',
-			               		limit_type:    '',
-			                }],
-
-			                count:         [{ level: '' }]  
-			        });
-					
-				};
-
-				$scope.removeFieldPart = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part.splice(partIn, 1);
-				};
 
 				
 
