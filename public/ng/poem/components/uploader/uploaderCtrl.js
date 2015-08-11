@@ -255,24 +255,28 @@ angular
 
 
 				/*TODO: DELETE HIDDEN FIELDS!!!*/
-/*
-				$scope.compTypeNum = function(){
-					angular.forEach($scope.vers.metrum ,function(value, index){
-						if(value.comp.comp_type == 'szám'){
-							delete $scope.vers.metrum[index].comp.quality;
-							delete $scope.vers.metrum[index].comp.rep;
-						}
-					});
+
+				$scope.compTypeNum = function(metrumIn, partIn){
+					angular.forEach($scope.vers.metrum[metrumIn].parts.part[partIn] 
+							,function(value, index){
+								// console.log('value.comp_type: ' + value.comp_type);
+								if(value.comp_type == 'szám'){
+									$scope.vers.metrum[metrumIn].parts.
+										part[partIn].comp.quality = '';
+									$scope.vers.metrum[metrumIn].parts.
+									part[partIn].comp.rep = '';
+								}
+							});
 				};
 
-				$scope.qualityPartial = function(){
+			/*	$scope.qualityPartial = function(){
 					angular.forEach($scope.vers.metrum ,function(value, index){
 						if(value.comp.quality == 'teljes'){
 							delete $scope.vers.metrum[index].comp.rep;
 						}
 					});
-				};
-*/
+				};*/
+
 
 
 
