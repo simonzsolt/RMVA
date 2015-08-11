@@ -269,13 +269,15 @@ angular
 							});
 				};
 
-			/*	$scope.qualityPartial = function(){
-					angular.forEach($scope.vers.metrum ,function(value, index){
-						if(value.comp.quality == 'teljes'){
-							delete $scope.vers.metrum[index].comp.rep;
-						}
+				$scope.qualityPartial = function(metrumIn, partIn){
+					angular.forEach($scope.vers.metrum[metrumIn].parts.part[partIn] 
+						,function(value, index){
+							if(value.quality == 'teljes'){
+								$scope.vers.metrum[metrumIn].parts.
+									part[partIn].comp.rep = '';
+							}
 					});
-				};*/
+				};
 
 
 
