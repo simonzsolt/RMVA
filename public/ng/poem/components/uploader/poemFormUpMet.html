@@ -14,7 +14,7 @@
 </div> 
  -->
 
-<div class="form-group">
+<div>
 
     <div ng-repeat="metrum in vers.metrum" ng-init="metrumIn = $index">
 
@@ -26,13 +26,37 @@
             </label>
 
             <div class="col-md-10">
+                <select 
+                    class="form-control" 
+                    ng-click="rangeMiddle(metrumIn)"
+                    ng-model="metrum.parts.range.non_spec">
+
+                    <option value="" disabled selected>Szakasz</option>
+                    <option value="Vers eleje">Vers eleje</option>
+                    <option value="Vers vége">Vers vége</option>
+                    <option value="Vers közepe">Vers közepe</option>
+                </select>
+            </div>
+
+            <label 
+                class="control-label col-md-2" 
+                for="comp_group"  
+                ng-show="metrum.parts.range.non_spec=='Vers közepe'">
+
+               Szakasz leírása:
+            </label>
+
+            <div 
+                class="col-md-10"  
+                ng-show="metrum.parts.range.non_spec=='Vers közepe'">
                 <input 
                     class="form-control" 
                     type="text" 
-                    ng-model="metrum.parts.part_range" 
-                    placegolder="Szakasz">
+                    ng-model="metrum.parts.range.spec" 
+                    placegolder="Szakasz leírása">
                 </input>
             </div>
+
         </div>
 
         <div ng-repeat="part in metrum.parts.part" ng-init="partIn = $index">
@@ -423,18 +447,20 @@
         </div>
 
     </div> <!-- repeat metrum -->
-</div> <!-- form-group -->
+</div> 
 
 
 
 
+<!-- 
 
-
-<div class="form-group" style="margin-top: 50px; margin-bottom: 50px;">
+<div class="" style="margin-top: 50px; margin-bottom: 50px;">
     <label class="control-label col-md-2" for="text">
         <h2>Nyers json</h2>
     </label> 
     <div class=" form-group col-md-10">
         <pre ng-bind="vers.metrum | json"></pre>
     </div>
-</div>
+</div> 
+
+-->

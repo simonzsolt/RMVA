@@ -86,7 +86,10 @@ angular
 
 		        	parts: {
 
-			        	part_range: '',
+			        	range:{
+					            non_spec: '',
+					            spec: ''
+					        },
 
 			        	part: [{
 
@@ -121,7 +124,10 @@ angular
 					$scope.vers.metrum.push({
 						parts: {
 
-				        	part_range: '',
+				        	range:{
+					            non_spec: '',
+					            spec: ''
+					        },
 
 				        	part: [{
 
@@ -253,8 +259,7 @@ angular
 						comp_part[compPartIn].count.splice(countIn, 1);
 				};
 
-
-				/*TODO: DELETE HIDDEN FIELDS!!!*/
+//========================Epmty fields scope when hidden========================
 
 				$scope.compTypeNum = function(metrumIn, partIn){
 					angular.forEach($scope.vers.metrum[metrumIn].parts.part[partIn] 
@@ -275,6 +280,19 @@ angular
 							if(value.quality == 'teljes'){
 								$scope.vers.metrum[metrumIn].parts.
 									part[partIn].comp.rep = '';
+							}
+					});
+				};
+
+
+				$scope.rangeMiddle = function(metrumIn){
+					angular.forEach($scope.vers.metrum[metrumIn].parts.range
+						,function(value, index){
+							if(
+								value == 'Vers eleje' || 
+								value == 'Vers vége') {
+
+								$scope.vers.metrum[metrumIn].parts.range.spec = '';
 							}
 					});
 				};

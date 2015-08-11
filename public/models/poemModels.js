@@ -71,7 +71,10 @@ var metrumObj = {
 
     parts: {    
 
-        part_range: String,
+        range:{
+            non_spec: String,
+            spec: String
+        },
 
         part: [{
 
