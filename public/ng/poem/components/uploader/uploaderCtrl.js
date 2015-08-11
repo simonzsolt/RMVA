@@ -192,6 +192,8 @@ angular
 
 			                count: [{ level: '' }]  
 					})
+					console.log('parts.part: ' +
+						$scope.vers.metrum[metrumIn].parts.part[partIn] + ' partIn: ' + partIn);
 				};
 
 				$scope.removeCompPart = function removeCompPart (metrumIn, partIn, compPartIn){
@@ -200,32 +202,46 @@ angular
 					)
 				};
 
+				
+/*
 				$scope.addFieldSymbol = function addFieldSymbol (metrumIn, partIn, compPartIn){
 					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].symbols.push({
 						symbol: '', symbol_type:   ''
 					});
-					console.log('partIn: ' + partIn);
+					console.log('parts.part: ' +
+						$scope.vers.metrum[metrumIn].parts.part[partIn] + ' partIn: ' + partIn);
 				};
 
 				$scope.removeFieldSymbol = function(compIn, partIn, symbolIn){
 					$scope.vers.metrum[compIn].comp.comp_part[partIn].symbols.splice(symbolIn, 1);
 				};
+*/
+				
+				$scope.addFieldSymbol = function(metrumIn, partIn, compPartIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].symbols.push({
+						symbol: '', symbol_type: '',
+					});
+				};
+
+				/*$scope.removeFieldLimit = function(compIn, partIn, limitIn){
+					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.splice(limitIn, 1);
+				};*/
 
 				
-				$scope.addFieldLimit = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.push({
+				$scope.addFieldLimit = function(metrumIn, partIn, compPartIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].limits.push({
 						limit: '', limit_type: '',
 					});
 				};
 
-				$scope.removeFieldLimit = function(compIn, partIn, limitIn){
+				/*$scope.removeFieldLimit = function(compIn, partIn, limitIn){
 					$scope.vers.metrum[compIn].comp.comp_part[partIn].limits.splice(limitIn, 1);
 				};
-
+				*/
 			
 
-				$scope.addFieldCount = function(compIn, partIn){
-					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.push({
+				$scope.addFieldCount = function(metrumIn, partIn, compPartIn){
+					$scope.vers.metrum[metrumIn].parts.part[partIn].comp.comp_part[compPartIn].count.push({
 						level: ''
 					});
 				};	
@@ -233,7 +249,6 @@ angular
 				$scope.removeFieldCount = function(compIn, partIn, countIn){
 					$scope.vers.metrum[compIn].comp.comp_part[partIn].count.splice(countIn, 1);
 				};
-
 
 
 				/*TODO: DELETE HIDDEN FIELDS!!!*/
