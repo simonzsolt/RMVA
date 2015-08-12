@@ -318,13 +318,111 @@ angular
 					});
 				};
 
+				$scope.vers.reflect = {
+					ref_genre: [{
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					}],
+					ref_input: [{
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					}],
+					ref_edit: [{
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					}],
+					ref_func: [{
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					}],
+					ref_circum: [{
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					}]
+				};
 
 
+				// add Genre ref fieldset to form
+		        $scope.addRefGen = function addRefGen () {
+					$scope.vers.reflect.ref_genre.push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Genre ref set from form
+				$scope.removeRefGen = function removeRefGen () {
+					var lastItem = $scope.vers.reflect.ref_genre.length -1;
+					$scope.vers.reflect.ref_genre.splice(lastItem, 1);
+				};
+
+				// add Reader Input fieldset to form
+		        $scope.addRefInput = function addRefInput () {
+					$scope.vers.reflect.ref_input.push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Reader Input set from form
+				$scope.removeRefInput = function removeRefInput () {
+					var lastItem = $scope.vers.reflect.ref_input.length -1;
+					$scope.vers.reflect.ref_input.splice(lastItem, 1);
+				};
+
+				// add Edit ref fieldset to form
+		        $scope.addRefEdit = function addRefEdit () {
+					$scope.vers.reflect.ref_edit.push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Edit ref set from form
+				$scope.removeRefEdit = function removeRefEdit () {
+					var lastItem = $scope.vers.reflect.ref_edit.length -1;
+					$scope.vers.reflect.ref_edit.splice(lastItem, 1);
+				};
+
+				// add Function ref fieldset to form
+		        $scope.addRefFunc = function addRefFunc () {
+					$scope.vers.reflect.ref_func.push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Function ref set from form
+				$scope.removeRefFunc = function removeRefFunc () {
+					var lastItem = $scope.vers.reflect.ref_func.length -1;
+					$scope.vers.reflect.ref_func.splice(lastItem, 1);
+				};
+
+				// add Circumstance ref fieldset to form
+		        $scope.addRefcircum = function addRefcircum () {
+					$scope.vers.reflect.ref_circum.push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Circumstance ref set from form
+				$scope.removeRefcircum = function removeRefcircum () {
+					var lastItem = $scope.vers.reflect.ref_circum.length -1;
+					$scope.vers.reflect.ref_circum.splice(lastItem, 1);
+				};
 
 				
-
-
-
 
 		// _____________________________CREATE NEW VERS_____________________________
 

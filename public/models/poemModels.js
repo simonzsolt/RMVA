@@ -114,9 +114,11 @@ var reflectDescObj = {
 
 var reflectionObj = {
 
-    reflect: {
-        ref_genre: [ reflectDescObj ]
-    }
+    ref_genre:  [reflectDescObj],
+    ref_input:  [reflectDescObj],
+    ref_edit:   [reflectDescObj],
+    ref_func:   [reflectDescObj],
+    ref_circum: [reflectDescObj]
 
 };
 
@@ -209,8 +211,7 @@ var versSchema = new mongoose.Schema({
 
     theme:          describeObj,
 
-    reflect:        reflectionObj
-
+    reflect: reflectionObj 
 
 
 });
