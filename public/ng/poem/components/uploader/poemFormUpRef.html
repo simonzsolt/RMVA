@@ -4,21 +4,15 @@
 
 	<div 
 		ng-repeat="ref_genre in vers.reflect.ref_genre" 
-		ng-init="refGenIn = $index">
+		ng-init="refGenIn = $index; refBtn = 'ref_genre'">
 
 		<div>
 
 			<h3> 
 				Műfaji reflexió #{{ refGenIn +1 }} |
-
-				<small>
-					<a ng-click="addRefGen()" ng-show="$last" href="">
-	                    <span class="glyphicon glyphicon-plus"></span></a>
-
-	                <a ng-click="removeRefGen()" ng-show="$last && $index > 0" href="">
-	                    <span class="glyphicon glyphicon-minus"></span></a>
-                </small>
-
+				
+				<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+			
 			</h3>
 
 		    <label class="control-label col-md-2">
@@ -85,20 +79,14 @@
 
 	<div 
 		ng-repeat="ref_input in vers.reflect.ref_input" 
-		ng-init="refInputIn = $index">
+		ng-init="refInputIn = $index; refBtn = 'ref_input'">
 
 		<div>
 
 			<h3> 
 				Befogadás kifejezései #{{ refInputIn +1 }} | 
-
-				<small>
-					<a ng-click="addRefInput()" ng-show="$last" href="">
-	                    <span class="glyphicon glyphicon-plus"></span></a>
-
-	                <a ng-click="removeRefInput()" ng-show="$last && $index > 0" href="">
-	                    <span class="glyphicon glyphicon-minus"></span></a>
-	            </small>
+				
+				<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
 
 			</h3>
 
@@ -164,20 +152,16 @@
  -->
 	</div>
 
-	<div ng-repeat="ref_edit in vers.reflect.ref_edit" ng-init="refEditIn = $index">
+	<div 
+		ng-repeat="ref_edit in vers.reflect.ref_edit" 
+		ng-init="refEditIn = $index; refBtn = 'ref_edit'">
 
 		<div>
 
 			<h3> 
 				Szereztetés, szerkesztés #{{ refEditIn +1 }} |
 
-				<small>
-					<a ng-click="addRefEdit()" ng-show="$last" href="">
-		                <span class="glyphicon glyphicon-plus"></span></a>
-
-		            <a ng-click="removeRefEdit()" ng-show="$last && $index > 0" href="">
-		                <span class="glyphicon glyphicon-minus"></span></a>
-		        </small>
+				<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
 
 			</h3>
 
@@ -243,20 +227,16 @@
  -->
 	</div>
 
-	<div ng-repeat="ref_func in vers.reflect.ref_func" ng-init="refFuncIn = $index">
+	<div 
+		ng-repeat="ref_func in vers.reflect.ref_func" 
+		ng-init="refFuncIn = $index; refBtn = 'ref_func'">
 
 		<div>
 
 			<h3> 
 				Funkció, alkalom #{{ refFuncIn +1 }} |
 
-				<small>
-					<a ng-click="addRefFunc()" ng-show="$last" href="">
-		                <span class="glyphicon glyphicon-plus"></span></a>
-
-		            <a ng-click="removeRefFunc()" ng-show="$last && $index > 0" href="">
-		                <span class="glyphicon glyphicon-minus"></span></a>
-		        </small>
+				<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
 
 			</h3>
 
@@ -322,20 +302,16 @@
  -->
 	</div>
 
-	<div ng-repeat="ref_circum in vers.reflect.ref_circum" ng-init="refCircumIn = $index">
+	<div 
+		ng-repeat="ref_circum in vers.reflect.ref_circum" 
+		ng-init="refCircumIn = $index; refBtn = 'ref_circum'">
 
 		<div>
 
 			<h3> 
 				Körülmények #{{ refCircumIn +1 }} |
 
-				<small>
-		            <a ng-click="addRefcircum()" ng-show="$last" href="">
-		            	<span class="glyphicon glyphicon-plus"></span></a>
-
-		            <a ng-click="removeRefcircum()" ng-show="$last && $index > 0" href="">
-		                <span class="glyphicon glyphicon-minus"></span></a>
-		        </small>
+				<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
 			</h3>
 
 		  

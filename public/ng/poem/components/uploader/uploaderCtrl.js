@@ -348,6 +348,21 @@ angular
 
 
 				// add Genre ref fieldset to form
+		        $scope.addRef = function addRef (refBtn) {
+					$scope.vers.reflect[refBtn].push({
+						name: 	'',
+					    desc: 	'',
+					    locus: 	''
+					});
+				};
+
+				// remove Genre ref set from form
+				$scope.removeRef = function removeRef (refBtn) {
+					var lastItem = $scope.vers.reflect[refBtn].length -1;
+					$scope.vers.reflect[refBtn].splice(lastItem, 1);
+				};
+/*
+				// add Genre ref fieldset to form
 		        $scope.addRefGen = function addRefGen () {
 					$scope.vers.reflect.ref_genre.push({
 						name: 	'',
@@ -422,7 +437,7 @@ angular
 					$scope.vers.reflect.ref_circum.splice(lastItem, 1);
 				};
 
-				
+				*/
 
 		// _____________________________CREATE NEW VERS_____________________________
 
