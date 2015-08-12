@@ -101,6 +101,24 @@ var metrumObj = {
     }
 };
 
+var describeObj = {
+    desc: String,
+    locus: String
+};
+
+var reflectDescObj = {
+    name: String,
+    desc: String,
+    locus: String
+}
+
+var reflectionObj = {
+
+    reflect: {
+        ref_genre: [ reflectDescObj ]
+    }
+
+};
 
 // =====================================POEM SCHEMA==================================
 
@@ -171,7 +189,30 @@ var versSchema = new mongoose.Schema({
 
     // ==============================METRUM===============================
 
-    metrum: [ metrumObj ]
+    metrum: [ metrumObj ],
+
+    trad_genre:     String,
+
+    exemplum:       describeObj,
+
+    commonplace:    describeObj,
+
+    topos:          describeObj,
+
+    intertext:      describeObj,
+
+    communicate:    describeObj,
+
+    figure:         describeObj,
+    trope:          describeObj,
+    comm_ret:       describeObj,
+
+    theme:          describeObj,
+
+    reflect:        reflectionObj
+
+
+
 });
 
 versSchema.plugin(autoIncrement.plugin, {

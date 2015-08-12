@@ -70,6 +70,27 @@ angular
 		            text: '', 
 		            imgs: '',        
 		            link_coll: '', 
+
+		            trad_genre: '',
+
+				    exemplum: '',
+
+				    commonplace: '',
+
+				    topos: '',
+
+				    intertext: '',
+
+				    communicate: '',
+
+				    figure: '',
+				    trope: '',
+				    comm_ret: '',
+
+				    theme: '',
+
+				    reflect: '',
+
 		            created_at: '', 
 		            created_by: $rootScope.loggedInUser.nickname, 
 		            last_mod: '',    
@@ -356,6 +377,27 @@ angular
 				                    text: '', 
 				                    imgs: '',        
 				                    link_coll: '', 
+
+				                    trad_genre: '',
+
+								    exemplum: '',
+
+								    commonplace: '',
+
+								    topos: '',
+
+								    intertext: '',
+
+								    communicate: '',
+
+								    figure: '',
+								    trope: '',
+								    comm_ret: '',
+
+								    theme: '',
+
+								    reflect: '',
+
 				                    created_at: '', 
 				                    created_by: '', 
 				                    last_mod: '',    
