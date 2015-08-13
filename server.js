@@ -82,16 +82,6 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
     else {return}
 });
 */
-
-// OPENSHIFT MONGO CARTRIDGE
-/*
-mongoose.connect(OPENSHIFT_MONGODB_DB_URL, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
 // -------------------SERVER LISTENING-------------------
 
 var server = app.listen(port, ip, function () {
