@@ -22,8 +22,6 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    validator = require('validator'),
-
     config = require('config');
 
 // ====================LOADING CONFIG VARS====================
@@ -44,6 +42,7 @@ var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
 
+
 //OPENSHIFT MONGODB
 
 mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
@@ -52,6 +51,7 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     }
     else {return}
 });
+
 
 // -------------------SERVER LISTENING-------------------
 
@@ -110,16 +110,9 @@ passport.use(new localStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// routing, called with: 'router.' 
-// Requires: 
-//           *  var express = require('express'); 
-//           *  var router = express.Router();
 app.use('/', routes); 
 app.use('/', auth); 
 
-
 // ====================EXPORTING APP====================
 
-// making app available for other files
-// that require express
 module.exports = app; 
