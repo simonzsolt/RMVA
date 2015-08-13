@@ -25,7 +25,7 @@ var express = require('express'); // server dep
     config = require('config');
 
 // ====================LOADING CONFIG VARS====================
-
+/*
 if (config.has('MONGOLAB_URI')) {
 
     var MONGOLAB_URI = config.get('MONGOLAB_URI');
@@ -34,7 +34,7 @@ if (config.has('MONGOLAB_URI')) {
 else {
     console.log('env var test: no local config vars');
 }; 
-
+*/
 //  mongoose
 var mongoose = require('mongoose');
 var models = require('./public/models/poemModels'); 
