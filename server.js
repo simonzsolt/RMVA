@@ -22,8 +22,6 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    validator = require('validator'),
-
     config = require('config');
 
 // ====================LOADING CONFIG VARS====================
