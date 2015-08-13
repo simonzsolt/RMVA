@@ -23,7 +23,7 @@ router.route('/data')
 
         else {
 
-            console.log('authenticated: ' + req.user.username);
+            console.log('authenticated = ' + req.user.username);
 
             var vers  = new Vers();
 
@@ -66,18 +66,39 @@ router.route('/data')
             vers.text        = req.body.text;
             vers.imgs        = req.body.imgs;
             vers.link_coll   = req.body.link_coll;
+
+            vers.trad_genre = req.body.trad_genre;  
+
+            vers.exemplum   = req.body.exemplum;  
+
+            vers.commonplace = req.body.commonplace;    
+
+            vers.topos      = req.body.topos;         
+
+            vers.intertext  = req.body.intertext;     
+
+            vers.communicate = req.body.communicate;   
+
+            vers.figure     = req.body.figure;        
+            vers.trope      = req.body.trope;         
+            vers.comm_ret   = req.body.comm_ret;      
+
+            vers.theme      = req.body.theme;
+
+            reflect         = req.body.reflect;
+
             vers.created_at  = Date.now(); // changed to Date.now()
             vers.created_by  = req.body.created_by;
             vers.last_mod    = req.body.last_mod; // changed to Date.now()
             vers.mod_by      = req.body.mod_by;
 
 
-            // console.log('req.body.metrum.comp_rep: ' + req.body.metrum.comp_rep);
+            // console.log('req.body.metrum.comp_rep = ' + req.body.metrum.comp_rep);
          
             vers.save(function(err){
                 if(err)
                     res.send(err);
-                res.json({ msg: 'vers létrehozva req_auth_body:' + req.body.auth});
+                res.json({ msg : 'vers létrehozva req_auth_body =' + req.body.auth});
             });
         }
 
@@ -108,7 +129,7 @@ router.route('/data')
 
 
 // _id --> rmva
-router.route('/data/:rmva')
+router.route('/data/ =rmva')
 
     .get(function(req, res){
 
@@ -121,10 +142,10 @@ router.route('/data/:rmva')
 
             // zerofill unfilled id from mongodb
             rmvaID = zeroFill(5, req.params.rmva);
-            // console.log('rmvaID: ' + rmvaID);
+            // console.log('rmvaID = ' + rmvaID);
 
             // Vers.findById(req.params.vers_id, function(err, vers){
-            Vers.findOne({ 'rmva': rmvaID }, function(err, vers){
+            Vers.findOne({ 'rmva' : rmvaID }, function(err, vers){
                 if (err)
                     res.send(err);
                 res.json(vers);
@@ -142,15 +163,15 @@ router.route('/data/:rmva')
         }
 
         else {
-            console.log('authenticated: ' + req.user.username);
+            console.log('authenticated = ' + req.user.username);
 
             // Vers.findById(req.params.vers_id, function(err, vers){
-            Vers.findOne({ 'rmva': rmvaID }, function(err, vers){
+            Vers.findOne({ 'rmva' : rmvaID }, function(err, vers){
                 if (err)
                    res.send(err);
 
-                vers.rmva = req.body.rmva;
-                vers.inc = req.body.inc;
+                vers.rmva   = req.body.rmva;
+                vers.inc    = req.body.inc;
            
                 vers.auth_role_name = req.body.auth_role_name;
                 vers.auth_surname   = req.body.auth_surname;
@@ -172,30 +193,54 @@ router.route('/data/:rmva')
                 vers.signo_forename  = req.body.signo_forename;  
 
 
-                vers.lenght = req.body.lenght;
+                vers.lenght      = req.body.lenght;
                 vers.lenght_unit = req.body.lenght_unit;
+
+                vers.metrum = req.body.metrum;
+
                 vers.col = req.body.col;
 
                 vers.date = req.body.date;
 
-                vers.date_info = req.body.date_info;
-                vers.place = req.body.place;
+                vers.date_info  = req.body.date_info;
+                vers.place      = req.body.place;
                 vers.place_info = req.body.place_info;
-                vers.conf = req.body.conf;
-                vers.source = req.body.source;
-                vers.text = req.body.text;
-                vers.imgs = req.body.imgs;
-                vers.link_coll = req.body.link_coll;
+                vers.conf       = req.body.conf;
+                vers.source     = req.body.source;
+                vers.text       = req.body.text;
+                vers.imgs       = req.body.imgs;
+                vers.link_coll  = req.body.link_coll;
+
+                vers.trad_genre = req.body.trad_genre;  
+
+                vers.exemplum   = req.body.exemplum;  
+
+                vers.commonplace = req.body.commonplace;    
+
+                vers.topos      = req.body.topos;         
+
+                vers.intertext  = req.body.intertext;     
+
+                vers.communicate = req.body.communicate;   
+
+                vers.figure     = req.body.figure;        
+                vers.trope      = req.body.trope;         
+                vers.comm_ret   = req.body.comm_ret;      
+
+                vers.theme      = req.body.theme;
+
+                reflect         = req.body.reflect;
+
                 vers.created_at = req.body.created_at;
                 vers.created_by = req.body.created_by;
-                vers.last_mod = Date.now(); // changed to Date.now()
-                vers.mod_by = req.body.mod_by;
+                vers.last_mod   = Date.now(); // changed to Date.now()
+                vers.mod_by     = req.body.mod_by;
 
                
                 vers.save(function(err){
                     if(err)
                         res.send(err);
-                    res.json({ msg: 'vers frissítve'});
+                    res.json({ msg : 'vers frissítve'});
                 });
             });
         }
@@ -213,19 +258,19 @@ router.route('/data/:rmva')
         else {
 
             rmvaID = zeroFill(5, req.params.rmva);
-            // console.log('rmvaID: ' + rmvaID);
-            // console.log('authenticated: ' + req.user.username);
+            // console.log('rmvaID = ' + rmvaID);
+            // console.log('authenticated = ' + req.user.username);
 
             Vers.remove({
-                // _id: req.params.vers_id
-                rmva: rmvaID
+                // _id = req.params.vers_id
+                rmva : rmvaID
             }, 
 
             function(err, Vers) {
                 if (err)
                 res.send(err);
 
-                res.json({ message: 'vers törölve' });
+                res.json({ message : 'vers törölve' });
             });
         }
 });

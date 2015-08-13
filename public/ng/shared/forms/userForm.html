@@ -9,7 +9,7 @@
 	<div class="form-group">
 	    <label class="control-label col-md-4" for="username">E-mail:</label>
 	    <div class="col-md-4">
-	        <input name="username" class="form-control" id="username" type="text" 
+	        <input name="username" class="form-control" id="username" type="email" 
 	        	placeholder="E-mail" ng-model="user.username" required> 
 			</input>
 	    </div>
@@ -45,9 +45,16 @@
 	<div class="form-group">
 	    <label class="control-label col-md-4" for="password">Jelszó:</label>
 	    <div class="col-md-4">
-	        <input name="password" class="form-control" id="password" type="password" 
-	        	placeholder="Jelszó" ng-model="user.password" required> 
+	        <input 
+	        	class="form-control"
+	        	name="password" 
+	        	id="password" 
+	        	type="password" 
+	        	placeholder="Jelszó: (Min 6, max 32 karakter)" 
+	        	ng-model="user.password"
+	        	pattern=".{6,32}"
+	        	required> 
 			</input>
 	    </div>
+	    <label class="control-label col-md-0" for="password">(Min 6, max 32 karakter)</label>
 	</div>
-

@@ -22,6 +22,8 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
+    validator = require('validator'),
+
     config = require('config');
 
 // ====================LOADING CONFIG VARS====================
@@ -81,6 +83,15 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
 });
 */
 
+// OPENSHIFT MONGO CARTRIDGE
+/*
+mongoose.connect(OPENSHIFT_MONGODB_DB_URL, function(err) {
+    if (err) {
+        console.log('DB connection error:' + err);
+    }
+    else {return}
+});
+*/
 // -------------------SERVER LISTENING-------------------
 
 var server = app.listen(port, ip, function () {
