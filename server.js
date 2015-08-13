@@ -61,7 +61,7 @@ var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 // WITH ENVIROMENT VAR SET FOR: HEROKU, OPENSHIFT
 
-mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -69,24 +69,6 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 });
 
 
-
-
-// WITH LOCAL ENVIROMENT VAR
-/*
-mongoose.connect(MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
-
-mongoose.connect(MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
 
 
 //LOCAL MONGODB

@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 
     
-var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
+var connection = mongoose.createConnection(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
 
 // session storage connection
 // var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
