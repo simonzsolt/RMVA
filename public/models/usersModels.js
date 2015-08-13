@@ -1,21 +1,22 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    passportLocalMongoose = require('passport-local-mongoose');
+    passportLocalMongoose = require('passport-local-mongoose'),
+    validator = require('validator');
 
 var Account = new Schema({
-    email:      String,
-    nickname:   { type: 'string', unique: true },
-    first_name: String,
-    last_name:  String,
+    username:   { type: 'String', required: true},
+    nickname:   { type: 'string', unique: true, required: true },
+    first_name: { type: 'String', required: true},
+    last_name:  { type: 'String', required: true},
     password:   String,
     role:       String,
     created_at: {
             type:       Date, 
             default:    Date.now()
         }, // létrehozva;
-	},
+    },
 
-	{collection: 'user'} // specify collection
+    {collection: 'user'} // specify collection
 );
 
 // makes db connection and passport config easier

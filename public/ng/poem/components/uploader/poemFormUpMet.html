@@ -18,7 +18,18 @@
 
     <div ng-repeat="metrum in vers.metrum" ng-init="metrumIn = $index">
 
-    <h3>Rész #{{ metrumIn +1 }}</h3>
+    <h3>
+        Rész #{{ metrumIn +1 }} | 
+
+        <small>
+              <a ng-click="addPart()" ng-show="$last" href="">
+                    <span class="glyphicon glyphicon-plus"></span></a>
+
+                <a ng-click="removePart()" ng-show="$last && $index > 0" href="">
+                    <span class="glyphicon glyphicon-minus"></span></a>
+        </small>
+
+    </h3>
 
         <div class="form-group">
             <label  class="control-label col-md-2" for="comp_group">
@@ -53,7 +64,7 @@
                     class="form-control" 
                     type="text" 
                     ng-model="metrum.parts.range.spec" 
-                    placegolder="Szakasz leírása">
+                    placeholder="Szakasz leírása">
                 </input>
             </div>
 
@@ -61,7 +72,21 @@
 
         <div ng-repeat="part in metrum.parts.part" ng-init="partIn = $index">
 
-            <h3> Összetevő #{{ metrumIn +1 }}.{{ partIn +1 }}:</h3>
+            <h3> 
+                Összetevő #{{ metrumIn +1 }}.{{ partIn +1 }} | 
+
+                <small>
+                    <a ng-click="addComp(metrumIn, partIn)" ng-show="$last" href="">
+                        <span class="glyphicon glyphicon-plus"></span></a>
+
+                    <a 
+                        ng-click="removeComp(metrumIn, partIn)" 
+                        ng-show="$last && $index > 0" 
+                        href="">
+                        <span class="glyphicon glyphicon-minus"></span></a>
+                </small>
+
+            </h3>
 
             <div class="form-group">
 
@@ -167,13 +192,41 @@
 
             <div ng-repeat="comp_part in part.comp.comp_part" ng-init="compPartIn = $index">
                 
-                <h3>Részösszetevő #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}  </h3>
+                <h3>
+                    Részösszetevő #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }} | 
+
+                    <small>
+                        <a 
+                            ng-click="addCompPart(metrumIn, partIn, compPartIn)" 
+                            ng-show="$last" href="">
+                            <span class="glyphicon glyphicon-plus"></span></a>
+                        <a 
+                            ng-click="removeCompPart(metrumIn, partIn, compPartIn)" 
+                            ng-show="$last && $index > 0" href="">
+                            <span class="glyphicon glyphicon-minus"></span></a>
+                    </small>
+                </h3>
 
 
 
                 <div ng-repeat="symbols in comp_part.symbols" ng-init="symbolIn = $index; partnIn=$parent.$parent.$index">
                     
-                    <h4>Szimbólumok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ symbolIn +1 }}</h4>
+                    <h4>
+                        Szimbólumok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ symbolIn +1 }} |
+
+                        <small>
+                            
+                            <a ng-click="addFieldSymbol(metrumIn, partIn, compPartIn)" 
+                                ng-show="$last" href=""> 
+                                <span class="glyphicon glyphicon-plus"></span></a>
+
+                            <a ng-click="removeFieldSymbol(metrumIn, partIn, compPartIn, symbolIn)" 
+                                ng-show="$last && $index > 0" href="">   
+                                <span class="glyphicon glyphicon-minus"></span></a>
+
+                        </small>
+
+                    </h4>
             
                     <div class="form-group">
 
@@ -193,7 +246,7 @@
                                     class="form-control" 
                                     type="text" 
                                     ng-model="symbols.symbol" 
-                                    placegolder="Szimbólum">
+                                    placeholder="Szimbólum">
                                 </input>
                             </div>
                         </div>
@@ -224,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-
+<!-- 
                     <div class="form-group">
 
                         <label class="control-label col-md-2" for="comp_group">
@@ -244,7 +297,7 @@
                                 Szimbólum eltávolítása
                             </a>
                         </label>
-
+ -->
                     </div>
 
                 </div> <!-- repeat symbols -->
@@ -254,7 +307,20 @@
 
                 <div ng-repeat="limits in comp_part.limits" ng-init="limitIn = $index; partnIn=$parent.$parent.$index">
                     
-                    <h4>Határok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ limitIn +1 }}</h4>
+                    <h4>
+                        Határok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ limitIn +1 }} |
+
+                        <small>
+                            <a ng-click="addFieldLimit(metrumIn, partIn, compPartIn)" 
+                                ng-show="$last" href="">
+                                <span class="glyphicon glyphicon-plus"></span></a>
+
+                            <a ng-click="removeFieldLimit(metrumIn, partIn, compPartIn, limitIn)" 
+                                ng-show="$last" href="">
+                                <span class="glyphicon glyphicon-minus"></span></a>
+                        </small>
+
+                    </h4>
             
                     <div class="form-group">
 
@@ -307,7 +373,7 @@
                             </div>
                         </div>
                     </div>
-
+<!-- 
                     <div class="form-group">
 
                         <label class="control-label col-md-2" for="comp_group">
@@ -329,7 +395,7 @@
                         </label>
 
                     </div>
-
+ -->
                 </div> <!-- repeat limits -->
 
                 <h4 ng-init="partnIn=$parent.$parent.$index">
@@ -345,7 +411,20 @@
                             class="control-label col-md-2" 
                             for="comp_count">
 
-                            Szint #{{ countIn +1 }}:
+                            <small>
+                                <a 
+                                    ng-click="addFieldCount(metrumIn, partIn, compPartIn)" 
+                                    ng-show="$last" href="">
+                                    <span class="glyphicon glyphicon-plus"></span></a>
+
+                                <a 
+                                    ng-click="removeFieldCount(metrumIn, partIn, compPartIn, countIn)" 
+                                    ng-show="$last && countIn > 0" href="">
+                                    <span class="glyphicon glyphicon-minus"></span></a>
+                            </small>
+
+                            | Szint #{{ countIn +1 }}
+
                          </label>
 
                         <div 
@@ -360,6 +439,7 @@
                             </input>  
                         </div>
 
+<!-- 
                         <div class="form-group">
 
                             <label 
@@ -384,10 +464,11 @@
                                     Szint eltávolítása
                                 </a>
                             </label>
-                        </div> <!-- form-group -->
+                        </div>
+ -->
                     </div> <!-- form-group -->
                 </div> <!-- repeat count -->
-
+<!-- 
                 <div class="form-group">
                     <label 
                         class="control-label col-md-2" for="comp_group">
@@ -410,8 +491,10 @@
                         </a>
                     </label>
                 </div>
-            </div> <!-- repeat comp_part -->
+ -->
 
+            </div> <!-- repeat comp_part -->
+<!-- 
             <div class="form-group">
                 <label class="control-label col-md-2" for="comp_group">
                     <a ng-click="addComp(metrumIn, partIn)" ng-show="$last" href="">
@@ -427,9 +510,10 @@
                     </a>
                 </label>
             </div>
+             -->
         </div> <!-- repeat part -->
 
-
+<!-- 
         <div class="form-group">
             <label class="control-label col-md-2" for="comp_group">
                 <a ng-click="addPart()" ng-show="$last" href="">
@@ -445,7 +529,7 @@
                 </a>
             </label>
         </div>
-
+ -->
     </div> <!-- repeat metrum -->
 </div> 
 

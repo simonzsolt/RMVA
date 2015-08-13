@@ -25,6 +25,7 @@ router.route('/auth')
             }),
 
             req.body.password, function(err) {
+                console.log('auth status 1');
                 if (err) {
                     res.send(err);
                     // res.json({msg: err});

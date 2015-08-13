@@ -22,6 +22,8 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
+    validator = require('validator'),
+
     config = require('config');
 
 // ====================LOADING CONFIG VARS====================
@@ -61,43 +63,13 @@ var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 // WITH ENVIROMENT VAR SET FOR: HEROKU, OPENSHIFT
 
-mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
     else {return}
 });
 
-
-
-
-// WITH LOCAL ENVIROMENT VAR
-/*
-mongoose.connect(MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
-/*
-mongoose.connect(MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
-
-//LOCAL MONGODB
-/*
-mongoose.connect('mongodb://localhost/vers', function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
 
 // -------------------SERVER LISTENING-------------------
 

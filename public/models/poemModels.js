@@ -3,10 +3,12 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-var connection = mongoose.createConnection(process.env.MONGOLAB_URI, function(err) {
-
 // session storage connection
-// var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+var connection = mongoose.createConnection(
+    process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
+
+
+
 
     if (err) {
         console.log('DB connection error:' + err);
@@ -105,6 +107,26 @@ var metrumObj = {
     }
 };
 
+var describeObj = {
+    desc: String,
+    locus: String
+};
+
+var reflectDescObj = {
+    name: String,
+    desc: String,
+    locus: String
+}
+
+var reflectionObj = {
+
+    ref_genre:  [reflectDescObj],
+    ref_input:  [reflectDescObj],
+    ref_edit:   [reflectDescObj],
+    ref_func:   [reflectDescObj],
+    ref_circum: [reflectDescObj]
+
+};
 
 // =====================================POEM SCHEMA==================================
 
@@ -175,7 +197,29 @@ var versSchema = new mongoose.Schema({
 
     // ==============================METRUM===============================
 
-    metrum: [ metrumObj ]
+    metrum: [ metrumObj ],
+
+    trad_genre:     String,
+
+    exemplum:       describeObj,
+
+    commonplace:    describeObj,
+
+    topos:          describeObj,
+
+    intertext:      describeObj,
+
+    communicate:    describeObj,
+
+    figure:         describeObj,
+    trope:          describeObj,
+    comm_ret:       describeObj,
+
+    theme:          describeObj,
+
+    reflect: reflectionObj 
+
+
 });
 
 versSchema.plugin(autoIncrement.plugin, {
