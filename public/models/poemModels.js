@@ -3,13 +3,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-
-
 // session storage connection
 var connection = mongoose.createConnection(
     process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
-
-
 
 
     if (err) {
