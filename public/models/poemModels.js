@@ -8,8 +8,6 @@ var connection = mongoose.createConnection(
     process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
 
 
-
-
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -47,31 +45,6 @@ var dateObj = {
 };
 
 // =====================================Metric model==================================
-
-/*
-var metrumObj = {
-
-    comp: {
-        name:          String,
-        comp_type:     String,
-        quality:       String,
-        rep:           String,
-        comp_part: [{ 
-                symbols: [{
-                    symbol:         String,
-                    symbol_type:    String
-                }],
-
-                limits: [{
-                    limit:         String,
-                    limit_type:    String,
-                }],
-                
-                count: [{ level: Number }]  
-        }]
-    }
-};
-*/
 
 var metrumObj = {
 
