@@ -42,31 +42,6 @@ var dateObj = {
 
 // =====================================Metric model==================================
 
-/*
-var metrumObj = {
-
-    comp: {
-        name:          String,
-        comp_type:     String,
-        quality:       String,
-        rep:           String,
-        comp_part: [{ 
-                symbols: [{
-                    symbol:         String,
-                    symbol_type:    String
-                }],
-
-                limits: [{
-                    limit:         String,
-                    limit_type:    String,
-                }],
-                
-                count: [{ level: Number }]  
-        }]
-    }
-};
-*/
-
 var metrumObj = {
 
     parts: {    

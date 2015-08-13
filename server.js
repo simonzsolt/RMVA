@@ -26,15 +26,6 @@ var express = require('express'); // server dep
 
 // ====================LOADING CONFIG VARS====================
 
-if (config.has('MONGOLAB_URI')) {
-
-    var MONGOLAB_URI = config.get('MONGOLAB_URI');
-    console.log('env var test: ' + MONGOLAB_URI);
-}
-else {
-    console.log('env var test: no local config vars');
-}; 
-
 //  mongoose
 var mongoose = require('mongoose');
 var models = require('./public/models/poemModels'); 
@@ -52,27 +43,6 @@ var port = (process.env.OPENSHIFT_NODEJS_PORT || 3001);
 var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
-
-// MONGOLAB
-
-// WITH ENVIROMENT VAR SET FOR: HEROKU, OPENSHIFT
-/*
-mongoose.connect(process.env.MONGOLAB_URI, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
-
-// WITH LOCAL ENVIROMENT VAR
-
-// mongoose.connect(MONGOLAB_URI, function(err) {
-//     if (err) {
-//         console.log('DB connection error:' + err);
-//     }
-//     else {return}
-// });
 
 //LOCAL MONGODB
 
@@ -130,11 +100,10 @@ app.use(session({
 
         // for dev
         mongooseConnection: mongoose.connection,
-
-        // for production
-        // mongooseConnection: process.env.MONGOLAB_URI,
         
         url: 'mongodb://localhost/vers'
+
+        // url: OPENSHIFT_MONGODB_DB_URL
     })
 }));
 
@@ -153,16 +122,9 @@ passport.use(new localStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// routing, called with: 'router.' 
-// Requires: 
-//           *  var express = require('express'); 
-//           *  var router = express.Router();
 app.use('/', routes); 
 app.use('/', auth); 
 
-
 // ====================EXPORTING APP====================
 
-// making app available for other files
-// that require express
 module.exports = app; 
