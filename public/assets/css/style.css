@@ -2,4 +2,9 @@
 
 /*.error{color: #8B0000;}*/
 
-#userNav{ float: right; }
+#userNav{ float: right }
+
+.textMod{ display: inline-block }
+#textLines{ 
+	border: 1px solid black;
+}
