@@ -100,6 +100,35 @@ angular
 
 // ============================ADD AND REMOVE FILEDS============================
 
+				$scope.textLines = '';
+				$scope.textVerse = '';
+				$scope.textarea = function textarea() {
+
+					var str = $scope.vers.text;
+
+					var count = 0;
+					var posLine = str.indexOf('\n');
+					var posVerse = str.indexOf('\n\n');
+
+					var count = 0;
+					while (posVerse !== -1) {
+					  count++;
+					  posVerse = str.indexOf('\n\n', posVerse + 1);
+					}
+
+					$scope.textVerse = count +1;
+
+					
+					var count = 0;
+					while (posLine !== -1) {
+					  count++;
+					  posLine = str.indexOf('\n', posLine + 1);
+					}
+					$scope.textLines = count +1 - ($scope.textVerse-1);				
+				};
+
+
+
 // Hierarchy of repeat indexes
 // metrumIn > partIn > compPartIn > symbolIn, limitIn, countIn
 
