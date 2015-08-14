@@ -155,7 +155,7 @@
         <select class="form-control"  
                 ng-model="selectDate">
 
-            <option value="" isabled selected >-- Dátum megadása --</option>
+            <option value="" disabled selected >-- Dátum megadása --</option>
             <option value="single">Egyszerű dátum</option>
             <option value="period">Időszak</option>
         </select>
@@ -307,18 +307,44 @@
     </div>
 </div>
 
+
 <div class="form-group">
     <label class="control-label col-md-2" for="text">Szöveg:</label>
     <div id="text" class="col-md-10">
         <textarea 
             rows="10" 
             class="form-control" 
-            placeholder="Szöveg..." 
+            placeholder="Szöveg..."
+            ng-keyup="textarea()" 
             ng-model="vers.text" > 
         </textarea>  
     </div>
+    <label class="control-label col-md-2" for="text">Json:</label>
+    <div class="col-md-10">
+        <pre ng-bind="vers.text  | json"></pre>
+        <pre ng-bind="textLines  | json"></pre>
+        <pre ng-bind="textVerse  | json"></pre>
+    </div> 
 </div>
 
+<!-- 
+<div class="form-group" style="margin-top: 50px; margin-bottom: 50px;">
+    <label class="control-label col-md-3" for="text">
+        <h2>Szöveg(json) </h2>
+    </label> 
+    <div class="col-md-9">
+        <pre ng-bind="vers.text | json"></pre>
+    </div> 
+
+    <label class="control-label col-md-3" for="text">
+        <h3>lenght(json) </h3>
+    </label> 
+    <div class="col-md-9">
+        <pre ng-bind="texLines | json"></pre>
+    </div>
+</div> 
+
+ -->
 <!-- 
 |   multiple selector for linking 
 |   separate controller for match elements
