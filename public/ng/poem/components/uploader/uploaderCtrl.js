@@ -109,6 +109,7 @@ angular
 					var count = 0;
 					var posLine = str.indexOf('\n');
 					var posVerse = str.indexOf('\n\n');
+					var pos = str.indexOf('\n\n');
 
 					var count = 0;
 					while (posVerse !== -1) {
@@ -124,7 +125,7 @@ angular
 					  count++;
 					  posLine = str.indexOf('\n', posLine + 1);
 					}
-					$scope.textLines = count +1 - ($scope.textVerse-1);				
+					$scope.textLines = count +1 - ($scope.textVerse-1);	
 				};
 
 
