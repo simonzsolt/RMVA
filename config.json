@@ -5,6 +5,6 @@
   },
   "production": {
     "port": 8080,
-    "mongoDb": "process.env.OPENSHIFT_MONGODB_DB_URL"
+    "mongoDb": "'process.env.OPENSHIFT_MONGODB_DB_URL'"
   }
 }
