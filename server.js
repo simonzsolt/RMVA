@@ -23,6 +23,8 @@ var express = require('express'); // server dep
     zeroFill = require('zero-fill'),
 
     env = "production"
+    // env = "development",
+
     config = require('./config.json')[env];
 
 // ====================LOADING CONFIG VARS====================
