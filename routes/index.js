@@ -85,7 +85,7 @@ router.route('/data')
 
             vers.theme      = req.body.theme;
 
-            reflect         = req.body.reflect;
+            vers.reflect         = req.body.reflect;
 
             vers.created_at  = Date.now(); // changed to Date.now()
             vers.created_by  = req.body.created_by;
@@ -229,7 +229,7 @@ router.route('/data/:rmva')
 
                 vers.theme      = req.body.theme;
 
-                reflect         = req.body.reflect;
+                vers.reflect         = req.body.reflect;
 
                 vers.created_at = req.body.created_at;
                 vers.created_by = req.body.created_by;
