@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     autoIncrement = require('mongoose-auto-increment'),
     Schema = mongoose.Schema
-    config = require('./config.json')[env];
+    config = require('../../config.json')[env];
 
 
 // session storage connection
