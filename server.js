@@ -35,15 +35,16 @@ var models = require('./public/models/poemModels');
 
 // -------------------PORT AND IP-------------------
 
-
 // ip and host settings
 var port = (process.env.OPENSHIFT_NODEJS_PORT   || 8080);
 var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
 
+
 // MONGODB
 mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
+
     if (err) {
         console.log('DB connection error:' + err);
     }
