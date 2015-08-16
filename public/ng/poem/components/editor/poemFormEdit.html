@@ -119,7 +119,7 @@
 <div class="form-group">
     <label class="control-label col-md-2" for="lenght">Terjedelem:</label>
     <div id="lenght" class="col-md-10">
-        <input type="number" placeholder="Terjedelem" ng-model="vers.lenght" > </input>  <!-- number -->
+        <input class="form-control" type="number" placeholder="Terjedelem" ng-model="vers.lenght" > </input>  <!-- number -->
     </div>
 </div>
 
@@ -260,8 +260,8 @@
                 src="'ng/poem/components/uploader/selectDate/selectDateToView.html'">
             </ng-include>
 
-            <p> vers.date.single: {{ vers.date.single }} </p>
-            <p> vers.date.period: {{ vers.date.period }} </p>
+        <!--     <p> vers.date.single: {{ vers.date.single }} </p>
+            <p> vers.date.period: {{ vers.date.period }} </p> -->
         </div>
     </div>
 </div>
@@ -363,8 +363,37 @@
 
 </div>
 
-<div class="form-group">
-    <div  class="col-md-6 col-md-offset-6">
-        <input class="btn btn-success" type="submit" value="Feltöltés"> </input> 
+<div 
+    ng-include src="'ng/poem/components/editor/poemFormEditMet.html'">
+</div>
+
+<div 
+    ng-include="'ng/poem/components/editor/poemFormEditCon.html'">
+</div>
+
+<div 
+    ng-include="'ng/poem/components/editor/poemFormEditRef.html'">
+</div>
+
+
+<div class="">
+    <div class="text-center">
+        <button class="btn btn-success formBtn" type="submit"> 
+            <span class="glyphicon glyphicon-save" ></span>
+            Mentés
+        </button> 
     </div>
 </div>
+
+
+
+<div class="" style="margin-top: 50px; margin-bottom: 50px;">
+    <label class="control-label col-md-2" for="text">
+        <h2>Nyers json</h2>
+    </label> 
+    <div class=" form-group col-md-10">
+        <pre ng-bind="vers | json"></pre>
+    </div>
+</div> 
+
+<div id="footer" style="height:100px;"></div>

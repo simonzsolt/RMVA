@@ -65,7 +65,8 @@ angular
 
                 .when('/unauth', {
                     templateUrl: 'ng/auth/components/unauth/unauthView.html',
-                    controller: 'unauthCtrl'
+                    controller: 'unauthCtrl',
+                    css: 'assets/css/unauth.css'
                 })
 
                 .when('/profile/id/:userId', {

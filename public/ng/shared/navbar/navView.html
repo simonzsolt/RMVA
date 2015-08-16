@@ -1,4 +1,4 @@
-<nav ng-controller="navCtrl" class="navbar navbar-default">
+<nav ng-controller="navCtrl" class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <b class="navbar-brand">RMVA</b>
@@ -8,24 +8,32 @@
             <ul class="nav navbar-nav">
 
                 <li ng-hide="path === '/list' || !loggedInUser.username">
-                    <a class="btn btn-default"  href="#list">
+                    <a class=""  href="#list">
                         <span class="glyphicon glyphicon-th-list"></span>        
                             Lista
                     </a>
                 </li>
 
                 <li ng-show="path === viewPathId && loggedInUser.role !== 'user'" >
-                    <a class="btn btn-default"  href="#edit/id/{{vers.rmva | fillZero:5}}">
+                    <a class=""  href="#edit/id/{{vers.rmva | fillZero:5}}">
                         <span class="glyphicon glyphicon-edit"></span>
                         Szerkesztő
                     </a>
                 </li>
 
                 <li ng-show="path === editPathId ">
-                    <a class="btn btn-default"  href="#view/id/{{vers.rmva | fillZero:5}}">
+                    <a class=""  href="#view/id/{{vers.rmva | fillZero:5}}">
                         <span class="glyphicon glyphicon-eye-open"></span>
                         Részletek
                     </a>
+                </li>
+
+
+                <li ng-hide="loggedInUser.role=='user' || path === '/upload' ">
+                    <a class="" href="#upload">
+                        <span class="glyphicon glyphicon-upload"></span>
+                        Feltöltés
+                    </a> 
                 </li>
 
                 <!-- <li class="btn btn-default"> {{ path }} || {{ pathId }} </li> -->
@@ -38,31 +46,36 @@
 
 
                         <li ng-hide="path === '/signup' || loggedInUser.username">
-                            <a class="btn btn-default"  href="#signup">
+                            <a class=""  href="#signup">
+                            <span class="glyphicon glyphicon-pencil"></span>
                                 Regisztráció
                             </a>
                         </li>
 
                         <li>
                             <a ng-hide="path === '/login' || loggedInUser.username" 
-                                class="btn btn-default"  
+                                class=""  
                                 href="#login">
-                                
+                                <span class="glyphicon glyphicon-log-in" ></span>
                                 Bejelentkezés
                             </a>
                         </li>
 
                         <li>
-                           <a ng-show="loggedInUser.username" class="btn btn-default" 
+                           <a ng-show="loggedInUser.username" class="" 
                                 href="#profile/id/{{loggedInUser._id}}">
-                                <b>{{ loggedInUser.nickname }} || {{ loggedInUser.role }} </b>
+                                <span class="glyphicon glyphicon-user"></span>
+                                <b>
+                                    {{ loggedInUser.nickname }} || {{ loggedInUser.role }} 
+                                </b>
                             </a>
                            <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
                         </li>
 
                         <li>
-                            <a ng-show="loggedInUser.username" class="btn btn-default" 
+                            <a ng-show="loggedInUser.username" class="" 
                                 href="/logout">
+                                <span class="glyphicon glyphicon-log-out" ></span>
                                 Kijelentkezés
                             </a>
                         </li>

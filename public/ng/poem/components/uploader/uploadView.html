@@ -1,14 +1,11 @@
-<div ng-cloack class="container-fluid" ng-include="'ng/shared/navbar/navView.html'"></div>
+<div ng-cloack ng-include="'ng/shared/navbar/navView.html'"></div>
 
-<div ng-cloack class="container-fluid">
+<div ng-cloack >
     <div class="jumbotron">
         <h1>Feltöltés</h1>
         <h1 ng-cloack>Cím: {{vers.title}}</h1>
         <h1><small>Incipit: {{vers.inc}}</small></h1>
     </div>
-
-
-
 
     <form class="form-horizontal" role="form" ng-submit="postVers()">
         <div ng-cloack ng-include="'ng/poem/components/uploader/poemFormUp.html'"></div>
