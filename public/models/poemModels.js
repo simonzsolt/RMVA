@@ -1,10 +1,9 @@
 var mongoose = require('mongoose'),
     autoIncrement = require('mongoose-auto-increment'),
-    Schema = mongoose.Schema,
-    config = require('../../config.json')[env];
+    Schema = mongoose.Schema;
 
 // session storafe connection
-var connection = mongoose.createConnection(config.mongoDb, function(err) {
+var connection = mongoose.createConnection("mongodb://localhost/vers", function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }

@@ -22,8 +22,7 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    env = "development",
-    config = require('./config.json')[env];
+    config = require('config');
 
 // ====================LOADING CONFIG VARS====================
 
@@ -37,14 +36,14 @@ var models = require('./public/models/poemModels');
 // -------------------PORT AND IP-------------------
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT   || config.port);
+var port = (process.env.OPENSHIFT_NODEJS_PORT   || 3001);
 var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
 
 //LOCAL MONGODB
 
-mongoose.connect(config.mongoDb, function(err) {
+mongoose.connect("mongodb://localhost/vers", function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -87,9 +86,9 @@ app.use(session({
     saveUninitialized: false,
     store: new MongoStore({
 
-        // for dev
+        // for session
         mongooseConnection: mongoose.connection,
-        url: config.mongoDb
+        url: "mongodb://localhost/vers"
     })
 }));
 
