@@ -22,7 +22,8 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    config = require('config');
+    env = "production"
+    config = require('./config.json')[env];
 
 // ====================LOADING CONFIG VARS====================
 
@@ -36,17 +37,14 @@ var models = require('./public/models/poemModels');
 // -------------------PORT AND IP-------------------
 
 
-// for openshift
-var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
-
-var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
+// ip and host settings
+var port = (process.env.OPENSHIFT_NODEJS_PORT   || config.port);
+var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
 
-
-//OPENSHIFT MONGODB
-
-mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
+// MONGODB
+mongoose.connect(config.mongoDb, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -57,10 +55,10 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
 
 var server = app.listen(port, ip, function () {
 
-  var host = server.address().address;
-  var port = server.address().port;
+    var host = server.address().address;
+    var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Example app listening at http://%s:%s', host, port);
 }); // debug for port and ip binding
 
 var routes = require('./routes/index');
@@ -88,9 +86,8 @@ app.use(session({
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
-
-        mongooseConnection: mongoose.connection,        
-        url: process.env.OPENSHIFT_MONGODB_DB_URL
+        mongooseConnection: mongoose.connection,
+        url: config.mongoDb
     })
 }));
 
