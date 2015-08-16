@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 // session storafe connection
-var connection = mongoose.createConnection('mongodb://localhost/vers', function(err) {
+var connection = mongoose.createConnection(config.mongoDb, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }

@@ -22,7 +22,7 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    config = require('config');
+    config = require('./config.json')['development'];
 
 // ====================LOADING CONFIG VARS====================
 
@@ -36,14 +36,14 @@ var models = require('./public/models/poemModels');
 // -------------------PORT AND IP-------------------
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT || 3001);
-var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
+var port = (process.env.OPENSHIFT_NODEJS_PORT   || config.port);
+var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
 
 //LOCAL MONGODB
 
-mongoose.connect('mongodb://localhost/vers', function(err) {
+mongoose.connect(config.mongoDb, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -54,10 +54,10 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
 
 var server = app.listen(port, ip, function () {
 
-  var host = server.address().address;
-  var port = server.address().port;
+    var host = server.address().address;
+    var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+    console.log('Example app listening at http://%s:%s', host, port);
 }); // debug for port and ip binding
 
 var routes = require('./routes/index');
@@ -88,7 +88,7 @@ app.use(session({
 
         // for dev
         mongooseConnection: mongoose.connection,
-        url: 'mongodb://localhost/vers'
+        url: config.mongoDb
     })
 }));
 
