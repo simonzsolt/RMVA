@@ -3,14 +3,13 @@ angular
 
 		.controller('navCtrl', function(
 
-
-	$scope, 
-	userLoggedInFactory,
-	poemFactory, 
-	$routeParams, 
-	$location, 
-	$rootScope, 
-	$route){ 
+        	$scope, 
+        	userLoggedInFactory,
+        	poemFactory, 
+        	$routeParams, 
+        	$location, 
+        	$rootScope, 
+        	$route){ 
 
         $scope.path = $location.path();
 

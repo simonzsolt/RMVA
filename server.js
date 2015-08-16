@@ -35,6 +35,7 @@ var models = require('./public/models/poemModels');
 
 // -------------------PORT AND IP-------------------
 
+
 // for openshift
 var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
 
@@ -51,7 +52,6 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     }
     else {return}
 });
-
 
 // -------------------SERVER LISTENING-------------------
 
@@ -89,8 +89,7 @@ app.use(session({
     saveUninitialized: false,
     store: new MongoStore({
 
-        mongooseConnection: mongoose.connection,
-        
+        mongooseConnection: mongoose.connection,        
         url: process.env.OPENSHIFT_MONGODB_DB_URL
     })
 }));
