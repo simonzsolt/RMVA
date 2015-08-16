@@ -4,5 +4,6 @@ angular
         'ngResource',
         'ui.select',
         'ui.date',
-        'ngSanitize'
+        'ngSanitize',
+        'door3.css'
     ]);

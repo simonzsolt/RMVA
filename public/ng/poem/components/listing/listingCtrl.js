@@ -19,7 +19,6 @@ angular
                 
                 $scope.predicate = '-created_at';
 
-
                 // deleting items by _id
                 $scope.deleteVers = function(vers_id){
 

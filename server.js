@@ -35,9 +35,6 @@ var models = require('./public/models/poemModels');
 
 // -------------------PORT AND IP-------------------
 
-// for openshift
-// var port = (process.env.OPENSHIFT_NODEJS_PORT || 8080);
-
 // for local
 var port = (process.env.OPENSHIFT_NODEJS_PORT || 3001);
 var ip = (process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
@@ -53,15 +50,6 @@ mongoose.connect('mongodb://localhost/vers', function(err) {
     else {return}
 });
 
-// OPENSHIFT MONGO CARTRIDGE
-/*
-mongoose.connect(OPENSHIFT_MONGODB_DB_URL, function(err) {
-    if (err) {
-        console.log('DB connection error:' + err);
-    }
-    else {return}
-});
-*/
 // -------------------SERVER LISTENING-------------------
 
 var server = app.listen(port, ip, function () {
@@ -100,10 +88,7 @@ app.use(session({
 
         // for dev
         mongooseConnection: mongoose.connection,
-        
         url: 'mongodb://localhost/vers'
-
-        // url: OPENSHIFT_MONGODB_DB_URL
     })
 }));
 
