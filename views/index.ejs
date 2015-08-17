@@ -10,9 +10,11 @@
         <!-- STLYSHEETS -->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/lib/angular-ui-select/dist/select.css"/>
         <link rel="stylesheet" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.css"/>
-      
+        
+        <!-- bower:css -->
+        <link rel="stylesheet" href="/assets/lib/angular-ui-select/dist/select.css" />
+        <!-- endbower -->
 
 
  <body ng-app="versApp" class="container-fluid">
@@ -26,6 +28,7 @@
 <!-- =============================RESOURCES - DEPENDENCIES============================ -->
 
     <!-- LIBRARIES -->
+   <!--  
     <script type="text/javascript" src="assets/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="assets/lib/jquery-ui/jquery-ui.js"></script>
     <script type="text/javascript" src="assets/lib/angular/angular.js"></script>
@@ -43,7 +46,21 @@
     </script>
 
     <script src="assets/lib/angular-css/angular-css.min.js"></script>
-    
+     -->
+
+    <!-- bower:js -->
+    <script src="/assets/lib/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/angular/angular.js"></script>
+    <script src="/assets/lib/angular-resource/angular-resource.js"></script>
+    <script src="/assets/lib/angular-route/angular-route.js"></script>
+    <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/assets/lib/angular-ui-select/dist/select.js"></script>
+    <script src="/assets/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="/assets/lib/angular-ui-date/src/date.js"></script>
+    <script src="/assets/lib/angular-css/angular-css.js"></script>
+    <!-- endbower -->
+
     <!-- MAIN ANGUALR APP -->
     <script type="text/javascript" src="ng/main.js"></script>
 

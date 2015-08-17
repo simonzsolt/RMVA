@@ -1,5 +1,5 @@
 angular
-    .module('versApp')
+	.module('versApp')
 
 // =============================CONFIG=============================
 
