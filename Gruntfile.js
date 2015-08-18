@@ -32,12 +32,12 @@ module.exports = function(grunt) {
                 app: 'google-chrome-stable'
             }               
         },
-        /*wiredep: {
+        wiredep: {
             task: {
                 src: ['views/index.ejs'],
                 ignorePath: '../public'
             }
-        },*/
+        },
         watch: {
             files: ['public/assets/lib/*'],
             tasks: ['wiredep']
@@ -242,7 +242,7 @@ module.exports = function(grunt) {
 
     // Default tasks
     grunt.registerTask('default',   ['devUpdate']);
-    grunt.registerTask('dev',       ['devUpdate', 'open:dev']);
+    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev']);
     grunt.registerTask('build',     
         [
             'devUpdate', 
