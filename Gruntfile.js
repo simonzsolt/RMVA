@@ -260,4 +260,5 @@ module.exports = function(grunt) {
         ]
     );
     grunt.registerTask('changes',   ['watch']);  
+    grunt.registerTask('hook',   ['githooks']);  
 };
