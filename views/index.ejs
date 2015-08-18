@@ -8,14 +8,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- STLYSHEETS -->
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.css"/>
-        
-        <!-- bower:css -->
-        <link rel="stylesheet" href="/assets/lib/angular-ui-select/dist/select.css" />
-        <!-- endbower -->
 
+        <link rel="stylesheet" type="text/css" href="build/productionStyle.css">
+
+        <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
 
  <body ng-app="versApp" class="container-fluid">
 
@@ -29,85 +26,7 @@
 
     <!-- LIBRARIES -->
 
-    <!-- bower:js -->
-    <script src="/assets/lib/jquery/dist/jquery.js"></script>
-    <script src="/assets/lib/angular/angular.js"></script>
-    <script src="/assets/lib/angular-resource/angular-resource.js"></script>
-    <script src="/assets/lib/angular-route/angular-route.js"></script>
-    <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/assets/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/assets/lib/angular-ui-select/dist/select.js"></script>
-    <script src="/assets/lib/jquery-ui/jquery-ui.js"></script>
-    <script src="/assets/lib/angular-ui-date/src/date.js"></script>
-    <script src="/assets/lib/angular-css/angular-css.js"></script>
-    <!-- endbower -->
-
-    <!-- MAIN ANGUALR APP -->
-    <script type="text/javascript" src="ng/main.js"></script>
-
-    <!-- ANGULAR CONFIGS -->
-    <script type="text/javascript" src="ng/config.js"></script>
-    <script type="text/javascript" src="ng/auth/config/authConfig.js"></script>
-    <script type="text/javascript" src="ng/poem/config/poemConfig.js"></script>
-
-    <!-- ANGUALR FILTERS -->
-    <script type="text/javascript" src="ng/shared/filters.js"></script>
-
-    <!-- ANGUALR DIRECTIVES -->
-
-    <!-- ANGULAR SERVICES -->
-    <script type="text/javascript" src="ng/poem/services/poemFactory.js"></script>
-    <script type="text/javascript" src="ng/auth/services/userFactory.js"></script>
-    <script type="text/javascript" src="ng/auth/services/signupFactory.js"></script>
-    <script type="text/javascript" src="ng/auth/services/userLoggedInFactory.js"></script>
-    <script type="text/javascript" src="ng/auth/services/profileFactory.js"></script>
-
-    <!-- ANGULAR CONTROLLER FOR NAVBAR // SHARED -->
-    <script type="text/javascript" src="ng/shared/navbar/navCtrl.js"></script>
-
-    <!-- ANGULAR CONTROLLERS FOR POEM -->
-    <script type="text/javascript" src="ng/poem/components/listing/listingCtrl.js"></script>
-    <script type="text/javascript" src="ng/poem/components/viewer/viewerCtrl.js"></script>
-    <script type="text/javascript" src="ng/poem/components/editor/editorCtrl.js"></script>
-    <script type="text/javascript" 
-        src="ng/poem/components/uploader/uploaderCtrl.js">
-    </script>
-
-    <script type="text/javascript" 
-        src="ng/poem/components/uploader/selectLink/selectLinkUpCtrl.js"></script>
-
-    <script type="text/javascript" 
-        src="ng/poem/components/editor/selectLink/selectLinkEditCtrl.js"></script>
-
-    <script type="text/javascript" 
-        src="ng/poem/components/uploader/selectDate/selectDateCtrl.js"></script>
-
-    <script type="text/javascript" 
-        src="ng/poem/components/uploader/selectDate/selectDateFromCtrl.js"></script>
-
-    <script type="text/javascript" 
-        src="ng/poem/components/uploader/selectDate/selectDateToCtrl.js"></script>
-
-    <script type="text/javascript"
-        src="ng/poem/components/editor/selectDate/selectDateEditCtrl.js">
-    </script>
-
-    <script type="text/javascript"
-        src="ng/poem/components/editor/selectDate/selectDateFromEditCtrl.js">
-    </script>
-
-    <script type="text/javascript"
-        src="ng/poem/components/editor/selectDate/selectDateToEditCtrl.js">
-    </script>
-
-    <!-- ANGULAR CONTROLLERS FOR AUTH -->
-    <script type="text/javascript" src="ng/auth/components/signup/signupCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/login/loginCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/profile/profileCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/users/usersCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/users/editUsersCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/unauth/unauthCtrl.js"></script>
-    <script type="text/javascript" src="ng/auth/components/profile/profileCtrl.js"></script>
+    <script type="text/javascript" src="build/productions.js"></script>
 
     </body>
 </html>
