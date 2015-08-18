@@ -29,8 +29,8 @@ angular
 					var arrFrom = [];
 					$scope.vers.date.single = '';
 
-					console.log('selectFrom::' + ' $scope.vers.date.single ' +
-						$scope.vers.date.single);
+					// console.log('selectFrom::' + ' $scope.vers.date.single ' +
+						// $scope.vers.date.single);
 
 					angular.forEach($scope.vers.date.period.from ,function(value, index){
 					

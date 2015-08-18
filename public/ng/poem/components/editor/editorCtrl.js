@@ -73,6 +73,16 @@ angular
 					}
 				}];
 
+				// empty date fields when not chosen
+				$scope.selectDateMenu = function selectDateMenu(selectDate) {
+					if(selectDate == "single"){
+						$scope.vers.date.period = '';
+					}; 
+
+					if(selectDate == "period"){
+						$scope.vers.date.single = '';
+					};
+		    	};
 
 				// $scope.metrumChange = false;
 

@@ -98,8 +98,20 @@ angular
 
 		        }; // $scope.vers
 
-// ============================ADD AND REMOVE FILEDS============================
+		        // empty date fields when not chosen
+				$scope.selectDateMenu = function selectDateMenu(selectDate) {
+					if(selectDate == "single"){
+						$scope.vers.date.period = '';
+					}; 
 
+					if(selectDate == "period"){
+						$scope.vers.date.single = '';
+					};
+		    	};
+
+
+// ============================ADD AND REMOVE FILEDS============================
+				
 				$scope.textLines = '';
 				$scope.textVerse = '';
 				$scope.textarea = function textarea() {
