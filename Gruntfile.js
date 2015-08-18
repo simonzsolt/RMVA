@@ -9,6 +9,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-githooks');
 
     grunt.initConfig({
         devUpdate: {
@@ -237,12 +238,17 @@ module.exports = function(grunt) {
                     'public/ng/auth/components/unauth/unauthView.html'                    
                 }
             }
+        },
+         githooks: {
+            all: {
+              'pre-push': 'build'
+            }
         }
     });
 
     // Default tasks
-    grunt.registerTask('default',   ['devUpdate']);
-    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev']);
+    grunt.registerTask('default',   ['devUpdate', 'githooks']);
+    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev', 'githooks']);
     grunt.registerTask('build',     
         [
             'devUpdate', 
@@ -250,7 +256,8 @@ module.exports = function(grunt) {
             'concat', 
             'uglify', 
             'cssmin',
-            'htmlmin'
+            'htmlmin',
+            'githooks'
         ]
     );
     grunt.registerTask('changes',   ['watch']);  
