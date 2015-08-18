@@ -247,8 +247,8 @@ module.exports = function(grunt) {
     });
 
     // Default tasks
-    grunt.registerTask('default',   ['devUpdate', 'githooks']);
-    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev', 'githooks']);
+    grunt.registerTask('default',   ['devUpdate']);
+    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev']);
     grunt.registerTask('build',     
         [
             'devUpdate', 
@@ -257,8 +257,8 @@ module.exports = function(grunt) {
             'uglify', 
             'cssmin',
             'htmlmin',
-            'githooks'
         ]
     );
     grunt.registerTask('changes',   ['watch']);  
+    grunt.registerTask('hook',   ['githooks']);  
 };
