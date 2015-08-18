@@ -5,7 +5,7 @@ angular
 
 		.controller('viewerCtrl', 
 		    
-		    function($scope, $routeParams, poemFactory, $location) {
+		    ['$scope', '$routeParams', 'poemFactory', '$location', function($scope, $routeParams, poemFactory, $location) {
 
 		        $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
 
@@ -21,4 +21,4 @@ angular
 
 				});     
 
-		    }) //viewCtrl
+		    }]) //viewCtrl

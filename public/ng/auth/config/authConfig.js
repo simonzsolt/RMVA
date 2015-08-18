@@ -5,7 +5,7 @@ angular
 
 // -----------------------------LOGGEDIN CONFIG-----------------------------
 
-		.config(function($routeProvider, $locationProvider, $httpProvider) {
+		.config(['$routeProvider', '$locationProvider', '$httpProvider', function($routeProvider, $locationProvider, $httpProvider) {
 
 
             var checkLoggedin = function($q, $timeout, $http, $location){
@@ -28,11 +28,12 @@ angular
 
                 return deferred.promise;
             };
+            checkLoggedin.$inject = ['$q', '$timeout', '$http', '$location'];
             
             //================================================
             // Add an interceptor for AJAX errors
             //================================================
-            $httpProvider.interceptors.push(function($q, $location) {
+            $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
                 return {
                     response: function(response) {
 	                    // do something on success
@@ -45,7 +46,7 @@ angular
                             return $q.reject(response);
                     }
                 };
-            });
+            }]);
 
 
 // -----------------------------ROUTES CONFIG FOR AUTHENTICATION-----------------------------
@@ -93,4 +94,4 @@ angular
                     } 
                 });
                 
-        }); // config
+        }]); // config

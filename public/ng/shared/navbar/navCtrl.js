@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('navCtrl', function(
+		.controller('navCtrl', ['$scope', 'userLoggedInFactory', 'poemFactory', '$routeParams', '$location', '$rootScope', '$route', function(
 
         	$scope, 
         	userLoggedInFactory,
@@ -29,4 +29,4 @@ angular
 
         $rootScope.loggedInUser = userLoggedInFactory.get();
 
-});
+}]);

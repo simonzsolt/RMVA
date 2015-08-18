@@ -4,8 +4,8 @@ angular
 
 // =============================USER FACTORY=============================
 
-		.factory('signupFactory', function($resource) {
+		.factory('signupFactory', ['$resource', function($resource) {
 				return $resource('/auth/:id', {id: '@_id'}, {
 					'update' : {method: 'PUT'}
 				})
-			})
+			}])

@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('selectDateFromEditCtrl', function($scope, $routeParams, poemFactory){
+		.controller('selectDateFromEditCtrl', ['$scope', '$routeParams', 'poemFactory', function($scope, $routeParams, poemFactory){
 
 			var vers = poemFactory.get({id: $routeParams.versId}, function(){
 				
@@ -99,4 +99,4 @@ angular
 		        ],
 		         firstDay: 1
 		    };
-		});
+		}]);

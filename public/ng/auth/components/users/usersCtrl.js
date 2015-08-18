@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('usersCtrl', function($scope, userFactory, $routeParams) {
+		.controller('usersCtrl', ['$scope', 'userFactory', '$routeParams', function($scope, userFactory, $routeParams) {
 
 			$scope.predicate = '-created_at';
 
@@ -23,4 +23,4 @@ angular
 
 	                }; // if scope del_conf
 	            }; //$scope.deleteVers
-		})
+		}])

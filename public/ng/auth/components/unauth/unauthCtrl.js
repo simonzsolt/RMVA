@@ -1,6 +1,6 @@
 angular
 	.module('versApp')
 
-		.controller('unauthCtrl', function($scope) {
+		.controller('unauthCtrl', ['$scope', function($scope) {
 			
-		})
+		}])

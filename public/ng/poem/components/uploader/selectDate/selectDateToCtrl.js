@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('selectDateToCtrl', function($scope){
+		.controller('selectDateToCtrl', ['$scope', function($scope){
 
 			$scope.selectdateToMenu = 'exact_date';
 
@@ -81,4 +81,4 @@ angular
 		        ],
 		         firstDay: 1
 		    };
-		});
+		}]);

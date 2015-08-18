@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('selectDateCtrl', function($scope){
+		.controller('selectDateCtrl', ['$scope', function($scope){
 
 
 			$scope.select = function(){
@@ -82,4 +82,4 @@ angular
 		        ],
 		         firstDay: 1
 		    };
-		});
+		}]);

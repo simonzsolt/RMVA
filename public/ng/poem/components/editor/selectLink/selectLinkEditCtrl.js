@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('selectLinkEditCtrl', function($scope, $resource, $routeParams){
+		.controller('selectLinkEditCtrl', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
 			
 			$scope.array = [];
 				var data = $resource('/data/:id', {id: '@_id'});
@@ -13,4 +13,4 @@ angular
 		    			
 		    		}); // forEach allData
 				}); // allData = data.query
-			}); // Ctrl
+			}]); // Ctrl

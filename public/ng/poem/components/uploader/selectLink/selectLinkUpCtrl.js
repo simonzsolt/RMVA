@@ -1,7 +1,7 @@
 angular
 	.module('versApp')
 
-		.controller('selectLinkUpCtrl', function($scope, $resource, $routeParams){
+		.controller('selectLinkUpCtrl', ['$scope', '$resource', '$routeParams', function($scope, $resource, $routeParams){
 
 			$scope.array = [];
 
@@ -12,4 +12,4 @@ angular
 
 	    		}); // forEach allData
 			}); // allData = data.query
-		}); // Ctrl
+		}]); // Ctrl
