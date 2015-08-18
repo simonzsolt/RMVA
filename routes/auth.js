@@ -119,9 +119,9 @@ router.route('/users/:user_id')
 
                 user.username   = req.body.username,
                 user.nickname   = req.body.nickname,
-                user.first_name  = req.body.first_name,
+                user.first_name = req.body.first_name,
                 user.last_name  = req.body.last_name,
-                user.role       = req.body.role
+                user.role       = req.body.role,
 
                 created_at      = req.body.created_at;
                 
@@ -194,7 +194,7 @@ router.route('/profile/:user_id')
                 user.nickname   = req.body.nickname,
                 user.first_name = req.body.first_name,
                 user.last_name  = req.body.last_name,
-                user.role       = req.body.role
+                user.role       = req.body.role,
 
                 created_at      = req.body.created_at;
                 

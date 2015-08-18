@@ -20,16 +20,13 @@ var express = require('express'); // server dep
 
     MongoStore = require('connect-mongo')(session),
 
-    zeroFill = require('zero-fill'),
-
-    config = require('config');
+    zeroFill = require('zero-fill');
 
 // ====================LOADING CONFIG VARS====================
 
 //  mongoose
 var mongoose = require('mongoose');
 var models = require('./public/models/poemModels'); 
-
 
 // ====================SERVER INIT====================
 
@@ -48,7 +45,7 @@ mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
-    else {return}
+    else {return;}
 });
 
 // -------------------SERVER LISTENING-------------------

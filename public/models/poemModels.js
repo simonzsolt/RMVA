@@ -8,7 +8,7 @@ var connection = mongoose.createConnection(
     if (err) {
         console.log('DB connection error:' + err);
     }
-    else {return}
+    else {return;}
 });
 
 autoIncrement.initialize(connection);
@@ -86,7 +86,7 @@ var reflectDescObj = {
     name: String,
     desc: String,
     locus: String
-}
+};
 
 var reflectionObj = {
 
