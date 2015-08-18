@@ -152,7 +152,8 @@
     <label class="control-label col-md-2" for="col">Dátum megadása:</label>
 
     <div id="selectDate" class="col-md-10">
-        <select class="form-control"  
+        <select class="form-control"
+                ng-click="selectDateMenu(selectDate)" 
                 ng-model="selectDate">
 
             <option value="" disabled selected >-- Dátum megadása --</option>
