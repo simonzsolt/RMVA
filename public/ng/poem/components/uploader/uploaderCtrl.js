@@ -140,11 +140,108 @@ angular
 					$scope.textLines = count +1 - ($scope.textVerse-1);	
 				};
 
-
+// METRUM
 
 // Hierarchy of repeat indexes
 // metrumIn > partIn > compPartIn > symbolIn, limitIn, countIn
 
+
+				$scope.vers.metrum = [{
+
+					levels: {
+
+						level: [{
+
+					        comp: {
+					            name:       '',
+					            comp_type:  '',
+					            quality:    '',
+					            rep:        '',
+					            symbols: [{
+						            symbol: '',
+						            rule:   '',
+					                limit:  '',
+					                limit_pos: '',
+					                num:    ''
+						        }]
+					        }
+					    }]
+					}
+				}];
+
+				$scope.addLevel = function addLevel(metrumIn){
+					$scope.vers.metrum.push({
+					
+						levels: {
+
+							level: [{
+
+						        comp: {
+						            name:       '',
+						            comp_type:  '',
+						            quality:    '',
+						            rep:        '',
+						            symbols: [{
+							            symbol: '',
+							            rule:   '',
+										limit:  '',
+										limit_pos: '',
+										num:    ''
+							        }]
+						        }
+						    }]
+						}
+					});
+				};
+
+				$scope.removeLevel = function removeLevel(metrumIn){
+					var lastItem = $scope.vers.metrum.length -1;
+					$scope.vers.metrum.splice(lastItem, 1);
+				};
+
+				$scope.addComp = function addComp(metrumIn, levelIn){
+					$scope.vers.metrum[metrumIn].levels.level.push({
+						comp: {
+				           	name:       '',
+				            comp_type:  '',
+				            quality:    '',
+				            rep:        '',
+				            symbols: [{
+					            symbol: '',
+					            rule:   '',
+					            limit: 	'',
+					            limit_pos: '',
+					            num:    ''
+					        }]
+				        }
+					});
+				};
+
+				$scope.removeComp = function removeComp(metrumIn, levelIn){
+					$scope.vers.metrum[metrumIn].levels.level.splice(levelIn, 1);
+				};
+
+				$scope.addSymbol = function addSymbol(metrumIn, levelIn, symbolIn){
+					$scope.vers.metrum[metrumIn].
+						levels.level[levelIn].comp.symbols.push({
+							symbol:     '',
+					            rule: 	'',
+					            limit:  '',
+					            limit_pos: '',
+					            num:    ''
+						});
+				};
+
+
+
+
+
+
+
+
+
+
+/*
 		        $scope.vers.metrum = [{
 
 		        	parts: {
@@ -359,7 +456,9 @@ angular
 							}
 					});
 				};
+*/
 
+// REFLECT
 				$scope.vers.reflect = {
 					ref_genre: [{
 						name: 	'',

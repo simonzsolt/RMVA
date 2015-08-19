@@ -41,7 +41,7 @@ var dateObj = {
 };
 
 // =====================================Metric model==================================
-
+/*
 var metrumObj = {
 
     parts: {    
@@ -75,6 +75,31 @@ var metrumObj = {
         }]
     }
 };
+*/
+
+var metrumObj = {
+
+    levels: {
+
+        level: [{
+
+            comp: {
+                name:       String,
+                comp_type:  String,
+                quality:    String,
+                rep:        String,
+                symbols: [{
+                    symbol: String,
+                    rule:   String,
+                    limit:  String,
+                    limit_pos: String,
+                    num:    String,
+                }]
+            }
+        }]
+    }
+};
+
 
 var describeObj = {
     desc: String,

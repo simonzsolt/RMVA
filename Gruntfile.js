@@ -248,7 +248,7 @@ module.exports = function(grunt) {
 
     // Default tasks
     grunt.registerTask('default',   ['devUpdate']);
-    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev']);
+    grunt.registerTask('dev',       ['devUpdate', 'open:dev']);
     grunt.registerTask('build',     
         [
             'devUpdate', 

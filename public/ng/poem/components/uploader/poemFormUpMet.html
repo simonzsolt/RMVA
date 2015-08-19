@@ -1,550 +1,170 @@
-
-
 <h2>Metrika</h2>
 
+<!-- <pre> {{ vers.metrum | json }} </pre> -->
 
-
-<!--  
-<div class="col-sm-offset-2 col-sm-10">
-    <div class="checkbox">
-        <label>
-            <input ng-model="metrumChange" type="checkbox"> Metrumváltó
-        </label>
-    </div>
-</div> 
- -->
 
 <div>
+  
+    <div ng-repeat="metrum in vers.metrum"
+        ng-init="metrumIn = $index">
 
-    <div ng-repeat="metrum in vers.metrum" ng-init="metrumIn = $index">
+        <div>
 
-    <h3>
-        Rész #{{ metrumIn +1 }} | 
-
-        <small>
-              <a ng-click="addPart()" ng-show="$last" href="">
-                    <span class="glyphicon glyphicon-plus"></span></a>
-
-                <a ng-click="removePart()" ng-show="$last && $index > 0" href="">
-                    <span class="glyphicon glyphicon-minus"></span></a>
-        </small>
-
-    </h3>
-
-        <div class="form-group">
-            <label  class="control-label col-md-2" for="comp_group">
-               Szakasz:
-            </label>
-
-            <div class="col-md-10">
-                <select 
-                    class="form-control" 
-                    ng-click="rangeMiddle(metrumIn)"
-                    ng-model="metrum.parts.range.non_spec">
-
-                    <option value="" disabled selected>Szakasz</option>
-                    <option value="Vers eleje">Vers eleje</option>
-                    <option value="Vers vége">Vers vége</option>
-                    <option value="Vers közepe">Vers közepe</option>
-                </select>
-            </div>
-
-            <label 
-                class="control-label col-md-2" 
-                for="comp_group"  
-                ng-show="metrum.parts.range.non_spec=='Vers közepe'">
-
-               Szakasz leírása:
-            </label>
-
-            <div 
-                class="col-md-10"  
-                ng-show="metrum.parts.range.non_spec=='Vers közepe'">
-                <input 
-                    class="form-control" 
-                    type="text" 
-                    ng-model="metrum.parts.range.spec" 
-                    placeholder="Szakasz leírása">
-                </input>
-            </div>
-
-        </div>
-
-        <div ng-repeat="part in metrum.parts.part" ng-init="partIn = $index">
-
-            <h3> 
-                Összetevő #{{ metrumIn +1 }}.{{ partIn +1 }} | 
+            <h3>
+                Szint #{{ metrumIn +1 }} | 
 
                 <small>
-                    <a ng-click="addComp(metrumIn, partIn)" ng-show="$last" href="">
-                        <span class="glyphicon glyphicon-plus"></span></a>
+                      <a ng-click="addLevel(metrumIn)" ng-show="$last" href="">
+                            <span class="glyphicon glyphicon-plus"></span></a>
 
-                    <a 
-                        ng-click="removeComp(metrumIn, partIn)" 
-                        ng-show="$last && $index > 0" 
-                        href="">
-                        <span class="glyphicon glyphicon-minus"></span></a>
+                        <a ng-click="removeLevel(metrumIn)" ng-show="$last && $index > 0" href="">
+                            <span class="glyphicon glyphicon-minus"></span></a>
                 </small>
 
             </h3>
 
-            <div class="form-group">
+            <div ng-repeat="level in metrum.levels.level"
+                ng-init="levelIn = $index">
 
-                <div>
-                    <label  class="control-label col-md-2" for="part">
-                       Összetevő:
-                    </label>
-
-                    <div class="col-md-10" id="comp" >
-                        <select 
-                            class="form-control" 
-                            ng-model="part.comp.name" >
-                            
-                            <option value="" disabled selected>Összetevő</option>
-                            <option  
-                                ng-repeat="select in selectComp" 
-                                value="{{select}}">
-                                {{select}}
-                            </option>
-
-                        </select> 
-                    </div>
-                </div>
-
-            
-                <div>
-                    <label class="col-md-2 control-label" for="comp_type">
-                        Fajta (összetevő):
-                    </label>
-
-                    <div class="col-md-10" id="comp_type" >
-                        <select 
-                            class="form-control"
-                            ng-click="compTypeNum(metrumIn, partIn)"
-                            ng-model="part.comp.comp_type" >
-                            
-                            <option value="" disabled selected>Fajta (összetevő)</option>
-                            <option value="szám">szám</option>
-                            <option value="tartalom">tartalom</option>
-                        </select>  
-                    </div>
-                </div>
-            
-
-
-                <div>
-                   <label 
-                    class="control-label col-md-2" 
-                    ng-show="part.comp.comp_type=='tartalom'"
-                    for="quality">
-
-                    Összetevő (minőség): 
-                 </label>
-
-                    <div 
-                        id="quality" 
-                        class="col-md-10"
-                        ng-click="qualityPartial(metrumIn, partIn)"
-                        ng-show="part.comp.comp_type=='tartalom'">
-
-                        <select 
-                            class="form-control" 
-                            ng-model="part.comp.quality" >
-                            
-                            <option value="" disabled selected>Minőség (összetevő)</option>
-                            <option value="részleges">részleges</option>
-                            <option value="teljes">teljes</option>
-
-                        </select>  
-                    </div>
-                </div>
-
-                <div>
-                    <label 
-                        class="control-label col-md-2" 
-                        ng-show="part.comp.quality=='részleges'"
-                        for="rep">
-
-                        Összetevő (érték):
-                     </label>
-
-                    <div 
-                        id="rep" 
-                        class="col-md-10"
-                        ng-show="part.comp.quality=='részleges'">
-
-                        <select 
-                            class="form-control"
-                            ng-model="part.comp.rep" >
-                            
-                            <option value="" disabled selected>Érték (összetevő)</option>
-                            <option value="hangérték">hangérték</option>
-                            <option value="hosszérték">hosszérték</option>
-                            <option value="szintaxis">szintaxis</option>
-
-                        </select>  
-                    </div>
-                </div>
-            </div> 
-
-
-
-
-            <div ng-repeat="comp_part in part.comp.comp_part" ng-init="compPartIn = $index">
-                
-                <h3>
-                    Részösszetevő #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }} | 
+                <h4>
+                    Összetevő #{{ metrumIn +1 }}.{{ levelIn +1 }} |
 
                     <small>
-                        <a 
-                            ng-click="addCompPart(metrumIn, partIn, compPartIn)" 
-                            ng-show="$last" href="">
-                            <span class="glyphicon glyphicon-plus"></span></a>
-                        <a 
-                            ng-click="removeCompPart(metrumIn, partIn, compPartIn)" 
-                            ng-show="$last && $index > 0" href="">
-                            <span class="glyphicon glyphicon-minus"></span></a>
+                          <a ng-click="addComp(metrumIn, levelIn)" ng-show="$last" href="">
+                                <span class="glyphicon glyphicon-plus"></span></a>
+
+                            <a ng-click="removeComp(metrumIn, levelIn)" ng-show="$last && $index > 0" href="">
+                                <span class="glyphicon glyphicon-minus"></span></a>
                     </small>
-                </h3>
 
-
-
-                <div ng-repeat="symbols in comp_part.symbols" ng-init="symbolIn = $index; partnIn=$parent.$parent.$index">
-                    
-                    <h4>
-                        Szimbólumok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ symbolIn +1 }} |
-
-                        <small>
-                            
-                            <a ng-click="addFieldSymbol(metrumIn, partIn, compPartIn)" 
-                                ng-show="$last" href=""> 
-                                <span class="glyphicon glyphicon-plus"></span></a>
-
-                            <a ng-click="removeFieldSymbol(metrumIn, partIn, compPartIn, symbolIn)" 
-                                ng-show="$last && $index > 0" href="">   
-                                <span class="glyphicon glyphicon-minus"></span></a>
-
-                        </small>
-
-                    </h4>
-            
-                    <div class="form-group">
-
-                        <div>
-                            <label 
-                                class="control-label col-md-2" 
-                                for="comp_limit">
-
-                                Szimbólum
-                             </label>
-
-                            <div 
-                                id="comp_limit" 
-                                class="col-md-10">
-
-                                <input 
-                                    class="form-control" 
-                                    type="text" 
-                                    ng-model="symbols.symbol" 
-                                    placeholder="Szimbólum">
-                                </input>
-                            </div>
-                        </div>
-
-
-
-                        <div>
-                            <label 
-                                class="control-label col-md-2" 
-                                for="comp_limit_type">
-
-                               Szimbólum típus:
-                             </label>
-
-                            <div 
-                                id="comp_limit_type" 
-                                class="col-md-10">
-
-                                <select 
-                                    class="form-control" 
-                                    ng-model="symbols.symbol_type" >
-                                    
-                                    <option value="" disabled selected>Érték (szimbólum)</option>
-                                    <option value="sazbály">sazbály</option>
-                                    <option value="tendencia">tendencia</option>
-
-                                </select>  
-                            </div>
-                        </div>
-                    </div>
-<!-- 
-                    <div class="form-group">
-
-                        <label class="control-label col-md-2" for="comp_group">
-                            <a ng-click="addFieldSymbol(metrumIn, partIn, compPartIn)" 
-                                ng-show="$last" href="">
-                               
-                                <span class="glyphicon glyphicon-plus"></span>
-                                Szimbólum hozzáadása 
-                            </a>
-                        </label> 
-
-                        <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                            <a ng-click="removeFieldSymbol(metrumIn, partIn, compPartIn, symbolIn)" 
-                                ng-show="$last" href="">
-                               
-                                <span class="glyphicon glyphicon-minus"></span>
-                                Szimbólum eltávolítása
-                            </a>
-                        </label>
- -->
-                    </div>
-
-                </div> <!-- repeat symbols -->
-
-
-              
-
-                <div ng-repeat="limits in comp_part.limits" ng-init="limitIn = $index; partnIn=$parent.$parent.$index">
-                    
-                    <h4>
-                        Határok #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}.{{ limitIn +1 }} |
-
-                        <small>
-                            <a ng-click="addFieldLimit(metrumIn, partIn, compPartIn)" 
-                                ng-show="$last" href="">
-                                <span class="glyphicon glyphicon-plus"></span></a>
-
-                            <a ng-click="removeFieldLimit(metrumIn, partIn, compPartIn, limitIn)" 
-                                ng-show="$last" href="">
-                                <span class="glyphicon glyphicon-minus"></span></a>
-                        </small>
-
-                    </h4>
-            
-                    <div class="form-group">
-
-                        <div>
-                            <label 
-                                class="control-label col-md-2" 
-                                for="comp_limit">
-
-                                Határ
-                             </label>
-
-                            <div 
-                                id="comp_limit" 
-                                class="col-md-10">
-
-                                <select 
-                                    class="form-control" 
-                                    ng-model="limits.limit" >
-                                    
-                                    <option value="" disabled selected>Határ</option>
-                                    <option ng-repeat="comp in selectComp" value="{{comp}}">{{comp}}</option>
-
-                                </select>  
-                            </div>
-                        </div>
-
-
-
-                        <div>
-                            <label 
-                                class="control-label col-md-2" 
-                                for="comp_limit_type">
-
-                                Határ (érték):
-                             </label>
-
-                            <div 
-                                id="comp_limit_type" 
-                                class="col-md-10">
-
-                                <select 
-                                    class="form-control" 
-                                    ng-model="limits.limit_type" >
-                                    
-                                    <option value="" disabled selected>Határ (érték)</option>
-                                    <option value="előtte">előtte</option>
-                                    <option value="utána">utána</option>
-
-                                </select>  
-                            </div>
-                        </div>
-                    </div>
-<!-- 
-                    <div class="form-group">
-
-                        <label class="control-label col-md-2" for="comp_group">
-                            <a ng-click="addFieldLimit(metrumIn, partIn, compPartIn)" 
-                                ng-show="$last" href="">
-                               
-                                <span class="glyphicon glyphicon-plus"></span>
-                                Határ hozzáadása 
-                            </a>
-                        </label> 
-
-                        <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                            <a ng-click="removeFieldLimit(metrumIn, partIn, compPartIn, limitIn)" 
-                                ng-show="$last" href="">
-                               
-                                <span class="glyphicon glyphicon-minus"></span>
-                                Határ eltávolítása
-                            </a>
-                        </label>
-
-                    </div>
- -->
-                </div> <!-- repeat limits -->
-
-                <h4 ng-init="partnIn=$parent.$parent.$index">
-                    Darab #{{ metrumIn +1 }}.{{ partIn +1 }}.{{ compPartIn +1 }}
                 </h4>
+                
+                <div>
+                    
+                    <label class="control-label col-md-2">Név:</label>
+                    
+                    <div class="col-md-10">
 
-                <div ng-repeat="count in comp_part.count" ng-init="countIn = $index">
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="level.comp.name" 
+                            placeholder="Összetevő neve">
+                            
+                        </input>                
+                    </div>
+          
+                    <label class="control-label col-md-2">Fajta</label>
+                    
+                    <div class="col-md-10">
 
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="level.comp.comp_type" 
+                            placeholder="Összetevő fajtája">
+                            
+                        </input>                
+                    </div>
+          
+                    <label class="control-label col-md-2">Minőség</label>
+                    
+                    <div class="col-md-10">
 
-                    <div>
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="level.comp.quality" 
+                            placeholder="Összetevő minősége">
+                            
+                        </input>                
+                    </div>
+          
+                    <label class="control-label col-md-2">Ismétlődés</label>
 
-                        <label 
-                            class="control-label col-md-2" 
-                            for="comp_count">
+                    <div class="col-md-10">
 
-                            <small>
-                                <a 
-                                    ng-click="addFieldCount(metrumIn, partIn, compPartIn)" 
-                                    ng-show="$last" href="">
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="level.comp.rep" 
+                            placeholder="Összetevő ismétlődése">
+                            
+                        </input>                
+                    </div>
+                </div>
+
+                <div ng-repeat="symbols in level.comp.symbols"7
+                    ng-init="symbolIn = $index">
+
+                    <h4>
+                        Szimbólumok #{{ metrumIn +1 }}.{{ levelIn +1 }}.{{ symbolIn +1 }} | 
+
+                        <small>
+                              <a ng-click="addSymbol(metrumIn, levelIn, symbolIn)" 
+                                ng-show="$last" href="">
                                     <span class="glyphicon glyphicon-plus"></span></a>
 
-                                <a 
-                                    ng-click="removeFieldCount(metrumIn, partIn, compPartIn, countIn)" 
-                                    ng-show="$last && countIn > 0" href="">
+                                <a ng-click="removeSymbol(metrumIn, levelIn, symbolIn)" 
+                                    ng-show="$last && $index > 0" href="">
                                     <span class="glyphicon glyphicon-minus"></span></a>
-                            </small>
+                        </small>
 
-                            | Szint #{{ countIn +1 }}
+                    </h4>
 
-                         </label>
+                    <label class="control-label col-md-2">Szimbólum:</label>
+                    <div class="col-md-10">
 
-                        <div 
-                            id="comp_count" 
-                            class="col-md-10">
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="symbols.symbol" 
+                            placeholder="Szimbólum">
+                            
+                        </input>                
+                    </div>
 
-                            <input 
-                                class="form-control" 
-                                type="number" 
-                                ng-model="count.level" 
-                                min=0>
-                            </input>  
-                        </div>
+                    <label class="control-label col-md-2">Szabályszerűség:</label>
+                    <div class="col-md-10">
 
-<!-- 
-                        <div class="form-group">
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="symbols.rule" 
+                            placeholder="Ismétlődsé szabályszerűsége">
+                            
+                        </input>  
+                    </div>   
 
-                            <label 
-                                class="control-label col-md-2" 
-                                for="comp_group">
-                                <a ng-click="addFieldCount(metrumIn, partIn, compPartIn)" 
-                                    ng-show="$last" href="">
-                                   
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                    Szint hozzáadása 
-                                </a>
-                            </label> 
+                    <label class="control-label col-md-2">Határ:</label>
+                    <div class="col-md-10">
 
-                            <label 
-                                class="control-label col-md-2" 
-                                ng-show="$index > 0" for="comp_group">
-                                <a 
-                                    ng-click="removeFieldCount(metrumIn, partIn, compPartIn, countIn)" 
-                                    ng-show="$last" href="">
-                                   
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                    Szint eltávolítása
-                                </a>
-                            </label>
-                        </div>
- -->
-                    </div> <!-- form-group -->
-                </div> <!-- repeat count -->
-<!-- 
-                <div class="form-group">
-                    <label 
-                        class="control-label col-md-2" for="comp_group">
-                        <a 
-                            ng-click="addCompPart(metrumIn, partIn, compPartIn)" 
-                            ng-show="$last" href="">
-                            <span class="glyphicon glyphicon-plus"></span>
-                            Részösszetevő hozzáadása 
-                        </a>
-                    </label>  
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="symbols.limit" 
+                            placeholder="Határ">
+                            
+                        </input>  
+                    </div>
+                              
+                    <label class="control-label col-md-2">Határ helye:</label>
+                    <div class="col-md-10">
 
-                     <label 
-                        class="control-label col-md-2" 
-                        ng-show="$index > 0" for="comp_group">
-                        <a 
-                            ng-click="removeCompPart(metrumIn, partIn, compPartIn)" 
-                            ng-show="$last" href="">
-                            <span class="glyphicon glyphicon-minus"></span>
-                            Részösszetevő eltávolítása
-                        </a>
-                    </label>
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="symbols.limit_pos" 
+                            placeholder="Határ elhelyezkedése">
+                            
+                        </input>  
+                    </div>
+            
+                    <label class="control-label col-md-2">Darab:</label>
+                    <div class="col-md-10">
+
+                        <input class="form-control" 
+                            type="text" 
+                            ng-model="symbols.num" 
+                            placeholder="Darab">
+                            
+                        </input>  
+                    </div>
+
                 </div>
- -->
-
-            </div> <!-- repeat comp_part -->
-<!-- 
-            <div class="form-group">
-                <label class="control-label col-md-2" for="comp_group">
-                    <a ng-click="addComp(metrumIn, partIn)" ng-show="$last" href="">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Összetevő hozzáadása 
-                    </a>
-                </label>  
-
-                 <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                    <a ng-click="removeComp(metrumIn, partIn)" ng-show="$last" href="">
-                        <span class="glyphicon glyphicon-minus"></span>
-                        Összetevő eltávolítása
-                    </a>
-                </label>
             </div>
-             -->
-        </div> <!-- repeat part -->
-
-<!-- 
-        <div class="form-group">
-            <label class="control-label col-md-2" for="comp_group">
-                <a ng-click="addPart()" ng-show="$last" href="">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Rész hozzáadása 
-                </a>
-            </label>  
-
-             <label class="control-label col-md-2" ng-show="$index > 0" for="comp_group">
-                <a ng-click="removePart()" ng-show="$last" href="">
-                    <span class="glyphicon glyphicon-minus"></span>
-                    Rész eltávolítása
-                </a>
-            </label>
         </div>
- -->
-    </div> <!-- repeat metrum -->
-</div> 
-
-
-
-
-<!-- 
-
-<div class="" style="margin-top: 50px; margin-bottom: 50px;">
-    <label class="control-label col-md-2" for="text">
-        <h2>Nyers json</h2>
-    </label> 
-    <div class=" form-group col-md-10">
-        <pre ng-bind="vers.metrum | json"></pre>
     </div>
-</div> 
-
--->
+</div>
