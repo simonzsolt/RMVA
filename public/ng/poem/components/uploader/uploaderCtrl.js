@@ -110,13 +110,14 @@ angular
 		    	};
 
 
-// ============================ADD AND REMOVE FILEDS============================
+// ============================TEXT EDITOR============================
 				
 				$scope.textLines = '';
 				$scope.textVerse = '';
 				$scope.textarea = function textarea() {
 
 					var str = $scope.vers.text;
+					$scope.vers.text = str.replace(/(\n){3,}/g, '\n\n');
 
 					var count = 0;
 					var posLine = str.indexOf('\n');
@@ -131,13 +132,14 @@ angular
 
 					$scope.textVerse = count +1;
 
-					
 					var count = 0;
 					while (posLine !== -1) {
 					  count++;
 					  posLine = str.indexOf('\n', posLine + 1);
 					}
-					$scope.textLines = count +1 - ($scope.textVerse-1);	
+					$scope.textLines = count +1 - ($scope.textVerse-1);
+
+					// $scope.vers.text = str.replace(/(\n){3,}/g, '\n\n');
 				};
 
 // METRUM
