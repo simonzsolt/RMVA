@@ -51,10 +51,11 @@ angular
 			        	part: [{
 
 							comp: {
-						        name:          '',
-						        comp_type:     '',
-						        quality:       '',
-						        rep:           '',
+						        name: 		'',
+						        comp_type:  '',
+						        quality:    '',
+						        rep:        '',
+						        length: 	'',
 						        comp_part: [{ 
 					                symbols:       [{
 					                	symbol: '',

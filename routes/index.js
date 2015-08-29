@@ -8,7 +8,7 @@ var express = require('express');
 // -----------------------------INDEX-----------------------------
 
 router.get('/', function (req, res, next) {
-  res.render('index', {title: ""});
+  res.render('index', {title: "RMVA"});
 });
 
 // -----------------------------POST-----------------------------
@@ -49,8 +49,8 @@ router.route('/data')
             vers.signo_add_name  = req.body.signo_add_name;   
             vers.signo_forename  = req.body.signo_forename;  
 
-            vers.lenght          = req.body.lenght;
-            vers.lenght_unit     = req.body.lenght_unit;
+            vers.length          = req.body.length;
+            vers.length_unit     = req.body.length_unit;
 
             vers.metrum = req.body.metrum;
 
@@ -85,7 +85,7 @@ router.route('/data')
 
             vers.theme      = req.body.theme;
 
-            vers.reflect         = req.body.reflect;
+            vers.reflect = req.body.reflect;
 
             vers.created_at  = Date.now(); // changed to Date.now()
             vers.created_by  = req.body.created_by;
@@ -103,6 +103,8 @@ router.route('/data')
         }
 
         })
+
+// -----------------------------GET all data-----------------------------
 
         .get(function(req, res){
 
@@ -193,8 +195,8 @@ router.route('/data/:rmva')
                 vers.signo_forename  = req.body.signo_forename;  
 
 
-                vers.lenght      = req.body.lenght;
-                vers.lenght_unit = req.body.lenght_unit;
+                vers.length      = req.body.length;
+                vers.length_unit = req.body.length_unit;
 
                 vers.metrum = req.body.metrum;
 

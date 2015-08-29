@@ -119,17 +119,17 @@
 </div>
 
 <div class="form-group">
-    <label class="control-label col-md-2" for="lenght">Terjedelem:</label>
-    <div id="lenght" class="col-md-10">
-        <input class="form-control" type="number" placeholder="Terjedelem" min="0" ng-model="vers.lenght" > 
+    <label class="control-label col-md-2" for="length">Terjedelem:</label>
+    <div id="length" class="col-md-10">
+        <input class="form-control" type="number" placeholder="Terjedelem" min="0" ng-model="vers.length" > 
         </input> 
     </div>
 </div>
 
 <div class="form-group">
-    <label class="control-label col-md-2" for="lenght_unit">Mértékegység:</label>
-    <div id="lenght_unit" class="col-md-10">
-        <select class="form-control" ng-model="vers.lenght_unit" > <!-- use later in metrics -->
+    <label class="control-label col-md-2" for="length_unit">Mértékegység:</label>
+    <div id="length_unit" class="col-md-10">
+        <select class="form-control" ng-model="vers.length_unit" > <!-- use later in metrics -->
             <option value="" disabled selected>Mértékegység</option> 
             <option>sor</option>
             <option>strófa</option>
@@ -338,7 +338,7 @@
     </div> 
 
     <label class="control-label col-md-3" for="text">
-        <h3>lenght(json) </h3>
+        <h3>length(json) </h3>
     </label> 
     <div class="col-md-9">
         <pre ng-bind="texLines | json"></pre>

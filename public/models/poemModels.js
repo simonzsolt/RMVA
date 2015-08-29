@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     autoIncrement = require('mongoose-auto-increment'),
     Schema = mongoose.Schema;
 
-// session storafe connection
+// session storage connection
 var connection = mongoose.createConnection("mongodb://localhost/vers", function(err) {
     if (err) {
         console.log('DB connection error:' + err);
@@ -152,8 +152,8 @@ var versSchema = new mongoose.Schema({
     signo_add_name:  String, // szigno középső név:
     signo_forename:  String, // szigno keresztnév
 
-    lenght:     Number, // terjedelem
-    lenght_unit:String, // mértékegység - SELECT!
+    length:     Number, // terjedelem
+    length_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
 
     date:   {

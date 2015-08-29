@@ -55,8 +55,8 @@ angular
 		            signo_add_name: '',
 		            signo_forename: '',
 
-		            lenght: '', 
-		            lenght_unit: '',
+		            length: '', 
+		            length_unit: '',
 
 		            metrum: '',
 
@@ -539,8 +539,8 @@ angular
 				                    signo_add_name: '',
 				                    signo_forename: '',
 
-				                    lenght: '', 
-				                    lenght_unit: '', 
+				                    length: '', 
+				                    length_unit: '', 
 
 				                    metrum: '',
 
