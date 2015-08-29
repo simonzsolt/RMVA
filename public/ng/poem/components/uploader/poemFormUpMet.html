@@ -17,7 +17,8 @@
                       <a ng-click="addLevel(metrumIn)" ng-show="$last" href="">
                             <span class="glyphicon glyphicon-plus"></span></a>
 
-                        <a ng-click="removeLevel(metrumIn)" ng-show="$last && $index > 0" href="">
+                        <a ng-click="removeLevel(metrumIn)" 
+                            ng-show="$last && $index > 0" href="">
                             <span class="glyphicon glyphicon-minus"></span></a>
                 </small>
 
@@ -30,10 +31,12 @@
                     Összetevő #{{ metrumIn +1 }}.{{ levelIn +1 }} |
 
                     <small>
-                          <a ng-click="addComp(metrumIn, levelIn)" ng-show="$last" href="">
+                          <a ng-click="addComp(metrumIn, levelIn)" 
+                            ng-show="$last" href="">
                                 <span class="glyphicon glyphicon-plus"></span></a>
 
-                            <a ng-click="removeComp(metrumIn, levelIn)" ng-show="$last && $index > 0" href="">
+                            <a ng-click="removeComp(metrumIn, levelIn)" 
+                                ng-show="$last && $index > 0" href="">
                                 <span class="glyphicon glyphicon-minus"></span></a>
                     </small>
 
@@ -99,11 +102,13 @@
                         <small>
                               <a ng-click="addSymbol(metrumIn, levelIn, symbolIn)" 
                                 ng-show="$last" href="">
-                                    <span class="glyphicon glyphicon-plus"></span></a>
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
 
                                 <a ng-click="removeSymbol(metrumIn, levelIn, symbolIn)" 
                                     ng-show="$last && $index > 0" href="">
-                                    <span class="glyphicon glyphicon-minus"></span></a>
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </a>
                         </small>
 
                     </h4>
