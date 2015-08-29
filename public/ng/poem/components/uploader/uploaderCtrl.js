@@ -139,8 +139,24 @@ angular
 					}
 					$scope.textLines = count +1 - ($scope.textVerse-1);
 
-					// $scope.vers.text = str.replace(/(\n){3,}/g, '\n\n');
+					var lgArr = str.split('\n\n');
+					var lArr = [];
+					var lg = [];
+					var textArr = [];
+
+					angular.forEach(lgArr ,function(value, index){
+						lArr.push(value)
+					 }); 
+
+					angular.forEach(lArr ,function(value, index){
+						lg = value.split('\n');
+						textArr.push(lg);
+					});
+
+					console.log(textArr);
 				};
+
+					
 
 // METRUM
 
