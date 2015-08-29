@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-dev-update');
-    grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-wiredep');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-ng-annotate');
@@ -10,6 +9,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-githooks');
+    grunt.loadNpmTasks('grunt-supervisor');
 
     grunt.initConfig({
         devUpdate: {
@@ -27,12 +27,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        open: {
-            dev: {
-                path: 'http://localhost:3001/#/list',
-                app: 'google-chrome-stable'
-            }               
-        },
         wiredep: {
             task: {
                 src: ['views/index.ejs'],
@@ -42,6 +36,25 @@ module.exports = function(grunt) {
         watch: {
             files: ['public/assets/lib/*'],
             tasks: ['wiredep']
+        },
+        supervisor: {
+            target: {
+                script: 'server.js',
+                options: {
+                    watch: [ 
+                        'node_modules',
+                        'public',
+                        'routes',
+                        'views'
+                    ],
+                    extensions: [ 'js,ejs,css' ],
+                    harmony: true,
+                    noRestartOn: 'exit',
+                    forceWatch: true,
+                    quiet: true,
+                    forceSync: true
+                }
+            }
         },
         ngAnnotate: {
 
@@ -247,8 +260,18 @@ module.exports = function(grunt) {
     });
 
     // Default tasks
-    grunt.registerTask('default',   ['devUpdate']);
-    grunt.registerTask('dev',       ['devUpdate', 'wiredep', 'open:dev']);
+    grunt.registerTask('default',   []);
+
+    grunt.registerTask('dev',       
+        [
+            'devUpdate',
+            'wiredep',
+            'supervisor',  
+            'watch'
+        ]
+    );
+
+
     grunt.registerTask('build',     
         [
             'devUpdate', 
@@ -259,6 +282,7 @@ module.exports = function(grunt) {
             'htmlmin'
         ]
     );
+
     grunt.registerTask('changes',   ['watch']);  
     grunt.registerTask('hook',   ['githooks']);  
 };

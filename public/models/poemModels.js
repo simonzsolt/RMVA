@@ -45,37 +45,27 @@ var dateObj = {
 
 var metrumObj = {
 
-    parts: {    
+    levels: {
 
-        range:{
-            non_spec: String,
-            spec: String
-        },
-
-        part: [{
+        level: [{
 
             comp: {
-                name:          String,
-                comp_type:     String,
-                quality:       String,
-                rep:           String,
-                comp_part: [{ 
-                        symbols: [{
-                            symbol:         String,
-                            symbol_type:    String
-                        }],
-
-                        limits: [{
-                            limit:         String,
-                            limit_type:    String,
-                        }],
-                        
-                        count: [{ level: Number }]  
+                name:       String,
+                comp_type:  String,
+                quality:    String,
+                rep:        String,
+                symbols: [{
+                    symbol: String,
+                    rule:   String,
+                    limit:  String,
+                    limit_pos: String,
+                    num:    String,
                 }]
             }
         }]
     }
 };
+
 
 var describeObj = {
     desc: String,
@@ -128,8 +118,8 @@ var versSchema = new mongoose.Schema({
     signo_add_name:  String, // szigno középső név:
     signo_forename:  String, // szigno keresztnév
 
-    lenght:     Number, // terjedelem
-    lenght_unit:String, // mértékegység - SELECT!
+    length:     Number, // terjedelem
+    length_unit:String, // mértékegység - SELECT!
     col:        String, // kolofón
 
     date:   {
