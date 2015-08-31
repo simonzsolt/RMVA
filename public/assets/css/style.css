@@ -1,4 +1,7 @@
-body{ padding-top: 70px }
+body{ 
+    padding-top: 70px;
+    font-family: 'Noto Sans' sans-serif !important;
+}
 
 #nav_btn{ line-height:20px }
 
@@ -13,4 +16,13 @@ body{ padding-top: 70px }
 
 .formBtn{ 
 	margin-top: 50px;
+}
+
+.selected {
+    font-weight: bold;
+    color: #00005C;
+}
+
+.form-inline .form-control{
+    width: 100% !important;
 }

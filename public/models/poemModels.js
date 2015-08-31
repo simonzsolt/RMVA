@@ -69,13 +69,19 @@ var metrumObj = {
 
 var describeObj = {
     desc: String,
-    locus: String
+    locus: {
+        lg: Number,
+        l:  Number
+    }
 };
 
 var reflectDescObj = {
     name: String,
     desc: String,
-    locus: String
+    locus: {
+        lg: Number,
+        l:  Number
+    }
 };
 
 var reflectionObj = {
@@ -139,7 +145,9 @@ var versSchema = new mongoose.Schema({
     place_info: String, // honnan tudjuk? - SELECT!
     conf:       String, // felekezet
     source:     String, // forrás
-    text:       String, // modern szöveg
+
+    text:       [], // modern szöveg
+    
     imgs:       [],     // array of iamge files
     link_coll:  {}, // összekapcsolt adatlap azonosítója
     created_at:
