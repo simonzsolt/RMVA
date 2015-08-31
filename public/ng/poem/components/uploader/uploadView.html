@@ -8,6 +8,38 @@
     </div>
 
     <form class="form-horizontal" role="form" ng-submit="postVers()">
-        <div ng-cloack ng-include="'ng/poem/components/uploader/poemFormUp.html'"></div>
+
+        <ng-include 
+            src="'ng/poem/components/uploader/poemFormUpText.html'">
+        </ng-include>
+
+        <ng-include 
+            src="'ng/poem/components/uploader/poemFormUpMet.html'">
+        </ng-include>
+
+        <ng-include 
+            src="'ng/poem/components/uploader/poemFormUpCon.html'">
+        </ng-include>
+
+        <ng-include 
+            src="'ng/poem/components/uploader/poemFormUpRef.html'">
+        </ng-include>
+
+        <ng-include 
+            src="'ng/shared/forms/formButton.html'">
+        </ng-include>
+
     </form>
+
+    <div class="" style="margin-top: 50px; margin-bottom: 50px;">
+        <label class="control-label col-md-2" for="text">
+            <h2>Nyers json</h2>
+        </label> 
+        <div class=" form-group col-md-10">
+            <pre ng-bind="vers | json"></pre>
+        </div>
+    </div> 
+
+    <div id="footer" style="height:100px;"></div>
+
 </div>

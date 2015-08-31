@@ -17,15 +17,7 @@ angular
 		    	$rootScope.data = poemFactory.query();
 
 		    	$scope.selectDate = '';
-
-		    	$scope.selectComp = [
-			    	'beszédhang', 
-					'szótag', 
-					'morféma', 
-					'szintagma', 
-					'mondat'
-				];
-		    	
+	    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
 		    		$location.path('/list');
@@ -110,13 +102,17 @@ angular
 		    	};
 
 
-// ============================ADD AND REMOVE FILEDS============================
+// ============================TEXT EDITOR============================
 				
 				$scope.textLines = '';
 				$scope.textVerse = '';
 				$scope.textarea = function textarea() {
 
-					var str = $scope.vers.text;
+				// count lines and strofes
+
+					var str = $scope.vers.textEditor;
+					var noExtaLines  = str.replace(/(\n){3,}/g, '\n\n');
+					var strTrimemd = noExtaLines.trim();
 
 					var count = 0;
 					var posLine = str.indexOf('\n');
@@ -131,14 +127,55 @@ angular
 
 					$scope.textVerse = count +1;
 
-					
 					var count = 0;
 					while (posLine !== -1) {
 					  count++;
 					  posLine = str.indexOf('\n', posLine + 1);
 					}
-					$scope.textLines = count +1 - ($scope.textVerse-1);	
+					$scope.textLines = count +1 - ($scope.textVerse-1);
+
+					$scope.lgLength = ($scope.textLines / $scope.textVerse);
+
+					// convert string to array
+
+					var lgArr = strTrimemd.split('\n\n');
+					var lArr = [];
+					var lg = [];
+					var textArr = [];
+
+					angular.forEach(lgArr ,function(value, index){
+						lArr.push(value)
+					 }); 
+
+					angular.forEach(lArr ,function(value, index){
+						lg = value.split('\n');
+
+						lgTrimemd = []
+
+						angular.forEach(lg ,function(l, index){
+							lgTrimemd.push(l.trim());
+						});
+
+						textArr.push(lgTrimemd);
+					});
+
+					$scope.vers.text = textArr;
+
+					// convert array to string
+
+					var joinedLg = ''
+					var joinedText = []
+
+					angular.forEach(textArr ,function(lg, index){
+						var joinedLg = lg.join('\n')
+						joinedText.push(joinedLg)
+					});
+
+					$scope.vers.textEditor = joinedText.join('\n\n');
+
 				};
+
+					
 
 // METRUM
 
@@ -295,6 +332,8 @@ angular
 
 		            	if( $scope.post_conf === true ) {
 
+		            		delete $scope.vers.textEditor;
+
 				            poemFactory.save($scope.vers, function($location){
 				                $scope.data = poemFactory.query();
 
@@ -360,7 +399,7 @@ angular
 				                    created_at: '', 
 				                    created_by: '', 
 				                    last_mod: '',    
-				                    mod_by: '' 
+				                    mod_by: ''
 
 				                }; // $scope.vers
 				            }); // poemFactory

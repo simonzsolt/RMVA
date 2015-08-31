@@ -40,20 +40,47 @@
                 placeholder="Exemplum kifejtve">
             </input>
         </div>
-        
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.exemplum.locus" 
-                placeholder="Exemplum helye">
-            </input>
+
+        <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.exemplum.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.exemplum.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
         </div>
+       
+
     </div> 
 
     <h4>Közhely</h4>
@@ -73,19 +100,47 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
         
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.commonplace.locus" 
-                placeholder="Közhely helye">
-            </input>
+        <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.commonplace.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.commonplace.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
         </div>
+
+
     </div>
 
     <h4>Toposz</h4>
@@ -101,23 +156,49 @@
                 class="form-control" 
                 type="text" 
                 ng-model="vers.topos.desc" 
-                placeholder="Közhely kifejtve">
+                placeholder="Toposz kifejtve">
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.topos.locus" 
-                placeholder="Közhely helye">
-            </input>
+         <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.topos.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.topos.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
         </div>
+
     </div>
 
     <h3>Intertextualitás</h3>
@@ -137,19 +218,45 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.interttext.locus" 
-                placeholder="Intertextualitás helye">
-            </input>
+         <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.interttext.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.interttext.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
         </div>
+
     </div>
 
     <h3>Kommunikációs műveletek</h3>
@@ -169,19 +276,45 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.communicate.locus" 
-                placeholder="Kommunikációs műveletek helye">
-            </input>
+        <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.communicate.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.communicate.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
         </div>
+
     </div>
 
     <h3>Retorikai eszközök</h3>
@@ -203,19 +336,47 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.figure.locus" 
-                placeholder="Figura helye">
-            </input>
-        </div>
+    
+         <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.figure.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.figure.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
+        </div>        
+
+
     </div> 
 
     <h4>Trópus</h4>
@@ -235,19 +396,47 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
         
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.trope.locus" 
-                placeholder="Trópus helye">
-            </input>
-        </div>
+        <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.figure.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.figure.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
+        </div> 
+
+
     </div>
 
     <h4>Kommunikációs retorikai eszközök</h4>
@@ -267,19 +456,46 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.comm_ret.locus" 
-                placeholder="Kommunikációs retorikai eszközök helye">
-            </input>
-        </div>
+        <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.comm_ret.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.comm_ret.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+            
+        </div> 
+
+
     </div> 
 
     <h3>Téma</h3>
@@ -299,19 +515,43 @@
             </input>
         </div>
         
-        <label class="control-label col-md-2">
-            Hely
-        </label>
-        
-        <div class="col-md-10">
-           
-            <input 
-                class="form-control" 
-                type="text" 
-                ng-model="vers.theme.locus" 
-                placeholder="Téma helye">
-            </input>
-        </div>
+       <div class="form-inline">
+
+            <label class="control-label col-md-2"
+            ng-hide="textVerse<2">
+                Strófa:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control"
+                    ng-hide="textVerse<2" 
+                    type="number"
+                    min="0" 
+                    max=" {{ textVerse }} "
+                    ng-model="vers.theme.locus.lg" 
+                    placeholder="Strófa">
+                </input>
+            </div>
+            
+
+            <label class="control-label col-md-2">
+                Sor:
+            </label>
+            
+            <div class="col-md-2">
+               
+                <input 
+                    class="form-control" 
+                    type="number"
+                    min="0" 
+                    max=" {{ lgLength }} "
+                    ng-model="vers.theme.locus.l" 
+                    placeholder="Sor">
+                </input>
+            </div>
+       
     </div>
 
 </div> 

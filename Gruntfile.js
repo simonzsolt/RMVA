@@ -81,15 +81,15 @@ module.exports = function(grunt) {
                 src: [
                     'public/assets/lib/jquery/dist/jquery.js',
                     // 'public/assets/lib/bootstrap/dist/js/bootstrap.js',
-                    'public/assets/lib/angular/angular.min.js',
-                    'public/assets/lib/angular-resource/angular-resource.min.js',
-                    'public/assets/lib/angular-route/angular-route.min.js',
-                    'public/assets/lib/angular-sanitize/angular-sanitize.min.js',
-                    'public/assets/lib/bootstrap/dist/js/bootstrap.min.js',
-                    'public/assets/lib/angular-ui-select/dist/select.min.js',
-                    'public/assets/lib/jquery-ui/jquery-ui.min.js',
+                    'public/assets/lib/angular/angular.js',
+                    'public/assets/lib/angular-resource/angular-resource.js',
+                    'public/assets/lib/angular-route/angular-route.js',
+                    'public/assets/lib/angular-sanitize/angular-sanitize.js',
+                    'public/assets/lib/bootstrap/dist/js/bootstrap.js',
+                    'public/assets/lib/angular-ui-select/dist/select.js',
+                    'public/assets/lib/jquery-ui/jquery-ui.js',
                     'public/assets/lib/angular-ui-date/src/date.js',
-                    'public/assets/lib/angular-css/angular-css.min.js',
+                    'public/assets/lib/angular-css/angular-css.js',
                     'public/ng/main.js',
                     'public/ng/config.js',
                     'public/ng/auth/config/authConfig.js',
@@ -128,7 +128,11 @@ module.exports = function(grunt) {
                     'public/assets/css/style.css',
                     // 'public/assets/lib/bootstrap/dist/css/bootstrap.css',
                     // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css',
-                    'public/assets/lib/angular-ui-select/dist/select.min.css'
+                    'public/assets/lib/angular-ui-select/dist/select.css',
+                    'public/assets/lib/webfont-notosans/italic/stylesheet.css',
+                    'public/assets/lib/webfont-notosans/bolditalic/stylesheet.css',
+                    'public/assets/lib/webfont-notosans/bold/stylesheet.css',
+                    'public/assets/lib/webfont-notosans/regular/stylesheet.css'
                 ],
                 dest: 'public/build/productionStyle.css'
             }
