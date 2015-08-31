@@ -341,9 +341,46 @@
 <div class="form-group">
     <label class="control-label col-md-2" for="text">Szöveg:</label>
     <div id="text" class="col-md-10">
-        <textarea readonly="true" rows="30" class="form-control" placeholder="Szöveg..." ng-model="vers.text" > </textarea>  
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                <ol>
+                    <li ng-repeat="lg in vers.text"
+                        ng-init="lgIndex = $index +1">
+                        <ul>
+                            <li ng-repeat="l in lg"
+                                ng-init='lIndex = $index +1' 
+                                id="{{lgIndex}}_{{lIndex}}"
+                                ng-class="{ 'selected': H==lgIndex + '_' + lIndex }"
+                                style="list-style-type:none">
+                                {{ l }}
+                            </li>  
+                        </ul>
+                        <br>
+                    </li>
+                </ol>
+            </li>
+        </ul>   
+
     </div>
 </div>
+
+<h3>Exemplum, közhely, toposz</h3>
+
+<h4>Exemplum</h4>
+
+<table>
+    <tr>
+        <td>
+            <a href=""
+            ng-click="goToLine()">
+                Strófa: {{ vers.exemplum.locus.lg }} 
+                Sor: {{ vers.exemplum.locus.l }}
+            </a>
+        </td>
+    </tr>
+</table>
+
 
  <div> 
     Kapcsolódások:

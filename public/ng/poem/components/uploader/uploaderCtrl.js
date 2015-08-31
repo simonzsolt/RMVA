@@ -17,15 +17,7 @@ angular
 		    	$rootScope.data = poemFactory.query();
 
 		    	$scope.selectDate = '';
-
-		    	$scope.selectComp = [
-			    	'beszédhang', 
-					'szótag', 
-					'morféma', 
-					'szintagma', 
-					'mondat'
-				];
-		    	
+	    	
 		    	if (!$rootScope.loggedInUser) {
 		    		console.log('no user');
 		    		$location.path('/list');
@@ -116,8 +108,11 @@ angular
 				$scope.textVerse = '';
 				$scope.textarea = function textarea() {
 
-					var str = $scope.vers.text;
-					$scope.vers.text = str.replace(/(\n){3,}/g, '\n\n');
+				// count lines and strofes
+
+					var str = $scope.vers.textEditor;
+					var noExtaLines  = str.replace(/(\n){3,}/g, '\n\n');
+					var strTrimemd = noExtaLines.trim();
 
 					var count = 0;
 					var posLine = str.indexOf('\n');
@@ -139,7 +134,11 @@ angular
 					}
 					$scope.textLines = count +1 - ($scope.textVerse-1);
 
-					var lgArr = str.split('\n\n');
+					$scope.lgLength = ($scope.textLines / $scope.textVerse);
+
+					// convert string to array
+
+					var lgArr = strTrimemd.split('\n\n');
 					var lArr = [];
 					var lg = [];
 					var textArr = [];
@@ -150,10 +149,30 @@ angular
 
 					angular.forEach(lArr ,function(value, index){
 						lg = value.split('\n');
-						textArr.push(lg);
+
+						lgTrimemd = []
+
+						angular.forEach(lg ,function(l, index){
+							lgTrimemd.push(l.trim());
+						});
+
+						textArr.push(lgTrimemd);
 					});
 
-					console.log(textArr);
+					$scope.vers.text = textArr;
+
+					// convert array to string
+
+					var joinedLg = ''
+					var joinedText = []
+
+					angular.forEach(textArr ,function(lg, index){
+						var joinedLg = lg.join('\n')
+						joinedText.push(joinedLg)
+					});
+
+					$scope.vers.textEditor = joinedText.join('\n\n');
+
 				};
 
 					
@@ -313,6 +332,8 @@ angular
 
 		            	if( $scope.post_conf === true ) {
 
+		            		delete $scope.vers.textEditor;
+
 				            poemFactory.save($scope.vers, function($location){
 				                $scope.data = poemFactory.query();
 
@@ -378,7 +399,7 @@ angular
 				                    created_at: '', 
 				                    created_by: '', 
 				                    last_mod: '',    
-				                    mod_by: '' 
+				                    mod_by: ''
 
 				                }; // $scope.vers
 				            }); // poemFactory

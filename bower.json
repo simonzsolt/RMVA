@@ -14,15 +14,16 @@
     "tests"
   ],
   "dependencies": {
+    "angular-css": "~1.0.7",
     "angular-resource": "~1.4.1",
     "angular-route": "~1.4.1",
     "angular-sanitize": "~1.4.3",
-    "bootstrap": "~3.3.5",
-    "angular-ui-select": "~0.12.0",
-    "jquery-ui": "~1.11.4",
     "angular-ui-date": "~0.0.8",
+    "angular-ui-select": "~0.12.0",
+    "bootstrap": "~3.3.5",
+    "grunt": "~0.4.5",
     "jquery": "~2.1.4",
-    "angular-css": "~1.0.7",
-    "grunt": "~0.4.5"
+    "jquery-ui": "~1.11.4",
+    "webfont-notosans": "~0.1.0"
   }
 }
