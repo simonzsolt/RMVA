@@ -194,8 +194,8 @@ module.exports = function(grunt) {
                     'public/ng/poem/components/editor/poemFormEditRef.html':
                     'public/ng/poem/components/editor/poemFormEditRef.html',
 
-                    'public/ng/poem/components/uploader/poemFormUp.html':
-                    'public/ng/poem/components/uploader/poemFormUp.html',
+                    'public/ng/poem/components/uploader/poemFormUpText.html':
+                    'public/ng/poem/components/uploader/poemFormUpText.html',
 
                     'public/ng/poem/components/uploader/poemFormUpCon.html':
                     'public/ng/poem/components/uploader/poemFormUpCon.html',
@@ -220,6 +220,9 @@ module.exports = function(grunt) {
 
                     'public/ng/shared/forms/formRefButtons.html':
                     'public/ng/shared/forms/formRefButtons.html',
+
+                    'public/ng/shared/forms/formButton.html':
+                    'public/ng/shared/forms/formButton.html',
 
                     'public/ng/shared/forms/userForm.html':
                     'public/ng/shared/forms/userForm.html',

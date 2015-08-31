@@ -5,7 +5,7 @@ angular
 
 // -----------------------------ROUTES CONFIG FOR POEMS-----------------------------
 
-		.config(function($routeProvider, $locationProvider) {
+		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
             $routeProvider
                 
@@ -13,4 +13,4 @@ angular
                     redirectTo: '/list'
                 });
                 
-        }); // config
+        }]); // config

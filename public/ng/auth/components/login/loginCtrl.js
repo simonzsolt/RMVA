@@ -3,7 +3,7 @@ angular
 			
 		.controller('loginCtrl', 
 
-			function(
+			['$scope', '$rootScope', '$http', '$location', 'userLoggedInFactory', function(
 
 				$scope, 
 				$rootScope, 
@@ -36,4 +36,4 @@ angular
 			      $location.url('/login');
 			    });
 			  };
-			})
+			}])
