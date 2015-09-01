@@ -38,7 +38,7 @@ angular
 		            adnotam: '', 
 		            acro: '', 
 		            acro_int: '', 
-		            krono: '', 
+		            chrono: '', 
 		            head: '', 
 
 		            signo_type: '',
@@ -369,7 +369,7 @@ angular
 				                    adnotam: '', 
 				                    acro: '', 
 				                    acro_int: '', 
-				                    krono: '', 
+				                    chrono: '', 
 				                    head: '', 
 
 				                    signo_type: '',

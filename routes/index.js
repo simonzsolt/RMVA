@@ -40,7 +40,7 @@ router.route('/data')
             vers.adnotam  = req.body.adnotam;
             vers.acro     = req.body.acro;
             vers.acro_int = req.body.acro_int;
-            vers.krono    = req.body.krono;
+            vers.chrono    = req.body.chrono;
             vers.head     = req.body.head;
 
             vers.signo_type      = req.body.signo_type;
@@ -185,7 +185,7 @@ router.route('/data/:rmva')
                 vers.adnotam    = req.body.adnotam;
                 vers.acro       = req.body.acro;
                 vers.acro_int   = req.body.acro_int;
-                vers.krono      = req.body.krono;
+                vers.chrono      = req.body.chrono;
                 vers.head       = req.body.head;
 
                 vers.signo_type = req.body.signo_type;

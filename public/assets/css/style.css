@@ -55,6 +55,10 @@ body{
     color: #eff1f3 !important;
 }
 
+#refPanelBody{
+    padding: 30px !important;
+}
+
 .list-filter{
     margin-bottom: 30px;
 }
