@@ -15,11 +15,13 @@
         <form class="form-horizontal" role="form" ng-submit="postVers()">
 
             <div class="panel panel-default col-md-offset-2">
-                <div class="panel-heading">
+                <div class="panel-heading"
+                    ng-click="showTextPanel = ! showTextPanel">
                     <h2>Textológia</h2>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body"
+                    ng-show="showTextPanel">
                     <ng-include 
                         src="'ng/poem/components/uploader/poemFormUpText.html'">
                     </ng-include>
@@ -27,11 +29,13 @@
             </div>
 
              <div class="panel panel-default col-md-offset-2">
-                <div class="panel-heading">
+                <div class="panel-heading"
+                     ng-click="showMetPanel = ! showMetPanel">
                     <h2>Metrika</h2>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body"
+                    ng-show="showMetPanel">
                     <ng-include 
                         src="'ng/poem/components/uploader/poemFormUpMet.html'">
                     </ng-include>
@@ -39,11 +43,13 @@
             </div>
 
              <div class="panel panel-default col-md-offset-2">
-                <div class="panel-heading">
+                <div class="panel-heading"
+                     ng-click="showConPanel = ! showConPanel">
                     <h2>Műfaji konnotáció</h2>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body"
+                    ng-show="showConPanel">
                     <ng-include 
                         src="'ng/poem/components/uploader/poemFormUpCon.html'">
                     </ng-include>
@@ -52,37 +58,41 @@
 
              
              <div class="panel panel-default col-md-offset-2">
-                <div class="panel-heading">
+                <div class="panel-heading"
+                     ng-click="showRefPanel = ! showRefPanel">
                     <h2>Önreflexió</h2>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body"
+                    ng-show="showRefPanel">
                     <ng-include 
                         src="'ng/poem/components/uploader/poemFormUpRef.html'">
                     </ng-include>
                 </div>
             </div>
 
-            <div class="col-md-offset-2">
+             <div class="panel panel-default col-md-offset-2" 
+                ng-show="loggedInUser.role == 'admin'">
+                <div class="panel-heading"
+                     ng-click="showJonPanel = ! showJonPanel">
+                    <h2>Nyers json</h2>
+                </div>
 
+                <div class="panel-body"
+                    ng-show="showJonPanel">
+                    
+                    <pre ng-bind="vers | json"></pre>
+
+                </div>
+            </div>
+
+            <div class="col-md-offset-2">
                 <ng-include 
                     src="'ng/shared/forms/formButton.html'">
-                </ng-include>
+              </ng-include>
                 
             </div>
-           
 
         </form>
     </div>
-<!-- 
-    <div class="" style="margin-top: 50px; margin-bottom: 50px;">
-        <label class="control-label col-md-2" for="text">
-            <h2>Nyers json</h2>
-        </label> 
-        <div class=" form-group col-md-10">
-            <pre ng-bind="vers | json"></pre>
-        </div>
-    </div> 
- -->
-
 </div>

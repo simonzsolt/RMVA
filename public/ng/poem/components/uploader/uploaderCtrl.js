@@ -281,27 +281,42 @@ angular
 					ref_genre: [{
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					      locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					}],
 					ref_input: [{
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					    locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					}],
 					ref_edit: [{
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					      locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					}],
 					ref_func: [{
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					      locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					}],
 					ref_circum: [{
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					      locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					}]
 				};
 
@@ -311,7 +326,10 @@ angular
 					$scope.vers.reflect[refBtn].push({
 						name: 	'',
 					    desc: 	'',
-					    locus: 	''
+					      locus: {
+					        lg: '',
+					        l:  ''
+					    }
 					});
 				};
 
