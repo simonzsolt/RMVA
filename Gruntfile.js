@@ -34,8 +34,11 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['public/assets/lib/*'],
-            tasks: ['wiredep']
+            files: ['public/assets/lib/*', 'public/ng/*', './*'],
+            tasks: ['wiredep'],
+            options: {
+                livereload: true,
+            }
         },
         supervisor: {
             target: {
@@ -256,7 +259,7 @@ module.exports = function(grunt) {
             all: {
               'pre-push': 'build'
             }
-        }
+        },
     });
 
     // Default tasks

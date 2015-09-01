@@ -1,8 +1,3 @@
-<h2>Metrika</h2>
-
-<!-- <pre> {{ vers.metrum | json }} </pre> -->
-
-
 <div>
   
     <div ng-repeat="metrum in vers.metrum"
@@ -11,7 +6,7 @@
         <div>
 
             <h3>
-                Szint #{{ metrumIn +1 }} | 
+                Szint <span class="badge badge-info">#{{ metrumIn +1 }}</span> 
 
                 <small>
                       <a ng-click="addLevel(metrumIn)" ng-show="$last" href="">
@@ -28,7 +23,10 @@
                 ng-init="levelIn = $index">
 
                 <h4>
-                    Összetevő #{{ metrumIn +1 }}.{{ levelIn +1 }} |
+                    Összetevő 
+                        <span class="badge badge-info">
+                            #{{ metrumIn +1 }}.{{ levelIn +1 }}
+                        </span>
 
                     <small>
                           <a ng-click="addComp(metrumIn, levelIn)" 
@@ -44,9 +42,9 @@
                 
                 <div>
                     
-                    <label class="control-label col-md-2">Név:</label>
+                    <label class="control-label col-md-3">Név:</label>
                     
-                    <div class="col-md-10">
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -56,9 +54,9 @@
                         </input>                
                     </div>
           
-                    <label class="control-label col-md-2">Fajta</label>
+                    <label class="control-label col-md-3">Fajta</label>
                     
-                    <div class="col-md-10">
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -68,9 +66,9 @@
                         </input>                
                     </div>
           
-                    <label class="control-label col-md-2">Minőség</label>
+                    <label class="control-label col-md-3">Minőség</label>
                     
-                    <div class="col-md-10">
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -80,9 +78,9 @@
                         </input>                
                     </div>
           
-                    <label class="control-label col-md-2">Ismétlődés</label>
+                    <label class="control-label col-md-3">Ismétlődés</label>
 
-                    <div class="col-md-10">
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -97,7 +95,10 @@
                     ng-init="symbolIn = $index">
 
                     <h4>
-                        Szimbólumok #{{ metrumIn +1 }}.{{ levelIn +1 }}.{{ symbolIn +1 }} | 
+                        Szimbólumok 
+                            <span class="badge badge-info">
+                                #{{ metrumIn +1 }}.{{ levelIn +1 }}.{{ symbolIn +1 }}
+                            </span> 
 
                         <small>
                               <a ng-click="addSymbol(metrumIn, levelIn, symbolIn)" 
@@ -113,8 +114,8 @@
 
                     </h4>
 
-                    <label class="control-label col-md-2">Szimbólum:</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-3">Szimbólum:</label>
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -124,8 +125,8 @@
                         </input>                
                     </div>
 
-                    <label class="control-label col-md-2">Szabályszerűség:</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-3">Szabályszerűség:</label>
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -135,8 +136,8 @@
                         </input>  
                     </div>   
 
-                    <label class="control-label col-md-2">Határ:</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-3">Határ:</label>
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -146,8 +147,8 @@
                         </input>  
                     </div>
                               
-                    <label class="control-label col-md-2">Határ helye:</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-3">Határ helye:</label>
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 
@@ -157,8 +158,8 @@
                         </input>  
                     </div>
             
-                    <label class="control-label col-md-2">Darab:</label>
-                    <div class="col-md-10">
+                    <label class="control-label col-md-3">Darab:</label>
+                    <div class="col-md-9">
 
                         <input class="form-control" 
                             type="text" 

@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "angular-css": "~1.0.7",
+    "angular-material": "~0.10.1",
     "angular-resource": "~1.4.1",
     "angular-route": "~1.4.1",
     "angular-sanitize": "~1.4.3",

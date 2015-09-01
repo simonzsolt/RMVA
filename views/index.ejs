@@ -22,6 +22,7 @@
             href="assets/lib/webfont-notosans/bolditalic/stylesheet.css">
         
         <!-- bower:css -->
+        <link rel="stylesheet" href="/assets/lib/angular-material/angular-material.css" />
         <link rel="stylesheet" href="/assets/lib/angular-ui-select/dist/select.css" />
         <!-- endbower -->
 
@@ -30,7 +31,15 @@
 
 <!-- =============================PARTIAL VIEWS============================= -->
 
-    <div class="container-fluid" ng-view></div> 
+    <div class="partials">
+        <ng-view ng-cloack class="container-fluid view-animate"></ng-view>
+    </div> 
+
+    <div id="footer">
+        <div id="footer-content">
+            <span >rmva</span>    
+        </div> 
+    </div>
 
 <!-- =============================RESOURCES - DEPENDENCIES========================== -->
 
@@ -40,6 +49,9 @@
     <script src="/assets/lib/jquery/dist/jquery.js"></script>
     <script src="/assets/lib/angular/angular.js"></script>
     <script src="/assets/lib/angular-css/angular-css.js"></script>
+    <script src="/assets/lib/angular-animate/angular-animate.js"></script>
+    <script src="/assets/lib/angular-aria/angular-aria.js"></script>
+    <script src="/assets/lib/angular-material/angular-material.js"></script>
     <script src="/assets/lib/angular-resource/angular-resource.js"></script>
     <script src="/assets/lib/angular-route/angular-route.js"></script>
     <script src="/assets/lib/angular-sanitize/angular-sanitize.js"></script>

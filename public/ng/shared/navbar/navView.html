@@ -1,4 +1,6 @@
-<nav ng-controller="navCtrl" class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<nav ng-controller="navCtrl" 
+    class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
     <div class="container-fluid">
         <div class="navbar-header">
             <b class="navbar-brand">RMVA</b>
@@ -35,62 +37,49 @@
                         Feltöltés
                     </a> 
                 </li>
-
-                <!-- <li class="btn btn-default"> {{ path }} || {{ pathId }} </li> -->
             </ul>
 
+            <div id="userNav">
 
-                <div id="userNav">
-
-                    <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">
 
 
-                        <li ng-hide="path === '/signup' || loggedInUser.username">
-                            <a class=""  href="#signup">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                                Regisztráció
-                            </a>
-                        </li>
+                    <li ng-hide="path === '/signup' || loggedInUser.username">
+                        <a class=""  href="#signup">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                            Regisztráció
+                        </a>
+                    </li>
 
-                        <li>
-                            <a ng-hide="path === '/login' || loggedInUser.username" 
-                                class=""  
-                                href="#login">
-                                <span class="glyphicon glyphicon-log-in" ></span>
-                                Bejelentkezés
-                            </a>
-                        </li>
+                    <li>
+                        <a ng-hide="path === '/login' || loggedInUser.username" 
+                            class=""  
+                            href="#login">
+                            <span class="glyphicon glyphicon-log-in" ></span>
+                            Bejelentkezés
+                        </a>
+                    </li>
 
-                        <li>
-                           <a ng-show="loggedInUser.username" class="" 
-                                href="#profile/id/{{loggedInUser._id}}">
-                                <span class="glyphicon glyphicon-user"></span>
-                                <b>
-                                    {{ loggedInUser.nickname }} || {{ loggedInUser.role }} 
-                                </b>
-                            </a>
-                           <!-- <h4>isLoggedIn : {{ isLoggedIn }}</h4> -->
-                        </li>
+                    <li>
+                       <a ng-show="loggedInUser.username" class="" 
+                            href="#profile/id/{{loggedInUser._id}}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <strong>
+                                {{ loggedInUser.nickname }} |
+                            </strong>
+                            {{ loggedInUser.role }} 
+                        </a>
+                    </li>
 
-                        <li>
-                            <a ng-show="loggedInUser.username" class="" 
-                                href="/logout">
-                                <span class="glyphicon glyphicon-log-out" ></span>
-                                Kijelentkezés
-                            </a>
-                        </li>
-
-                        <!--   
-                            <li>
-                                <a ng-show="loggedInUser.username" 
-                                    class="btn btn-default" href="#users">
-                                    Felhasználók
-                                </a>
-                            </li>
-                        -->
-                </div>
-                
-            </ul>
+                    <li>
+                        <a ng-show="loggedInUser.username" class="" 
+                            href="/logout">
+                            <span class="glyphicon glyphicon-log-out" ></span>
+                            Kijelentkezés
+                        </a>
+                    </li>
+                </ul>
+            </div>                
         </div>
     </div>
 </nav>

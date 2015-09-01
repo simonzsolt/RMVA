@@ -1,21 +1,20 @@
 body{ 
-    padding-top: 70px;
+    padding: 70px 0px 0px 0px !important;
     font-family: 'Noto Sans' sans-serif !important;
 }
 
 #nav_btn{ line-height:20px }
 
-/*.error{color: #8B0000;}*/
+.navbar-inverse{
+    background-color: #08121D !important;
+}
 
 #userNav{ float: right }
 
 .textMod{ display: inline-block }
+
 #textLines{ 
 	border: 1px solid black;
-}
-
-.formBtn{ 
-	margin-top: 50px;
 }
 
 .selected {
@@ -25,4 +24,55 @@ body{
 
 .form-inline .form-control{
     width: 100% !important;
+}
+
+.badge-info{
+    background-color: #337AB7 !important;
+}
+
+#footer{
+    display: table;
+    width: 100%;
+    height: 250px;
+    margin-top: 150px;
+    background-color: #08121D;
+    color: #949494;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#footer-content{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.partials{
+    padding: 0px 50px 0px 50px;
+}
+
+.panel-heading{
+    background-color: #18314f !important;
+    color: #eff1f3 !important;
+}
+
+.list-filter{
+    margin-bottom: 30px;
+}
+
+.list-filter input {
+    padding-left: 30px;    
+}
+
+.list-filter span{
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.centered-col{
+    text-align: center;
+}
+
+.table tr:hover{
+    background-color: #eff1f3 !important;
 }

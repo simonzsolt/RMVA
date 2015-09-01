@@ -5,5 +5,6 @@ angular
         'ui.select',
         'ui.date',
         'ngSanitize',
-        'door3.css'
+        'door3.css',
+        'ngMaterial'
     ]);

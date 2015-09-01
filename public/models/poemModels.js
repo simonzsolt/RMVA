@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 // session storage connection
-var connection = mongoose.createConnection("mongodb://localhost/vers", function(err) {
+var connection = mongoose.createConnection(process.env.DB_URL, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
