@@ -1,82 +1,160 @@
 angular
-	.module('versApp')
+    .module('versApp')
 
 // -----------------------------VIEW CONTROLLER-----------------------------
 
-		.controller('viewerCtrl', 
-		    
-		    function($scope, $routeParams, poemFactory, $location, $anchorScroll) {
+        .controller('viewerCtrl', 
+            
+            function($scope, $routeParams, poemFactory, $location, $anchorScroll) {
 
-		        $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
+                $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
 
-		        	if ($scope.vers.acro_int) {
-		        		$scope.acroInt = 'Integráns'
-		        	}
-		        	else { $scope.acroInt = 'Nem integráns' }
+                    if ($scope.vers.acro_int) {
+                        $scope.acroInt = 'Integráns' }
 
-		        	// Date object
+                    else { $scope.acroInt = 'Nem integráns' }
 
-        			var c = Object.getOwnPropertyNames($scope.vers.date);
+// ==================================Date object==================================
 
-        			console.log('c: ' + c + ' | ' +
-        				 $scope.vers.date.propertyIsEnumerable(c) 
-        			); // single
+                    var child = Object.getOwnPropertyNames($scope.vers.date);
 
-        			var cc = Object.getOwnPropertyNames($scope.vers.date[c]);
+                    $scope.child = child.toString();
 
-        			console.log('cc: ' + cc + ' | ' +
-        				 $scope.vers.date[c].propertyIsEnumerable(cc)
-        			); //exact_date
+                    switch (child.toString()) {
 
-        			var ccc = Object.getOwnPropertyNames($scope.vers.date[c][cc]);
+                        case 'single':
 
-        			console.log('ccc: ' + ccc + ' | ' +
-        				 $scope.vers.date[c][cc].propertyIsEnumerable(ccc)
-        			);
+                            var grandChild = 
+                                Object.getOwnPropertyNames($scope.vers.date[child]);
+
+                            $scope.grandChild = grandChild.toString();
+
+                                switch (grandChild.toString()) {
+
+                                    case 'exact_date':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild]
+                                        break;
+
+                                    case 'only_year':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild].year
+                                        break;
+
+                                    case 'year_month':
+                                        $scope.dateObj = {
+                                            year: $scope.vers.date
+                                                [child][grandChild].year,
+                                            
+                                            month: $scope.vers.date
+                                                [child][grandChild].month 
+                                        }; break;
+
+                                    case 'only_cent':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild].cent
+                                        break;
+
+                                    default:
+
+                                }; break;
+
+                        case 'period':
+
+                            var grandChildFrom = 
+                                Object.getOwnPropertyNames($scope.vers.date[child].from);
+
+                            $scope.grandChildFrom = grandChildFrom.toString();
+
+                            switch (grandChildFrom.toString()) {
+
+                                case 'exact_date':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom]
+                                    break;
+
+                                case 'only_year':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom].year
+                                    break;
+
+                                case 'year_month':
+                                    $scope.dateObjFrom = {
+                                        year: $scope.vers.date
+                                            [child].from[grandChildFrom].year,
+                                        
+                                        month: $scope.vers.date
+                                            [child].from[grandChildFrom].month 
+                                    }; break;
+
+                                case 'only_cent':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom].cent
+                                    break;
+
+                                default:
+                                    console.log(
+                                        grandChildFrom + ' could not be interpreted');
+                            };
+
+                            var grandChildTo = 
+                                Object.getOwnPropertyNames($scope.vers.date[child].to);
+
+                            $scope.grandChildTo = grandChildTo.toString();
+
+                            switch (grandChildTo.toString()) {
+
+                                case 'exact_date':
+                                    $scope.dateObjTo = 
+                                        $scope.vers.date[child].to[grandChildTo]
+                                    break;
+
+                                case 'only_year':
+                                    $scope.grandChildTo = 
+                                        $scope.vers.date[child].to[grandChildTo].year
+                                    break;
+
+                                case 'year_month':
+                                    $scope.grandChildTo = {
+                                        year: $scope.vers.date
+                                            [child].to[grandChildTo].year,
+                                        
+                                        month: $scope.vers.date
+                                            [child].to[grandChildTo].month 
+                                    }; break;
+
+                                case 'only_cent':
+                                    $scope.grandChildTo = 
+                                        $scope.vers.date[child].to[grandChildTo].cent
+                                    break;
+
+                                default:
+                                    console.log(
+                                        grandChildTo + ' could not be interpreted');
+                            };
+
+                            break;
+
+                        default:
+                            console.log(child + ' could not be interpreted');
 
 
-        			var child = Object.getOwnPropertyNames($scope.vers.date);
+                    };                       
+                    
+                    // achorscroll
+                    $anchorScroll.yOffset = ($(window).height())/4;
 
-        			if($scope.vers.date.propertyIsEnumerable(child)) {
-        				console.log(child + ' enumerable');
+                    $scope.H = $location.hash();
 
-        				var grandChild = 
-        					Object.getOwnPropertyNames($scope.vers.date[child]);
+                    $scope.goToLine = function goToLine () {
 
-        					if ($scope.vers.date[child].propertyIsEnumerable(grandChild)) {
-        						console.log(grandChild + ' enumerable');
+                        var lg = $scope.vers.exemplum.locus.lg
+                        var l  = $scope.vers.exemplum.locus.l;
 
-        						var greatGrandChild = Object.getOwnPropertyNames(
-        								$scope.vers.date[child][grandChild]);
+                        $location.hash(lg + '_' + l);
+                        $anchorScroll();
+                    };
 
-        						if ($scope.vers.date[child][grandChild].
-        								propertyIsEnumerable(greatGrandChild)){
-        							console.log(greatGrandChild + ' enumerable');
-        						}
-        						else {
-        							console.log(greatGrandChild + ' not enumerable');
-        						}
-        					};
-        			}
+                });     
 
-
-
-		        		
-					
-		        	// achorscroll
-					$anchorScroll.yOffset = ($(window).height())/4;
-
-					$scope.H = $location.hash();
-
-					$scope.goToLine = function goToLine () {
-
-						var lg = $scope.vers.exemplum.locus.lg
-						var l  = $scope.vers.exemplum.locus.l;
-
-						$location.hash(lg + '_' + l);
-						$anchorScroll();
-					};
-
-				});     
-
-		    }) //viewCtrl
+            }) //viewCtrl

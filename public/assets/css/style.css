@@ -3,6 +3,15 @@ body{
     font-family: 'Noto Sans' sans-serif !important;
 }
 
+.jumbotron{
+    background: #18314f !important;
+    color: #eff1f3 !important;
+}
+
+ul {
+    list-style-type: disc !important;
+}
+
 #nav_btn{ line-height:20px }
 
 .navbar-inverse{
@@ -80,3 +89,34 @@ body{
 .table tr:hover{
     background-color: #eff1f3 !important;
 }
+
+::-moz-selection { 
+    background-color: #4f7cac !important;
+    color: #eff1f3 !important;
+}
+::selection { 
+    background-color: #4f7cac !important;
+    color: #eff1f3 !important;
+}
+
+.date_period {
+    display: inline;
+}
+
+.viewCol {
+    display: inline !important;
+}
+
+.l {
+    list-style-type: none !important;
+}
+
+/* Coolors Exported Palette - coolors.co/08121d-18314f-124e78-4f7cac-eff1f3 */
+
+/*
+*    $color1: #08121d; //rgba(8, 18, 29, 100)
+*    $color2: #18314f; //rgba(24, 49, 79, 100)
+*    $color3: #124e78; //rgba(18, 78, 120, 100)
+*    $color4: #4f7cac; //rgba(79, 124, 172, 100)
+*    $color5: #eff1f3; //rgba(239, 241, 243, 100)
+*/

@@ -32,12 +32,7 @@ var dateObj = {
     only_cent: {
         cent:   Number,
         approx: String
-    },
-
-    only_fest: {
-        fest:   String,
-        approx: String
-    },
+    }
 };
 
 // =====================================Metric model==================================
@@ -123,9 +118,9 @@ var versSchema = new mongoose.Schema({
     signo_add_name:  String, // szigno középső név:
     signo_forename:  String, // szigno keresztnév
 
-    length:     Number, // terjedelem
-    length_unit:String, // mértékegység - SELECT!
-    col:        String, // kolofón
+    length:      Number, // terjedelem
+    length_unit: String, // mértékegység - SELECT!
+    col:         String, // kolofón
 
     date:   {
 

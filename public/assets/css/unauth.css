@@ -1,18 +1,10 @@
 body{
-	background: #AEAEAE;
+	background: #eff1f3;
 }
 
 .jumbotron{
-	background: #B22323;
-	color: white;
+	background: #08121d;
+	color: #eff1f3;
 }
 
-#unauth{ background: #AEAEAE }
-
-/*
-
-
-#B22323 > #CC2828 > #FF3232 
-
-
-*/
+#unauth{ background: #eff1f3 }
