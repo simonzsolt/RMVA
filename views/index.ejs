@@ -10,8 +10,7 @@
         <!-- STLYSHEETS -->
         <link rel="stylesheet" type="text/css" href="build/productionStyle.css">
 
-        <link rel="stylesheet" 
-            href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/lib/bootstrap/dist/css/bootstrap.min.css">
 
         <link rel="stylesheet" 
             href="assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
@@ -20,11 +19,20 @@
 
 <!-- =============================PARTIAL VIEWS============================= -->
 
-    <div class="container-fluid" ng-view></div> 
+    <div class="partials">
+        <ng-view ng-cloack class="container-fluid view-animate"></ng-view>
+    </div> 
+
+    <div id="footer">
+        <div id="footer-content">
+            <span >rmva</span>    
+        </div> 
+    </div>
 
 <!-- =============================RESOURCES - DEPENDENCIES========================== -->
 
     <!-- LIBRARIES -->
+
 
     <script type="text/javascript" src="build/production.js"></script>
 

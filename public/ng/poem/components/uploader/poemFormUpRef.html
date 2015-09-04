@@ -1,1 +1,418 @@
-<h2>Önreflexió</h2><div><div ng-repeat="ref_genre in vers.reflect.ref_genre" ng-init="refGenIn = $index; refBtn = 'ref_genre'"><div><h3>Műfaji reflexió #{{ refGenIn +1 }} |<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include></h3><label class="control-label col-md-2">Műfaji reflexió</label><div class=col-md-10><input class=form-control ng-model=ref_genre.name placeholder="Műfaji reflexió"></div><label class="control-label col-md-2">Kifejtve</label><div class=col-md-10><input class=form-control ng-model=ref_genre.desc placeholder="Műfaji reflexió kifejtve"></div><label class="control-label col-md-2">Helye</label><div class=col-md-10><input class=form-control ng-model=ref_genre.locus placeholder="Műfaji reflexió helye"></div></div></div><div ng-repeat="ref_input in vers.reflect.ref_input" ng-init="refInputIn = $index; refBtn = 'ref_input'"><div><h3>Befogadás kifejezései #{{ refInputIn +1 }} |<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include></h3><label class="control-label col-md-2">Befogadás kifejezései</label><div class=col-md-10><input class=form-control ng-model=ref_input.name placeholder="Befogadás kifejezései"></div><label class="control-label col-md-2">Kifejtve</label><div class=col-md-10><input class=form-control ng-model=ref_input.desc placeholder="Befogadás kifejezései kifejtve"></div><label class="control-label col-md-2">Helye</label><div class=col-md-10><input class=form-control ng-model=ref_input.locus placeholder="Befogadás kifejezéseinek helye"></div></div></div><div ng-repeat="ref_edit in vers.reflect.ref_edit" ng-init="refEditIn = $index; refBtn = 'ref_edit'"><div><h3>Szereztetés, szerkesztés #{{ refEditIn +1 }} |<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include></h3><label class="control-label col-md-2">Szereztetés, szerkesztés</label><div class=col-md-10><input class=form-control ng-model=ref_edit.name placeholder="Szereztetés, szerkesztés"></div><label class="control-label col-md-2">Kifejtve</label><div class=col-md-10><input class=form-control ng-model=ref_edit.desc placeholder="Szereztetés, szerkesztés kifejtve"></div><label class="control-label col-md-2">Helye</label><div class=col-md-10><input class=form-control ng-model=ref_edit.locus placeholder="Szereztetés, szerkesztés helye"></div></div></div><div ng-repeat="ref_func in vers.reflect.ref_func" ng-init="refFuncIn = $index; refBtn = 'ref_func'"><div><h3>Funkció, alkalom #{{ refFuncIn +1 }} |<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include></h3><label class="control-label col-md-2">Funkció, alkalom</label><div class=col-md-10><input class=form-control ng-model=ref_func.name placeholder="Funkció, alkalom"></div><label class="control-label col-md-2">Kifejtve</label><div class=col-md-10><input class=form-control ng-model=ref_func.desc placeholder="Funkció, alkalom kifejtve"></div><label class="control-label col-md-2">Helye</label><div class=col-md-10><input class=form-control ng-model=ref_func.locus placeholder="Funkció, alkalom helye"></div></div></div><div ng-repeat="ref_circum in vers.reflect.ref_circum" ng-init="refCircumIn = $index; refBtn = 'ref_circum'"><div><h3>Körülmények #{{ refCircumIn +1 }} |<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include></h3><label class="control-label col-md-2">Körülmények</label><div class=col-md-10><input class=form-control ng-model=ref_circum.name placeholder=Körülmények></div><label class="control-label col-md-2">Kifejtve</label><div class=col-md-10><input class=form-control ng-model=ref_circum.desc placeholder="Körülmények kifejtve"></div><label class="control-label col-md-2">Helye</label><div class=col-md-10><input class=form-control ng-model=ref_circum.locus placeholder="Körülmények helye"></div></div></div></div>
+<div class="form-group" 
+	ng-repeat="ref_genre in vers.reflect.ref_genre" 
+	ng-init="refGenIn = $index; refBtn = 'ref_genre'">
+
+	<div>
+
+		<h3> 
+			Műfaji reflexió 
+				<span class="badge badge-info">
+					#{{ refGenIn +1 }}
+				</span>
+			
+			<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+		
+		</h3>
+
+	    <label class="control-label col-md-3">
+	    	Műfaji reflexió
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_genre.name" 
+		        placeholder="Műfaji reflexió">
+		    </input>
+	    </div>
+
+	    <label class="control-label col-md-3">
+	    	Kifejtve
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_genre.desc" 
+		        placeholder="Műfaji reflexió kifejtve">
+		    </input>
+	    </div>
+
+	    <div class="form-inline">
+
+	        <label class="control-label col-md-3" ng-hide="textVerse<2">
+	            Strófa:
+	        </label>
+	        
+	        <div class="col-md-2">
+	           
+	            <input 
+	                class="form-control"
+	                ng-hide="textVerse<2" 
+	                type="number"
+	                min="1" 
+	                max=" {{ textVerse }} "
+	                ng-model="ref_genre.locus.lg" 
+	                placeholder="Strófa">
+	            </input>
+	        </div>
+	        
+	        <label class="control-label col-md-3" ng-hide="textLines<1">
+	            Sor:
+	        </label>
+	        
+	        <div class="col-md-2">
+	            <input 
+	                class="form-control"
+	                ng-hide="textLines<1"
+	                type="number"
+	                min="1" 
+	                max=" {{ lgLength }} "
+	                ng-model="ref_genre.locus.l" 
+	                placeholder="Sor">
+	            </input>
+	        </div>
+	    </div>
+
+	</div>
+</div>
+
+<div class="form-group" 
+	ng-repeat="ref_input in vers.reflect.ref_input" 
+	ng-init="refInputIn = $index; refBtn = 'ref_input'">
+
+	<div>
+
+		<h3> 
+			Befogadás 
+				<span class="badge badge-info">
+					#{{ refInputIn +1 }} 
+				</span>
+
+			<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+
+		</h3>
+
+	    <label class="control-label col-md-3">
+	    	Befogadás kifejezései
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_input.name" 
+		        placeholder="Befogadás kifejezései">
+		    </input>
+	    </div>
+
+	    <label class="control-label col-md-3">
+	    	Kifejtve
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_input.desc" 
+		        placeholder="Befogadás kifejezései kifejtve">
+		    </input>
+	    </div>
+
+	    <div class="form-inline">
+
+	        <label class="control-label col-md-3" ng-hide="textVerse<2">
+	            Strófa:
+	        </label>
+	        
+	        <div class="col-md-2">
+	           
+	            <input 
+	                class="form-control"
+	                ng-hide="textVerse<2" 
+	                type="number"
+	                min="1" 
+	                max=" {{ textVerse }} "
+	                ng-model="ref_input.locus.lg" 
+	                placeholder="Strófa">
+	            </input>
+	        </div>
+	        
+	        <label class="control-label col-md-3" ng-hide="textLines<1">
+	            Sor:
+	        </label>
+	        
+	        <div class="col-md-2">
+	            <input 
+	                class="form-control"
+	                ng-hide="textLines<1"
+	                type="number"
+	                min="1" 
+	                max=" {{ lgLength }} "
+	                ng-model="ref_input.locus.l" 
+	                placeholder="Sor">
+	            </input>
+	        </div>
+	    </div>
+
+	</div>
+</div>
+
+<div class="form-group"
+	ng-repeat="ref_edit in vers.reflect.ref_edit" 
+	ng-init="refEditIn = $index; refBtn = 'ref_edit'">
+
+	<div>
+
+		<h3> 
+			Szereztetés, szerkesztés 
+				<span class="badge badge-info">
+					#{{ refEditIn +1 }}
+				</span>
+
+			<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+
+		</h3>
+
+	    <label class="control-label col-md-3">
+	    	Szereztetés, szerkesztés
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_edit.name" 
+		        placeholder="Szereztetés, szerkesztés">
+		    </input>
+	    </div>
+
+	    <label class="control-label col-md-3">
+	    	Kifejtve
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_edit.desc" 
+		        placeholder="Szereztetés, szerkesztés kifejtve">
+		    </input>
+	    </div>
+
+	    <div class="form-inline">
+
+	        <label class="control-label col-md-3" ng-hide="textVerse<2">
+	            Strófa:
+	        </label>
+	        
+	        <div class="col-md-2">
+	           
+	            <input 
+	                class="form-control"
+	                ng-hide="textVerse<2" 
+	                type="number"
+	                min="1" 
+	                max=" {{ textVerse }} "
+	                ng-model="ref_edit.locus.lg" 
+	                placeholder="Strófa">
+	            </input>
+	        </div>
+	        
+	        <label class="control-label col-md-3" ng-hide="textLines<1">
+	            Sor:
+	        </label>
+	        
+	        <div class="col-md-2">
+	            <input 
+	                class="form-control"
+	                ng-hide="textLines<1"
+	                type="number"
+	                min="1" 
+	                max=" {{ lgLength }} "
+	                ng-model="ref_edit.locus.l" 
+	                placeholder="Sor">
+	            </input>
+	        </div>
+	    </div>
+
+	</div>
+</div>
+
+<div class="form-group"
+	ng-repeat="ref_func in vers.reflect.ref_func" 
+	ng-init="refFuncIn = $index; refBtn = 'ref_func'">
+
+	<div>
+
+		<h3> 
+			Funkció, alkalom 
+				<span class="badge badge-info">
+					#{{ refFuncIn +1 }}
+				</span>
+
+			<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+
+		</h3>
+
+	    <label class="control-label col-md-3">
+	    	Funkció, alkalom
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_func.name" 
+		        placeholder="Funkció, alkalom">
+		    </input>
+	    </div>
+
+	    <label class="control-label col-md-3">
+	    	Kifejtve
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_func.desc" 
+		        placeholder="Funkció, alkalom kifejtve">
+		    </input>
+	    </div>
+
+	    
+	    <div class="form-inline">
+
+	        <label class="control-label col-md-3" ng-hide="textVerse<2">
+	            Strófa:
+	        </label>
+	        
+	        <div class="col-md-2">
+	           
+	            <input 
+	                class="form-control"
+	                ng-hide="textVerse<2" 
+	                type="number"
+	                min="1" 
+	                max=" {{ textVerse }} "
+	                ng-model="ref_func.locus.lg" 
+	                placeholder="Strófa">
+	            </input>
+	        </div>
+	        
+	        <label class="control-label col-md-3" ng-hide="textLines<1">
+	            Sor:
+	        </label>
+	        
+	        <div class="col-md-2">
+	            <input 
+	                class="form-control"
+	                ng-hide="textLines<1"
+	                type="number"
+	                min="1" 
+	                max=" {{ lgLength }} "
+	                ng-model="ref_func.locus.l" 
+	                placeholder="Sor">
+	            </input>
+	        </div>
+	    </div>
+
+
+	</div>
+</div>
+
+<div class="form-group"
+	ng-repeat="ref_circum in vers.reflect.ref_circum" 
+	ng-init="refCircumIn = $index; refBtn = 'ref_circum'">
+
+	<div>
+
+		<h3> 
+			Körülmények 
+				<span class="badge badge-info">
+					#{{ refCircumIn +1 }}
+				</span>
+
+			<ng-include src="'ng/shared/forms/formRefButtons.html'"></ng-include>
+		</h3>
+
+	  
+
+
+	    <label class="control-label col-md-3">
+	    	Körülmények
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_circum.name" 
+		        placeholder="Körülmények">
+		    </input>
+	    </div>
+
+	    <label class="control-label col-md-3">
+	    	Kifejtve
+	    </label>
+	    
+	    <div class="col-md-9">
+	       
+	        <input 
+		        class="form-control" 
+		        type="text" 
+		        ng-model="ref_circum.desc" 
+		        placeholder="Körülmények kifejtve">
+		    </input>
+	    </div>
+
+	   	<div class="form-inline">
+
+	        <label class="control-label col-md-3" ng-hide="textVerse<2">
+	            Strófa:
+	        </label>
+	        
+	        <div class="col-md-2">
+	           
+	            <input 
+	                class="form-control"
+	                ng-hide="textVerse<2" 
+	                type="number"
+	                min="1" 
+	                max=" {{ textVerse }} "
+	                ng-model="ref_circum.locus.lg" 
+	                placeholder="Strófa">
+	            </input>
+	        </div>
+	        
+	        <label class="control-label col-md-3" ng-hide="textLines<1">
+	            Sor:
+	        </label>
+	        
+	        <div class="col-md-2">
+	            <input 
+	                class="form-control"
+	                ng-hide="textLines<1"
+	                type="number"
+	                min="1" 
+	                max=" {{ lgLength }} "
+	                ng-model="ref_circum.locus.l" 
+	                placeholder="Sor">
+	            </input>
+	        </div>
+	    </div>
+
+	</div>
+</div>

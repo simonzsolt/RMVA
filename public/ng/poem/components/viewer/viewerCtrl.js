@@ -1,37 +1,159 @@
 angular
-	.module('versApp')
+    .module('versApp')
 
 // -----------------------------VIEW CONTROLLER-----------------------------
 
-		.controller('viewerCtrl', 
-		    
-		    ['$scope', '$routeParams', 'poemFactory', '$location', '$anchorScroll', function($scope, $routeParams, poemFactory, $location, $anchorScroll) {
+        .controller('viewerCtrl', 
+            
+            function($scope, $routeParams, poemFactory, $location, $anchorScroll) {
 
-		        $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
 
-					if ($scope.vers.date.single) {
-						// console.log('$scope.vers.date.single: ' + $scope.vers.date.single);
-						$scope.selectDate = 'single';
-					};
+                $scope.vers = poemFactory.get({id: $routeParams.versId}, function(){
 
-					if ($scope.vers.date.period) {
-						// console.log('$scope.vers.date.single: ' + $scope.vers.date.single);
-						$scope.selectDate = 'period';
-					};
+                    if ($scope.vers.acro_int) {
+                        $scope.acroInt = 'Integráns' }
 
-					$anchorScroll.yOffset = ($(window).height())/4;
+                    else { $scope.acroInt = 'Nem integráns' }
 
-					$scope.H = $location.hash();
+// ==================================Date object==================================
 
-					$scope.goToLine = function goToLine () {
+                    var child = Object.getOwnPropertyNames($scope.vers.date);
 
-						var lg = $scope.vers.exemplum.locus.lg
-						var l  = $scope.vers.exemplum.locus.l;
+                    $scope.child = child.toString();
 
-						$location.hash(lg + '_' + l);
-						$anchorScroll();
-					};
+                    switch (child.toString()) {
 
-				});     
+                        case 'single':
 
-		    }]) //viewCtrl
+                            var grandChild = 
+                                Object.getOwnPropertyNames($scope.vers.date[child]);
+
+                            $scope.grandChild = grandChild.toString();
+
+                                switch (grandChild.toString()) {
+
+                                    case 'exact_date':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild]
+                                        break;
+
+                                    case 'only_year':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild].year
+                                        break;
+
+                                    case 'year_month':
+                                        $scope.dateObj = {
+                                            year: $scope.vers.date
+                                                [child][grandChild].year,
+                                            
+                                            month: $scope.vers.date
+                                                [child][grandChild].month 
+                                        }; break;
+
+                                    case 'only_cent':
+                                        $scope.dateObj = 
+                                            $scope.vers.date[child][grandChild].cent
+                                        break;
+
+                                    default:
+
+                                }; break;
+
+                        case 'period':
+
+                            var grandChildFrom = 
+                                Object.getOwnPropertyNames($scope.vers.date[child].from);
+
+                            $scope.grandChildFrom = grandChildFrom.toString();
+
+                            switch (grandChildFrom.toString()) {
+
+                                case 'exact_date':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom]
+                                    break;
+
+                                case 'only_year':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom].year
+                                    break;
+
+                                case 'year_month':
+                                    $scope.dateObjFrom = {
+                                        year: $scope.vers.date
+                                            [child].from[grandChildFrom].year,
+                                        
+                                        month: $scope.vers.date
+                                            [child].from[grandChildFrom].month 
+                                    }; break;
+
+                                case 'only_cent':
+                                    $scope.dateObjFrom = 
+                                        $scope.vers.date[child].from[grandChildFrom].cent
+                                    break;
+
+                                default:
+                                    console.log(
+                                        grandChildFrom + ' could not be interpreted');
+                            };
+
+                            var grandChildTo = 
+                                Object.getOwnPropertyNames($scope.vers.date[child].to);
+
+                            $scope.grandChildTo = grandChildTo.toString();
+
+                            switch (grandChildTo.toString()) {
+
+                                case 'exact_date':
+                                    $scope.dateObjTo = 
+                                        $scope.vers.date[child].to[grandChildTo]
+                                    break;
+
+                                case 'only_year':
+                                    $scope.grandChildTo = 
+                                        $scope.vers.date[child].to[grandChildTo].year
+                                    break;
+
+                                case 'year_month':
+                                    $scope.grandChildTo = {
+                                        year: $scope.vers.date
+                                            [child].to[grandChildTo].year,
+                                        
+                                        month: $scope.vers.date
+                                            [child].to[grandChildTo].month 
+                                    }; break;
+
+                                case 'only_cent':
+                                    $scope.grandChildTo = 
+                                        $scope.vers.date[child].to[grandChildTo].cent
+                                    break;
+
+                                default:
+                                    console.log(
+                                        grandChildTo + ' could not be interpreted');
+                            };
+
+                            break;
+
+                        default:
+                            console.log(child + ' could not be interpreted');
+
+
+                    };                       
+                    
+                    // achorscroll
+                    $anchorScroll.yOffset = ($(window).height())/3;
+
+                    $scope.H = $location.hash();
+
+                    $scope.goToLine = function goToLine (lg, l) {
+
+                        $location.hash(lg + '_' + l);
+
+                        $anchorScroll();
+                    };
+
+                });     
+
+            }) //viewCtrl

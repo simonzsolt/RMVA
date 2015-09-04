@@ -17,7 +17,7 @@ angular
 
 							if (index == 'exact_date') 	{$scope.selectDateFromMenu = 'exact_date'};
 							if (index == 'only_year') 	{$scope.selectDateFromMenu = 'year'};
-							if (index == 'year_month') 	{$scope.selectDateFromMenu = 'year-month'};
+							if (index == 'year_month') 	{$scope.selectDateFromMenu = 'year_month'};
 							if (index == 'only_cent') 	{$scope.selectDateFromMenu = 'cent'};
 							if (index == 'only_fest') 	{$scope.selectDateFromMenu = 'fest'};
 						});

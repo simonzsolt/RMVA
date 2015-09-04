@@ -20,7 +20,9 @@ var express = require('express'); // server dep
 
     MongoStore = require('connect-mongo')(session),
 
-    zeroFill = require('zero-fill');
+    zeroFill = require('zero-fill'),
+
+    dotenv = require('dotenv').load();
 
 // ====================LOADING CONFIG VARS====================
 
@@ -37,7 +39,6 @@ var port = (process.env.OPENSHIFT_NODEJS_PORT   || 8080);
 var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
-
 
 // MONGODB
 mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
@@ -79,7 +80,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 app.use(session({
-    secret: 'itsbettertoburnoutthantofadeaway',
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
