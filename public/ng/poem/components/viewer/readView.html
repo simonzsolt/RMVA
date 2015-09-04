@@ -1,1 +1,469 @@
-<div ng-cloack><div ng-include="'ng/shared/navbar/navView.html'"></div></div><div ng-cloack><div class=jumbotron><h1>Részletes leírás <small>- RMVA {{vers.rmva | fillZero:5}}</small></h1><h1>Cím: {{vers.title}}</h1><h2>Incipit: {{vers.inc}}</h2><h3>Létrehozva: {{vers.created_at | date:"y-MM-d H:m:s"}}</h3></div><div class=form-group><label class="control-label col-md-2" for=inc>Incipit:</label><div id=inc class=col-md-10><input readonly=true class=form-control placeholder=Incipit ng-model=vers.inc></div></div><div class=form-group><label class="control-label col-md-2" for=aut_role_name>Szerző előneve:</label><div id=aut_role_name class=col-md-10><input readonly=true id=aut_role_name class=form-control placeholder="Szerző előneve" ng-model=vers.auth_role_name></div><label class="control-label col-md-2" for=auth_surname>Szerző vezetékneve:</label><div id=auth_surname class=col-md-10><input readonly=true class=form-control placeholder="Szerző vezetékneve" ng-model=vers.auth_surname></div><label class="control-label col-md-2" for=auth_add_name>Szerző középső neve:</label><div id=auth_add_name class=col-md-10><input readonly=true class=form-control placeholder="Szerző középső neve" ng-model=vers.auth_add_name></div><label class="control-label col-md-2" for=auth_forename>Szerző keresztneve:</label><div id=auth_forename class=col-md-10><input readonly=true class=form-control placeholder="Szerző keresztneve" ng-model=vers.auth_forename></div></div><div class=form-group><label class="control-label col-md-2" for=title>Cím:</label><div id=title class=col-md-10><input readonly=true class=form-control placeholder=Cím ng-model=vers.title></div></div><div class=form-group><label class="control-label col-md-2" for=arg>Argumentum:</label><div id=arg class=col-md-10><input readonly=true class=form-control placeholder=Argumentum ng-model=vers.arg></div></div><div class=form-group><label class="control-label col-md-2" for=adnotam>Nótajelzés:</label><div id=adnotam class=col-md-10><input readonly=true class=form-control placeholder=Nótajelzés ng-model=vers.adnotam></div></div><div class=form-group><label class="control-label col-md-2" for=acro>Akrosztichon:</label><div id=acro class=col-md-10><input readonly=true class=form-control placeholder=Akrosztichon ng-model=vers.acro></div><div class="col-sm-offset-2 col-sm-10"><div class=checkbox><label><input disabled=true ng-model=vers.acro_int type=checkbox> Akrosztichon integráns</label></div></div></div><div class=form-group><label class="control-label col-md-2" for=krono>Kronosztichon:</label><div id=krono class=col-md-10><input readonly=true class=form-control placeholder=Kronosztichon ng-model=vers.krono></div></div><div class=form-group><label class="control-label col-md-2" for=head>Élőfej:</label><div id=head class=col-md-10><input readonly=true class=form-control placeholder=Élőfej ng-model=vers.head></div></div><div class=form-group><label class="control-label col-md-2" for=signo_type>Szignáltság:</label><div id=signo_type class=col-md-10><select disabled=true readonly=true class=form-control placeholder=Szignáltság ng-model=vers.signo_type><option value="" disabled=disabled selected=selected>Szignáltság<option>kötet szinten szignált<option>szerzőnévvel szignált<option>monogrammal<option>akrosztichonban<option>kolofónban<option>margináliában</select></div><label class="control-label col-md-2" for=signo_role_name>Szig. előneve:</label><div id=signo_role_name class=col-md-10><input readonly=true class=form-control placeholder="Szig. előneve" ng-model=vers.signo_role_name></div><label class="control-label col-md-2" for=signo_surname>Szig. vezetékneve:</label><div id=signo_surname class=col-md-10><input readonly=true class=form-control placeholder="Szig. vezetékneve" ng-model=vers.signo_surname></div><label class="control-label col-md-2" for=signo_add_name>Szig. középső neve:</label><div id=signo_add_name class=col-md-10><input readonly=true class=form-control placeholder="Szig. középső neve" ng-model=vers.signo_add_name></div><label class="control-label col-md-2" for=signo_forename>Szig. keresztneve:</label><div id=signo_forename class=col-md-10><input readonly=true class=form-control placeholder="Szig. keresztneve" ng-model=vers.signo_forename></div></div><div class=form-group><label class="control-label col-md-2" for=lenght>Terjedelem:</label><div id=lenght class=col-md-10><input readonly=true type=number placeholder=Terjedelem ng-model=vers.lenght></div></div><div class=form-group><label class="control-label col-md-2" for=lenght_unit>Mértékegység:</label><div id=lenght_unit class=col-md-10><select readonly=true class=form-control ng-model=vers.lenght_unit><option value="" disabled=disabled selected=selected>Mértékegység<option>sor<option>strófa<option>szótag<option>hexameter<option>disztichon<option>nótajelzésként</select></div></div><div class=form-group><label class="control-label col-md-2" for=col>Kolofón:</label><div id=col class=col-md-10><input readonly=true class=form-control placeholder=Kolofón ng-model=vers.col></div></div><div class=form-group><label class="control-label col-md-2" for=col>Dátum megadása:</label><div id=selectDate class=col-md-10><select disabled=true readonly=true class=form-control ng-model=selectDate><option value="" isabled selected=selected>-- Dátum megadása --<option value=single>Egyszerű dátum<option value=period>Időszak</select></div></div><div ng-show="selectDate == 'single'" ng-controller=selectDateEditCtrl><div class=form-group><label class="control-label col-md-2" for=date>Dátum leírása:</label><div id=selectDateMenu class=col-md-10><select disabled=true readonly=true class=form-control ng-click=select() ng-model=selectDateMenu><option value="" disabled=disabled selected=selected>Dátum Leírása<option value=exact_date>Pontos dátum<option value=year>Év<option value=year-month>Év - hónap<option value=cent>Század<option value=fest>Ünnep</select><ng-include src="'ng/poem/components/uploader/selectDate/selectDateView.html'"></ng-include></div></div></div><div ng-controller=selectDateFromEditCtrl><div ng-show="selectDate == 'period'" class=form-group><label class="control-label col-md-3" for=period>Időszak:</label><div id=period class=col-md-12><div class=form-group><label class="control-label col-md-4" for=date>Kezdő dátum:</label><div id=selectDateFromMenu class=col-md-8><select disabled=true readonly=true class=form-control ng-click=selectFrom() ng-model=selectDateFromMenu><option value="" disabled=disabled selected=selected>Dátum Leírása<option value=exact_date>Pontos dátum<option value=year>Év<option value=year-month>Év - hónap<option value=cent>Század<option value=fest>Ünnep</select></div></div><ng-include src="'ng/poem/components/uploader/selectDate/selectDateFromView.html'"></ng-include></div></div></div><div ng-controller=selectDateToEditCtrl><div class=col-md-12 ng-show="selectDate == 'period'" id=period><div class=form-group><label class="control-label col-md-4" for=date>Záró dátum:</label><div id=selectDateToMenu class=col-md-8><select disabled=true readonly=true class=form-control ng-click=selectTo() ng-model=selectDateToMenu><option value="" disabled=disabled selected=selected>Dátum Leírása<option value=exact_date>Pontos dátum<option value=year>Év<option value=year-month>Év - hónap<option value=cent>Század<option value=fest>Ünnep</select></div></div><ng-include src="'ng/poem/components/uploader/selectDate/selectDateToView.html'"></ng-include></div></div></div><div class=form-group><label class="control-label col-md-2" for=date_info>Datálás:</label><div id=date_info class=col-md-10><select disabled=true readonly=true class=form-control type="" placeholder="" ng-model=vers.date_info><option value="" disabled=disabled selected=selected>Datálás<option>akrosztichon<option>kolofón<option>valaki direkt odaírta<option>kronosztichon</select></div></div><div class=form-group><label class="control-label col-md-2" for=place>Hely:</label><div id=place class=col-md-10><input readonly=true class=form-control placeholder=Hely ng-model=vers.place></div><label class="control-label col-md-2" for=place_info>Lokalizálás:</label><div id=place_info class=col-md-10><select disabled=true readonly=true class=form-control type="" placeholder="" ng-model=vers.place_info><option value="" disabled=disabled selected=selected>Lokalizálás<option>akrosztichon<option>kolofón<option>címben<option>a kötet előszavában<option>a szöveg mellé odaírva</select></div></div><div class=form-group><label class="control-label col-md-2" for=conf>Felekezet:</label><div id=conf class=col-md-10><input readonly=true class=form-control placeholder=Felekezet ng-model=vers.conf></div></div><div class=form-group><label class="control-label col-md-2" for=source>Forrás:</label><div id=source class=col-md-10><input readonly=true class=form-control placeholder=Forrás ng-model=vers.source></div></div><div class=form-group><label class="control-label col-md-2" for=text>Szöveg:</label><div id=text class=col-md-10><ul class=list-group><li class=list-group-item><ol><li ng-repeat="lg in vers.text" ng-init="lgIndex = $index +1"><ul><li ng-repeat="l in lg" ng-init="lIndex = $index +1" id={{lgIndex}}_{{lIndex}} ng-class="{ 'selected': H==lgIndex + '_' + lIndex }" style=list-style-type:none>{{ l }}</li></ul><br></li></ol></li></ul></div></div><h3>Exemplum, közhely, toposz</h3><h4>Exemplum</h4><table><tr><td><a href="" ng-click=goToLine()>Strófa: {{ vers.exemplum.locus.lg }} Sor: {{ vers.exemplum.locus.l }}</a></table><div>Kapcsolódások:<ul ng-hide="vers.link_coll.length == 0" ng-repeat="link in vers.link_coll "><li>RMVA <a href="#view/id/{{link | fillZero:5}}">{{ link | fillZero:5 }}</a></li></ul></div><div>Létrehozva: {{vers.created_by}} - {{vers.created_at | date:"y-MM-d H:mm:ss"}}</div><div>Utolsó módosítás: {{vers.mod_by}} - {{vers.last_mod | date:"y-MM-d H:mm:ss"}}</div><div class=form-group style=margin-top:150px;margin-bottom:150px><label class="control-label col-md-2" for=text><h2>Nyers json</h2></label><div class="form-group col-md-10"><pre ng-bind="vers | json"></pre></div></div>
+<div ng-cloack ng-include="'ng/shared/navbar/navView.html'"></div>
+
+<div ng-cloack class="page-header col-md-10 col-md-offset-1">
+    <h1 ng-cloack ng-show="vers.title">
+        <big><strong>RMVA: {{vers.rmva | fillZero:5 }}</strong></big> <br>
+        <big>{{vers.title}}</big> <br>
+        <small ng-show="vers.inc"> ("{{vers.inc}}")</small>
+    </h1>
+</div>
+
+<!-- TEXTOLOGY -->
+
+<div class="viewCol">
+
+    <ul ng-cloack class="list-group col-md-5 col-md-offset-1">
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Cím: </h4>
+            <span class="list-group-item-text"> 
+               {{ vers.title }}
+            </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading">Incipit:</h4>
+            <span class="list-group-item-text"> {{ vers.inc }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Szerző:</h4>
+            <span class="list-group-item-text"> 
+                {{ vers.auth_role_name }} {{ vers.auth_surname }} {{ vers.auth_add_name }} {{ vers.auth_forename }} 
+            </span>
+        </li>
+
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Argumentum:</h4>
+            <span class="list-group-item-text"> {{ vers.arg }} </span>
+        </li>
+
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Nótajelzés:</h4>
+            <span class="list-group-item-text"> {{ vers.adnotam }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Akrosztichon:</h4>
+            <span class="list-group-item-text"> {{ vers.acro }} </span>
+            <span> ({{ acroInt }}) </span>
+        </li>
+        
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Kronosztichon:</h4>
+            <span class="list-group-item-text"> {{ vers.chrono }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Élőfej:</h4>
+            <span class="list-group-item-text"> {{ vers.head }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Szignáltság:</h4>
+            <span class="list-group-item-text"> 
+                {{ vers.signo_role_name }} 
+                {{ vers.signo_surname }} 
+                {{ vers.signo_add_name }} 
+                {{ vers.signo_forename }} 
+                <span ng-show="vers.signo_type">
+                    ({{ vers.signo_type }})
+                </span> 
+            </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Terjedelem:</h4>
+            <span class="list-group-item-text"> 
+                {{ vers.length }} 
+                <span ng-show="vers.length_unit0">
+                    ({{ vers.length_unit }})
+                </span>         
+            </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Kolofón:</h4>
+            <span class="list-group-item-text"> {{ vers.col }} </span>
+        </li>
+
+        <li class="list-group-item"
+            ng-if="child == 'single'"
+            ng-switch="grandChild">
+
+            <h4 class="list-group-item-heading"> Dátum: </h4>
+
+            <span class="list-group-item-text"
+                ng-switch-when="exact_date" > 
+                {{ dateObj | date: "y-MM-dd" }} 
+            </span>
+
+            <span class="list-group-item-text"
+                ng-switch-when="only_year" > 
+                {{ dateObj }} 
+            </span>
+
+            <span class="list-group-item-text"
+                ng-switch-when="year_month" > 
+                {{ dateObj.year }}, {{ dateObj.month }} 
+            </span>
+
+            <span class="list-group-item-text" 
+                ng-switch-when="only_cent" > 
+                {{ dateObj }}. század 
+            </span>
+
+            <span class="list-group-item-text" 
+                ng-switch-when="only_cent" > 
+                {{ dateObj }}. század 
+            </span>
+
+            <span ng-show="vers.date[child][grandChild].approx" > 
+                ({{ vers.date[child][grandChild].approx }})
+            </span>
+
+        </li>
+
+
+        <li class="list-group-item"
+            ng-if="child == 'period'">
+
+            <h4 class="list-group-item-heading"> Dátum: </h4>
+
+            <div class="date_period" ng-switch="grandChildFrom" >
+
+                <span class="list-group-item-text"
+                    ng-switch-when="exact_date" > 
+                    {{ dateObjFrom | date: "y-MM-dd" }} 
+                </span>
+
+                <span class="list-group-item-text"
+                    ng-switch-when="only_year" > 
+                    {{ dateObjFrom }} 
+                </span>
+
+                <span class="list-group-item-text"
+                    ng-switch-when="year_month" > 
+                    {{ dateObjFrom.year }}, {{ dateObj.month }} 
+                </span>
+
+                <span class="list-group-item-text" 
+                    ng-switch-when="only_cent" > 
+                    {{ dateObjFrom }}. század 
+                </span>
+
+                <span class="list-group-item-text" 
+                    ng-switch-when="only_cent" > 
+                    {{ dateObjFrom }}. század 
+                </span>
+
+                <span ng-show="vers.date[child].from[grandChildFrom].approx" > 
+                    ({{ vers.date[child].from[grandChildFrom].approx }})
+                </span>
+                
+            </div>
+
+            <span> &#8212; </span>
+
+            <div class="date_period" ng-switch="grandChildTo" >
+                
+                <span class="list-group-item-text"
+                    ng-switch-when="exact_date" > 
+                    {{ dateObjTo | date: "y-MM-dd" }} 
+                </span>
+
+                <span class="list-group-item-text"
+                    ng-switch-when="only_year" > 
+                    {{ dateObjTo }} 
+                </span>
+
+                <span class="list-group-item-text"
+                    ng-switch-when="year_month" > 
+                    {{ dateObjTo.year }}, {{ dateObj.month }} 
+                </span>
+
+                <span class="list-group-item-text" 
+                    ng-switch-when="only_cent" > 
+                    {{ dateObjTo }}. század 
+                </span>
+
+                <span class="list-group-item-text" 
+                    ng-switch-when="only_cent" > 
+                    {{ dateObjTo }}. század 
+                </span>
+
+                <span ng-show="vers.date[child].to[grandChildTo].approx" > 
+                    ({{ vers.date[child].to[grandChildTo].approx }})
+                </span>
+            </div>
+        </li>
+
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Datálás:</h4>
+            <span class="list-group-item-text"> {{ vers.date_info }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Hely:</h4>
+            <span class="list-group-item-text"> 
+                {{ vers.place }} 
+                <span ng-show="vers.place_info" > 
+                    ({{ vers.place_info }}) 
+                </span>     
+            </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Felekezet:</h4>
+            <span class="list-group-item-text"> {{ vers.conf }} </span>
+        </li>
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Forrás:</h4>
+            <span class="list-group-item-text"> {{ vers.source }} </span>
+        </li>
+
+
+        <li class="list-group-item">
+            <h4 class="list-group-item-heading"> Kapcsolat más szövegekkel:</h4>
+            <span class="list-group-item-text"> 
+
+                <ul ng-repeat="link in vers.link_coll">
+                    <li> 
+                        <a href="#view/id/{{ link | fillZero:5 }}"> 
+                            {{ link | fillZero:5 }} 
+                        </a> 
+                    </li>
+                </ul>
+
+            </span>
+        </li>
+
+<!-- 
+        <li class="list-group-item">
+            <pre ng-bind="vers | json"></pre>
+        </li>
+ -->
+    </ul>
+
+</div>
+
+<div class="viewCol">
+
+    <ul ng-cloack class="list-group col-md-5 ">
+
+        <li class="list-group-item">
+            <div class="list-group-item-text">
+                <ol>
+                    <li ng-repeat="lg in vers.text"
+                        ng-init="lgIndex = $index +1">
+                        <ul class="l" 
+                            ng-repeat="l in lg"
+                            ng-init="lIndex = $index +1">
+                            <li> 
+                                <span
+                                    ng-class="{'selected': H == lgIndex + '_' + lIndex }"
+                                    ng-attr-id="{{ lgIndex }}_{{ lIndex }}"> 
+                                    {{ l }}
+                                </span> 
+                            </li>
+                        </ul> <br>
+                    </li>
+                </ol>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- METRUM -->
+
+<div>
+    <ul ng-cloack class="list-group col-md-10 col-md-offset-1 ">
+        <li class="list-group-item">
+             <pre ng-bind="vers.metrum | json"></pre>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul ng-cloack class="list-group col-md-5 col-md-offset-1 ">
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Műfaji reflexió</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_genre in vers.reflect.ref_genre"
+                            ng-init="lg = ref_genre.locus.lg; l = ref_genre.locus.l">
+                            
+                            <td> {{ ref_genre.name }}  </td>
+
+                            <td> {{ ref_genre.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)"
+                                    ng-hide=" !ref_genre.locus.lg && !ref_genre.locus.l " 
+                                    href="">
+                                    {{ ref_genre.locus.lg }}. strófa
+                                    {{ ref_genre.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+               
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Befogadás</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_input in vers.reflect.ref_input"
+                            ng-init="lg = ref_input.locus.lg; l = ref_input.locus.l">
+                            
+                            <td> {{ ref_input.name }}  </td>
+
+                            <td> {{ ref_input.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)"
+                                    ng-hide=" !ref_input.locus.lg && !ref_input.locus.l " 
+                                    href="">
+                                    {{ ref_input.locus.lg }}. strófa
+                                    {{ ref_input.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Szereztetés, szerkesztés </th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_edit in vers.reflect.ref_edit"
+                            ng-init="lg = ref_edit.locus.lg; l = ref_edit.locus.l">
+                            
+                            <td> {{ ref_edit.name }}  </td>
+
+                            <td> {{ ref_edit.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_edit.locus.lg && !ref_edit.locus.l "
+                                    href="">
+                                    {{ ref_edit.locus.lg }}. strófa
+                                    {{ ref_edit.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Körülmények</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_circum in vers.reflect.ref_circum"
+                            ng-init="lg = ref_circum.locus.lg; l = ref_circum.locus.l">
+                            
+                            <td> {{ ref_circum.name }}  </td>
+
+                            <td> {{ ref_circum.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_circum.locus.lg && !ref_circum.locus.l "
+                                    href="">
+                                    {{ ref_circum.locus.lg }}. strófa
+                                    {{ ref_circum.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Funkció, alkalom </th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_func in vers.reflect.ref_func"
+                            ng-init="lg = ref_func.locus.lg; l = ref_func.locus.l">
+                            
+                            <td> {{ ref_func.name }}  </td>
+
+                            <td> {{ ref_func.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_func.locus.lg && !ref_func.locus.l "
+                                    href="">
+                                    {{ ref_func.locus.lg }}. strófa
+                                    {{ ref_func.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+
+    </ul>
+</div>
