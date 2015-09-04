@@ -27,8 +27,8 @@ ul {
 }
 
 .selected {
-    font-weight: bold;
-    color: #00005C;
+    font-weight: bold !important;
+    color: #08121d !important;
 }
 
 .form-inline .form-control{
@@ -86,7 +86,7 @@ ul {
     text-align: center;
 }
 
-.table tr:hover{
+#listTable tr:hover{
     background-color: #eff1f3 !important;
 }
 

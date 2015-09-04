@@ -8,6 +8,8 @@
     </h1>
 </div>
 
+<!-- TEXTOLOGY -->
+
 <div class="viewCol">
 
     <ul ng-cloack class="list-group col-md-5 col-md-offset-1">
@@ -256,18 +258,216 @@
         <li class="list-group-item">
             <div class="list-group-item-text">
                 <ol>
-                    <li ng-repeat="lg in vers.text">
-                        <ul class="l" ng-repeat="l in lg">
-                            <li> <span> {{ l }} </span> </li>
+                    <li ng-repeat="lg in vers.text"
+                        ng-init="lgIndex = $index +1">
+                        <ul class="l" 
+                            ng-repeat="l in lg"
+                            ng-init="lIndex = $index +1">
+                            <li> 
+                                <span
+                                    ng-class="{'selected': H == lgIndex + '_' + lIndex }"
+                                    ng-attr-id="{{ lgIndex }}_{{ lIndex }}"> 
+                                    {{ l }}
+                                </span> 
+                            </li>
                         </ul> <br>
                     </li>
                 </ol>
             </div>
         </li>
+    </ul>
+</div>
+
+<!-- METRUM -->
+
+<div>
+    <ul ng-cloack class="list-group col-md-10 col-md-offset-1 ">
+        <li class="list-group-item">
+             <pre ng-bind="vers.metrum | json"></pre>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul ng-cloack class="list-group col-md-5 col-md-offset-1 ">
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Műfaji reflexió</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_genre in vers.reflect.ref_genre"
+                            ng-init="lg = ref_genre.locus.lg; l = ref_genre.locus.l">
+                            
+                            <td> {{ ref_genre.name }}  </td>
+
+                            <td> {{ ref_genre.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)"
+                                    ng-hide=" !ref_genre.locus.lg && !ref_genre.locus.l " 
+                                    href="">
+                                    {{ ref_genre.locus.lg }}. strófa
+                                    {{ ref_genre.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+               
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Befogadás</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_input in vers.reflect.ref_input"
+                            ng-init="lg = ref_input.locus.lg; l = ref_input.locus.l">
+                            
+                            <td> {{ ref_input.name }}  </td>
+
+                            <td> {{ ref_input.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)"
+                                    ng-hide=" !ref_input.locus.lg && !ref_input.locus.l " 
+                                    href="">
+                                    {{ ref_input.locus.lg }}. strófa
+                                    {{ ref_input.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Szereztetés, szerkesztés </th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_edit in vers.reflect.ref_edit"
+                            ng-init="lg = ref_edit.locus.lg; l = ref_edit.locus.l">
+                            
+                            <td> {{ ref_edit.name }}  </td>
+
+                            <td> {{ ref_edit.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_edit.locus.lg && !ref_edit.locus.l "
+                                    href="">
+                                    {{ ref_edit.locus.lg }}. strófa
+                                    {{ ref_edit.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Körülmények</th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_circum in vers.reflect.ref_circum"
+                            ng-init="lg = ref_circum.locus.lg; l = ref_circum.locus.l">
+                            
+                            <td> {{ ref_circum.name }}  </td>
+
+                            <td> {{ ref_circum.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_circum.locus.lg && !ref_circum.locus.l "
+                                    href="">
+                                    {{ ref_circum.locus.lg }}. strófa
+                                    {{ ref_circum.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
+       <li class="list-group-item">
+            <div class="list-group-item-text"> 
+               
+               <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Funkció, alkalom </th>
+                            <th>Kifejtve</th>
+                            <th>Helye</th>
+                        </tr>
+                    </thead>
+
+                        <tr ng-cloack class="list-group" 
+                            ng-repeat="ref_func in vers.reflect.ref_func"
+                            ng-init="lg = ref_func.locus.lg; l = ref_func.locus.l">
+                            
+                            <td> {{ ref_func.name }}  </td>
+
+                            <td> {{ ref_func.desc }}  </td>
+
+                            <td>
+                                <a ng-click="toggle = !toggle; goToLine(lg, l)" 
+                                    ng-hide=" !ref_func.locus.lg && !ref_func.locus.l "
+                                    href="">
+                                    {{ ref_func.locus.lg }}. strófa
+                                    {{ ref_func.locus.l }}. sor
+                                </a>
+                            </td>
+
+                        </tr>                   
+               </table>
+
+            </div>
+        </li>
 
     </ul>
-
 </div>
+
 
 <!-- 
 
@@ -282,5 +482,26 @@
 
 
 <!-- 
+
+var reflectDescObj = {
+    name: String,
+    desc: String,
+    locus: {
+        lg: Number,
+        l:  Number
+    }
+};
+
+var reflectionObj = {
+
+    ref_genre:  [reflectDescObj],
+    ref_input:  [reflectDescObj],
+    ref_edit:   [reflectDescObj],
+    ref_func:   [reflectDescObj],
+    ref_circum: [reflectDescObj]
+
+};
+
+  reflect: reflectionObj 
 
 -->

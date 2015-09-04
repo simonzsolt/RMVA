@@ -142,16 +142,14 @@ angular
                     };                       
                     
                     // achorscroll
-                    $anchorScroll.yOffset = ($(window).height())/4;
+                    $anchorScroll.yOffset = ($(window).height())/3;
 
                     $scope.H = $location.hash();
 
-                    $scope.goToLine = function goToLine () {
-
-                        var lg = $scope.vers.exemplum.locus.lg
-                        var l  = $scope.vers.exemplum.locus.l;
+                    $scope.goToLine = function goToLine (lg, l) {
 
                         $location.hash(lg + '_' + l);
+
                         $anchorScroll();
                     };
 
