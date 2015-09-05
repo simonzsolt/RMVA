@@ -85,6 +85,8 @@ module.exports = function(grunt) {
                     'public/assets/lib/jquery/dist/jquery.js',
                     // 'public/assets/lib/bootstrap/dist/js/bootstrap.js',
                     'public/assets/lib/angular/angular.js',
+                    'public/assets/lib/angular-material/angular-material.js',
+                    'public/assets/lib/angular-animate/angular- .js',
                     'public/assets/lib/angular-resource/angular-resource.js',
                     'public/assets/lib/angular-route/angular-route.js',
                     'public/assets/lib/angular-sanitize/angular-sanitize.js',
@@ -130,12 +132,17 @@ module.exports = function(grunt) {
                 src: [
                     'public/assets/css/style.css',
                     // 'public/assets/lib/bootstrap/dist/css/bootstrap.css',
+<<<<<<< HEAD
                     // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css',
                     'public/assets/lib/angular-ui-select/dist/select.css',
                     'public/assets/lib/webfont-notosans/italic/stylesheet.css',
                     'public/assets/lib/webfont-notosans/bolditalic/stylesheet.css',
                     'public/assets/lib/webfont-notosans/bold/stylesheet.css',
                     'public/assets/lib/webfont-notosans/regular/stylesheet.css'
+=======
+                    // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.css',
+                    'public/assets/lib/angular-ui-select/dist/select.css'
+>>>>>>> local
                 ],
                 dest: 'public/build/productionStyle.css'
             }
@@ -148,7 +155,7 @@ module.exports = function(grunt) {
               }
             }
         },
-        cssmin:{
+        cs.{
             options: { sourceMap: true },
             style: {
                 files: {
@@ -157,7 +164,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-         htmlmin: {                                     // Task
+         htm. {                                     // Task
             production: {                                      // Target
                 options: {                                 // Target options
                     removeComments: true,
@@ -169,9 +176,9 @@ module.exports = function(grunt) {
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
                     removeOptionalTags: true,
-                    minifyJS: true,
-                    minifyCSS: true,
-                    minifyCSS: true
+                   .fyJS: true,
+                   .fyCSS: true,
+                   .fyCSS: true
                 },
               
                 files: {
@@ -288,8 +295,8 @@ module.exports = function(grunt) {
             'ngAnnotate', 
             'concat', 
             'uglify', 
-            'cssmin',
-            'htmlmin'
+            'cs.,
+            'htm.
         ]
     );
 
