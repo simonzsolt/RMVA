@@ -6,8 +6,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-cs.);
+    grunt.loadNpmTasks('grunt-contrib-htm.);
     grunt.loadNpmTasks('grunt-githooks');
     grunt.loadNpmTasks('grunt-supervisor');
 
@@ -84,15 +84,19 @@ module.exports = function(grunt) {
                 src: [
                     'public/assets/lib/jquery/dist/jquery.js',
                     // 'public/assets/lib/bootstrap/dist/js/bootstrap.js',
-                    'public/assets/lib/angular/angular.min.js',
-                    'public/assets/lib/angular-resource/angular-resource.min.js',
-                    'public/assets/lib/angular-route/angular-route.min.js',
-                    'public/assets/lib/angular-sanitize/angular-sanitize.min.js',
-                    'public/assets/lib/bootstrap/dist/js/bootstrap.min.js',
-                    'public/assets/lib/angular-ui-select/dist/select.min.js',
-                    'public/assets/lib/jquery-ui/jquery-ui.min.js',
+                    'public/assets/lib/angular/angular.js',
+
+                    'public/assets/lib/angular-material/angular-material.js',
+                    'public/assets/lib/angular-animate/angular-animate.js',
+
+                    'public/assets/lib/angular-resource/angular-resource.js',
+                    'public/assets/lib/angular-route/angular-route.js',
+                    'public/assets/lib/angular-sanitize/angular-sanitize.js',
+                    'public/assets/lib/bootstrap/dist/js/bootstrap.js',
+                    'public/assets/lib/angular-ui-select/dist/select.js',
+                    'public/assets/lib/jquery-ui/jquery-ui.js',
                     'public/assets/lib/angular-ui-date/src/date.js',
-                    'public/assets/lib/angular-css/angular-css.min.js',
+                    'public/assets/lib/angular-css/angular-css.js',
                     'public/ng/main.js',
                     'public/ng/config.js',
                     'public/ng/auth/config/authConfig.js',
@@ -130,8 +134,8 @@ module.exports = function(grunt) {
                 src: [
                     'public/assets/css/style.css',
                     // 'public/assets/lib/bootstrap/dist/css/bootstrap.css',
-                    // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css',
-                    'public/assets/lib/angular-ui-select/dist/select.min.css'
+                    // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.css',
+                    'public/assets/lib/angular-ui-select/dist/select.css'
                 ],
                 dest: 'public/build/productionStyle.css'
             }
@@ -144,7 +148,7 @@ module.exports = function(grunt) {
               }
             }
         },
-        cssmin:{
+        cs.{
             options: { sourceMap: true },
             style: {
                 files: {
@@ -153,7 +157,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-         htmlmin: {                                     // Task
+         htm. {                                     // Task
             production: {                                      // Target
                 options: {                                 // Target options
                     removeComments: true,
@@ -165,9 +169,9 @@ module.exports = function(grunt) {
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
                     removeOptionalTags: true,
-                    minifyJS: true,
-                    minifyCSS: true,
-                    minifyCSS: true
+                   .fyJS: true,
+                   .fyCSS: true,
+                   .fyCSS: true
                 },
               
                 files: {
@@ -280,8 +284,8 @@ module.exports = function(grunt) {
             'ngAnnotate', 
             'concat', 
             'uglify', 
-            'cssmin',
-            'htmlmin'
+            'cs.,
+            'htm.
         ]
     );
 
