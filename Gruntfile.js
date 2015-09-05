@@ -132,17 +132,14 @@ module.exports = function(grunt) {
                 src: [
                     'public/assets/css/style.css',
                     // 'public/assets/lib/bootstrap/dist/css/bootstrap.css',
-<<<<<<< HEAD
                     // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.min.css',
-                    'public/assets/lib/angular-ui-select/dist/select.css',
-                    'public/assets/lib/webfont-notosans/italic/stylesheet.css',
-                    'public/assets/lib/webfont-notosans/bolditalic/stylesheet.css',
-                    'public/assets/lib/webfont-notosans/bold/stylesheet.css',
-                    'public/assets/lib/webfont-notosans/regular/stylesheet.css'
-=======
+                    // 'public/assets/lib/angular-ui-select/dist/select.css',
+                    // 'public/assets/lib/webfont-notosans/italic/stylesheet.css',
+                    // 'public/assets/lib/webfont-notosans/bolditalic/stylesheet.css',
+                    // 'public/assets/lib/webfont-notosans/bold/stylesheet.css',
+                    // 'public/assets/lib/webfont-notosans/regular/stylesheet.css'
                     // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.css',
                     'public/assets/lib/angular-ui-select/dist/select.css'
->>>>>>> local
                 ],
                 dest: 'public/build/productionStyle.css'
             }
