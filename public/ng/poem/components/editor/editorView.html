@@ -1,1 +1,30 @@
-<div ng-include="'ng/shared/navbar/navView.html'"></div><div ng-cloack><div class=jumbotron><h1>Szerkesztő <small>- RMVA {{vers.rmva | fillZero:5}}</small></h1><h1>Cím: {{vers.title}}</h1><h2>Incipit: {{vers.inc}}</h2><h3>Létrehozva: {{vers.created_at | date:"y-MM-d H:mm:ss"}}</h3></div><form class=form-horizontal role=form ng-submit=editVers()><div ng-cloack ng-include="'ng/poem/components/editor/poemFormEdit.html'"></div></form></div>
+<div ng-include="'ng/shared/navbar/navView.html'"></div> 
+
+<div ng-cloack>
+    <div class="page-header col-md-10 col-md-offset-1">
+        <h1>
+            <div class="rmva-view-head">   
+                <span class="rmva-view-label">
+                    Szerkesztő 
+                    
+                    <span id="rmva-view-small">
+                        RMVA - {{vers.rmva | fillZero:5}}
+                    </span> 
+                
+                </span>  <br>
+            </div>
+
+            <big>{{vers.title}}</big> <br>
+            <small ng-show="vers.inc"> ("{{vers.inc}}")</small>
+
+        </h1>
+
+        <h3>Létrehozva: {{vers.created_at | date:"y-MM-d H:mm:ss"}} </h3>
+    </div>
+
+
+    <form class="form-horizontal" role="form" ng-submit="editVers()">
+       <div ng-cloack ng-include="'ng/poem/components/editor/poemFormEdit.html'"></div>
+    </form>
+</div>
+
