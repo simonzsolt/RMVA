@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['public/assets/lib/*', 'public/ng/*', './*'],
+            files: ['public/assets/lib/*', 'public/ng/*', './**'],
             tasks: ['wiredep'],
             options: {
                 livereload: true,
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        src: [ 'public/ng/*.js','public/ng/**/*.js' ]
+                        src: [ /*'public/ng/*.js',*/ 'public/ng/**/*.js' ]
                     }
                 ]
             }
@@ -82,13 +82,13 @@ module.exports = function(grunt) {
 
             production: {
                 src: [
+                    'public/ng/**/*.js',
+
                     'public/assets/lib/jquery/dist/jquery.js',
-                    // 'public/assets/lib/bootstrap/dist/js/bootstrap.js',
                     'public/assets/lib/angular/angular.js',
-
-                    'public/assets/lib/angular-material/angular-material.js',
+                    'public/assets/lib/angular-aria/angular-aria.js',
                     'public/assets/lib/angular-animate/angular-animate.js',
-
+                    'public/assets/lib/angular-material/angular-material.js',
                     'public/assets/lib/angular-resource/angular-resource.js',
                     'public/assets/lib/angular-route/angular-route.js',
                     'public/assets/lib/angular-sanitize/angular-sanitize.js',
@@ -96,7 +96,10 @@ module.exports = function(grunt) {
                     'public/assets/lib/angular-ui-select/dist/select.js',
                     'public/assets/lib/jquery-ui/jquery-ui.js',
                     'public/assets/lib/angular-ui-date/src/date.js',
-                    'public/assets/lib/angular-css/angular-css.js',
+                    'public/assets/lib/angular-css/angular-css.js'
+            
+
+                    /*
                     'public/ng/main.js',
                     'public/ng/config.js',
                     'public/ng/auth/config/authConfig.js',
@@ -127,14 +130,13 @@ module.exports = function(grunt) {
                     'public/ng/auth/components/users/editUsersCtrl.js',
                     'public/ng/auth/components/unauth/unauthCtrl.js',
                     'public/ng/auth/components/profile/profileCtrl.js'
+                    */
                 ],
                 dest: 'public/build/production.js'
             },
             style : {
                 src: [
                     'public/assets/css/style.css',
-                    // 'public/assets/lib/bootstrap/dist/css/bootstrap.css',
-                    // 'public/assets/lib/jquery-ui/themes/smoothness/jquery-ui.css',
                     'public/assets/lib/angular-ui-select/dist/select.css'
                 ],
                 dest: 'public/build/productionStyle.css'
@@ -148,7 +150,7 @@ module.exports = function(grunt) {
               }
             }
         },
-        cs.{
+        cssmin:{
             options: { sourceMap: true },
             style: {
                 files: {
@@ -157,7 +159,7 @@ module.exports = function(grunt) {
                 }
             }
         },
-         htm. {                                     // Task
+         htmlmin: {                                     // Task
             production: {                                      // Target
                 options: {                                 // Target options
                     removeComments: true,
@@ -169,13 +171,12 @@ module.exports = function(grunt) {
                     removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
                     removeOptionalTags: true,
-                   .fyJS: true,
-                   .fyCSS: true,
-                   .fyCSS: true
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyCSS: true
                 },
               
                 files: {
-
                     'public/ng/poem/components/listing/listView.html': 
                     'public/ng/poem/components/listing/listView.html',
                     
@@ -197,8 +198,8 @@ module.exports = function(grunt) {
                     'public/ng/poem/components/editor/poemFormEditRef.html':
                     'public/ng/poem/components/editor/poemFormEditRef.html',
 
-                    'public/ng/poem/components/uploader/poemFormUp.html':
-                    'public/ng/poem/components/uploader/poemFormUp.html',
+                    'public/ng/poem/components/uploader/poemFormUpText.html':
+                    'public/ng/poem/components/uploader/poemFormUpText.html',
 
                     'public/ng/poem/components/uploader/poemFormUpCon.html':
                     'public/ng/poem/components/uploader/poemFormUpCon.html',
@@ -255,7 +256,7 @@ module.exports = function(grunt) {
                     'public/ng/auth/components/users/usersView.html',
                     
                     'public/ng/auth/components/unauth/unauthView.html':
-                    'public/ng/auth/components/unauth/unauthView.html'                    
+                    'public/ng/auth/components/unauth/unauthView.html'    
                 }
             }
         },
@@ -284,8 +285,8 @@ module.exports = function(grunt) {
             'ngAnnotate', 
             'concat', 
             'uglify', 
-            'cs.,
-            'htm.
+            'cssmin',
+            'htmlmin'
         ]
     );
 

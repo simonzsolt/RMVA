@@ -6,5 +6,7 @@ angular
         'ui.date',
         'ngSanitize',
         'door3.css',
-        'ngMaterial'
+        'ngMaterial',
+        'ngAria',
+        'ngAnimate'
     ]);

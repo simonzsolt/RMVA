@@ -111,6 +111,44 @@ ul {
     list-style-type: none !important;
 }
 
+.list-group-item-heading {
+    color: #18314f !important;
+}
+
+.head-row {
+    color: #18314f !important;
+}
+
+.fixed-width {
+    width: 200px !important;
+}
+
+.rmva-view-label {
+    color: #18314f !important;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+#rmva-view-text {
+    color: #18314f !important;
+    font-size: 64px;
+    font-weight: bold; 
+}
+
+.rmva-view-head {
+    padding-bottom: 1em;
+}
+
+#right-col ul {
+    padding: 0px 0px 0px 15px !important;
+}
+
+#rmva-view-small {
+    color: #18314f !important;
+    font-size: 48px;
+    font-weight: bold; 
+}
+
 /* Coolors Exported Palette - coolors.co/08121d-18314f-124e78-4f7cac-eff1f3 */
 
 /*

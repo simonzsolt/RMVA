@@ -2,7 +2,10 @@
 
 <div ng-cloack class="page-header col-md-10 col-md-offset-1">
     <h1 ng-cloack ng-show="vers.title">
-        <big><strong>RMVA: {{vers.rmva | fillZero:5 }}</strong></big> <br>
+        <div class="rmva-view-head">
+             <span class="rmva-view-label">RMVA -</span> 
+             <span id="rmva-view-text">{{vers.rmva | fillZero:5 }}</span> <br>
+        </div>
         <big>{{vers.title}}</big> <br>
         <small ng-show="vers.inc"> ("{{vers.inc}}")</small>
     </h1>
@@ -251,7 +254,7 @@
 
 </div>
 
-<div class="viewCol">
+<div class="viewCol" id="right-col">
 
     <ul ng-cloack class="list-group col-md-5 ">
 
@@ -294,10 +297,10 @@
        <li class="list-group-item">
             <div class="list-group-item-text"> 
                
-               <table class="table table-responsive table-condensed">
+               <table class="table table-condensed table-striped">
                     <thead>
-                        <tr>
-                            <th>Műfaji reflexió</th>
+                        <tr class="head-row">
+                            <th class="fixed-width">Műfaji reflexió</th>
                             <th>Kifejtve</th>
                             <th>Helye</th>
                         </tr>
@@ -329,10 +332,10 @@
        <li class="list-group-item">
             <div class="list-group-item-text"> 
                
-               <table class="table table-responsive table-condensed">
+               <table class="table table-condensed table-striped">
                     <thead>
-                        <tr>
-                            <th>Befogadás</th>
+                        <tr class="head-row">
+                            <th class="fixed-width">Befogadás</th>
                             <th>Kifejtve</th>
                             <th>Helye</th>
                         </tr>
@@ -364,10 +367,10 @@
        <li class="list-group-item">
             <div class="list-group-item-text"> 
                
-               <table class="table table-responsive table-condensed">
+               <table class="table table-condensed table-striped">
                     <thead>
-                        <tr>
-                            <th>Szereztetés, szerkesztés </th>
+                        <tr class="head-row">
+                            <th class="fixed-width">Szereztetés, szerkesztés </th>
                             <th>Kifejtve</th>
                             <th>Helye</th>
                         </tr>
@@ -399,10 +402,10 @@
        <li class="list-group-item">
             <div class="list-group-item-text"> 
                
-               <table class="table table-responsive table-condensed">
+               <table class="table table-condensed table-striped">
                     <thead>
-                        <tr>
-                            <th>Körülmények</th>
+                        <tr class="head-row">
+                            <th class="fixed-width">Körülmények</th>
                             <th>Kifejtve</th>
                             <th>Helye</th>
                         </tr>
@@ -433,10 +436,10 @@
        <li class="list-group-item">
             <div class="list-group-item-text"> 
                
-               <table class="table table-responsive table-condensed">
+               <table class="table table-condensed table-striped">
                     <thead>
-                        <tr>
-                            <th>Funkció, alkalom </th>
+                        <tr class="head-row">
+                            <th class="fixed-width">Funkció, alkalom </th>
                             <th>Kifejtve</th>
                             <th>Helye</th>
                         </tr>
