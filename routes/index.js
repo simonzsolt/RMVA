@@ -2,6 +2,9 @@ var express = require('express');
     router = express.Router(),
     mongoose = require('mongoose'),
     Vers = mongoose.model('Vers'),
+    geonames = require('geonames-stream'),
+    request = require('request'),
+    through = require('through2');
 
 // =============================BACKEND CRUD API ROUTING=============================
 
@@ -276,5 +279,25 @@ router.route('/data/:rmva')
             });
         }
 });
-    
+
+var geo = [];
+
+router.route('/geo')
+    .get(function(req, res){
+        request.get('http://download.geonames.org/export/dump/HU.zip')
+        .pipe( geonames.pipeline )
+        .pipe( through.obj( 
+            function(data, enc, cb){
+                this.push(data)
+                cb()
+            })
+        )
+        .on('data', function (data) {
+            geo.push(data)
+        })
+        .on('end', function () {
+            res.json(geo)
+        })
+    });
+
 module.exports = router;

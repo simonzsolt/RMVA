@@ -22,6 +22,10 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
+    geonames = require('geonames-stream'),
+    request = require('request'),
+    through = require('through2'),
+
     dotenv = require('dotenv').load();
 
 // ====================LOADING CONFIG VARS====================
@@ -105,6 +109,13 @@ passport.use(new localStrategy(Account.authenticate()));
 // serializing based on Shcema
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
+/*
+ request.get( 'http://download.geonames.org/export/dump/HU.zip' )
+    .pipe( geonames.pipeline )
+    .pipe( through.obj( function( geo, enc, next ){
+        console.log( geo._id, geo.name, geo.population );
+        next();
+}));*/
 
 app.use('/', routes); 
 app.use('/', auth); 
