@@ -9,10 +9,11 @@ angular
 		.controller('uploaderCtrl', [
 			'$scope', 
 			'poemFactory',
+			'geoFactory',
 			'$rootScope',
 			'$location',
 
-		    function($scope, poemFactory, $rootScope, $location){
+		    function($scope, poemFactory, geoFactory, $rootScope, $location){
 
 		    	$rootScope.data = poemFactory.query();
 

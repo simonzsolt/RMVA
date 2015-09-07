@@ -147,7 +147,6 @@ router.route('/data/:rmva')
 
             // zerofill unfilled id from mongodb
             rmvaID = zeroFill(5, req.params.rmva);
-            // console.log('rmvaID : ' + rmvaID);
 
             // Vers.findById(req.params.vers_id, function(err, vers){
             Vers.findOne({ 'rmva' : rmvaID }, function(err, vers){
@@ -294,6 +293,9 @@ router.route('/geo')
         )
         .on('data', function (data) {
             geo.push(data)
+        })
+        .on('error', function handleError(err){
+            console.log('err:' + err);
         })
         .on('end', function () {
             res.json(geo)
