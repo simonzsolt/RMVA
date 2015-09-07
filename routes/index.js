@@ -279,27 +279,26 @@ router.route('/data/:rmva')
         }
 });
 
-var geo = [];
-
-router.route('/geo')
+router.route('/geo/:name')
     .get(function(req, res){
-        request.get('http://download.geonames.org/export/dump/HU.zip')
-        .pipe( geonames.pipeline )
-        .pipe( through.obj( 
-            function(data, enc, cb){
-                this.push(data)
-                cb()
-            })
-        )
-        .on('data', function (data) {
-            geo.push(data)
-        })
-        .on('error', function handleError(err){
-            console.log('err:' + err);
-        })
-        .on('end', function () {
-            res.json(geo)
-        })
+        request.get(
+
+            'http://api.geonames.org/searchJSON?' 
+            + 'formatted=true&'
+            + 'orderby=relevance&'
+            // + 'country=HU&'
+            // + 'country=SK&'
+            + 'countryBias=HU&'
+            + 'countryBias=SK&'
+            + 'lang=en&' 
+            + 'name_startsWith=' + encodeURIComponent(req.params.name) + '&'  
+            + 'username=' + process.env.GEONAME,
+
+            function(err, response, body){
+                if(!err && res.statusCode == 200){
+                }
+            res.json(JSON.parse(body))
+        });
     });
 
 module.exports = router;

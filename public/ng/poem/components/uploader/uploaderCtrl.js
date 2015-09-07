@@ -12,10 +12,18 @@ angular
 			'geoFactory',
 			'$rootScope',
 			'$location',
+			'$log',
 
-		    function($scope, poemFactory, geoFactory, $rootScope, $location){
+		    function($scope, poemFactory, geoFactory, $rootScope, $location, $log){
 
-		    	$rootScope.data = poemFactory.query();
+		    	// $rootScope.data = poemFactory.query();
+		    	$rootScope.test = geoFactory.get({name: 'Rád'});
+
+		    	console.log($rootScope.test);
+
+		    	// $scope.geoVac = geoFactory.get({name: 'vac'});
+
+		    	// console.log($scope.geoVac);
 
 		    	$scope.selectDate = '';
 	    	
