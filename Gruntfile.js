@@ -82,11 +82,6 @@ module.exports = function(grunt) {
 
             production: {
                 src: [
-                    'public/ng/main.js',
-                    'public/ng/config.js',
-                    'public/ng/auth/config/authConfig.js',
-                    'public/ng/poem/config/poemConfig.js',
-                    'public/ng/**/*.js',
 
                     'public/assets/lib/jquery/dist/jquery.js',
                     'public/assets/lib/angular/angular.js',
@@ -101,9 +96,13 @@ module.exports = function(grunt) {
                     'public/assets/lib/angular-ui-date/src/date.js',
                     'public/assets/lib/angular-ui-select/dist/select.js',
                     'public/assets/lib/bootstrap/dist/js/bootstrap.js',
-                    
+                                            
                  
-                   
+                    'public/ng/main.js',
+                    'public/ng/config.js',
+                    'public/ng/auth/config/authConfig.js',
+                    'public/ng/poem/config/poemConfig.js',
+                    'public/ng/**/*.js'
             
 
                     /*
