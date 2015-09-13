@@ -90,7 +90,7 @@ module.exports = function(grunt) {
 
                     'public/assets/lib/jquery/dist/jquery.js',
                     'public/assets/lib/angular/angular.js',
-                    'public/assets/lib/angular-css/angular-css.js'
+                    'public/assets/lib/angular-css/angular-css.js',
                     'public/assets/lib/angular-animate/angular-animate.js',
                     'public/assets/lib/angular-aria/angular-aria.js',
                     'public/assets/lib/angular-material/angular-material.js',
