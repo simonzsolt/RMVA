@@ -22,9 +22,7 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
-    geonames = require('geonames-stream'),
     request = require('request'),
-    through = require('through2'),
 
     dotenv = require('dotenv').load();
 
