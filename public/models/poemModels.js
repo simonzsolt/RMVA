@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 // session storage connection
 var connection = mongoose.createConnection(
     process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
+
     if (err) {
         console.log('DB connection error:' + err);
     }
