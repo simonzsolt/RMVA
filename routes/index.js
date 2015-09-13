@@ -279,7 +279,7 @@ router.route('/data/:rmva')
         }
 });
 
-router.route('/geo/:name')
+/*router.route('/geo/:name')
     .get(function(req, res){
         request.get(
 
@@ -301,4 +301,4 @@ router.route('/geo/:name')
         });
     });
 
-module.exports = router;
+module.exports = router;*/
