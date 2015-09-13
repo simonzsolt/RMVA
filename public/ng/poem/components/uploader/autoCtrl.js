@@ -1,7 +1,7 @@
 angular.module('versApp')
 
 .controller('autoCtrl', autoCtrl);
-    function autoCtrl ($timeout, $q, $log, geoFactory, $http) {
+    function autoCtrl ($timeout, $q, $log, geoFactory, $scope) {
 
             var self = this;
             self.simulateQuery = false;
@@ -38,17 +38,36 @@ angular.module('versApp')
              * Build `components` list of key/value pairs
              */
 
-            var dump = geoFactory.query();
+             geoFactory.get({name: 'rád'}).then(function( result ){
+                $scope.isLoaded = true;
+                console.log(result);
+                $scope.geoQuery = result;
+             }, function(err){
+                $scope.err = 'err: ' + err;
+             });
 
-            angular.forEach(dump ,function(value, index){
-                 console.log(value.names);
-             }); 
+/*
 
-            function loadAll(geo) {
-                return geo.map( function (repo) {
-                    repo.value = repo.name.toLowerCase();
-                    return repo;
-                });
+            var geoQuery = function() {
+                geoFactory.getGeoNames()
+                    .then(function(data){
+                        console.log('promise on success: ' + data);
+                    }, function(err){
+                        console.log('err ' + err);
+                    });
+            };
+*/
+            console.log('dick');
+
+            var geo = [{ name: 'fasz' }];
+
+            function loadAll() {
+
+                    return geo.map( function (repo) {
+                        repo.value = repo.name.toLowerCase();
+                        return repo;
+                        // console.log(repo);
+                    });
             }
 
             /**

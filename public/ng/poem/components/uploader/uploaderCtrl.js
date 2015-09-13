@@ -16,10 +16,9 @@ angular
 
 		    function($scope, poemFactory, geoFactory, $rootScope, $location, $log){
 
-		    	// $rootScope.data = poemFactory.query();
-		    	$rootScope.test = geoFactory.get({name: 'Rád'});
+		    	$rootScope.data = poemFactory.query();
 
-		    	console.log($rootScope.test);
+		    	// console.log($rootScope.test);
 
 		    	// $scope.geoVac = geoFactory.get({name: 'vac'});
 
