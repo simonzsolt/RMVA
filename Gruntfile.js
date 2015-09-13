@@ -82,21 +82,28 @@ module.exports = function(grunt) {
 
             production: {
                 src: [
+                    'public/ng/main.js',
+                    'public/ng/config.js',
+                    'public/ng/auth/config/authConfig.js',
+                    'public/ng/poem/config/poemConfig.js',
                     'public/ng/**/*.js',
 
                     'public/assets/lib/jquery/dist/jquery.js',
                     'public/assets/lib/angular/angular.js',
-                    'public/assets/lib/angular-aria/angular-aria.js',
+                    'public/assets/lib/angular-css/angular-css.js'
                     'public/assets/lib/angular-animate/angular-animate.js',
+                    'public/assets/lib/angular-aria/angular-aria.js',
                     'public/assets/lib/angular-material/angular-material.js',
                     'public/assets/lib/angular-resource/angular-resource.js',
                     'public/assets/lib/angular-route/angular-route.js',
                     'public/assets/lib/angular-sanitize/angular-sanitize.js',
-                    'public/assets/lib/bootstrap/dist/js/bootstrap.js',
-                    'public/assets/lib/angular-ui-select/dist/select.js',
                     'public/assets/lib/jquery-ui/jquery-ui.js',
                     'public/assets/lib/angular-ui-date/src/date.js',
-                    'public/assets/lib/angular-css/angular-css.js'
+                    'public/assets/lib/angular-ui-select/dist/select.js',
+                    'public/assets/lib/bootstrap/dist/js/bootstrap.js',
+                    
+                 
+                   
             
 
                     /*
