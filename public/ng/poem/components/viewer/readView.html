@@ -264,7 +264,7 @@
                     <li ng-repeat="lg in vers.text"
                         ng-init="lgIndex = $index +1">
                         <ul class="l" 
-                            ng-repeat="l in lg"
+                            ng-repeat="l in lg track by $index"
                             ng-init="lIndex = $index +1">
                             <li> 
                                 <span
