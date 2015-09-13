@@ -42,7 +42,7 @@ var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 //LOCAL MONGODB
 
-mongoose.connect(process.env.DB_URL, function(err) {
+mongoose.connect(process.env.OPENSHIFT_MONGODB_DB_URL, function(err) {
     if (err) {
         console.log('DB connection error:' + err);
     }
@@ -87,7 +87,7 @@ app.use(session({
 
         // for session
         mongooseConnection: mongoose.connection,
-        url: process.env.DB_URL
+        url: process.env.OPENSHIFT_MONGODB_DB_URL
     })
 }));
 
