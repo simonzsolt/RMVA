@@ -1,9 +1,7 @@
 angular
 	.module('versApp')
 
-
 // =============================POEM FACTORY=============================
-
 
 		// service for listing, uploading and editing
 

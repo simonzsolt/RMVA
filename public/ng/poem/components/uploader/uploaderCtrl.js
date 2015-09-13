@@ -11,10 +11,17 @@ angular
 			'poemFactory',
 			'$rootScope',
 			'$location',
+			'$log',
 
-		    function($scope, poemFactory, $rootScope, $location){
+		    function($scope, poemFactory, $rootScope, $location, $log){
 
 		    	$rootScope.data = poemFactory.query();
+
+		    	// console.log($rootScope.test);
+
+		    	// $scope.geoVac = geoFactory.get({name: 'vac'});
+
+		    	// console.log($scope.geoVac);
 
 		    	$scope.selectDate = '';
 	    	

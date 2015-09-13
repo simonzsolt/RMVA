@@ -1,7 +1,7 @@
 var express = require('express');
     router = express.Router(),
     mongoose = require('mongoose'),
-    Vers = mongoose.model('Vers'),
+    Vers = mongoose.model('Vers');
 
 // =============================BACKEND CRUD API ROUTING=============================
 
@@ -143,7 +143,6 @@ router.route('/data/:rmva')
 
             // zerofill unfilled id from mongodb
             rmvaID = zeroFill(5, req.params.rmva);
-            // console.log('rmvaID : ' + rmvaID);
 
             // Vers.findById(req.params.vers_id, function(err, vers){
             Vers.findOne({ 'rmva' : rmvaID }, function(err, vers){
@@ -275,5 +274,5 @@ router.route('/data/:rmva')
             });
         }
 });
-    
+
 module.exports = router;
