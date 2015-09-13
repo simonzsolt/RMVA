@@ -1,10 +1,7 @@
 var express = require('express');
     router = express.Router(),
     mongoose = require('mongoose'),
-    Vers = mongoose.model('Vers'),
-    geonames = require('geonames-stream'),
-    request = require('request'),
-    through = require('through2');
+    Vers = mongoose.model('Vers');
 
 // =============================BACKEND CRUD API ROUTING=============================
 
@@ -279,26 +276,4 @@ router.route('/data/:rmva')
         }
 });
 
-/*router.route('/geo/:name')
-    .get(function(req, res){
-        request.get(
-
-            'http://api.geonames.org/searchJSON?' 
-            + 'formatted=true&'
-            + 'orderby=relevance&'
-            // + 'country=HU&'
-            // + 'country=SK&'
-            + 'countryBias=HU&'
-            + 'countryBias=SK&'
-            + 'lang=en&' 
-            + 'name_startsWith=' + encodeURIComponent(req.params.name) + '&'  
-            + 'username=' + process.env.GEONAME,
-
-            function(err, response, body){
-                if(!err && res.statusCode == 200){
-                }
-            res.json(JSON.parse(body))
-        });
-    });
-
-module.exports = router;*/
+module.exports = router;

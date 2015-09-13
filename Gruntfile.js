@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         },
         watch: {
             files: ['public/assets/lib/*', 'public/ng/*', './**'],
-            tasks: ['wiredep'],
+            tasks: ['wiredep' ,'supervisor'],
             options: {
                 livereload: true,
             }
