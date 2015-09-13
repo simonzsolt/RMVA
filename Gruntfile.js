@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        src: [ /*'public/ng/*.js',*/ 'public/ng/**/*.js' ]
+                        src: [ 'public/ng/**/*.js' ]
                     }
                 ]
             }
@@ -82,12 +82,7 @@ module.exports = function(grunt) {
 
             production: {
                 src: [
-                    'public/ng/main.js',
-                    'public/ng/config.js',
-                    'public/ng/auth/config/authConfig.js',
-                    'public/ng/poem/config/poemConfig.js',
-                    'public/ng/**/*.js',
-
+                   
                     'public/assets/lib/jquery/dist/jquery.js',
                     'public/assets/lib/angular/angular.js',
                     'public/assets/lib/angular-css/angular-css.js',
@@ -102,42 +97,11 @@ module.exports = function(grunt) {
                     'public/assets/lib/angular-ui-select/dist/select.js',
                     'public/assets/lib/bootstrap/dist/js/bootstrap.js',
                     
-                 
-                   
-            
-
-                    /*
                     'public/ng/main.js',
                     'public/ng/config.js',
                     'public/ng/auth/config/authConfig.js',
                     'public/ng/poem/config/poemConfig.js',
-                    'public/ng/shared/filters.js',
-                    'public/ng/poem/services/poemFactory.js',
-                    'public/ng/auth/services/userFactory.js',
-                    'public/ng/auth/services/signupFactory.js',
-                    'public/ng/auth/services/userLoggedInFactory.js',
-                    'public/ng/auth/services/profileFactory.js',
-                    'public/ng/shared/navbar/navCtrl.js',
-                    'public/ng/poem/components/listing/listingCtrl.js',
-                    'public/ng/poem/components/viewer/viewerCtrl.js',
-                    'public/ng/poem/components/editor/editorCtrl.js',
-                    'public/ng/poem/components/uploader/uploaderCtrl.js',
-                    'public/ng/poem/components/editor/selectLink/selectLinkEditCtrl.js',
-                    'public/ng/poem/components/uploader/selectLink/selectLinkUpCtrl.js',
-                    'public/ng/poem/components/uploader/selectDate/selectDateCtrl.js',
-                    'public/ng/poem/components/uploader/selectDate/selectDateFromCtrl.js',
-                    'public/ng/poem/components/uploader/selectDate/selectDateToCtrl.js',
-                    'public/ng/poem/components/editor/selectDate/selectDateEditCtrl.js',
-                    'public/ng/poem/components/editor/selectDate/selectDateFromEditCtrl.js',
-                    'public/ng/poem/components/editor/selectDate/selectDateToEditCtrl.js',
-                    'public/ng/auth/components/signup/signupCtrl.js',
-                    'public/ng/auth/components/login/loginCtrl.js',
-                    'public/ng/auth/components/profile/profileCtrl.js',
-                    'public/ng/auth/components/users/usersCtrl.js',
-                    'public/ng/auth/components/users/editUsersCtrl.js',
-                    'public/ng/auth/components/unauth/unauthCtrl.js',
-                    'public/ng/auth/components/profile/profileCtrl.js'
-                    */
+                    'public/ng/**/*.js'
                 ],
                 dest: 'public/build/production.js'
             },

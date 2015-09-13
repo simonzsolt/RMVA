@@ -35,7 +35,7 @@ var models = require('./public/models/poemModels');
 // -------------------PORT AND IP-------------------
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT   || 3001);
+var port = (process.env.OPENSHIFT_NODEJS_PORT   || 5000);
 var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------

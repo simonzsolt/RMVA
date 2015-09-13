@@ -276,6 +276,12 @@ angular
 						});
 				};
 
+
+				$scope.removeSymbol = function removeSymbol(metrumIn, levelIn, symbolIn){
+					$scope.vers.metrum[metrumIn].
+						levels.level[levelIn].comp.symbols.splice(symbolIn, 1);
+				};
+
 //========================Epmty fields scope when hidden========================
 
 /*
