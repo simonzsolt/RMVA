@@ -9,12 +9,11 @@ angular
 		.controller('uploaderCtrl', [
 			'$scope', 
 			'poemFactory',
-			'geoFactory',
 			'$rootScope',
 			'$location',
 			'$log',
 
-		    function($scope, poemFactory, geoFactory, $rootScope, $location, $log){
+		    function($scope, poemFactory, $rootScope, $location, $log){
 
 		    	$rootScope.data = poemFactory.query();
 
@@ -275,6 +274,12 @@ angular
 					            limit_pos: '',
 					            num:    ''
 						});
+				};
+
+
+				$scope.removeSymbol = function removeSymbol(metrumIn, levelIn, symbolIn){
+					$scope.vers.metrum[metrumIn].
+						levels.level[levelIn].comp.symbols.splice(symbolIn, 1);
 				};
 
 //========================Epmty fields scope when hidden========================

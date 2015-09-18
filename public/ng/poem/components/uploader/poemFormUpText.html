@@ -76,7 +76,8 @@
         Akrosztichon integráns
     </label>
     <div class="col-md-9">
-          <md-switch class="md-primary" ng-model="vers.acro_int">
+          <md-switch class="md-primary" ng-model="vers.acro_int"
+            aria-label="acro switch">
           </md-switch>
     </div>
 </div>
@@ -293,55 +294,12 @@
     <label class="control-label col-md-3" for="place">Hely:</label>
 
     <div id="place" class="col-md-9">
-<!-- 
-        <input type="text" class="form-control" placeholder="Hely" ng-model="vers.place" > </input>
- -->
 
-
-
-
-
-<div ng-controller="autoCtrl as auto" layout="column" ng-cloak>
-  <md-content layout-padding layout="column">
-    <form ng-submit="$event.preventDefault()">
-      <p>Use <code>&lt;md-autocomplete&gt;</code> with custom templates to show styled autocomplete results.</p>
-      <md-autocomplete
-          ng-disabled="auto.isDisabled"
-          md-no-cache="auto.noCache"
-          md-selected-item="auto.selectedItem"
-          md-search-text-change="auto.searchTextChange(auto.searchText)"
-          md-search-text="auto.searchText"
-          md-selected-item-change="auto.selectedItemChange(item)"
-          md-items="item in auto.querySearch(auto.searchText)"
-          md-item-text="item.name"
-          md-min-length="0"
-          placeholder="Pick an Angular repository"
-          md-menu-class="autocomplete-custom-template">
-        <md-item-template>
-          <span class="item-title">
-            <span> {{item.name}} </span>
-          </span>
-          <span class="item-metadata">
-            <span class="item-metastat">
-              <strong>{{item.id}}</strong> id
-            </span>
-          </span>
-        </md-item-template>
-      </md-autocomplete>
-    </form>
-  </md-content>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+        <input class="form-control"
+            type="text" 
+            placeholder="Hely" 
+            ng-model="vers.place" > 
+        </input>
 
     </div>  
 

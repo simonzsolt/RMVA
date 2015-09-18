@@ -37,7 +37,7 @@ var models = require('./public/models/poemModels');
 // -------------------PORT AND IP-------------------
 
 // for local
-var port = (process.env.OPENSHIFT_NODEJS_PORT   || 3001);
+var port = (process.env.OPENSHIFT_NODEJS_PORT   || 5000);
 var ip   = (process.env.OPENSHIFT_NODEJS_IP     || '127.0.0.1');
 
 // -------------------DB CONNECTION-------------------
@@ -107,13 +107,6 @@ passport.use(new localStrategy(Account.authenticate()));
 // serializing based on Shcema
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
-/*
- request.get( 'http://download.geonames.org/export/dump/HU.zip' )
-    .pipe( geonames.pipeline )
-    .pipe( through.obj( function( geo, enc, next ){
-        console.log( geo._id, geo.name, geo.population );
-        next();
-}));*/
 
 app.use('/', routes); 
 app.use('/', auth); 
