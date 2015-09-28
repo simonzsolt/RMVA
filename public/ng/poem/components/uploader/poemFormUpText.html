@@ -291,56 +291,18 @@
 
 <div class="form-group">
 
+<div controller="geoFillCtrl">
 
-<!-- 
-    <label class="control-label col-md-3" for="place">Hely:</label>
-
-    <div id="place" class="col-md-9">
-
-        <input class="form-control"
-            type="text" 
-            placeholder="Hely" 
-            ng-model="vers.place" > 
-        </input>
-
-    </div>  
- -->
-
-<div ng-controller="geoFillCtrl as geo" layout="column">
-    
-    <md-content layout-padding layout="column">
-
-        <md-autocomplete
-            ng-disabled="geo.isDisabled"
-            md-no-cache="geo.noCache"
-            md-selected-item="geo.selectedItem"
-            md-search-text-change="geo.searchTextChange(geo.searchText)"
-            md-search-text="geo.searchText"
-            md-selected-item-change="geo.selectedItemChange(item)"
-            md-items="item in geo.querySearch(geo.searchText)"
-            md-item-text="item.display"
-            md-min-length="0"
-            placeholder="What is your favorite US state?">
-
-            <md-item-template>
-                <span md-highlight-text="geo.searchText" 
-                    md-highlight-flags="^i">{{item.display}}
-                </span>
-
-            </md-item-template>
-
-            <md-not-found>
-                No matches found for "{{geo.searchText}}".
-            </md-not-found>
-        </md-autocomplete>
-
-    </md-content>
+    <angucomplete-alt id="playce"
+              placeholder="Helynevek"
+              pause="100"
+              selected-object="selectedPlace"
+              local-data="countries"
+              search-fields="name"
+              title-field="name"
+              minlength="1"
+              input-class="form-control form-control-small"/>
 </div>
-
-
-
-
-
 
 
 
