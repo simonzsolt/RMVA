@@ -141,8 +141,6 @@ angular
 					}
 					$scope.textLines = count +1 - ($scope.textVerse-1);
 
-					$scope.lgLength = ($scope.textLines / $scope.textVerse);
-
 					// convert string to array
 
 					var lgArr = strTrimemd.split('\n\n');

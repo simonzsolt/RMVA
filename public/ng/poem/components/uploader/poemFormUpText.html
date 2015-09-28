@@ -92,7 +92,11 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="head">Élőfej:</label>
     <div id="head" class="col-md-9">
-        <input type="text" class="form-control" placeholder="Élőfej" ng-model="vers.head" > </input> 
+        <input class="form-control"
+            type="number"  
+            placeholder="Élőfej" 
+            ng-model="vers.head"> 
+        </input> 
     </div>
 </div>
 
@@ -350,7 +354,6 @@
             <pre ng-bind="vers.text  | json"></pre>
             <pre ng-bind="textLines  | json"></pre>
             <pre ng-bind="textVerse  | json"></pre>
-            <pre ng-bind="lgLength   | json"></pre>
         </div> 
     </div>
 

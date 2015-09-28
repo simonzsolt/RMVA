@@ -261,10 +261,10 @@
         <li class="list-group-item">
             <div class="list-group-item-text">
                 <ol>
-                    <li ng-repeat="lg in vers.text"
+                    <li ng-repeat="lg in vers.text track by $index"
                         ng-init="lgIndex = $index +1">
                         <ul class="l" 
-                            ng-repeat="l in lg"
+                            ng-repeat="l in lg track by $index"
                             ng-init="lIndex = $index +1">
                             <li> 
                                 <span
@@ -280,6 +280,7 @@
         </li>
     </ul>
 </div>
+
 
 <!-- METRUM -->
 
