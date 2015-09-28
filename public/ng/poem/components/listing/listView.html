@@ -1,1 +1,121 @@
-<div ng-cloack ng-include="'ng/shared/navbar/navView.html'"></div><div class="row list-filter"><div class=form-group><div class="col-md-6 col-md-offset-3"><span class="glyphicon glyphicon-filter"></span> <input class=form-control placeholder=Szűrő ng-model=filter></div></div></div><table class="table table-striped table-responsive table-hover table-bordered table-condensed" id=listTable><thead><tr><th><a href="" ng-click="predicate = 'rmva'; reverse=!reverse">ID <span ng-show="predicate == 'rmva'"><span ng-hide=reverse><span class="glyphicon glyphicon-chevron-up"></span></span> <span ng-show=reverse><span class="glyphicon glyphicon-chevron-down"></span></span></span></a><th><a href="" ng-click="predicate = 'title'; reverse=!reverse">Cím <span ng-show="predicate == 'title'"><span ng-hide=reverse><span class="glyphicon glyphicon-chevron-up"></span></span> <span ng-show=reverse><span class="glyphicon glyphicon-chevron-down"></span></span></span></a><th><a href="" ng-click="predicate = 'inc'; reverse=!reverse">Incipit <span ng-show="predicate == 'inc'"><span ng-hide=reverse><span class="glyphicon glyphicon-chevron-up"></span></span> <span ng-show=reverse><span class="glyphicon glyphicon-chevron-down"></span></span></span></a><th><a href="" ng-click="predicate = 'created_at'; reverse=!reverse">Létrehozva <span ng-show="predicate == 'created_at'"><span ng-hide=reverse><span class="glyphicon glyphicon-chevron-up"></span></span> <span ng-show=reverse><span class="glyphicon glyphicon-chevron-down"></span></span></span></a><th class=text-center ng-show="loggedInUser.role=='admin'">Törlés<th class=text-center ng-hide="loggedInUser.role=='user'">Szerkesztés<tbody><tr ng-repeat="vers in data | filter:filter | orderBy:predicate:reverse"><td>{{vers.rmva | fillZero:5}}<td><a href="#view/id/{{vers.rmva | fillZero:5}}">{{vers.title}}</a><td>{{vers.inc}}<td>{{vers.created_at | date:"y-MM-dd H:mm:ss"}}<td class=text-center ng-show="loggedInUser.role=='admin'"><button class="btn btn-danger" ng-click=deleteVers(vers.rmva) type=button><span class="glyphicon glyphicon-remove"></span></button><td class=text-center ng-hide="loggedInUser.role=='user'"><a class="btn btn-primary" href="#edit/id/{{vers.rmva | fillZero:5}}" type=button><span class="glyphicon glyphicon-edit"></span></a></table>
+<div ng-cloack ng-include="'ng/shared/navbar/navView.html'"></div> 
+
+<div class="row list-filter">
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <span class="glyphicon glyphicon-filter"></span>
+            <input type="text" 
+                class="form-control" 
+                placeholder="Szűrő" 
+                ng-model="filter" /> 
+        </div>
+    </div>
+</div>
+
+
+<table class="table table-striped table-responsive table-hover table-bordered 
+    table-condensed" id="listTable">
+
+    <thead >
+        <tr>
+
+            <th>
+                <a href="" ng-click="predicate = 'rmva'; reverse=!reverse">ID
+                    <span ng-show="predicate == 'rmva'">
+                       <span ng-hide="reverse">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </span>
+                        <span ng-show="reverse">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                    </span>
+                </a>
+            </th>
+
+            <th>
+                <a href="" ng-click="predicate = 'inc'; reverse=!reverse">Incipit
+                    <span ng-show="predicate == 'inc'">
+                       <span ng-hide="reverse">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </span>
+                        <span ng-show="reverse">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                    </span>
+                </a>
+            </th>
+
+            <th>
+                <a href="" ng-click="predicate = 'title'; reverse=!reverse">Cím
+                    <span ng-show="predicate == 'title'">
+                       <span ng-hide="reverse">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </span>
+                        <span ng-show="reverse">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                    </span>
+                </a>
+            </th>
+
+
+            <th>
+                <a href="" ng-click="predicate = 'created_at'; reverse=!reverse">
+                    Létrehozva
+                    <span ng-show="predicate == 'created_at'">
+                        <span ng-hide="reverse">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </span>
+                        <span ng-show="reverse">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                    </span>
+                </a>
+            </th>
+
+
+            <th class="text-center" ng-show="loggedInUser.role=='admin'">Törlés</th>
+
+            <th class="text-center" ng-hide="loggedInUser.role=='user'" >Szerkesztés</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr ng-repeat="vers in data | filter:filter | orderBy:predicate:reverse">
+                
+            <td> 
+                <a href="#view/id/{{vers.rmva | fillZero:5}}"> 
+                    {{vers.rmva | fillZero:5}}        
+                </a>
+             </td>
+            
+            <td> {{vers.inc}} </td>
+
+            <td> {{vers.title}} </td>
+
+            <td> {{vers.created_at | date:"y-MM-dd H:mm:ss"}} </td>
+
+            <td class="text-center" ng-show="loggedInUser.role=='admin'">
+                 <button class="btn btn-danger" 
+                    ng-click="deleteVers(vers.rmva)" 
+                    type="button"> 
+
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+
+            <td class="text-center" ng-hide="loggedInUser.role=='user'">  
+                <a 
+                    class="btn btn-primary" 
+                    href="#edit/id/{{vers.rmva | fillZero:5}}" 
+                    type="button" >
+
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+>>>>>>> deploy

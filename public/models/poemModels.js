@@ -110,8 +110,8 @@ var versSchema = new mongoose.Schema({
     adnotam:    String, // nótajelzés
     acro:       String, // akrosztichon
     acro_int:   Boolean,// akrosztichon integráns. ?? 
-    chrono:      String, // kronosztichon
-    head:       String, // élőfej. ??
+    chrono:     String, // kronosztichon
+    head:       Number, // élőfej. ??
 
     signo_type: String, // szignáltság - SELECT!
 
@@ -122,6 +122,7 @@ var versSchema = new mongoose.Schema({
 
     length:      Number, // terjedelem
     length_unit: String, // mértékegység - SELECT!
+
     col:         String, // kolofón
 
     date:   {
