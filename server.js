@@ -22,6 +22,8 @@ var express = require('express'); // server dep
 
     zeroFill = require('zero-fill'),
 
+    request = require('request'),
+
     dotenv = require('dotenv').load();
 
 // ====================LOADING CONFIG VARS====================

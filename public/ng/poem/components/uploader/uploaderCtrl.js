@@ -349,7 +349,6 @@ angular
 					var lastItem = $scope.vers.reflect[refBtn].length -1;
 					$scope.vers.reflect[refBtn].splice(lastItem, 1);
 				};
-
 		// _____________________________CREATE NEW VERS_____________________________
 
 		        $scope.postVers = function() {

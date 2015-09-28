@@ -8,5 +8,6 @@ angular
         'door3.css',
         'ngMaterial',
         'ngAria',
-        'ngAnimate'
+        'ngAnimate',
+        'angucomplete-alt'
     ]);

@@ -38,6 +38,7 @@
     "morgan": "^1.5.1",
     "passport": "^0.2.2",
     "passport-local-mongoose": "^1.0.1",
+    "request": "^2.64.0",
     "serve-favicon": "^2.2.0",
     "zero-fill": "^2.2.1"
   },
