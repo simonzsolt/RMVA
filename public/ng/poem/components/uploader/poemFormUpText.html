@@ -304,20 +304,41 @@
     </div>  
  -->
 
-<div controller="geoCtrl">
+<div>
 
-    <angucomplete-alt id="palces"
-        placeholder="Search places"
-        pause="100"
-        selected-object="vers.place"
-        local-data="countries"
-        search-fields="name"
-        title-field="name"
-        minlength="1"
-        input-class="form-control form-control-small"/>
+<div>
 
-
+    <span> 
+        <pre> {{ geoObj | json }} </pre> 
+    </span>
+    
 </div>
+
+
+<angucomplete-alt id="palces"
+              placeholder="Search palces"
+              pause="100"
+              minlenght="1"
+              match-class="highlight"
+              selected-object="selectedObject"
+              ng-model="vers.place"
+              remote-api-handler="searchAPI"
+              remote-url-data-field="geonames"
+              title-field="name"
+              input-class="form-control form-control-small"/>
+</div>
+
+
+<div>
+
+    <span> 
+        <pre> {{ vers.place | json }} </pre> 
+    </span>
+    
+</div>
+
+
+
 
 
     <label class="control-label col-md-3" for="place_info">Lokalizálás:</label>

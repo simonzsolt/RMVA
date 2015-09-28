@@ -12,16 +12,15 @@ angular
 			'$rootScope',
 			'$location',
 			'$log',
+			'$http',
 
-		    function($scope, poemFactory, $rootScope, $location, $log){
+		    function($scope, poemFactory, $rootScope, $location, $log, $http){
 
 		    	$rootScope.data = poemFactory.query();
 
 		    	// console.log($rootScope.test);
 
-		    	// $scope.geoVac = geoFactory.get({name: 'vac'});
-
-		    	// console.log($scope.geoVac);
+		    	console.log($scope.geoObj);
 
 		    	$scope.selectDate = '';
 	    	
@@ -349,6 +348,25 @@ angular
 					var lastItem = $scope.vers.reflect[refBtn].length -1;
 					$scope.vers.reflect[refBtn].splice(lastItem, 1);
 				};
+
+// ------------------------------------Geonames------------------------------------
+
+				$scope.searchAPI = function(userInputString, timeoutPromise) {
+
+                    return $http.get(
+                        '/geo/' + userInputString, 
+                        {q: userInputString}, 
+                        {timeout: timeoutPromise}
+                    );
+                }
+
+                $scope.selectedObject = function(selected) {
+                    $log.info(selected);
+                    $scope.geoObj = selected;
+                };
+
+                // console.log($scope.geoObj);
+
 		// _____________________________CREATE NEW VERS_____________________________
 
 		        $scope.postVers = function() {
