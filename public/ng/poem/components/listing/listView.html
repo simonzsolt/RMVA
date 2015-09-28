@@ -33,6 +33,19 @@
             </th>
 
             <th>
+                <a href="" ng-click="predicate = 'inc'; reverse=!reverse">Incipit
+                    <span ng-show="predicate == 'inc'">
+                       <span ng-hide="reverse">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </span>
+                        <span ng-show="reverse">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </span>
+                    </span>
+                </a>
+            </th>
+
+            <th>
                 <a href="" ng-click="predicate = 'title'; reverse=!reverse">Cím
                     <span ng-show="predicate == 'title'">
                        <span ng-hide="reverse">
@@ -47,21 +60,8 @@
 
 
             <th>
-                <a href="" ng-click="predicate = 'inc'; reverse=!reverse">Incipit
-                    <span ng-show="predicate == 'inc'">
-                       <span ng-hide="reverse">
-                            <span class="glyphicon glyphicon-chevron-up"></span>
-                        </span>
-                        <span ng-show="reverse">
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </span>
-                    </span>
-                </a>
-            </th>
-
-
-            <th>
-                <a href="" ng-click="predicate = 'created_at'; reverse=!reverse">Létrehozva
+                <a href="" ng-click="predicate = 'created_at'; reverse=!reverse">
+                    Létrehozva
                     <span ng-show="predicate == 'created_at'">
                         <span ng-hide="reverse">
                             <span class="glyphicon glyphicon-chevron-up"></span>
@@ -85,15 +85,15 @@
         
         <tr ng-repeat="vers in data | filter:filter | orderBy:predicate:reverse">
                 
-            <td> {{vers.rmva | fillZero:5}} </td>
-
             <td> 
                 <a href="#view/id/{{vers.rmva | fillZero:5}}"> 
-                    {{vers.title}} 
-                </a> 
-            </td>
+                    {{vers.rmva | fillZero:5}}        
+                </a>
+             </td>
             
             <td> {{vers.inc}} </td>
+
+            <td> {{vers.title}} </td>
 
             <td> {{vers.created_at | date:"y-MM-dd H:mm:ss"}} </td>
 
